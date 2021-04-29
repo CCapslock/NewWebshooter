@@ -512,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &202850265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5370,6 +5370,7 @@ GameObject:
   - component: {fileID: 3040295923444952731}
   - component: {fileID: 3040295923444952734}
   - component: {fileID: 3040295923444952735}
+  - component: {fileID: 3040295923444952736}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -5513,6 +5514,25 @@ MonoBehaviour:
   MaxHealth: 1
   EnemyHitPower: 0.004
   HealingPower: 0.005
+--- !u!114 &3040295923444952736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040295923444952727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9271ac31a07c1774290488e2d163b4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coin: {fileID: 2599189662765754411, guid: 620eb6214ba35df4fa27d772903a0714, type: 3}
+  StartThrownigPosition: {x: 0, y: -10, z: -4}
+  MaxCoins: 20
+  AmountOfThrowingObject: 0
+  TimeBeforeThrownig: 0
+  IsBonusRound: 0
+  IsStckmanRound: 0
 --- !u!1001 &4832711767841680588
 PrefabInstance:
   m_ObjectHideFlags: 0

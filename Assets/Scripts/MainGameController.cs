@@ -29,9 +29,9 @@ public class MainGameController : MonoBehaviour
 	}
 	public void StartLvl()
 	{
-		_artController.ChangeColor();
-		_playerMovement.SetMovementPoints(_lvlBuilder.BuildLvlAndReturnMovementPoints(AvailableLevels[_saveController.GetNextLvlNum()]));
-		_playerMovement.StartMoving();
+		//_artController.ChangeColor();
+		//_playerMovement.SetMovementPoints(_lvlBuilder.BuildLvlAndReturnMovementPoints(AvailableLevels[_saveController.GetNextLvlNum()]));
+		//_playerMovement.StartMoving();
 	}
 	public bool CanMove()
 	{
@@ -53,7 +53,7 @@ public class MainGameController : MonoBehaviour
 		_isFinal = true;
 		if (noEnemyes)
 		{
-			EndLVL();
+			PlayerWin();
 		}
 	}
 	public void ActivateEnemyes(GameObject[] enemyes, bool needToCountEnemyes)
@@ -86,7 +86,7 @@ public class MainGameController : MonoBehaviour
 				Invoke("ContinueMoving", _timeBeforeContinueMoving);
 				if (_isFinal)
 				{
-					Invoke("EndLVL", _timeBeforeContinueMoving);
+					Invoke("PlayerWin", _timeBeforeContinueMoving);
 				}
 			}
 		}
@@ -100,7 +100,7 @@ public class MainGameController : MonoBehaviour
 	{
 		_playerMovement.ContinueMoving();
 	}
-	private void EndLVL()
+	private void PlayerWin()
 	{
 		_lvlComplete = true;
 		int CoinsNum = Random.Range(40, 71);
