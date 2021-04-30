@@ -5498,7 +5498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581717fe5bd4205419f2a9a4cf36dfa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmountOfLvlsBeforeBonus: 1
+  AmountOfLvlsBeforeBonus: 4
   IsRandom: 0
 --- !u!114 &3040295923444952735
 MonoBehaviour:
