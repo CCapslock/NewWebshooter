@@ -13,33 +13,32 @@ public class ArtController : MonoBehaviour
 	private string _presetNumPlayerPref = "PresetNum";
 
 
-
 	[Button]
-	public void ChangeColor()
+	public void SetMaterials()
 	{
-		SelectPreset();
+		_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 		ChangeEnemyesMaterial();
 		ChangeBuildingsMaterial();
 	}
-	private void SelectPreset()
+	public void ChangeMaterials()
 	{
 		try
 		{
 			if (PlayerPrefs.GetInt(_presetNumPlayerPref) == ArtPresets.Length - 1)
 			{
-				_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
+				//_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 				PlayerPrefs.SetInt(_presetNumPlayerPref, 0);
 			}
 			else 
 			{
-				_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
+				//_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 				PlayerPrefs.SetInt(_presetNumPlayerPref, PlayerPrefs.GetInt(_presetNumPlayerPref) + 1);
 			}
 		}
 		catch
 		{
 			PlayerPrefs.SetInt(_presetNumPlayerPref, 0);
-			_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
+			//_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 		}
 	}
 	private void ChangeEnemyesMaterial()

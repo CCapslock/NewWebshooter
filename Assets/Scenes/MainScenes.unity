@@ -507,12 +507,12 @@ GameObject:
   - component: {fileID: 202850265}
   - component: {fileID: 202850269}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Bonus Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &202850265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5498,6 +5498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581717fe5bd4205419f2a9a4cf36dfa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AmountOfLvlsBeforeBonus: 1
   IsRandom: 0
 --- !u!114 &3040295923444952735
 MonoBehaviour:
@@ -5527,12 +5528,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coin: {fileID: 2599189662765754411, guid: 620eb6214ba35df4fa27d772903a0714, type: 3}
+  Wall: {fileID: 202850264}
   StartThrownigPosition: {x: 0, y: -10, z: -4}
   MaxCoins: 20
-  AmountOfThrowingObject: 0
-  TimeBeforeThrownig: 0
-  IsBonusRound: 0
-  IsStckmanRound: 0
+  TimeBeforeThrownig: 0.4
 --- !u!1001 &4832711767841680588
 PrefabInstance:
   m_ObjectHideFlags: 0

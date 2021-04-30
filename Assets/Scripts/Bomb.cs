@@ -50,7 +50,7 @@ public class Bomb : MonoBehaviour
 			DetonateBomb();
 		}
 	}
-	private void DetonateBomb()
+	public void DetonateBomb()
 	{
 		_particlesController.MakeSmallExplosion(transform.position);
 		Collider[] sds = Physics.OverlapSphere(transform.position, 11f, _enemyLayer);
