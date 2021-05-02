@@ -9,8 +9,10 @@ public class GameEvents : MonoBehaviour
 
     public void Awake()
     {
+        if (Current != null)
+            Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
-        Current = this;        
+        Current = this;
     }
 
     #region GeneralEvents
@@ -18,7 +20,6 @@ public class GameEvents : MonoBehaviour
 
 
     #endregion
-
     #region LevelEvents
     public Action<int> OnLevelStart;
     public void LevelStart(int levelNumber) //момент клика на кнопку старта
@@ -51,5 +52,20 @@ public class GameEvents : MonoBehaviour
     {
         OnAskingRewardedVideo?.Invoke(reward);
     }
+    #endregion
+    #region GoblinBossEvents
+
+    public Action<Vector3,GameObject> OnCreatingBomb;
+    public void CreatingBomb(Vector3 pos, GameObject parent)
+    {
+        OnCreatingBomb?.Invoke(pos, parent);
+    }
+    
+    public Action<GameObject> OnThrowingBomb;
+    public void ThrowingBomb(GameObject bomb)
+    {
+        OnThrowingBomb?.Invoke(bomb);
+    }
+
     #endregion
 }
