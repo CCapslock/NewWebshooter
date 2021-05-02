@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
 	private WinMenu _winMenu;
 
 	private CoinsController _coinsController;
+	private SaveController _saveController;
 	private Color _tempColor;
 
 
@@ -31,6 +32,7 @@ public class UIController : MonoBehaviour
 		Current = this;
 
 		_coinsController = FindObjectOfType<CoinsController>();
+		_saveController = FindObjectOfType<SaveController>();
 		SetGradientsAlpha(1, 1);
 
 		UIEvents.Current.OnButtonLevelStart += StartLevel;
@@ -65,6 +67,7 @@ public class UIController : MonoBehaviour
     {
 		Time.timeScale = 1f;
 		SwitchUI(UIState.InGame);
+		GameEvents.Current.LevelStart(_saveController.GetCurrentLvlNum());
     }
 	private void PauseGame()
 	{
@@ -86,11 +89,15 @@ public class UIController : MonoBehaviour
 	{
 		Time.timeScale = 0f;
 		SwitchUI(UIState.Lose);
+		GameEvents.Current.LevelEnd();
+		GameEvents.Current.LevelFailed();
 	}
 	public void ActivateWinPanel(int coinsNum)
 	{
 		SwitchUI(UIState.Win);
 		_winMenu.ActivatePanel(coinsNum);
+		GameEvents.Current.LevelEnd();
+		GameEvents.Current.LevelComplete();
 	}
 
 	public void SetGradientsAlpha(float maxHP, float currentHP)
