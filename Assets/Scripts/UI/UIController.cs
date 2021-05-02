@@ -1,17 +1,12 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+	public static UIController Current;
 
-	public TextMeshProUGUI CoinsText;
-	public GameObject InGamePanel;
-	public GameObject WinPanel;
-	public GameObject LosePanel;
 	public Image[] Gradients;
-	public TextMeshProUGUI CoinsTextInWinnerPanel;
 
 	private MainMenu _mainMenu;
 	private ShopMenu _shopMenu;
@@ -22,16 +17,30 @@ public class UIController : MonoBehaviour
 
 	private CoinsController _coinsController;
 	private Color _tempColor;
-	private float _timeOfAddingCoins = 0.5f;
-	private int _addingCoinsAmount;
 
 
 	private void Awake()
 	{
-		InGamePanel.SetActive(true);
+		if (Current != null)
+		{
+			Destroy(this.gameObject);
+			return;
+		}
+
+		DontDestroyOnLoad(this.gameObject);
+		Current = this;
+
 		_coinsController = FindObjectOfType<CoinsController>();
-		CoinsText.text = _coinsController.GetCoinsAmount().ToString();
 		SetGradientsAlpha(1, 1);
+
+		UIEvents.Current.OnButtonLevelStart += StartLevel;
+		UIEvents.Current.OnButtonPause += PauseGame;
+		UIEvents.Current.OnButtonResume += ContinueGame;
+		UIEvents.Current.OnButtonNextLevel += NextLVL;
+		UIEvents.Current.OnButtonRestart += NextLVL;
+		UIEvents.Current.OnButtonShop += OpenShop;
+		UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
+
 
 		_mainMenu = GetComponentInChildren<MainMenu>();
 		_shopMenu = GetComponentInChildren<ShopMenu>();
@@ -39,43 +48,51 @@ public class UIController : MonoBehaviour
 		_pauseMenu = GetComponentInChildren<PauseMenu>();
 		_loseMenu = GetComponentInChildren<LoseMenu>();
 		_winMenu = GetComponentInChildren<WinMenu>();
-		SwitchUI(UIState.MainMenu);
+		OpenMainMenu();
 		//Costyl, need to be changed:
 		Time.timeScale = 0;
 	}
-	public void PauseGame()
+
+	private void OpenShop()
+    {
+		SwitchUI(UIState.Shop);
+    }
+	private void OpenMainMenu()
+    {
+		SwitchUI(UIState.MainMenu);
+    }
+	private void StartLevel()
+    {
+		Time.timeScale = 1f;
+		SwitchUI(UIState.InGame);
+    }
+	private void PauseGame()
 	{
 		Time.timeScale = 0f;
+		SwitchUI(UIState.Pause);
 	}
-	public void ContinueGame()
+	private void ContinueGame()
 	{
 		Time.timeScale = 1f;
+		SwitchUI(UIState.InGame);
 	}
 	public void NextLVL()
 	{
-		Time.timeScale = 1f;
+		SwitchUI(UIState.MainMenu);
+		Time.timeScale = 0;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	public void LoseGame()
 	{
-		InGamePanel.SetActive(false);
-		LosePanel.SetActive(true);
 		Time.timeScale = 0f;
+		SwitchUI(UIState.Lose);
 	}
 	public void ActivateWinPanel(int coinsNum)
 	{
-		InGamePanel.SetActive(false);
-		WinPanel.SetActive(true);
-		CoinsTextInWinnerPanel.text = "+0";
-		AddMoreCoinsInUI(coinsNum);
+		SwitchUI(UIState.Win);
+		_winMenu.ActivatePanel(coinsNum);
 	}
-	private void AddMoreCoinsInUI(int Amount)
-	{
-		for (int i = 0; i < Amount; i++)
-		{
-			Invoke("AddSingleCoin", 0.5f + _timeOfAddingCoins / Amount * i);
-		}
-	}
+
 	public void SetGradientsAlpha(float maxHP, float currentHP)
 	{
 		for (int i = 0; i < Gradients.Length; i++)
@@ -85,11 +102,11 @@ public class UIController : MonoBehaviour
 			Gradients[i].color = _tempColor;
 		}
 	}
-	private void AddSingleCoin()
-	{
-		_addingCoinsAmount++;
-		CoinsTextInWinnerPanel.text = "+" + _addingCoinsAmount;
-	}
+
+	public int GetCurrentCoins()
+    {
+		return _coinsController.GetCoinsAmount();
+    }
 
 	private void SwitchUI(UIState state)
     {
