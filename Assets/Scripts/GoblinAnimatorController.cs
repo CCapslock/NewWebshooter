@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GoblinAnimatorController : MonoBehaviour
 {
+    [SerializeField] private GoblinView _view;
     private GameObject _tempBombObject;
-    private GameObject _bombPrefab;
+    [SerializeField] private GameObject _bombPrefab;
     [SerializeField] private Transform _bombParentTransform;
     
 
