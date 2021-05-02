@@ -8,7 +8,7 @@ public class IdleGoblinModel : BaseGoblinModel
     private Transform[] _strifePoints = null;
     private Transform _currentPoint;
     private Transform _nextPoint;
-    private int _nextPointIndex = 0;
+    private int _nextPointIndex = 1;
     private float _currentSmoothValue;
     private float _smoothSpeed = 0.005f;
 
@@ -17,6 +17,8 @@ public class IdleGoblinModel : BaseGoblinModel
     public override void Execute(GoblinView view)
     {
         base.Execute(view);
+
+        view.transform.LookAt(view.Player.transform);
         if (_strifePoints == null)
         {
             _currentSmoothValue = 0;
@@ -27,7 +29,7 @@ public class IdleGoblinModel : BaseGoblinModel
         _currentSmoothValue += _smoothSpeed;
         view.transform.position = Vector3.Lerp(_currentPoint.position, _nextPoint.position, _currentSmoothValue);
 
-        if (_currentSmoothValue == 1)
+        if (_currentSmoothValue >= 1)
         {
             UpdateCurrentStrifePoints(_nextPointIndex);
             _currentSmoothValue = 0;
@@ -36,6 +38,7 @@ public class IdleGoblinModel : BaseGoblinModel
         if (_currentTime - _lastAttackTime > view.AttackCooldown)
         {
             view.MainAnimator.SetTrigger("Attack");
+            _lastAttackTime = Time.time;
         }
 
     }

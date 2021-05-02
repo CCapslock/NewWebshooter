@@ -10,15 +10,19 @@ public class GoblinAnimatorController : MonoBehaviour
     [SerializeField] private Transform _bombParentTransform;
     
 
-    private void CreateBomb()
+    public void CreateBomb()
     {
         Debug.LogWarning("CreatingBomb");
-        _tempBombObject = Instantiate(_bombPrefab, _bombParentTransform.position, Quaternion.identity, _bombParentTransform);
+        _tempBombObject = Instantiate(_bombPrefab, _bombParentTransform.position, Quaternion.identity,_bombParentTransform);
+        _tempBombObject.GetComponent<Rigidbody>().isKinematic = true;
         //GameEvents.Current.CreatingBomb();
     }
 
-    private void ThrowBomb()
+    public void ThrowBomb()
     {
         Debug.LogWarning("Bomb");
+        _tempBombObject.transform.parent = null;
+        _tempBombObject.GetComponent<Rigidbody>().isKinematic = false;
+        GameEvents.Current.ThrowingBomb(_tempBombObject);
     }
 }
