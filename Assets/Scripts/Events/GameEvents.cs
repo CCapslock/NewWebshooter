@@ -58,4 +58,12 @@ public class GameEvents : MonoBehaviour
         OnAskingRewardedVideo?.Invoke(reward);
     }
     #endregion
+
+    #region GoblinEvents
+    public Action<GameObject> OnThrowingBomb;
+    public void ThrowingBomb(GameObject bomb)
+    {
+        OnThrowingBomb?.Invoke(bomb);
+    }
+    #endregion
 }
