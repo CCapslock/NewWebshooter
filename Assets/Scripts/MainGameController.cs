@@ -18,7 +18,6 @@ public class MainGameController : MonoBehaviour
 	private bool _lvlComplete;
 	private void Awake()
 	{
-		Time.timeScale = 1f;
 		_bonusLvlController = FindObjectOfType<BonusLvlController>();
 		_playerMovement = FindObjectOfType<PlayerMovement>();
 		_artController = FindObjectOfType<ArtController>();

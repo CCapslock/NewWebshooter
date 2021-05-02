@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIController : MonoBehaviour
+public class UIControllerOld : MonoBehaviour
 {
 	public TextMeshProUGUI CoinsText;
 	public GameObject InGamePanel;

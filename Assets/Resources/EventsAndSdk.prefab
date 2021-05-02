@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3543118150061861373}
   - component: {fileID: 3543118150061861372}
   - component: {fileID: 7655210727794338246}
+  - component: {fileID: 2579121041614493637}
   m_Layer: 0
-  m_Name: EventsAndSdk 1
+  m_Name: EventsAndSdk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,5 +55,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eb70fc974c07084f9b191c974029b3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ISIOSAppKey: 
+  _ISAndroidAppKey: 
+  _currentAppKey: 
+  _interstitialDelay: 40
+--- !u!114 &2579121041614493637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543118150061861375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9460e6e166d01245967573ef8478b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
