@@ -147,7 +147,6 @@ MonoBehaviour:
   EnemySpeed: 0.04
   MaxDistanceToPlayer: 2.5
   IsStucked: 0
-  IsCoin: 0
   IsEnemyActive: 0
   IsEnemyAttacking: 0
 --- !u!95 &7666613614077320476
@@ -425,10 +424,10 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3573815c8d0bbf149b04f04bb9968fba, type: 2}
-  - {fileID: 2100000, guid: cb24787d718c21a4991aaff50116c14b, type: 2}
-  - {fileID: 2100000, guid: cb24787d718c21a4991aaff50116c14b, type: 2}
-  - {fileID: 2100000, guid: cb24787d718c21a4991aaff50116c14b, type: 2}
-  - {fileID: 2100000, guid: cb24787d718c21a4991aaff50116c14b, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
