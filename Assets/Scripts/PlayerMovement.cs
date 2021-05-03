@@ -80,8 +80,12 @@ public class PlayerMovement : MonoBehaviour
 		_needToMove = true;
 	}
 	public void ContinueMoving()
-	{
+	{		
 		ChangePoint();
+		if (_movementPoints[_currentPointNum].NeedTofly)
+		{
+			FindObjectOfType<WebShooter>().RightHandAnimator.SetTrigger("Flying");
+		}
 		_needToMove = true;
 	}
 	public void ChangePoint()
