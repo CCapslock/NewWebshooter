@@ -12,9 +12,9 @@ public class MainGameController : MonoBehaviour
 	private CoinsController _coinsController;
 	private HealthController _healthController;
 	private BonusLvlController _bonusLvlController;
-	private int AmountOfEnemyes;
+	[SerializeField]private int AmountOfEnemyes;
 	private float _timeBeforeContinueMoving = 0.5f;
-	private bool _isFinal;
+	[SerializeField] private bool _isFinal;
 	private bool _lvlComplete;
 	private void Awake()
 	{
@@ -58,12 +58,41 @@ public class MainGameController : MonoBehaviour
 	{
 		_isFinal = true;
 	}
-	public void LevelIsEnded(bool noEnemyes)
+	public void LevelIsEnded(bool noEnemyes, bool IsBossBattle)
 	{
-		_isFinal = true;
-		if (noEnemyes)
+		Debug.Log("MainGameController come here ");
+		if (IsBossBattle)
 		{
-			PlayerWin();
+			Debug.Log("MainGameController IsBossBattle");
+			GoblinView goblinView = null;
+			try
+			{
+				goblinView = FindObjectOfType<GoblinView>();
+			}
+			catch{}
+			if (goblinView != null)
+			{
+				Debug.Log("MainGameController activating Goblin");
+				goblinView.AwakeGoblin();
+				AmountOfEnemyes++;
+				_isFinal = true;
+			}
+			else
+			{
+				_isFinal = true;
+				if (noEnemyes)
+				{
+					PlayerWin();
+				}
+			}
+		}
+		else
+		{
+			_isFinal = true;
+			if (noEnemyes)
+			{
+				PlayerWin();
+			}
 		}
 	}
 	public void ActivateEnemyes(GameObject[] enemyes, bool needToCountEnemyes)

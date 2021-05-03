@@ -19,7 +19,8 @@ public static class TagManager
 				{TagType.SimpleEnemy, "SimpleEnemy"},
 				{TagType.ThrowingEnemy, "ThrowingEnemy"},
 				{TagType.BuildingCube, "BuildingCube"},
-				{TagType.Bottom, "Bottom"}
+				{TagType.Bottom, "Bottom"},
+				{TagType.BossSet, "BossSet"}
 			};
 	}
 

@@ -13,5 +13,8 @@ public class PrefabAssetPath
 		{"MovingPoint", "Prefabs/MovingPoint"},
 		{"BuildingCube", "Prefabs/BuildingCube"},
 		{"Map", "Maps/Map"},
+		{"BossSet0", "Prefabs/BossSet0"},
+		{"BossSet1", "Prefabs/BossSet1"},
+		{"BossSet2", "Prefabs/BossSet2"},
 	};
 }

@@ -16,6 +16,7 @@ TagManager:
   - Buildings2
   - BuildingCube
   - Bottom
+  - BossSet
   layers:
   - Default
   - TransparentFX

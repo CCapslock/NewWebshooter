@@ -14,4 +14,5 @@ public enum TagType : byte
 	Buildings2 = 10,
 	BuildingCube = 11,
 	Bottom = 12,
+	BossSet = 13,
 }

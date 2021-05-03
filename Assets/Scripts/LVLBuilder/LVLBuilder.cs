@@ -28,9 +28,11 @@ public class LVLBuilder : MonoBehaviour
 			TempMovementPoints[i].NewSpeed = lvl.MovementPoints[i].NewSpeed;
 			TempMovementPoints[i].PointNum = lvl.MovementPoints[i].PointNum;
 			TempMovementPoints[i].NeedToRotate = lvl.MovementPoints[i].NeedToRotate;
+			TempMovementPoints[i].NeedToFly = lvl.MovementPoints[i].NeedToFly;
 			TempMovementPoints[i].NeedToCountEnemy = lvl.MovementPoints[i].NeedToCountEnemy;
 			TempMovementPoints[i].NeedToChangeSpeed = lvl.MovementPoints[i].NeedToChangeSpeed;
 			TempMovementPoints[i].IsFinalPoint = lvl.MovementPoints[i].IsFinalPoint;
+			TempMovementPoints[i].IsBossBattle = lvl.MovementPoints[i].IsBossBattle;
 			TempMovementPoints[i].Enemyes = new GameObject[lvl.MovementPoints[i].EnemyTransforms.Length];
 		}
 
@@ -64,6 +66,24 @@ public class LVLBuilder : MonoBehaviour
 				}
 			}
 		}
+
+		//spawn boss set
+		if (lvl.BossSetParametrs.IsActive)
+		{
+			switch (lvl.BossSetParametrs.SetNum)
+			{
+				case 0:
+					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet0"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
+					break;
+				case 1:
+					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet1"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
+					break;
+				case 2:
+					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
+					break;
+			}
+		}
+
 		PlayerMovementPoints = new MovementPoints[TempMovementPoints.Length];
 		for (int i = 0; i < PlayerMovementPoints.Length; i++)
 		{

@@ -43,6 +43,17 @@ public class PlayerMovement : MonoBehaviour
 			{
 				_speed = _movementPoints[_currentPointNum].NewSpeed;
 			}
+			if (_currentPointNum < _movementPoints.Length && (_movementPoints[_currentPointNum].IsFinalPoint) && _movementPoints[_currentPointNum].Enemyes.Length == 0)
+			{
+				if (_movementPoints[_currentPointNum].IsBossBattle)
+				{
+					_mainGameController.LevelIsEnded(true, true);
+				}
+				else
+				{
+					_mainGameController.LevelIsEnded(true, false);
+				}
+			}
 			if (_movementPoints[_currentPointNum].Enemyes.Length == 0)
 			{
 				ChangePoint();
@@ -64,10 +75,7 @@ public class PlayerMovement : MonoBehaviour
 				}
 			}
 
-			if (_currentPointNum < _movementPoints.Length && (_movementPoints[_currentPointNum].IsFinalPoint) && _movementPoints[_currentPointNum].Enemyes.Length == 0)
-			{
-				_mainGameController.LevelIsEnded(true);
-			}
+			
 			Destroy(other.gameObject);//что бы лишних колайдеров на сцене не было 
 		}
 	}
@@ -80,9 +88,9 @@ public class PlayerMovement : MonoBehaviour
 		_needToMove = true;
 	}
 	public void ContinueMoving()
-	{		
+	{
 		ChangePoint();
-		if (_movementPoints[_currentPointNum].NeedTofly)
+		if (_movementPoints[_currentPointNum].NeedToFly)
 		{
 			FindObjectOfType<WebShooter>().RightHandAnimator.SetTrigger("Flying");
 		}
