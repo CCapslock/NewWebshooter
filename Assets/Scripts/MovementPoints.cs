@@ -11,8 +11,11 @@ public class MovementPoints : MonoBehaviour
 	public bool NeedToCountEnemy = true;
 	public bool IsFinalPoint = false;
 
+	[ShowIf("IsFinalPoint")]
+	public bool IsBossBattle = false;
+
 	[Foldout("Extras")]
-	public bool NeedTofly;
+	public bool NeedToFly;
 
 	[Foldout("Extras")]
 	public bool NeedToRotate;

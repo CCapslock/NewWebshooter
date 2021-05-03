@@ -11,6 +11,7 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] BuildingCubeTransforms;
 	public CustomTransform[] SimpleEnemyTransforms;
 	public CustomTransform[] ThrowingEnemyTransforms;
+	public CustomBossSetParametrs BossSetParametrs;
 	public MovementPointForBuilder[] MovementPoints;
 
 
@@ -23,6 +24,7 @@ public class LevelCreator : ScriptableObject
 		SimpleEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)).Length];
 		ThrowingEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)).Length];
 		MovementPoints = new MovementPointForBuilder[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.MovingPoint)).Length];
+		BossSetParametrs = new CustomBossSetParametrs();
 	}
 	[Button]
 	public void ScanScene()
@@ -32,6 +34,7 @@ public class LevelCreator : ScriptableObject
 		FindBuildingCubes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)));
 		FindSimpleEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)));
 		FindThrowingEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)));
+		FindBossSet(GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.BossSet)));
 		ScanMovingPoints(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.MovingPoint)));
 	}
 	private void FindBuildings1(GameObject[] gameObjects)
@@ -41,6 +44,16 @@ public class LevelCreator : ScriptableObject
 			Buildings1Transforms[i].Position = gameObjects[i].transform.position;
 			Buildings1Transforms[i].Rotation = gameObjects[i].transform.rotation;
 			Buildings1Transforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindBossSet(GameObject gameObject)
+	{
+		if (gameObject != null)
+		{
+			BossSetParametrs.IsActive = true;
+			BossSetParametrs.Transform.Position = gameObject.transform.position;
+			BossSetParametrs.Transform.Rotation = gameObject.transform.rotation;
+			BossSetParametrs.Transform.Scale = gameObject.transform.localScale;
 		}
 	}
 	private void FindBuildings2(GameObject[] gameObjects)
@@ -88,12 +101,14 @@ public class LevelCreator : ScriptableObject
 			MovementPoints[i].Transform.Scale = gameObjects[i].transform.localScale;
 			MovementPoints TempMovementPoint = gameObjects[i].GetComponent<MovementPoints>();
 			MovementPoints[i].NeedToRotate = TempMovementPoint.NeedToRotate;
+			MovementPoints[i].NeedToFly = TempMovementPoint.NeedToFly;
 			MovementPoints[i].NeedToCountEnemy = TempMovementPoint.NeedToCountEnemy;
 			MovementPoints[i].NeedToChangeSpeed = TempMovementPoint.NeedToChangeSpeed;
 			MovementPoints[i].NewSpeed = TempMovementPoint.NewSpeed;
 			MovementPoints[i].RotationVector = TempMovementPoint.RotationVector;
 			MovementPoints[i].PointNum = TempMovementPoint.PointNum;
 			MovementPoints[i].IsFinalPoint = TempMovementPoint.IsFinalPoint;
+			MovementPoints[i].IsBossBattle = TempMovementPoint.IsBossBattle;
 			MovementPoints[i].EnemyTransforms = new CustomTransform[TempMovementPoint.Enemyes.Length];
 
 		}
@@ -139,9 +154,11 @@ public class LevelCreator : ScriptableObject
 			TempMovementPoints[i].NewSpeed = MovementPoints[i].NewSpeed;
 			TempMovementPoints[i].PointNum = MovementPoints[i].PointNum;
 			TempMovementPoints[i].NeedToRotate = MovementPoints[i].NeedToRotate;
+			TempMovementPoints[i].NeedToFly = MovementPoints[i].NeedToFly;
 			TempMovementPoints[i].NeedToCountEnemy = MovementPoints[i].NeedToCountEnemy;
 			TempMovementPoints[i].NeedToChangeSpeed = MovementPoints[i].NeedToChangeSpeed;
 			TempMovementPoints[i].IsFinalPoint = MovementPoints[i].IsFinalPoint;
+			TempMovementPoints[i].IsBossBattle = MovementPoints[i].IsBossBattle;
 			TempMovementPoints[i].Enemyes = new GameObject[MovementPoints[i].EnemyTransforms.Length];
 		}
 
@@ -152,7 +169,7 @@ public class LevelCreator : ScriptableObject
 			{
 				for (int k = 0; k < MovementPoints[j].EnemyTransforms.Length; k++)
 				{
-					if(MovementPoints[j].EnemyTransforms[k].Position == SimpleEnemyTransforms[i].Position)
+					if (MovementPoints[j].EnemyTransforms[k].Position == SimpleEnemyTransforms[i].Position)
 					{
 						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithRagdoll"]), SimpleEnemyTransforms[i].Position, SimpleEnemyTransforms[i].Rotation);
 						TempMovementPoints[j].Enemyes[k].transform.localScale = SimpleEnemyTransforms[i].Scale;
@@ -175,6 +192,23 @@ public class LevelCreator : ScriptableObject
 				}
 			}
 		}
+
+		//spawn boss set
+		if (BossSetParametrs.IsActive)
+		{
+			switch (BossSetParametrs.SetNum)
+			{
+				case 0:
+					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet0"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
+					break;
+				case 1:
+					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet1"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
+					break;
+				case 2:
+					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
+					break;
+			}
+		}
 	}
 }
 
@@ -185,6 +219,14 @@ public class CustomTransform
 	public Quaternion Rotation;
 	public Vector3 Scale;
 }
+
+[Serializable]
+public class CustomBossSetParametrs
+{
+	public CustomTransform Transform;
+	public int SetNum;
+	public bool IsActive;
+}
 [Serializable]
 public class MovementPointForBuilder
 {
@@ -194,7 +236,9 @@ public class MovementPointForBuilder
 	public float NewSpeed;
 	public int PointNum = 0;
 	public bool NeedToRotate;
+	public bool NeedToFly;
 	public bool NeedToCountEnemy = true;
 	public bool NeedToChangeSpeed = false;
 	public bool IsFinalPoint = false;
+	public bool IsBossBattle = false;
 }
