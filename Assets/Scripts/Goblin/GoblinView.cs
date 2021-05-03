@@ -47,7 +47,7 @@ public class GoblinView : MonoBehaviour
     public PlayerMovement Player => _player;
     private void Awake()
     {
-        _newState = GoblinState.Awaiting;
+        _newState = GoblinState.Awakening;
         transform.position = _startAwakeningTransform.position;
 
         _models = new Dictionary<GoblinState, BaseGoblinModel>();
@@ -55,7 +55,7 @@ public class GoblinView : MonoBehaviour
         _models.Add(GoblinState.Idle, new IdleGoblinModel());
         _models.Add(GoblinState.Dead, new DeadGoblinModel());
         _models.Add(GoblinState.Awaiting, new AwaitingGoblinModel());
-        _currentModel = _models[GoblinState.Awaiting];
+        _currentModel = _models[GoblinState.Awakening];
 
 
         _firstPhaseEyesAmount = 0;

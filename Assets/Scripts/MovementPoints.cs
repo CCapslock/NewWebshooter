@@ -12,6 +12,9 @@ public class MovementPoints : MonoBehaviour
 	public bool IsFinalPoint = false;
 
 	[Foldout("Extras")]
+	public bool NeedTofly;
+
+	[Foldout("Extras")]
 	public bool NeedToRotate;
 
 	[Foldout("Extras")]
