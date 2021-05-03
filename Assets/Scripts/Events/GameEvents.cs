@@ -65,5 +65,11 @@ public class GameEvents : MonoBehaviour
     {
         OnThrowingBomb?.Invoke(bomb);
     }
+
+    public Action OnGoblinTakeDamage;
+    public void GoblinTakeDamage()
+    {
+        OnGoblinTakeDamage?.Invoke();
+    }
     #endregion
 }

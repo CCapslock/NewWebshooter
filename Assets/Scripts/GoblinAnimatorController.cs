@@ -23,6 +23,6 @@ public class GoblinAnimatorController : MonoBehaviour
         Debug.LogWarning("Bomb");
         _tempBombObject.transform.parent = null;
         _tempBombObject.GetComponent<Rigidbody>().isKinematic = false;
-        GameEvents.Current.ThrowingBomb(_tempBombObject);
+        GameEvents.Current.ThrowingBomb(_tempBombObject);        
     }
 }

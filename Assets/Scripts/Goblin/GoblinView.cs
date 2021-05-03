@@ -19,6 +19,14 @@ public class GoblinView : MonoBehaviour
     [SerializeField] private float _attackCooldown = 2f;
     [SerializeField] private Animator _animator;
 
+    [SerializeField] private int _maxHp = 0;
+    [SerializeField] private int _currentHP;
+
+    [SerializeField] private BullEyeView[] _firstPhazeEyes;
+    [SerializeField] private BullEyeView[] _secondPhazeEyes;
+
+    private int _firstPhaseEyesAmount;
+    private bool _secondPhase;
 
     #region ParaThrowBomb
     private Vector3 _fromTo;
@@ -39,16 +47,34 @@ public class GoblinView : MonoBehaviour
     public PlayerMovement Player => _player;
     private void Awake()
     {
-        _newState = GoblinState.Awakening;
+        _newState = GoblinState.Awaiting;
         transform.position = _startAwakeningTransform.position;
-        
 
-
-       _models = new Dictionary<GoblinState, BaseGoblinModel>();
+        _models = new Dictionary<GoblinState, BaseGoblinModel>();
         _models.Add(GoblinState.Awakening, new AwakeGoblinModel());
         _models.Add(GoblinState.Idle, new IdleGoblinModel());
         _models.Add(GoblinState.Dead, new DeadGoblinModel());
-        _currentModel = _models[GoblinState.Awakening];
+        _models.Add(GoblinState.Awaiting, new AwaitingGoblinModel());
+        _currentModel = _models[GoblinState.Awaiting];
+
+
+        _firstPhaseEyesAmount = 0;
+        _secondPhase = false;
+        _maxHp = 0;
+        foreach (BullEyeView eyes in _firstPhazeEyes)
+        {
+            eyes.SetGoblinView(this);
+            eyes.gameObject.SetActive(false);
+            _maxHp++;
+            _firstPhaseEyesAmount++;
+        }
+        foreach (BullEyeView eyes in _secondPhazeEyes)
+        {
+            eyes.SetGoblinView(this);
+            eyes.gameObject.SetActive(false);
+            _maxHp++;
+        }
+        _currentHP = _maxHp;
 
         _player = FindObjectOfType<PlayerMovement>();
         ChangeState(_newState);
@@ -76,7 +102,7 @@ public class GoblinView : MonoBehaviour
 
     public void ThrowBomb(GameObject bomb)
     {
-        _AngleInRadians = 30 * Mathf.PI / 180;
+        _AngleInRadians = 45 * Mathf.PI / 180;
         _fromTo = _player.transform.position - bomb.transform.position;
         _fromToXZ = new Vector3(_fromTo.x, 0f, _fromTo.z);
 
@@ -88,8 +114,53 @@ public class GoblinView : MonoBehaviour
         //bomb.GetComponent<Rigidbody>().AddForce((_fromToXZ + new Vector3(0, 1, 0)) * _TempVelocity, ForceMode.Impulse);
         bomb.GetComponent<Rigidbody>().velocity = (_fromToXZ.normalized+Vector3.up).normalized *_TempVelocity;
 
-
-
-
     }
+
+    public void TakeDamage()
+    {
+        _currentHP--;
+        if (_currentHP > 0)
+        {            
+            if (!_secondPhase)
+            {
+                if (_firstPhaseEyesAmount > 0)
+                {
+                    _firstPhaseEyesAmount--;
+                }
+                if (_firstPhaseEyesAmount == 0)
+                {
+                    EnableSecondPhase();
+                }
+            }
+            else
+            { 
+            
+            }
+        }
+        if (_currentHP <= 0)
+        { 
+                                                    //Вызов метода победы
+        }
+    }
+
+    private void EnableSecondPhase()
+    {
+        _secondPhase = true;
+        foreach (BullEyeView eyes in _secondPhazeEyes)
+        {
+            eyes.gameObject.SetActive(true);
+        }
+    }
+
+    public void AwakeGoblin()                           //вызывать для активации поведения
+    {
+        ChangeState(GoblinState.Awakening);
+        foreach (BullEyeView eyes in _firstPhazeEyes)
+        {
+            eyes.gameObject.SetActive(true);
+
+        }
+    }
+
+
 }
