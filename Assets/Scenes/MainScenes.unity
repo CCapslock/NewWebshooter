@@ -653,6 +653,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
+      propertyPath: NeedToFly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
       propertyPath: IsBossBattle
       value: 1
       objectReference: {fileID: 0}
@@ -1354,7 +1358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
       propertyPath: NeedToFly
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
       propertyPath: NeedToRotate
@@ -2072,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
       propertyPath: NeedToFly
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
       propertyPath: IsBossBattle
@@ -2993,6 +2997,10 @@ PrefabInstance:
       propertyPath: PointNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 565488070966252056, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
+      propertyPath: NeedToFly
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 565488070966252059, guid: 80d722361465e134aa0b4fc864de4c9c, type: 3}
       propertyPath: m_Name
       value: MovingPoint (1)
@@ -3078,6 +3086,11 @@ Animator:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2466177790483736967, guid: 54ba8d2b808837242b5e75c792a4c887, type: 3}
   m_PrefabInstance: {fileID: 1084766567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2085390221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7589061762267408904, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+  m_PrefabInstance: {fileID: 3697736927577040461}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100440648
 GameObject:
@@ -3490,6 +3503,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3697736927164484414, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351303643840887427, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+      propertyPath: _web
+      value: 
+      objectReference: {fileID: 6388859612813079791, guid: 9734f6d577e425d43b0730146b99fa7b, type: 3}
+    - target: {fileID: 4351303643840887427, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+      propertyPath: _hand
+      value: 
+      objectReference: {fileID: 2085390221}
     - target: {fileID: 4643472017138364214, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_IsActive
       value: 1

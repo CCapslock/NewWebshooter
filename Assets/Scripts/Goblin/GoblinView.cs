@@ -151,6 +151,7 @@ public class GoblinView : MonoBehaviour
 		}
 		if (_currentHP <= 0)
 		{
+			ChangeState(GoblinState.Dead);
 			_mainGameController.EnemyBeenDefeated();
 		}
 	}
