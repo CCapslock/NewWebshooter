@@ -31,9 +31,7 @@ public class UIController : MonoBehaviour
 		DontDestroyOnLoad(this.gameObject);
 		Current = this;
 
-		_coinsController = FindObjectOfType<CoinsController>();
-		_saveController = FindObjectOfType<SaveController>();
-		SetGradientsAlpha(1, 1);
+		ResetUI();
 
 		UIEvents.Current.OnButtonLevelStart += StartLevel;
 		UIEvents.Current.OnButtonPause += PauseGame;
@@ -53,6 +51,13 @@ public class UIController : MonoBehaviour
 		OpenMainMenu();
 		//Costyl, need to be changed:
 		Time.timeScale = 0;
+	}
+
+	private void ResetUI()
+    {
+		_coinsController = FindObjectOfType<CoinsController>();
+		_saveController = FindObjectOfType<SaveController>();
+		SetGradientsAlpha(1, 1);
 	}
 
 	private void OpenShop()
@@ -84,6 +89,7 @@ public class UIController : MonoBehaviour
 		SwitchUI(UIState.MainMenu);
 		Time.timeScale = 0;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		ResetUI();
 	}
 	public void LoseGame()
 	{

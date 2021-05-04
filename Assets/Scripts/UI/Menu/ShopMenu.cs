@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,30 +10,41 @@ public class ShopMenu : BaseMenu
     [Header("Buttons")]
     [SerializeField] private Button _btnExit;
 
+    [Header("Coins")]
+    [SerializeField] private TextMeshProUGUI _coinsText;
+
     [Header("Gloves")]
     [SerializeField] private GameObject _panelGloves;
-    [SerializeField] private ShopItemGloves[] _glovesItems;
+    [SerializeField] private ShopItem[] _glovesItems;
     [SerializeField] private Button _btnGloves;
+    [SerializeField] private Button _btnBuyGloves;
+    [SerializeField] private Button _btnGetGloves;
 
     [Header("Nets")]
     [SerializeField] private GameObject _panelNets;
     [SerializeField] private ShopItemNet[] _netItems;
     [SerializeField] private Button _btnNets;
+    [SerializeField] private Button _btnBuyNet;
+    [SerializeField] private Button _btnGetNet;
 
     [Header("Colors")]
     [SerializeField] private Color _colorBack;
 
+    private UIController _uiController;
     private GlovesSkinManager _glovesManager;
+    private int _currentCoins;
 
 
     private void Awake()
     {
+        _uiController = transform.parent.GetComponent<UIController>();
+
         _btnExit.onClick.AddListener(UIEvents.Current.ButtonMainMenu);
 
         _btnGloves.onClick.AddListener(() => OpenGlovesPanel());
         _btnNets.onClick.AddListener(() => OpenNetsPanel());
 
-        UIEvents.Current.OnButtonShop += SetItems;
+        UIEvents.Current.OnButtonShop += SetShop;
     }
 
     public override void Hide()
@@ -49,7 +61,7 @@ public class ShopMenu : BaseMenu
         IsShow = true;
     }
 
-    private void SetItems()
+    private void SetShop()
     {
         _glovesManager = FindObjectOfType<GlovesSkinManager>();
         
@@ -57,6 +69,9 @@ public class ShopMenu : BaseMenu
         {
             _glovesItems[i].SetItem(_glovesManager.Skins[i]);
         }
+
+        _currentCoins = _uiController.GetCurrentCoins();
+        _coinsText.text = $"{_currentCoins}";
     }
 
     private void OpenGlovesPanel()
