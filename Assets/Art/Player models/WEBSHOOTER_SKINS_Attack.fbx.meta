@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 938ab0c2ccc7ed2459fbfa08ff491d0e
+guid: 31a8280fc5d15e6489477db0c40430e2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -1363264815166485145
-    second: WEBSHOOTER_SKINS
+      74: 2490334358589956158
+    second: WEBSHOOTER_SKINS_Attack
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -137,11 +137,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: lambert5
     second: {fileID: 2100000, guid: 2610b2569ef1d2f4ab915e0baf4d4374, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert7
-    second: {fileID: 2100000, guid: 210d38a8d2acf3449b4df154dff15f0c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -58,10 +58,48 @@ public class UIEvents : MonoBehaviour
     #endregion
 
     #region Shop events
-    
+    public Action<GlovesSkinModel> OnButtonSelectSkinGloves;
+    public void ButtonSelectSkinGloves(GlovesSkinModel skin)
+    {
+        OnButtonSelectSkinGloves?.Invoke(skin);
+    }
+
+    public Action<GlovesSkinModel> OnButtonBuySkinGloves;
+    public void ButtonBuySkinGloves(GlovesSkinModel skin)
+    {
+        OnButtonBuySkinGloves?.Invoke(skin);
+    }
+
+    public Action<WebSkinModel> OnButtonSelectSkinNet;
+    public void ButtonSelectSkinNet(WebSkinModel skin)
+    {
+        OnButtonSelectSkinNet?.Invoke(skin);
+    }
+
+    public Action<WebSkinModel> OnButtonBuySkinNet;
+    public void ButtonBuySkinNet(WebSkinModel skin)
+    {
+        OnButtonBuySkinNet?.Invoke(skin);
+    }
     #endregion
 
     #region Advertise events
+    public Action<GlovesSkinModel> OnButtonGetSkinGloves;
+    public void ButtonGetSkinGloves(GlovesSkinModel skin)
+    {
+        OnButtonGetSkinGloves?.Invoke(skin);
+    }
 
+    public Action<WebSkinModel> OnButtonGetSkinNet;
+    public void ButtonGetSkinNet(WebSkinModel skin)
+    {
+        OnButtonGetSkinNet?.Invoke(skin);
+    }
+
+    public Action OnButtonGetMoreCoins;
+    public void ButtonGetMoreCoins()
+    {
+        OnButtonGetMoreCoins?.Invoke();
+    }
     #endregion
 }

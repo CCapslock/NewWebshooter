@@ -44,5 +44,10 @@ public class GlovesSkinManager : MonoBehaviour
                 _skins[i].Show();
             }
         }
+
+        if (_skins[0].State == SkinState.Locked)
+        {
+            SelectSkin(_skins[0]);
+        }
     }
 }

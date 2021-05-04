@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopItemGloves : MonoBehaviour
+public class ShopItem : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private Image _frameSelected;
@@ -10,6 +10,7 @@ public class ShopItemGloves : MonoBehaviour
 
     public void SetItem(GlovesSkinModel skin)
     {
+        _btnSelect.onClick.RemoveAllListeners();
         switch (skin.State)
         {
             case SkinState.Locked:
