@@ -208,6 +208,7 @@ public class LevelCreator : ScriptableObject
 					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
 					break;
 			}
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts[$"BossSet{BossSetParametrs.SetNum}"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
 		}
 	}
 }
