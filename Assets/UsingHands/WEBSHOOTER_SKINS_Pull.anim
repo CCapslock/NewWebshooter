@@ -48634,4 +48634,18 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.45833334
+    functionName: ThrowMovementWeb
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 39c9c85fbb3a82946948f97ceecb1678, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
+    functionName: DisconnectMovementWeb
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 39c9c85fbb3a82946948f97ceecb1678, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

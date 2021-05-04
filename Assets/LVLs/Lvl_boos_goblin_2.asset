@@ -90,7 +90,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 1
     NeedToRotate: 0
-    NeedToFly: 0
+    NeedToFly: 1
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 2
     NeedToRotate: 0
-    NeedToFly: 1
+    NeedToFly: 0
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 3
     NeedToRotate: 0
-    NeedToFly: 0
+    NeedToFly: 1
     NeedToCountEnemy: 0
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 4
     NeedToRotate: 0
-    NeedToFly: 1
+    NeedToFly: 0
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 1
