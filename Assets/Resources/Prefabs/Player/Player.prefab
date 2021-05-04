@@ -2873,6 +2873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 0.15
   MaxRotationSpeed: 1
+  LeftHandAnimator: {fileID: 3697736927420442688}
+  RightHandAnimator: {fileID: 3697736926319268515}
 --- !u!1 &3697736927164484412
 GameObject:
   m_ObjectHideFlags: 0

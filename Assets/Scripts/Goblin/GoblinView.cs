@@ -49,7 +49,7 @@ public class GoblinView : MonoBehaviour
 	public PlayerMovement Player => _player;
 	private void Awake()
 	{
-		_newState = GoblinState.Awakening;
+		_newState = GoblinState.Awaiting;
 		transform.position = _startAwakeningTransform.position;
 
 		_models = new Dictionary<GoblinState, BaseGoblinModel>();
@@ -57,7 +57,7 @@ public class GoblinView : MonoBehaviour
 		_models.Add(GoblinState.Idle, new IdleGoblinModel());
 		_models.Add(GoblinState.Dead, new DeadGoblinModel());
 		_models.Add(GoblinState.Awaiting, new AwaitingGoblinModel());
-		_currentModel = _models[GoblinState.Awakening];
+		_currentModel = _models[GoblinState.Awaiting];
 
 
 		_firstPhaseEyesAmount = 0;
@@ -100,7 +100,16 @@ public class GoblinView : MonoBehaviour
 	public void ChangeState(GoblinState state)
 	{
 		_newState = state;
+		if (state == GoblinState.Awakening)
+		{
+			UpdatePlayerView();
+		}
 
+	}
+
+	public void UpdatePlayerView()
+	{
+		_player = FindObjectOfType<PlayerMovement>();
 	}
 
 	public void ThrowBomb(GameObject bomb)
@@ -169,5 +178,10 @@ public class GoblinView : MonoBehaviour
 		}
 	}
 
+    public void OnDestroy()
+    {
+		GameEvents.Current.OnThrowingBomb -= ThrowBomb;
+
+	}
 
 }
