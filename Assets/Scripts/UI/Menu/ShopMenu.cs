@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ShopMenu : BaseMenu
 {
@@ -22,7 +23,7 @@ public class ShopMenu : BaseMenu
 
     [Header("Nets")]
     [SerializeField] private GameObject _panelNets;
-    [SerializeField] private ShopItemNet[] _netItems;
+    [SerializeField] private ShopItem[] _netItems;
     [SerializeField] private Button _btnNets;
     [SerializeField] private Button _btnBuyNet;
     [SerializeField] private Button _btnGetNet;
@@ -32,7 +33,9 @@ public class ShopMenu : BaseMenu
 
     private UIController _uiController;
     private GlovesSkinManager _glovesManager;
+    private WebSkinManager _webManager;
     private int _currentCoins;
+    private int _skinPrice = 500;
 
 
     private void Awake()
@@ -43,6 +46,11 @@ public class ShopMenu : BaseMenu
 
         _btnGloves.onClick.AddListener(() => OpenGlovesPanel());
         _btnNets.onClick.AddListener(() => OpenNetsPanel());
+
+        _btnBuyGloves.onClick.AddListener(() => UIEvents.Current.ButtonBuySkinGloves(GetRandomGloves()));
+        _btnGetGloves.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinGloves(GetRandomGloves()));
+        _btnBuyNet.onClick.AddListener(() => UIEvents.Current.ButtonBuySkinNet(GetRandomWeb()));
+        _btnGetNet.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinNet(GetRandomWeb()));
 
         UIEvents.Current.OnButtonShop += SetShop;
     }
@@ -63,15 +71,65 @@ public class ShopMenu : BaseMenu
 
     private void SetShop()
     {
+        bool isLockedGloves = false;
+        bool isLockedWebs = false;
+        bool isEnoughMoney = false;
+
+        _btnBuyGloves.interactable = false;
+        _btnGetGloves.interactable = false;
+        _btnBuyNet.interactable = false;
+        _btnGetNet.interactable = false;
+
         _glovesManager = FindObjectOfType<GlovesSkinManager>();
+        _webManager = FindObjectOfType<WebSkinManager>();
         
         for (int i = 0; i < _glovesItems.Length; i++)
         {
             _glovesItems[i].SetItem(_glovesManager.Skins[i]);
+
+            if (_glovesManager.Skins[i].State == SkinState.Locked)
+            {
+                isLockedGloves = true;
+            }
+        }
+
+        for (int i = 0; i < _netItems.Length; i++)
+        {
+            _netItems[i].SetItem(_webManager.Skins[i]);
+
+            if (_webManager.Skins[i].State == SkinState.Locked)
+            {
+                isLockedWebs = true;
+            }
         }
 
         _currentCoins = _uiController.GetCurrentCoins();
         _coinsText.text = $"{_currentCoins}";
+
+        if (_currentCoins >= _skinPrice)
+        {
+            isEnoughMoney = true;
+        }
+
+        if (isLockedGloves)
+        {
+            _btnGetGloves.interactable = true;
+
+            if (isEnoughMoney)
+            {
+                _btnBuyGloves.interactable = true;
+            }
+        }
+
+        if (isLockedWebs)
+        {
+            _btnGetNet.interactable = true;
+
+            if (isEnoughMoney)
+            {
+                _btnBuyNet.interactable = true;
+            }
+        }
     }
 
     private void OpenGlovesPanel()
@@ -87,5 +145,52 @@ public class ShopMenu : BaseMenu
         _panelNets.SetActive(true);
         _btnGloves.image.color = _colorBack;
         _btnNets.image.color = _panelNets.GetComponent<Image>().color;
+    }
+
+    private GlovesSkinModel GetRandomGloves()
+    {
+        int count = 0;
+        List<GlovesSkinModel> lockedGloves = new List<GlovesSkinModel>();
+
+        for (int i = 0; i < _glovesManager.Skins.Length; i++)
+        {
+            if (_glovesManager.Skins[i].State == SkinState.Locked)
+            {
+                lockedGloves.Add(_glovesManager.Skins[i]);
+                count++;
+            }
+        }
+
+        if (count == 1)
+        {
+            return lockedGloves[0];
+        }
+
+        int rnd = Random.Range(0, lockedGloves.Count);
+
+        return _glovesManager.Skins[rnd];
+    }
+    private WebSkinModel GetRandomWeb()
+    {
+        int count = 0;
+        List<WebSkinModel> lockedWebs = new List<WebSkinModel>();
+
+        for (int i = 0; i < _webManager.Skins.Length; i++)
+        {
+            if (_glovesManager.Skins[i].State == SkinState.Locked)
+            {
+                lockedWebs.Add(_webManager.Skins[i]);
+                count++;
+            }
+        }
+
+        if (count == 1)
+        {
+            return lockedWebs[0];
+        }
+
+        int rnd = Random.Range(0, lockedWebs.Count);
+
+        return _webManager.Skins[rnd];
     }
 }

@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WebSkinManager : MonoBehaviour
 {
     private WebSkinModel[] _skins;
+
+    public WebSkinModel[] Skins => _skins;
 
 
     private void Awake()
