@@ -73,10 +73,10 @@ GameObject:
   - component: {fileID: 2165364431323410176}
   - component: {fileID: 3044825635546696177}
   - component: {fileID: 57295981517379524}
-  - component: {fileID: 2690846266606357681}
   - component: {fileID: 7666613614077320476}
+  - component: {fileID: 4429351398491589168}
   m_Layer: 7
-  m_Name: EnemyPrefabWithRagdoll
+  m_Name: EnemyFalling
   m_TagString: SimpleEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.3
   m_Height: 1.5
-  m_Direction: 1
+  m_Direction: 2
   m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!54 &57295981517379524
 Rigidbody:
@@ -123,32 +123,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &2690846266606357681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533259991958189498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c8cdf858e655d4d8e044119d81716b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HipsRigidBody: {fileID: 6394308909932059228}
-  HeadRigidBody: {fileID: 8124333167726582425}
-  SpineRigidBody: {fileID: 2730669259776927423}
-  SpiderWeb: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
-  EnemySpeed: 0.04
-  MaxDistanceToPlayer: 2.5
-  IsStucked: 0
-  IsEnemyActive: 0
-  IsEnemyAttacking: 0
 --- !u!95 &7666613614077320476
 Animator:
   serializedVersion: 3
@@ -168,6 +147,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4429351398491589168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533259991958189498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea7a1984e87efc4e8d1612f0647b2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HipsRigidBody: {fileID: 6394308909932059228}
+  HeadRigidBody: {fileID: 8124333167726582425}
+  SpineRigidBody: {fileID: 2730669259776927423}
+  SpiderWeb: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
+  EnemySpeed: 0
+  MaxDistanceToPlayer: 0
+  IsStucked: 0
+  IsEnemyActive: 0
+  IsEnemyAttacking: 0
 --- !u!1 &1622231118816057057
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,10 +424,10 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3573815c8d0bbf149b04f04bb9968fba, type: 2}
-  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
-  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
-  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
-  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

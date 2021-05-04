@@ -3,11 +3,19 @@
 public class Wall : MonoBehaviour
 {
 	public GameObject Web;
-	public bool IsRightWall;
-	public bool IsLeftWall;
+	public bool IsBonusLvlWall;
 	private Vector3 _movingVector;
+	private BonusLvlController _bonusLvlController;
 
 	private float _magicNumber = 0.05f;
+
+	private void Start()
+	{
+		if (IsBonusLvlWall)
+		{
+			_bonusLvlController = FindObjectOfType<BonusLvlController>();
+		}
+	}
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
@@ -44,6 +52,10 @@ public class Wall : MonoBehaviour
 			_movingVector.z += 0.4f;
 			WebObject.transform.position = _movingVector;
 			WebObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+		}
+		if (IsBonusLvlWall)
+		{
+			_bonusLvlController.StickObject(WebObject.transform);
 		}
 	}
 }
