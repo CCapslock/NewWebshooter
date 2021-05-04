@@ -55,7 +55,7 @@ MonoBehaviour:
       Position: {x: 1.2026364, y: 7.4330053, z: 51.224365}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
-    SetNum: 0
+    SetNum: 1
     IsActive: 1
   MovementPoints:
   - Transform:
