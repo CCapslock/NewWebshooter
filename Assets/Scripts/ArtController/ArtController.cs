@@ -26,19 +26,16 @@ public class ArtController : MonoBehaviour
 		{
 			if (PlayerPrefs.GetInt(_presetNumPlayerPref) == ArtPresets.Length - 1)
 			{
-				//_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 				PlayerPrefs.SetInt(_presetNumPlayerPref, 0);
 			}
 			else
 			{
-				//_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 				PlayerPrefs.SetInt(_presetNumPlayerPref, PlayerPrefs.GetInt(_presetNumPlayerPref) + 1);
 			}
 		}
 		catch
 		{
 			PlayerPrefs.SetInt(_presetNumPlayerPref, 0);
-			//_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 		}
 	}
 	private void ChangeEnemyesMaterial()
@@ -55,6 +52,15 @@ public class ArtController : MonoBehaviour
 
 
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyThrowingBombs"]);
+		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
+		_newMaterials = _enemyRenderer.sharedMaterials;
+		for (int i = 1; i < _newMaterials.Length; i++)
+		{
+			_newMaterials[i] = ArtPresets[_presetNum].EnemyMaterial;
+		}
+		_enemyRenderer.materials = _newMaterials;
+		
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyFalling"]);
 		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
 		_newMaterials = _enemyRenderer.sharedMaterials;
 		for (int i = 1; i < _newMaterials.Length; i++)

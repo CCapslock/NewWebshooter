@@ -9,6 +9,11 @@ public class UIEvents : MonoBehaviour
 
     public void Awake()
     {
+        if (Current != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         DontDestroyOnLoad(this.gameObject);
         Current = this;
     }
@@ -70,10 +75,10 @@ public class UIEvents : MonoBehaviour
         OnButtonBuySkinGloves?.Invoke(skin);
     }
 
-    public Action<WebSkinModel> OnButtonSelectSkinNet;
-    public void ButtonSelectSkinNet(WebSkinModel skin)
+    public Action<WebSkinModel> OnButtonSelectSkinWeb;
+    public void ButtonSelectSkinWeb(WebSkinModel skin)
     {
-        OnButtonSelectSkinNet?.Invoke(skin);
+        OnButtonSelectSkinWeb?.Invoke(skin);
     }
 
     public Action<WebSkinModel> OnButtonBuySkinNet;
