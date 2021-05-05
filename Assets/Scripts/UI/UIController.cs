@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
 
 	[SerializeField]private CoinsController _coinsController;
 	private SaveController _saveController;
+	private WebShooter _webShooter;
 	private Color _tempColor;
 
 
@@ -66,6 +67,7 @@ public class UIController : MonoBehaviour
     {
 		_coinsController = FindObjectOfType<CoinsController>();
 		_saveController = FindObjectOfType<SaveController>();
+		_webShooter = FindObjectOfType<WebShooter>();
 		SetGradientsAlpha(1, 1);
 	}
 
@@ -82,16 +84,19 @@ public class UIController : MonoBehaviour
 		Time.timeScale = 1f;
 		SwitchUI(UIState.InGame);
 		GameEvents.Current.LevelStart(_saveController.GetCurrentLvlNum());
-    }
+		_webShooter.ActivateWebShooter();
+	}
 	private void PauseGame()
 	{
 		Time.timeScale = 0f;
 		SwitchUI(UIState.Pause);
+		_webShooter.DisactivateWebShooter();
 	}
 	private void ContinueGame()
 	{
 		Time.timeScale = 1f;
 		SwitchUI(UIState.InGame);
+		_webShooter.ActivateWebShooter();
 	}
 	public void NextLVL()
 	{
@@ -106,6 +111,7 @@ public class UIController : MonoBehaviour
 		SwitchUI(UIState.Lose);
 		GameEvents.Current.LevelEnd();
 		GameEvents.Current.LevelFailed();
+		_webShooter.DisactivateWebShooter();
 	}
 	public void ActivateWinPanel(int coinsNum)
 	{
@@ -113,6 +119,7 @@ public class UIController : MonoBehaviour
 		_winMenu.ActivatePanel(coinsNum);
 		GameEvents.Current.LevelEnd();
 		GameEvents.Current.LevelComplete();
+		_webShooter.DisactivateWebShooter();
 	}
 
 	public void SetGradientsAlpha(float maxHP, float currentHP)
