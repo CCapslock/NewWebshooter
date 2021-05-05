@@ -21,9 +21,29 @@ public class WebSkinManager : MonoBehaviour
 
     private void LoadSkins()
     {
+        bool isSelected = false;
         for (int i = 0; i < _skins.Length; i++)
         {
             _skins[i].LoadState();
+            _skins[i].gameObject.SetActive(false);
+            if (_skins[i].State == SkinState.Selected)
+            {
+                if (isSelected == false)
+                {
+                    _skins[i].gameObject.SetActive(true);
+                    isSelected = true;
+                }
+                else
+                {
+                    _skins[i].ChangeState(SkinState.Unlocked);
+                    _skins[i].SaveState();
+                }
+            }
+        }
+
+        if (_skins[0].State == SkinState.Locked)
+        {
+            SelectSkin(_skins[0]);
         }
     }
 
@@ -31,6 +51,7 @@ public class WebSkinManager : MonoBehaviour
     {
         skin.ChangeState(SkinState.Unlocked);
         skin.SaveState();
+        LoadSkins();
         UIEvents.Current.UpdateShop();
     }
 
@@ -39,10 +60,22 @@ public class WebSkinManager : MonoBehaviour
         for (int i = 0; i < _skins.Length; i++)
         {
             _skins[i].gameObject.SetActive(false);
+            if (_skins[i].State == SkinState.Selected)
+            {
+                _skins[i].ChangeState(SkinState.Unlocked);
+                _skins[i].SaveState();
+            }
         }
         skin.gameObject.SetActive(true);
         skin.ChangeState(SkinState.Selected);
         skin.SaveState();
+        LoadSkins();
         UIEvents.Current.UpdateShop();
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Current.OnUnlockWeb -= UnlockSkin;
+        GameEvents.Current.OnSelectWeb -= SelectSkin;
     }
 }
