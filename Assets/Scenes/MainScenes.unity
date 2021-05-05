@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1578,7 +1578,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &917474829 stripped
 Animator:
@@ -3168,6 +3168,7 @@ MonoBehaviour:
   LeftHandAnimator: {fileID: 917474829}
   RightHandTransform: {fileID: 1399759964}
   LeftHandTransform: {fileID: 1391328096}
+  _isActivated: 0
 --- !u!114 &3040295923444952721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3261,6 +3262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b7a128c8e72943b16675dc0762c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curentCoinsAmount: 0
 --- !u!114 &3040295923444952731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3274,6 +3276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmallExplosinParticles: {fileID: 198656289721292014, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
+  SpeedyWindParticles: {fileID: 198893393215934218, guid: a38fa5f17da69504ea31359388f165f2, type: 3}
 --- !u!114 &3040295923444952732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3362,23 +3365,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Coin: {fileID: 2599189662765754411, guid: ac4897a4c019d964297230d8294fb18f, type: 3}
   Wall: {fileID: 7040273916254283883}
+  Web: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   StartThrownigPosition: {x: 0, y: -10, z: -4}
   MaxCoins: 20
   TimeBeforeThrownig: 0.4
-  MovingHouses:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  BuildingsPositions:
+  - {x: 0, y: 0, z: 14}
+  - {x: 0, y: 76, z: 14}
+  - {x: 0, y: -76, z: 14}
+  - {x: 15, y: 0, z: 24}
+  - {x: 15, y: 76, z: 24}
+  - {x: 15, y: -76, z: 24}
+  - {x: -15, y: 0, z: 24}
+  - {x: -15, y: 76, z: 24}
+  - {x: -15, y: -76, z: 24}
+  ParticlesPosition: {x: 0, y: -3, z: -8}
+  ParticlesRotation: {x: 0, y: 0, z: 90}
   MovingSpeed: 0.4
-  BotomCoordinat: -170
-  RoofCoordinat: 64
-  _needToMoveHouses: 0
+  BotomCoordinat: -150
+  RoofCoordinat: 80
 --- !u!1001 &3543118148699839778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3388,7 +3393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3543118150061861373, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3543118150061861373, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}
       propertyPath: m_LocalPosition.x
