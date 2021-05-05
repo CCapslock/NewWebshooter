@@ -6,15 +6,26 @@ public class BonusLvlController : MonoBehaviour
 {
 	public GameObject Coin;
 	public GameObject Wall;
+	public GameObject Web;
 	public Vector3 StartThrownigPosition;
 	public int MaxCoins;
 	public float TimeBeforeThrownig = 0.4f;
 
-	public Transform[] MovingHouses;
+	[Foldout("FallingLVL")]
+	public Vector3[] BuildingsPositions;
+	[Foldout("FallingLVL")]
+	public Vector3 ParticlesPosition;
+	[Foldout("FallingLVL")]
+	public Vector3 ParticlesRotation;
+	[Foldout("FallingLVL")]
 	public float MovingSpeed;
+	[Foldout("FallingLVL")]
 	public float BotomCoordinat;
+	[Foldout("FallingLVL")]
 	public float RoofCoordinat;
+	[Foldout("FallingLVL")]
 
+	private Transform[] _movingHouses;
 	private MainGameController _mainGameController;
 	private GameObject _throwedObject;
 	private ThrowingObject _throwedObjectScript;
@@ -24,7 +35,7 @@ public class BonusLvlController : MonoBehaviour
 	private float _timeBeforeThrowing;
 	private float _widthOfScreen;
 	private int _numberOfCoinsCaught = 0;
-	[SerializeField] private bool _needToMoveHouses;
+	private bool _needToMoveHouses;
 
 	private void Awake()
 	{
@@ -80,11 +91,23 @@ public class BonusLvlController : MonoBehaviour
 		Wall.SetActive(true);
 		StartSpawner();
 		/*
-		for (int i = 0; i < MovingHouses.Length; i++)
+		PrepareBuildings();
+		StartMoving();
+		FindObjectOfType<ParticlesController>().StartWindParticle(ParticlesPosition, ParticlesRotation);*/
+	}
+	private void PrepareBuildings()
+	{
+		_movingHouses = new Transform[BuildingsPositions.Length];
+		for (int i = 0; i < BuildingsPositions.Length; i++)
 		{
-			MovingHouses[i].gameObject.SetActive(true);
+			_movingHouses[i] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), BuildingsPositions[i], Quaternion.Euler(new Vector3(-90f,0,90f))).transform;
+			_movingHouses[i].gameObject.isStatic = false;
+			//_movingHouses[i].gameObject.GetComponent<Wall>().IsBonusLvlWall = true;
+			_movingHouses[i].gameObject.tag = TagManager.GetTag(TagType.Wall);
+			Wall WallObject = _movingHouses[i].gameObject.AddComponent<Wall>();
+			WallObject.Web = Web;
+			WallObject.IsBonusLvlWall = true;
 		}
-		StartMoving();*/
 	}
 	private void EndLvl()
 	{
@@ -96,16 +119,16 @@ public class BonusLvlController : MonoBehaviour
 	}
 	private void MoveHouses()
 	{
-		for (int i = 0; i < MovingHouses.Length; i++)
+		for (int i = 0; i < _movingHouses.Length; i++)
 		{
-			_tempVector = MovingHouses[i].position;
+			_tempVector = _movingHouses[i].position;
 			_tempVector.y += MovingSpeed;
-			MovingHouses[i].position = _tempVector;
-			if (MovingHouses[i].position.y >= RoofCoordinat)
+			_movingHouses[i].position = _tempVector;
+			if (_movingHouses[i].position.y >= RoofCoordinat)
 			{
-				_tempVector = MovingHouses[i].position;
+				_tempVector = _movingHouses[i].position;
 				_tempVector.y = BotomCoordinat;
-				MovingHouses[i].position = _tempVector;
+				_movingHouses[i].position = _tempVector;
 			}
 		}
 		try

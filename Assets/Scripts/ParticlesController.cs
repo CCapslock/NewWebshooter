@@ -3,7 +3,9 @@ using UnityEngine;
 public class ParticlesController : MonoBehaviour
 {
 	public ParticleSystem SmallExplosinParticles;
+	public ParticleSystem SpeedyWindParticles;
 	private ParticleSystem _smallExplosinObject;
+	private ParticleSystem _speedyWindObject;
 
 	private void Awake()
 	{
@@ -14,5 +16,10 @@ public class ParticlesController : MonoBehaviour
 	{
 		_smallExplosinObject.transform.position = position;
 		_smallExplosinObject.Play();
+	}
+	public void StartWindParticle(Vector3 position, Vector3 rotation)
+	{
+		_speedyWindObject = Instantiate(SpeedyWindParticles, position, Quaternion.Euler(rotation));
+		_speedyWindObject.Play();
 	}
 }
