@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181444973683928015}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -169.17, y: 89.345, z: -106.07}
+  m_LocalPosition: {x: -174.63, y: 86.91, z: -106.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5604204050840175649}
@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5604204050359008676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -165.93, y: 89.09, z: -108.67}
+  m_LocalPosition: {x: -165.93, y: 86.7, z: -108.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5604204051494372707}
@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5604204050639009234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -168.98085, y: 84.19491, z: -109.28}
+  m_LocalPosition: {x: -173.76, y: 84.73, z: -109.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5604204050840175649}
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5604204050758163326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -173.15085, y: 87.44491, z: -109.772}
+  m_LocalPosition: {x: -166.16, y: 85.06, z: -109.772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5604204050840175649}
@@ -660,11 +660,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770705808002789991, guid: cc6bab8e68a83e24c9ac769e2a945bd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -80.24
+      value: -81.35
       objectReference: {fileID: 0}
     - target: {fileID: 8770705808002789991, guid: cc6bab8e68a83e24c9ac769e2a945bd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50.07
+      value: 49.3
       objectReference: {fileID: 0}
     - target: {fileID: 8770705808002789991, guid: cc6bab8e68a83e24c9ac769e2a945bd7, type: 3}
       propertyPath: m_LocalPosition.z

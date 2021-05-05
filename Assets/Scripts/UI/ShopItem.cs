@@ -20,7 +20,7 @@ public class ShopItem : MonoBehaviour
                 break;
             case SkinState.Unlocked:
                 _btnSelect.onClick.AddListener(() => UIEvents.Current.ButtonSelectSkinGloves(skin));
-                _image.sprite = skin.UnlockedImage; ;
+                _image.sprite = skin.UnlockedImage;
                 _frameSelected.gameObject.SetActive(false);
                 _btnSelect.interactable = true;
                 break;
@@ -43,7 +43,7 @@ public class ShopItem : MonoBehaviour
                 _frameSelected.gameObject.SetActive(false);
                 break;
             case SkinState.Unlocked:
-                _image.sprite = skin.UnlockedImage; ;
+                _image.sprite = skin.UnlockedImage; 
                 _frameSelected.gameObject.SetActive(false);
                 _btnSelect.onClick.AddListener(() => UIEvents.Current.ButtonSelectSkinNet(skin));
                 _btnSelect.interactable = true;
