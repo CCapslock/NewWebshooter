@@ -39,6 +39,10 @@ public class WebSkinManager : MonoBehaviour
         for (int i = 0; i < _skins.Length; i++)
         {
             _skins[i].gameObject.SetActive(false);
+            if (_skins[i].State == SkinState.Selected)
+            {
+                _skins[i].ChangeState(SkinState.Unlocked);
+            }
         }
         skin.gameObject.SetActive(true);
         skin.ChangeState(SkinState.Selected);
