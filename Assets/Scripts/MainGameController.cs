@@ -28,6 +28,11 @@ public class MainGameController : MonoBehaviour
 		_healthController = FindObjectOfType<HealthController>();
 		StartLvl();
 	}
+
+	private void Start()
+	{
+		GameEvents.Current.LevelLoaded();
+	}
 	public void StartLvl()
 	{
 		_artController.SetMaterials();
