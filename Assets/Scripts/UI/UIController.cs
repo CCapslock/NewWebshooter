@@ -33,17 +33,6 @@ public class UIController : MonoBehaviour
 
 		ResetUI();
 
-		UIEvents.Current.OnButtonLevelStart += StartLevel;
-		UIEvents.Current.OnButtonPause += PauseGame;
-		UIEvents.Current.OnButtonResume += ContinueGame;
-		UIEvents.Current.OnButtonNextLevel += NextLVL;
-		UIEvents.Current.OnButtonRestart += NextLVL;
-		UIEvents.Current.OnButtonShop += OpenShop;
-		UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
-		UIEvents.Current.OnButtonBuySkinGloves += BuyGloves;
-		UIEvents.Current.OnButtonBuySkinNet += BuyWeb;
-		UIEvents.Current.OnButtonGetSkinGloves += GetGloves;
-		UIEvents.Current.OnButtonGetSkinNet += GetWeb;
 
 
 		_mainMenu = GetComponentInChildren<MainMenu>();
@@ -57,7 +46,22 @@ public class UIController : MonoBehaviour
 		Time.timeScale = 0;
 	}
 
-	private void ResetUI()
+    private void Start()
+    {
+		UIEvents.Current.OnButtonLevelStart += StartLevel;
+		UIEvents.Current.OnButtonPause += PauseGame;
+		UIEvents.Current.OnButtonResume += ContinueGame;
+		UIEvents.Current.OnButtonNextLevel += NextLVL;
+		UIEvents.Current.OnButtonRestart += NextLVL;
+		UIEvents.Current.OnButtonShop += OpenShop;
+		UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
+		UIEvents.Current.OnButtonBuySkinGloves += BuyGloves;
+		UIEvents.Current.OnButtonBuySkinNet += BuyWeb;
+		UIEvents.Current.OnButtonGetSkinGloves += GetGloves;
+		UIEvents.Current.OnButtonGetSkinNet += GetWeb;        
+    }
+
+    private void ResetUI()
     {
 		_coinsController = FindObjectOfType<CoinsController>();
 		_saveController = FindObjectOfType<SaveController>();
