@@ -13,6 +13,12 @@ public class WebSkinManager : MonoBehaviour
         LoadSkins();
     }
 
+    private void Start()
+    {
+        GameEvents.Current.OnUnlockWeb += UnlockSkin;
+        GameEvents.Current.OnSelectWeb += SelectSkin;
+    }
+
     private void LoadSkins()
     {
         for (int i = 0; i < _skins.Length; i++)
@@ -25,6 +31,7 @@ public class WebSkinManager : MonoBehaviour
     {
         skin.ChangeState(SkinState.Unlocked);
         skin.SaveState();
+        UIEvents.Current.UpdateShop();
     }
 
     public void SelectSkin(WebSkinModel skin)
@@ -36,5 +43,6 @@ public class WebSkinManager : MonoBehaviour
         skin.gameObject.SetActive(true);
         skin.ChangeState(SkinState.Selected);
         skin.SaveState();
+        UIEvents.Current.UpdateShop();
     }
 }

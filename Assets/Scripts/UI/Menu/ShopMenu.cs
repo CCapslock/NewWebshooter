@@ -37,11 +37,16 @@ public class ShopMenu : BaseMenu
     private int _currentCoins;
     private int _skinPrice = 500;
 
+    public int SkinPrice => _skinPrice;
+
 
     private void Awake()
     {
         _uiController = transform.parent.GetComponent<UIController>();
+    }
 
+    private void Start()
+    {
         _btnExit.onClick.AddListener(UIEvents.Current.ButtonMainMenu);
 
         _btnGloves.onClick.AddListener(() => OpenGlovesPanel());
@@ -53,6 +58,7 @@ public class ShopMenu : BaseMenu
         _btnGetNet.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinNet(GetRandomWeb()));
 
         UIEvents.Current.OnButtonShop += SetShop;
+        UIEvents.Current.OnUpdateShop += SetShop;
     }
 
     public override void Hide()
