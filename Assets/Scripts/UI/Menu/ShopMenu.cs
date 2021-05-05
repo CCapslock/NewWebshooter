@@ -125,6 +125,14 @@ public class ShopMenu : BaseMenu
             {
                 _btnBuyGloves.interactable = true;
             }
+            else
+            {
+                _btnBuyGloves.interactable = false;
+            }
+        }
+        else
+        {
+            _btnGetGloves.interactable = false;
         }
 
         if (isLockedWebs)
@@ -135,6 +143,14 @@ public class ShopMenu : BaseMenu
             {
                 _btnBuyNet.interactable = true;
             }
+            else
+            {
+                _btnBuyNet.interactable = false;
+            }
+        }
+        else
+        {
+            _btnGetNet.interactable = false;
         }
     }
 
@@ -174,7 +190,7 @@ public class ShopMenu : BaseMenu
 
         int rnd = Random.Range(0, lockedGloves.Count);
 
-        return _glovesManager.Skins[rnd];
+        return lockedGloves[rnd];
     }
     private WebSkinModel GetRandomWeb()
     {
@@ -183,7 +199,7 @@ public class ShopMenu : BaseMenu
 
         for (int i = 0; i < _webManager.Skins.Length; i++)
         {
-            if (_glovesManager.Skins[i].State == SkinState.Locked)
+            if (_webManager.Skins[i].State == SkinState.Locked)
             {
                 lockedWebs.Add(_webManager.Skins[i]);
                 count++;
@@ -197,6 +213,6 @@ public class ShopMenu : BaseMenu
 
         int rnd = Random.Range(0, lockedWebs.Count);
 
-        return _webManager.Skins[rnd];
+        return lockedWebs[rnd];
     }
 }

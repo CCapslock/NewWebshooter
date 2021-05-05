@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class GlovesSkinManager : MonoBehaviour
 {
-    [SerializeField] private GlovesSkinModel[] _skins;
+    private GlovesSkinModel[] _skins;
 
     public GlovesSkinModel[] Skins => _skins;
 
 
     private void Awake()
     {
+        _skins = GetComponentsInChildren<GlovesSkinModel>();
         LoadSkins();
     }
 
@@ -20,14 +21,19 @@ public class GlovesSkinManager : MonoBehaviour
 
     public void SelectSkin(GlovesSkinModel skin)
     {
+        Debug.LogWarning($"Selecting skin {skin.gameObject.name}");
+        Debug.LogWarning($"Skin lenght = {_skins.Length}");
+
         for (int i = 0; i < _skins.Length; i++)
         {
             _skins[i].Hide();
             if (_skins[i].State == SkinState.Selected)
             {
                 _skins[i].ChangeState(SkinState.Unlocked);
+                _skins[i].SaveState();
             }
         }
+
         skin.Show();
         skin.ChangeState(SkinState.Selected);
         skin.SaveState();
@@ -58,6 +64,7 @@ public class GlovesSkinManager : MonoBehaviour
                 else
                 {
                     _skins[i].ChangeState(SkinState.Unlocked);
+                    _skins[i].SaveState();
                 }
             }
         }
@@ -66,5 +73,11 @@ public class GlovesSkinManager : MonoBehaviour
         {
             SelectSkin(_skins[0]);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Current.OnUnlockGloves -= UnlockSkin;
+        GameEvents.Current.OnSelectGloves -= SelectSkin;
     }
 }

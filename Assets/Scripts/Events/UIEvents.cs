@@ -9,6 +9,11 @@ public class UIEvents : MonoBehaviour
 
     public void Awake()
     {
+        if (Current != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         DontDestroyOnLoad(this.gameObject);
         Current = this;
     }
