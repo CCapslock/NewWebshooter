@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
 	private LoseMenu _loseMenu;
 	private WinMenu _winMenu;
 
-	private CoinsController _coinsController;
+	[SerializeField]private CoinsController _coinsController;
 	private SaveController _saveController;
 	private Color _tempColor;
 
@@ -58,7 +58,8 @@ public class UIController : MonoBehaviour
 		UIEvents.Current.OnButtonBuySkinGloves += BuyGloves;
 		UIEvents.Current.OnButtonBuySkinNet += BuyWeb;
 		UIEvents.Current.OnButtonGetSkinGloves += GetGloves;
-		UIEvents.Current.OnButtonGetSkinNet += GetWeb;        
+		UIEvents.Current.OnButtonGetSkinNet += GetWeb;
+		GameEvents.Current.OnLevelLoaded += ResetUI;
     }
 
     private void ResetUI()

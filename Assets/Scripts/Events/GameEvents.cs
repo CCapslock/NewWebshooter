@@ -26,6 +26,13 @@ public class GameEvents : MonoBehaviour
     #endregion
 
     #region LevelEvents
+
+    public Action OnLevelLoaded;
+    public void LevelLoaded()
+    {
+        OnLevelLoaded?.Invoke();
+    }
+
     public Action<int> OnLevelStart;
     public void LevelStart(int levelNumber) //момент клика на кнопку старта
     {
