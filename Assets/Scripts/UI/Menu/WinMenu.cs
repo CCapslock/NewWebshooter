@@ -47,6 +47,7 @@ public class WinMenu : BaseMenu
     }
     private void AddMoreCoinsInUI(int amount)
     {
+        _addingCoinsAmount = 0;
         for (int i = 0; i < amount; i++)
         {
             Invoke("AddSingleCoin", 0.5f + _timeOfAddingCoins / amount * i);

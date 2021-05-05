@@ -3,10 +3,15 @@ using UnityEngine;
 public class CoinsController : MonoBehaviour
 {
 	private string _coinsString = "Coins";
-	private int _curentCoinsAmount;
+	[SerializeField] private int _curentCoinsAmount;
 
 
-	public int GetCoinsAmount()
+    private void Awake()
+    {
+		_curentCoinsAmount = PlayerPrefs.GetInt(_coinsString);
+    }
+
+    public int GetCoinsAmount()
 	{
 		_curentCoinsAmount = PlayerPrefs.GetInt(_coinsString);
 		return _curentCoinsAmount;

@@ -52,6 +52,30 @@ public class GameEvents : MonoBehaviour
 
     #endregion
     #region SkinShop
+    public Action<GlovesSkinModel> OnUnlockGloves;
+    public void UnlockGloves(GlovesSkinModel skin)
+    {
+        OnUnlockGloves?.Invoke(skin);
+    }
+
+    public Action<GlovesSkinModel> OnSelectGloves;
+    public void SelectGloves(GlovesSkinModel skin)
+    {
+        OnSelectGloves?.Invoke(skin);
+    }
+
+    public Action<WebSkinModel> OnUnlockWeb;
+    public void UnlockWeb(WebSkinModel skin)
+    {
+        OnUnlockWeb?.Invoke(skin);
+    }
+
+    public Action<WebSkinModel> OnSelectWeb;
+    public void SelectWeb(WebSkinModel skin)
+    {
+        OnSelectWeb?.Invoke(skin);
+    }
+
     public Action<IGetReward> OnAskingRewardedVideo;
     public void AskingRewardedVideo(IGetReward reward)
     {

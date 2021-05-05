@@ -12,6 +12,12 @@ public class GlovesSkinManager : MonoBehaviour
         LoadSkins();
     }
 
+    private void Start()
+    {
+        GameEvents.Current.OnUnlockGloves += UnlockSkin;
+        GameEvents.Current.OnSelectGloves += SelectSkin;
+    }
+
     public void SelectSkin(GlovesSkinModel skin)
     {
         for (int i = 0; i < _skins.Length; i++)
@@ -25,12 +31,14 @@ public class GlovesSkinManager : MonoBehaviour
         skin.Show();
         skin.ChangeState(SkinState.Selected);
         skin.SaveState();
+        UIEvents.Current.UpdateShop();
     }
 
     public void UnlockSkin(GlovesSkinModel skin)
     {
         skin.ChangeState(SkinState.Unlocked);
         skin.SaveState();
+        UIEvents.Current.UpdateShop();
     }
 
     public void LoadSkins()

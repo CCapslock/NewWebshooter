@@ -40,6 +40,10 @@ public class UIController : MonoBehaviour
 		UIEvents.Current.OnButtonRestart += NextLVL;
 		UIEvents.Current.OnButtonShop += OpenShop;
 		UIEvents.Current.OnButtonMainMenu += OpenMainMenu;
+		UIEvents.Current.OnButtonBuySkinGloves += BuyGloves;
+		UIEvents.Current.OnButtonBuySkinNet += BuyWeb;
+		UIEvents.Current.OnButtonGetSkinGloves += GetGloves;
+		UIEvents.Current.OnButtonGetSkinNet += GetWeb;
 
 
 		_mainMenu = GetComponentInChildren<MainMenu>();
@@ -119,6 +123,31 @@ public class UIController : MonoBehaviour
 	public int GetCurrentCoins()
     {
 		return _coinsController.GetCoinsAmount();
+    }
+
+	private void BuyGloves(GlovesSkinModel skin)
+    {
+		if (_coinsController.GetCoinsAmount() >= _shopMenu.SkinPrice)
+        {
+			_coinsController.RemoveCoins(_shopMenu.SkinPrice);
+			GameEvents.Current.UnlockGloves(skin);
+        }
+    }
+	private void BuyWeb(WebSkinModel skin)
+    {
+		if (_coinsController.GetCoinsAmount() >= _shopMenu.SkinPrice)
+        {
+			_coinsController.RemoveCoins(_shopMenu.SkinPrice);
+			GameEvents.Current.UnlockWeb(skin);
+		}
+	}
+	private void GetGloves(GlovesSkinModel skin)
+    {
+		GameEvents.Current.AskingRewardedVideo(new GlovesRewardModel(skin));
+    }
+	private void GetWeb(WebSkinModel skin)
+    {
+		GameEvents.Current.AskingRewardedVideo(new WebRewardModel(skin));
     }
 
 	private void SwitchUI(UIState state)

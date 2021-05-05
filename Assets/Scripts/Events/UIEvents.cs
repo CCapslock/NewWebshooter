@@ -81,6 +81,12 @@ public class UIEvents : MonoBehaviour
     {
         OnButtonBuySkinNet?.Invoke(skin);
     }
+
+    public Action OnUpdateShop;
+    public void UpdateShop()
+    {
+        OnUpdateShop?.Invoke();
+    }
     #endregion
 
     #region Advertise events

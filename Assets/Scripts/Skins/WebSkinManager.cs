@@ -1,16 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WebSkinManager : MonoBehaviour
 {
     private WebSkinModel[] _skins;
 
+    public WebSkinModel[] Skins => _skins;
+
 
     private void Awake()
     {
         _skins = FindObjectOfType<WebShooter>().StuckedWeb.GetComponentsInChildren<WebSkinModel>(true);
         LoadSkins();
+    }
+
+    private void Start()
+    {
+        GameEvents.Current.OnUnlockWeb += UnlockSkin;
+        GameEvents.Current.OnSelectWeb += SelectSkin;
     }
 
     private void LoadSkins()
@@ -25,6 +31,7 @@ public class WebSkinManager : MonoBehaviour
     {
         skin.ChangeState(SkinState.Unlocked);
         skin.SaveState();
+        UIEvents.Current.UpdateShop();
     }
 
     public void SelectSkin(WebSkinModel skin)
@@ -36,5 +43,6 @@ public class WebSkinManager : MonoBehaviour
         skin.gameObject.SetActive(true);
         skin.ChangeState(SkinState.Selected);
         skin.SaveState();
+        UIEvents.Current.UpdateShop();
     }
 }
