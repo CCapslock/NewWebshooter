@@ -5,4 +5,5 @@ using UnityEngine;
 public class ShopItemNet : MonoBehaviour
 {
     //TODO
+    //DELETE THIS
 }
