@@ -58,7 +58,9 @@ public class UIController : MonoBehaviour
 		UIEvents.Current.OnButtonBuySkinGloves += BuyGloves;
 		UIEvents.Current.OnButtonBuySkinNet += BuyWeb;
 		UIEvents.Current.OnButtonGetSkinGloves += GetGloves;
-		UIEvents.Current.OnButtonGetSkinNet += GetWeb;        
+		UIEvents.Current.OnButtonGetSkinNet += GetWeb;
+		UIEvents.Current.OnButtonSelectSkinGloves += SelectGloves;
+		UIEvents.Current.OnButtonSelectSkinWeb += SelectWeb;
     }
 
     private void ResetUI()
@@ -129,6 +131,15 @@ public class UIController : MonoBehaviour
 		return _coinsController.GetCoinsAmount();
     }
 
+	private void SelectGloves(GlovesSkinModel skin)
+    {
+		GameEvents.Current.SelectGloves(skin);
+    }
+	private void SelectWeb(WebSkinModel skin)
+    {
+		GameEvents.Current.SelectWeb(skin);
+    }
+
 	private void BuyGloves(GlovesSkinModel skin)
     {
 		if (_coinsController.GetCoinsAmount() >= _shopMenu.SkinPrice)
@@ -145,6 +156,7 @@ public class UIController : MonoBehaviour
 			GameEvents.Current.UnlockWeb(skin);
 		}
 	}
+
 	private void GetGloves(GlovesSkinModel skin)
     {
 		GameEvents.Current.AskingRewardedVideo(new GlovesRewardModel(skin));

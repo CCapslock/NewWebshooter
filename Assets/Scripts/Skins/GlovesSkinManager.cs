@@ -43,13 +43,22 @@ public class GlovesSkinManager : MonoBehaviour
 
     public void LoadSkins()
     {
+        bool isSelected = false;
         for (int i = 0; i < _skins.Length; i++)
         {
             _skins[i].LoadState();
             _skins[i].Hide();
             if (_skins[i].State == SkinState.Selected)
             {
-                _skins[i].Show();
+                if (isSelected == false)
+                {
+                    _skins[i].Show();
+                    isSelected = true;
+                }
+                else
+                {
+                    _skins[i].ChangeState(SkinState.Unlocked);
+                }
             }
         }
 
