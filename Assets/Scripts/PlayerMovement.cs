@@ -45,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 _speed = _movementPoints[_currentPointNum].NewSpeed;
             }
+            if (_movementPoints[_currentPointNum].NeedToFly)
+            {
+                RightHandAnimator.SetTrigger("Flying");
+                LeftHandAnimator.SetTrigger("FlyingOffhand");
+            }
             if (_currentPointNum < _movementPoints.Length && (_movementPoints[_currentPointNum].IsFinalPoint) && _movementPoints[_currentPointNum].Enemyes.Length == 0)
             {
                 if (_movementPoints[_currentPointNum].IsBossBattle)
@@ -91,15 +96,18 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ContinueMoving()
     {
-        ChangePoint();
-        if (_currentPointNum > 0 && _currentPointNum < _movementPoints.Length - 2)
+        /*
+        if (_currentPointNum < _movementPoints.Length - 2)
         {
-            if (_movementPoints[_currentPointNum-1].NeedToFly)
+            if (_movementPoints[_currentPointNum+1].NeedToFly == true)
             {
+                Debug.LogError("{EQ");
                 RightHandAnimator.SetTrigger("Flying");
                 
             }
         }
+        */
+        ChangePoint();
         _needToMove = true;
     }
     public void ChangePoint()
