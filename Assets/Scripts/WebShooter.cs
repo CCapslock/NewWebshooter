@@ -27,6 +27,7 @@ public class WebShooter : MonoBehaviour
 	private Vector3 _leftHandPosition;
 	private Vector3 _goalPosition;
 	private float _halfOfScreenWidth;
+	[SerializeField]private bool _isActivated;
 
 	private void Start()
 	{
@@ -39,31 +40,42 @@ public class WebShooter : MonoBehaviour
 	{
 		MoveWeb();
 	}
+	public void ActivateWebShooter()
+	{
+		_isActivated = true;
+	}
+	public void DisactivateWebShooter()
+	{
+		_isActivated = false;
+	}
 	public void ShootWeb(Vector3 mousePosition)
 	{
-		_goalPosition = CheckTheGoal(mousePosition);
-		_goalPosition.z += 0.1f;
-		if (mousePosition.x > _halfOfScreenWidth)
+		if (_isActivated)
 		{
-			_rightHandPosition = RightHandTransform.position;
-			_webObject = Instantiate(ShootingWeb, new Vector3(_rightHandPosition.x, _rightHandPosition.y, _rightHandPosition.z), Quaternion.identity);
-			_webObjects.Add(new WebObject()
+			_goalPosition = CheckTheGoal(mousePosition);
+			_goalPosition.z += 0.1f;
+			if (mousePosition.x > _halfOfScreenWidth)
 			{
-				WebGameObject = _webObject,
-				GoalPosition = _goalPosition
-			});
-			RightHandAnimator.SetTrigger("Shoot");
-		}
-		else
-		{
-			_leftHandPosition = LeftHandTransform.position;
-			_webObject = Instantiate(ShootingWeb, new Vector3(_leftHandPosition.x, _leftHandPosition.y, _leftHandPosition.z), Quaternion.identity);
-			_webObjects.Add(new WebObject()
+				_rightHandPosition = RightHandTransform.position;
+				_webObject = Instantiate(ShootingWeb, new Vector3(_rightHandPosition.x, _rightHandPosition.y, _rightHandPosition.z), Quaternion.identity);
+				_webObjects.Add(new WebObject()
+				{
+					WebGameObject = _webObject,
+					GoalPosition = _goalPosition
+				});
+				RightHandAnimator.SetTrigger("Shoot");
+			}
+			else
 			{
-				WebGameObject = _webObject,
-				GoalPosition = _goalPosition
-			});
-			LeftHandAnimator.SetTrigger("Shoot");
+				_leftHandPosition = LeftHandTransform.position;
+				_webObject = Instantiate(ShootingWeb, new Vector3(_leftHandPosition.x, _leftHandPosition.y, _leftHandPosition.z), Quaternion.identity);
+				_webObjects.Add(new WebObject()
+				{
+					WebGameObject = _webObject,
+					GoalPosition = _goalPosition
+				});
+				LeftHandAnimator.SetTrigger("Shoot");
+			}
 		}
 	}
 	private Vector3 CheckTheGoal(Vector3 mousePosition)
