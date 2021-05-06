@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ParticlesController : MonoBehaviour
 {
+	public ParticlesController Current;
 	public ParticleSystem SmallExplosinParticles;
 	public ParticleSystem SpeedyWindParticles;
 	private ParticleSystem _smallExplosinObject;
@@ -9,7 +10,9 @@ public class ParticlesController : MonoBehaviour
 
 	private void Awake()
 	{
+		Current = this;
 		_smallExplosinObject = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+		
 	}
 
 	public void MakeSmallExplosion(Vector3 position) 
