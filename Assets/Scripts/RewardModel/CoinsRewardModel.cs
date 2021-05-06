@@ -15,6 +15,6 @@ public class CoinsRewardModel : IGetReward
 
     public void RewardPlayer()
     {
-        
+        GameEvents.Current.IncreaseCoins(_coins);
     }
 }
