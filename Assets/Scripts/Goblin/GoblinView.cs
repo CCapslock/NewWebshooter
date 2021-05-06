@@ -188,6 +188,7 @@ public class GoblinView : MonoBehaviour
             _gliderRigidBody.isKinematic = false;
             _gliderRigidBody.AddForce((Vector3.left + Vector3.up + Vector3.back) * 10f,ForceMode.Impulse);
             _gliderRigidBody.AddTorque((Vector3.left + Vector3.up + Vector3.back) * 10f, ForceMode.Impulse);
+            _glider.GetComponent<MeshCollider>().isTrigger = true;
             GetComponent<BossRagdollController>().WebEnemy(collision);
             Destroy(_glider, 2f);
             Invoke("ExplodeGlider", 1.8f);
