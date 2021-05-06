@@ -111,7 +111,7 @@ public class FallingEnemy : MonoBehaviour
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)) && !_isEnemyWebbed)
 		{
 			_needToMove = false;
 			IsEnemyActive = false;
@@ -142,17 +142,6 @@ public class FallingEnemy : MonoBehaviour
 			_isHitByEnemy = true;
 			_mainGameController.EnemyBeenDefeated();
 			TurnOnRagdoll();
-		}
-	}
-	private bool IsNearPlayer()
-	{
-		if (Vector3.Distance(transform.position, _playerTransform.position) > MaxDistanceToPlayer)
-		{
-			return false;
-		}
-		else
-		{
-			return true;
 		}
 	}
 	#region Enemy Methods
