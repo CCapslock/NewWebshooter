@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-
+	public static HealthController Current;
 	public float MaxHealth;
 	public float EnemyHitPower;
 	public float HealingPower;
@@ -17,6 +17,7 @@ public class HealthController : MonoBehaviour
 
 	private void Awake()
 	{
+		Current = this;
 		CurrentHealth = MaxHealth;
 		_uiController = FindObjectOfType<UIController>();
 		_mainGameController = FindObjectOfType<MainGameController>();
@@ -62,6 +63,18 @@ public class HealthController : MonoBehaviour
 	private void DecreaseHelth()
 	{
 		CurrentHealth -= AmountOfEnemyesAttacking * EnemyHitPower;
+		if (CurrentHealth <= 0)
+		{
+			_mainGameController.PlayerLose();
+		}
+	}
+
+	public void GetHitFromBomb()
+	{
+		HealingPower *= 0.25f;
+		CurrentHealth -= MaxHealth * 0.33f;
+		
+		UIController.Current.SetGradientsAlpha(MaxHealth,CurrentHealth);
 		if (CurrentHealth <= 0)
 		{
 			_mainGameController.PlayerLose();
