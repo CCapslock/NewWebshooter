@@ -50,6 +50,11 @@ public class Bomb : MonoBehaviour
 			Destroy(collision.gameObject);
 			DetonateBomb();
 		}
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Player)))
+		{
+			DetonateBomb();
+
+		}
 	}
 	public void DetonateBomb()
 	{
