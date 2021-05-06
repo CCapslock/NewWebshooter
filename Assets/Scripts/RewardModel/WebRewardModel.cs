@@ -10,7 +10,7 @@ public class WebRewardModel : IGetReward
 
     public string EventName()
     {
-        throw new System.NotImplementedException();
+        return "Skin web";
     }
 
     public void RewardPlayer()
