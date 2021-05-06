@@ -38,7 +38,7 @@ public class ThrowingEnemyController : MonoBehaviour
 	private Rigidbody _bombRigidBody;
 	private GameObject Web;
 	private Vector3 CustomWebPosition;
-	private Vector3 ThrowingVector;
+	private Vector3 _throwingVector;
 	private float _magicNumber = 0.02f;
 	private bool _isStucked;
 	private bool _needToWalk = false;
@@ -125,16 +125,22 @@ public class ThrowingEnemyController : MonoBehaviour
 			_mainGameController.EnemyBeenDefeated();
 			SphereCollider collider = collision.gameObject.GetComponent<SphereCollider>();
 			collider.isTrigger = true;
-			ThrowingVector = transform.position;
-			ThrowingVector.z = (transform.position.z - HipsRigidBody.transform.position.z) * 9000f;
-			ThrowingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 4000f;
-			ThrowingVector.y = (transform.position.y - HipsRigidBody.transform.position.y) * 1f + 500f;
+			_throwingVector = transform.position; if ((transform.position.z - collision.transform.position.z) * 10000f > 5500f)
+			{
+				_throwingVector.z = (transform.position.z - collision.transform.position.z) * 10000;
+			}
+			else
+			{
+				_throwingVector.z = 5500f;
+			}
+			_throwingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 4000;
+			_throwingVector.y = (transform.position.y - HipsRigidBody.transform.position.y) * 1f + 1000f;
 			TurnOnRagdoll();
 			for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
 			{
-				_ragdollRigidBodyes[i].AddForce(ThrowingVector * 2f);
+				_ragdollRigidBodyes[i].AddForce(_throwingVector * 2f);
 			}
-			HipsRigidBody.AddForce(ThrowingVector * 4f);
+			HipsRigidBody.AddForce(_throwingVector * 4f);
 			//много чисел так как подгонял наиболее подходящие значения
 
 		}
@@ -188,16 +194,16 @@ public class ThrowingEnemyController : MonoBehaviour
 		{
 			IsEnemyActive = false;
 			_mainGameController.EnemyBeenDefeated();
-			ThrowingVector = transform.position;
-			ThrowingVector.z = (transform.position.z - impulsePosition.z) * 1000f;
-			ThrowingVector.x = (transform.position.x - impulsePosition.x) * 1000f;
-			ThrowingVector.y = 0f;
+			_throwingVector = transform.position;
+			_throwingVector.z = (transform.position.z - impulsePosition.z) * 1000f;
+			_throwingVector.x = (transform.position.x - impulsePosition.x) * 1000f;
+			_throwingVector.y = 0f;
 			TurnOnRagdoll();
 			for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
 			{
-				_ragdollRigidBodyes[i].AddForce(ThrowingVector * 1.5f);
+				_ragdollRigidBodyes[i].AddForce(_throwingVector * 1.5f);
 			}
-			HipsRigidBody.AddForce(ThrowingVector * 4f);
+			HipsRigidBody.AddForce(_throwingVector * 4f);
 		}
 	}
 	private void OnTriggerExit(Collider other)

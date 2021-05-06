@@ -101,7 +101,13 @@ public class GoblinView : MonoBehaviour
         }
         _currentModel.Execute(this);
     }
-
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
+        {
+            GoblinGetWebHit(collision);
+        }
+    }
     public void ChangeState(GoblinState state)
     {
         _newState = state;        
@@ -115,7 +121,7 @@ public class GoblinView : MonoBehaviour
             case GoblinState.Dead:
                 {
                     _canBeStucked = true;
-                    _animator.SetBool("Stucked", true);
+                    _animator.SetTrigger("Stucked");
                     break;
                 }
             default: break;
@@ -168,39 +174,30 @@ public class GoblinView : MonoBehaviour
         if (_currentHP <= 0)
         {
             ChangeState(GoblinState.Dead);
-            _mainGameController.EnemyBeenDefeated(); //<<<--- На метод ниже
+            //_mainGameController.EnemyBeenDefeated(); //<<<--- На метод ниже
         }
     }
 
-    public void GoblinGetWebHit()//Вызывается при коллизии паутины и гоблина
+    public void GoblinGetWebHit(Collision collision)//Вызывается при коллизии паутины и гоблина
     {
         if (_canBeStucked) //Становится true, когда все мишени уничтожены
         {
-            //здесь можно включить рэгдолл и вызвать поражение вместо 168 строки
-
-
-
-
             _glider.transform.parent = null;
             _gliderRigidBody = _glider.GetComponent<Rigidbody>();
             _gliderRigidBody.AddForce((Vector3.left + Vector3.up + Vector3.forward) * 10f,ForceMode.Impulse);
             _gliderRigidBody.AddTorque((Vector3.left + Vector3.up + Vector3.forward) * 10f, ForceMode.Impulse);
+            GetComponent<BossRagdollController>().WebEnemy(collision);
             Destroy(_glider, 2f);
             Invoke("ExplodeGlider", 1.8f);
         }
     }
 
     private void ExplodeGlider()
-    { 
-        //Вызвать explode в _glider.position
-        //добавить проверку на нул у глайдера
-    }
-
-
-
-
-    public void TempEnemyDefeat()
     {
+        //Вызвать explode в _glider.position
+        ParticlesController.Current.MakeSmallExplosion(_glider.transform.position);
+        //добавить проверку на нул у глайдера
+
         _mainGameController.EnemyBeenDefeated();
     }
 
@@ -219,7 +216,6 @@ public class GoblinView : MonoBehaviour
         foreach (BullEyeView eyes in _firstPhazeEyes)
         {
             eyes.gameObject.SetActive(true);
-
         }
     }
 

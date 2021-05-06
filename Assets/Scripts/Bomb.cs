@@ -60,8 +60,8 @@ public class Bomb : MonoBehaviour
 	{
 		if (!_isDetonated)
 		{
-			_isDetonated = true;
 			_particlesController.MakeSmallExplosion(transform.position);
+			_isDetonated = true;
 			Collider[] sds = Physics.OverlapSphere(transform.position, 8f, _enemyLayer);
 			for (int i = 0; i < sds.Length; i++)
 			{
