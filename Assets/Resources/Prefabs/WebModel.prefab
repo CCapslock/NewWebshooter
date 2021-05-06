@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: fa53cbf9413e2e845b93b6aa90cd777f, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 35cc6212d8b16c14fbf70be4587f16d3, type: 3}
-  _state: 0
+  _state: 1
 --- !u!114 &3120067534141070444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: 238c7081438a2dd42879249db14ea1a4, type: 3}
   _unlockedImage: {fileID: 21300000, guid: d66e07cd642528c4ab3152a5a8489d62, type: 3}
-  _state: 0
+  _state: 2
 --- !u!114 &6248156739200598367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: d625bda385ade3f42830e7b1698b9288, type: 3}
   _unlockedImage: {fileID: 21300000, guid: b0967d4166f66f249a1b68ea469944e7, type: 3}
-  _state: 0
+  _state: 1
 --- !u!114 &861522843525131462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: 2e9d1be4d00b79f4d8bcc34ce4ff62e0, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 647b265a80e6b5c44bdec6d321c59614, type: 3}
-  _state: 0
+  _state: 1
 --- !u!114 &7353939226168725675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: 1b376d80d1ccda749be2deccb53ed163, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 91da3aaa4079f2c419c830c8bd9d8b08, type: 3}
-  _state: 0
+  _state: 1
 --- !u!1 &5148378486662662931
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: d9f9794604838414f9c1bbd50de7e7ba, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 1cb2ed1563e4b0d47aedb6915c091422, type: 3}
-  _state: 0
+  _state: 1
 --- !u!114 &2265370208051415761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &478010068264428254
 Transform:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: 2b2318ba05a4a4b43912ec5003bc8e86, type: 3}
   _unlockedImage: {fileID: 21300000, guid: ef36dc62614aaf34b8333d564ce03c42, type: 3}
-  _state: 2
+  _state: 1
 --- !u!1001 &935500873470626287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -673,7 +673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c58f526739d44ed4fb4c20c6e0b888ce, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c58f526739d44ed4fb4c20c6e0b888ce, type: 3}
