@@ -28,10 +28,15 @@ public class FallingEnemy : MonoBehaviour
 	private Collider[] _ragdollColliders;
 	private GameObject _web;
 	private Vector3 _customWebPosition;
+	private Vector3 _idlePosition;
 	private Vector3 _throwingVector;
 	private float _magicNumber = 0.05f;
+	private float _movingToIdleSpeed = 0.05f;
+	private float _movingUpAndDownSpeed = 0.05f;
 	private bool _isHitByEnemy = false;
 	private bool _isEnemyWebbed = false;
+	private bool _needToMoveUpAndDown;
+	private bool _needToMove;
 	[HideInInspector] public bool IsStucked;
 	[HideInInspector] public bool IsEnemyActive = false;
 	[HideInInspector] public bool IsEnemyAttacking = false;
@@ -46,13 +51,11 @@ public class FallingEnemy : MonoBehaviour
 		_capsuleRigidbody = GetComponent<Rigidbody>();
 		_ragdollRigidBodyes = GetComponentsInChildren<Rigidbody>();
 		_mainGameController = FindObjectOfType<MainGameController>();
-		_bonusLvlController = FindObjectOfType<BonusLvlController>();
 		_ragdollColliders = GetComponentsInChildren<Collider>();
 		HipsRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
 		HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
 		SpineRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
 		_capsuleRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
 
 		TurnOffRagdoll();
 
@@ -70,23 +73,52 @@ public class FallingEnemy : MonoBehaviour
 				break;
 		}
 
-
-
 		int num1 = Random.Range(0, 360);
 		int num2 = Random.Range(0, 360 - num1);
 		int num3 = Random.Range(0, 360 - num1 - num2);
 
 		transform.Rotate(new Vector3(num1, num2, num3));
 	}
+	public void SendEnemy(float yPosition, float movingSpeed, BonusLvlController bonusLvlController)
+	{
+		_bonusLvlController = bonusLvlController;
+		_idlePosition = transform.position;
+		_idlePosition.y = yPosition;
+		_needToMove = true;
+		_movingToIdleSpeed = movingSpeed;
+	}
+	private void FixedUpdate()
+	{
+		if (_needToMoveUpAndDown)
+		{
+
+		}
+		if (_needToMove)
+		{
+			MoveToIdlePosition();
+		}
+	}
+	private void MoveToIdlePosition()
+	{
+		if (Vector3.Distance(transform.position, _idlePosition) > 10f)
+		{
+			transform.position = Vector3.MoveTowards(transform.position, _idlePosition, _movingToIdleSpeed);
+		}
+		else
+		{
+			transform.position = Vector3.MoveTowards(transform.position, _idlePosition, _movingToIdleSpeed * (Vector3.Distance(transform.position, _idlePosition) / 10f));
+		}
+	}
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
 		{
+			_needToMove = false;
 			IsEnemyActive = false;
 			_isEnemyWebbed = true;
 			SphereCollider collider = collision.gameObject.GetComponent<SphereCollider>();
 			collider.isTrigger = true;
-			_mainGameController.EnemyBeenDefeated();
+			_bonusLvlController.DefeatEnemy();
 			_throwingVector = transform.position;
 			_throwingVector.z = 3000f;
 			_throwingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 1000;
@@ -124,6 +156,10 @@ public class FallingEnemy : MonoBehaviour
 		}
 	}
 	#region Enemy Methods
+	private void MoveUpAndDown()
+	{
+
+	}
 	public void ThrowEnemy(Vector3 impulsePosition)
 	{
 		if (IsEnemyActive)

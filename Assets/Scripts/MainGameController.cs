@@ -12,12 +12,14 @@ public class MainGameController : MonoBehaviour
 	private CoinsController _coinsController;
 	private HealthController _healthController;
 	private BonusLvlController _bonusLvlController;
-	[SerializeField]private int AmountOfEnemyes;
+	private WallController _wallController;
+	[SerializeField] private int AmountOfEnemyes;
 	private float _timeBeforeContinueMoving = 0.5f;
 	[SerializeField] private bool _isFinal;
 	private bool _lvlComplete;
 	private void Awake()
 	{
+		_wallController = FindObjectOfType<WallController>();
 		_bonusLvlController = FindObjectOfType<BonusLvlController>();
 		_playerMovement = FindObjectOfType<PlayerMovement>();
 		_artController = FindObjectOfType<ArtController>();
@@ -26,12 +28,12 @@ public class MainGameController : MonoBehaviour
 		_saveController = FindObjectOfType<SaveController>();
 		_coinsController = FindObjectOfType<CoinsController>();
 		_healthController = FindObjectOfType<HealthController>();
-		StartLvl();
 	}
 
 	private void Start()
 	{
 		GameEvents.Current.LevelLoaded();
+		StartLvl();
 	}
 	public void StartLvl()
 	{
@@ -47,6 +49,7 @@ public class MainGameController : MonoBehaviour
 			_playerMovement.SetMovementPoints(_lvlBuilder.BuildLvlAndReturnMovementPoints(AvailableLevels[_saveController.GetNextLvlNum()]));
 			_playerMovement.StartMoving();
 		}
+		_wallController.PrepearWalls();
 	}
 	public bool CanMove()
 	{
@@ -74,7 +77,7 @@ public class MainGameController : MonoBehaviour
 			{
 				goblinView = FindObjectOfType<GoblinView>();
 			}
-			catch{}
+			catch { }
 			if (goblinView != null)
 			{
 				Debug.Log("MainGameController activating Goblin");

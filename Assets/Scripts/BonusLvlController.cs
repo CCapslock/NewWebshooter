@@ -4,13 +4,21 @@ using System.Collections.Generic;
 
 public class BonusLvlController : MonoBehaviour
 {
+	[Foldout("CoinsLVL")]
 	public GameObject Coin;
+	[Foldout("CoinsLVL")]
 	public GameObject Wall;
+	[Foldout("CoinsLVL")]
 	public GameObject Web;
+	[Foldout("CoinsLVL")]
 	public Vector3 StartThrownigPosition;
+	[Foldout("CoinsLVL")]
 	public int MaxCoins;
+	[Foldout("CoinsLVL")]
 	public float TimeBeforeThrownig = 0.4f;
 
+	[Foldout("FallingLVL")]
+	public GameObject FallingEnemy;
 	[Foldout("FallingLVL")]
 	public Vector3[] BuildingsPositions;
 	[Foldout("FallingLVL")]
@@ -24,6 +32,7 @@ public class BonusLvlController : MonoBehaviour
 	[Foldout("FallingLVL")]
 	public float RoofCoordinat;
 	[Foldout("FallingLVL")]
+	public int AmountOfEnemyes;
 
 	private Transform[] _movingHouses;
 	private MainGameController _mainGameController;
@@ -35,6 +44,8 @@ public class BonusLvlController : MonoBehaviour
 	private float _timeBeforeThrowing;
 	private float _widthOfScreen;
 	private int _numberOfCoinsCaught = 0;
+	private int _amountofEnemyesActive = 0;
+	[SerializeField]private int _amountofEnemyesLeft = 0;
 	private bool _needToMoveHouses;
 
 	private void Awake()
@@ -73,7 +84,50 @@ public class BonusLvlController : MonoBehaviour
 			}
 		}
 	}
-	public void StartMoving()
+	public void DefeatEnemy()
+	{
+		_amountofEnemyesActive--; _amountofEnemyesLeft--;
+		if (_amountofEnemyesActive <= 0)
+		{
+			if (_amountofEnemyesLeft > 0)
+			{
+
+				if (_amountofEnemyesLeft > 3)
+				{
+					SendEnemyes(Random.Range(1, 4));
+				}
+				else
+				{
+					SendEnemyes(Random.Range(1, _amountofEnemyesLeft + 1));
+				}
+			}
+			else
+			{
+				_mainGameController.EndBonusLvl(Random.Range(40, 81));
+			}
+		}
+	}
+	public void SendEnemyes(int num)
+	{
+		_amountofEnemyesActive = num;
+		switch (num)
+		{
+			case (1):
+				Instantiate(FallingEnemy, new Vector3(0, -15f, Random.Range(-1f, -5f)), Quaternion.identity).GetComponent<FallingEnemy>().SendEnemy(Random.Range(-3f, 4f), Random.Range(0.08f, 0.16f), this);
+				break;
+			case (2):
+				Instantiate(FallingEnemy, new Vector3(_widthOfScreen / 3f, -15f, Random.Range(-1f, -5f)), Quaternion.identity).GetComponent<FallingEnemy>().SendEnemy(Random.Range(-3f, 4f), Random.Range(0.08f, 0.16f), this);
+				Instantiate(FallingEnemy, new Vector3(_widthOfScreen / 3f * -1f, -15f, Random.Range(-1f, -5f)), Quaternion.identity).GetComponent<FallingEnemy>().SendEnemy(Random.Range(-3f, 4f), Random.Range(0.08f, 0.16f), this);
+				break;
+			case (3):
+				Instantiate(FallingEnemy, new Vector3(0, -15f, Random.Range(-1f, -5f)), Quaternion.identity).GetComponent<FallingEnemy>().SendEnemy(Random.Range(-3f, 4f), Random.Range(0.08f, 0.16f), this);
+				Instantiate(FallingEnemy, new Vector3(_widthOfScreen / 3f, -15f, Random.Range(-1f, -5f)), Quaternion.identity).GetComponent<FallingEnemy>().SendEnemy(Random.Range(-3f, 4f), Random.Range(0.08f, 0.16f), this);
+				Instantiate(FallingEnemy, new Vector3(_widthOfScreen / 3f * -1f, -15f, Random.Range(-1f, -5f)), Quaternion.identity).GetComponent<FallingEnemy>().SendEnemy(Random.Range(-3f, 4f), Random.Range(0.08f, 0.16f), this);
+				break;
+		}
+
+	}
+	private void StartMoving()
 	{
 		_needToMoveHouses = true;
 	}
@@ -88,19 +142,24 @@ public class BonusLvlController : MonoBehaviour
 	}
 	public void StartBonusPart()
 	{
-		Wall.SetActive(true);
-		StartSpawner();
-		/*
+		/*Wall.SetActive(true);
+		StartSpawner();*/
+		StartFallingBonusLvl();
+	}
+	private void StartFallingBonusLvl()
+	{
+		_amountofEnemyesLeft = AmountOfEnemyes;
 		PrepareBuildings();
 		StartMoving();
-		FindObjectOfType<ParticlesController>().StartWindParticle(ParticlesPosition, ParticlesRotation);*/
+		FindObjectOfType<ParticlesController>().StartWindParticle(ParticlesPosition, ParticlesRotation);
+		SendEnemyes(Random.Range(1, 4));
 	}
 	private void PrepareBuildings()
 	{
 		_movingHouses = new Transform[BuildingsPositions.Length];
 		for (int i = 0; i < BuildingsPositions.Length; i++)
 		{
-			_movingHouses[i] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), BuildingsPositions[i], Quaternion.Euler(new Vector3(-90f,0,90f))).transform;
+			_movingHouses[i] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), BuildingsPositions[i], Quaternion.Euler(new Vector3(-90f, 0, 90f))).transform;
 			_movingHouses[i].gameObject.isStatic = false;
 			//_movingHouses[i].gameObject.GetComponent<Wall>().IsBonusLvlWall = true;
 			_movingHouses[i].gameObject.tag = TagManager.GetTag(TagType.Wall);
