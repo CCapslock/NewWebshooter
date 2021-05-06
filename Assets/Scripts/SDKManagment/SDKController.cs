@@ -48,19 +48,12 @@ public class SDKController : MonoBehaviour
         _previousLevelNumber = _currentLevelNumber;
         _currentLevelNumber = levelNumber;
         _currentLevelNumberString = _currentLevelNumber.ToString();
-        if (_previousLevelNumber != -1)
+        if (_previousLevelNumber >= 1)
         { 
             //GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Level time", _currentLevelNumber);
-        }        
-        //GameAnalytics.NewDesignEvent($"Level:Start:{_currentLevelNumber}");
+        }
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, _currentLevelNumberString);
-
-        /*
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start,
-            $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
-            $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
-            $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");*/
     }
 
     private void OnLevelFailedEvent()
@@ -163,9 +156,7 @@ public class SDKController : MonoBehaviour
         {
             _lastInterstitialTime = Time.time;
             IronSource.Agent.showInterstitial();
-            //GameAnalytics.NewDesignEvent($"Ad:interstitial:{_currentLevelNumber}");
-            _tempText = "Level +" + _currentLevelNumberString;
-            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _tempText);
+            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _currentLevelNumberString);
         }
         else
         {
@@ -242,7 +233,7 @@ public class SDKController : MonoBehaviour
         {
             IronSource.Agent.showRewardedVideo();
             //GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
-            GameAnalytics.NewAdEvent(GAAdAction.Clicked,GAAdType.RewardedVideo,"IronSource",$"InLevel {_currentLevelNumber}");
+            GameAnalytics.NewAdEvent(GAAdAction.Clicked,GAAdType.RewardedVideo,"IronSource",_currentLevelNumberString);
         }
     }
 
@@ -324,7 +315,7 @@ public class SDKController : MonoBehaviour
 
     private void RewardedVideoAdClickedEvent(IronSourcePlacement placement)
     {
-        GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
+        GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance.EventName()}");
     }
     #endregion
 }
