@@ -58,6 +58,7 @@ public class GameEvents : MonoBehaviour
     }
 
     #endregion
+
     #region SkinShop
     public Action<GlovesSkinModel> OnUnlockGloves;
     public void UnlockGloves(GlovesSkinModel skin)
@@ -101,6 +102,14 @@ public class GameEvents : MonoBehaviour
     public void GoblinTakeDamage()
     {
         OnGoblinTakeDamage?.Invoke();
+    }
+    #endregion
+
+    #region Other events
+    public Action<int> OnIncreaseCoins;
+    public void IncreaseCoins(int coins)
+    {
+        OnIncreaseCoins?.Invoke(coins);
     }
     #endregion
 }

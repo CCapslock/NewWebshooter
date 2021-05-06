@@ -107,10 +107,10 @@ public class UIEvents : MonoBehaviour
         OnButtonGetSkinNet?.Invoke(skin);
     }
 
-    public Action OnButtonGetMoreCoins;
-    public void ButtonGetMoreCoins()
+    public Action<int> OnButtonGetMoreCoins;
+    public void ButtonGetMoreCoins(int coins)
     {
-        OnButtonGetMoreCoins?.Invoke();
+        OnButtonGetMoreCoins?.Invoke(coins);
     }
     #endregion
 }

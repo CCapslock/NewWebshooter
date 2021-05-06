@@ -19,7 +19,9 @@ public class UIController : MonoBehaviour
     private SaveController _saveController;
     private WebShooter _webShooter;
     private Color _tempColor;
+    private int _coinsMultiplier = 3;
 
+    public int CoinsMultiplier => _coinsMultiplier;
 
     private void Awake()
     {
@@ -60,9 +62,12 @@ public class UIController : MonoBehaviour
         UIEvents.Current.OnButtonBuySkinNet += BuyWeb;
         UIEvents.Current.OnButtonGetSkinGloves += GetGloves;
         UIEvents.Current.OnButtonGetSkinNet += GetWeb;
+        UIEvents.Current.OnButtonGetMoreCoins += GetCoins;
         UIEvents.Current.OnButtonSelectSkinGloves += SelectGloves;
         UIEvents.Current.OnButtonSelectSkinWeb += SelectWeb;
+
         GameEvents.Current.OnLevelLoaded += ResetUI;
+        GameEvents.Current.OnIncreaseCoins += MultiplyCoins;
     }
 
     private void ResetUI()
@@ -118,10 +123,15 @@ public class UIController : MonoBehaviour
     public void ActivateWinPanel(int coinsNum)
     {
         SwitchUI(UIState.Win);
-        _winMenu.ActivatePanel(coinsNum);
+        _winMenu.ActivatePanel(coinsNum, false);
         GameEvents.Current.LevelEnd();
         GameEvents.Current.LevelComplete();
         _webShooter.DisactivateWebShooter();
+    }
+    private void MultiplyCoins(int coins)
+    {
+        _coinsController.AddCoins(coins * (_coinsMultiplier - 1));
+        _winMenu.ActivatePanel(coins * _coinsMultiplier, true);
     }
 
     public void SetGradientsAlpha(float maxHP, float currentHP)
@@ -172,6 +182,10 @@ public class UIController : MonoBehaviour
     private void GetWeb(WebSkinModel skin)
     {
         GameEvents.Current.AskingRewardedVideo(new WebRewardModel(skin));
+    }
+    private void GetCoins(int coins)
+    {
+        GameEvents.Current.AskingRewardedVideo(new CoinsRewardModel(coins));
     }
 
     private void SwitchUI(UIState state)

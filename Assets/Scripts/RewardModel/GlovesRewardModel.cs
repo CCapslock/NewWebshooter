@@ -15,6 +15,6 @@ public class GlovesRewardModel : IGetReward
 
     public string EventName()
     {
-        throw new System.NotImplementedException();
+        return "Skin gloves";
     }
 }
