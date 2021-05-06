@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
+  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3368,8 +3368,8 @@ MonoBehaviour:
   Wall: {fileID: 7040273916254283883}
   Web: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   StartThrownigPosition: {x: 0, y: -10, z: -4}
-  MaxCoins: 20
-  TimeBeforeThrownig: 0.4
+  MaxCoins: 50
+  TimeBeforeThrownig: 0.2
   FallingEnemy: {fileID: 1533259991958189498, guid: 381bda9ae85c1b242a14ba7346600c06, type: 3}
   BuildingsPositions:
   - {x: 0, y: 0, z: 14}
