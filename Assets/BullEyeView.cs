@@ -44,6 +44,7 @@ public class BullEyeView : MonoBehaviour
         if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
         {
             _goblin.TakeDamage();
+
             this.gameObject.SetActive(false);
         }
     }
