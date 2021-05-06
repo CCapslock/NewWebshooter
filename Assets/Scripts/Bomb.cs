@@ -53,7 +53,7 @@ public class Bomb : MonoBehaviour
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Player)))
 		{
 			DetonateBomb();
-
+			HealthController.Current.GetHitFromBomb();
 		}
 	}
 	public void DetonateBomb()
