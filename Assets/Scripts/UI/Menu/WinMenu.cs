@@ -9,6 +9,7 @@ public class WinMenu : BaseMenu
 
     [Header("Buttons")]
     [SerializeField] private Button _btnNextLevel;
+    [SerializeField] private Button _btnGetMoreCoins;
 
     [Header("Coins")]
     [SerializeField] private TextMeshProUGUI _textCoins;
@@ -40,10 +41,27 @@ public class WinMenu : BaseMenu
         IsShow = true;
     }
 
-    public void ActivatePanel(int coins)
+    public void ActivatePanel(int coins, bool isMultiplier)
     {
-        _textCoins.text = "+0";
-        AddMoreCoinsInUI(coins);
+        if (isMultiplier == false)
+        {
+            _btnGetMoreCoins.gameObject.SetActive(true);
+            _btnGetMoreCoins.onClick.RemoveAllListeners();
+            _btnGetMoreCoins.onClick.AddListener(() => UIEvents.Current.ButtonGetMoreCoins(coins));
+            _btnGetMoreCoins.GetComponentInChildren<TextMeshProUGUI>().text = $"GET {coins * _controller.CoinsMultiplier}";
+
+            _textCoins.text = "+0";
+            AddMoreCoinsInUI(coins);
+        }
+        else
+        {
+            _btnGetMoreCoins.onClick.RemoveAllListeners();
+            _btnGetMoreCoins.gameObject.SetActive(false);
+
+            _textCoins.text = "+0";
+            AddMoreCoinsInUI(coins * _controller.CoinsMultiplier);
+        }
+        
     }
     private void AddMoreCoinsInUI(int amount)
     {
