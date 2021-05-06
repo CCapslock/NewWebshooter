@@ -48,6 +48,8 @@ public class BonusLvlController : MonoBehaviour
 	[SerializeField]private int _amountofEnemyesLeft = 0;
 	private bool _needToMoveHouses;
 
+
+	private string ForTempPlayerPrefs = "WichBonuslvl";
 	private void Awake()
 	{
 		_mainGameController = FindObjectOfType<MainGameController>();
@@ -142,9 +144,18 @@ public class BonusLvlController : MonoBehaviour
 	}
 	public void StartBonusPart()
 	{
-		/*Wall.SetActive(true);
-		StartSpawner();*/
-		StartFallingBonusLvl();
+		if(PlayerPrefs.GetInt(ForTempPlayerPrefs) == 0)
+		{
+			PlayerPrefs.SetInt(ForTempPlayerPrefs, 1);
+
+			Wall.SetActive(true);
+			StartSpawner();
+		}
+		else if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 1)
+		{
+			PlayerPrefs.SetInt(ForTempPlayerPrefs, 0);
+			StartFallingBonusLvl();
+		}
 	}
 	private void StartFallingBonusLvl()
 	{

@@ -5,8 +5,10 @@ public class RagdollCollisionChecker : MonoBehaviour
 	private EnemyController _stickmanscript;
 	private ThrowingEnemyController _throwingStickmanScript;
 	private FallingEnemy _fallingStickmanScript;
+	private BossRagdollController _bossRagdollController;
 	private bool _isThrowingStickman;
 	private bool _isFallingStickman;
+	private bool _isBossStickman;
 	public void SetParametrs(EnemyController stickmanscript)
 	{
 		_isThrowingStickman = false;
@@ -22,21 +24,34 @@ public class RagdollCollisionChecker : MonoBehaviour
 		_isFallingStickman = true;
 		_fallingStickmanScript = stickmanscript;
 	}
+	public void SetParametrs(BossRagdollController stickmanscript)
+	{
+		_isBossStickman = true;
+		_bossRagdollController = stickmanscript;
+	}
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Wall)))
 		{
-			if (_isThrowingStickman)
+			if (!_isBossStickman)
 			{
-				_throwingStickmanScript.GetStickmanStucked(collision, transform.position, gameObject.name);
-			}
-			else if (_isFallingStickman)
-			{
-				_fallingStickmanScript.GetStickmanStucked(collision, transform.position, gameObject.name);
+				if (_isThrowingStickman)
+				{
+					_throwingStickmanScript.GetStickmanStucked(collision, transform.position, gameObject.name);
+				}
+				else if (_isFallingStickman)
+				{
+					_fallingStickmanScript.GetStickmanStucked(collision, transform.position, gameObject.name);
+				}
+				else
+				{
+					_stickmanscript.GetStickmanStucked(collision, transform.position, gameObject.name);
+				}
 			}
 			else
 			{
-				_stickmanscript.GetStickmanStucked(collision, transform.position, gameObject.name);
+				_bossRagdollController.GetStickmanStucked(collision, transform.position, gameObject.name);
+
 			}
 		}
 	}
