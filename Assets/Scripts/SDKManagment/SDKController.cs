@@ -6,6 +6,7 @@ using Facebook.Unity;
 
 public class SDKController : MonoBehaviour
 {
+    public static SDKController Current;
     // Start is called before the first frame update
     [SerializeField] private string _ISIOSAppKey = null;
     [SerializeField] private string _ISAndroidAppKey = null;
@@ -16,8 +17,13 @@ public class SDKController : MonoBehaviour
     public static IGetReward RewardInstance = null;
 
     private int _currentLevelNumber = 1;
+    private string _currentLevelNumberString = "1";
     private int _previousLevelNumber = -1;
     private float _startLevelTime = 0f;
+    private string _tempText;
+
+
+
     private void Start()
     {
         GameAnalyticsInitialize();
@@ -26,6 +32,7 @@ public class SDKController : MonoBehaviour
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         SubscribeGameAnalyticEvent();
+        InitializeIronSource();
     }
 
 
@@ -38,39 +45,25 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelStartEvent(int levelNumber)
     {
-        if (_previousLevelNumber != -1)
-        { 
-            GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
-        }
         _previousLevelNumber = _currentLevelNumber;
         _currentLevelNumber = levelNumber;
-        GameAnalytics.NewDesignEvent($"Level:Start:{_currentLevelNumber}");
-
-        /*
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start,
-            $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
-            $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
-            $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");*/
+        _currentLevelNumberString = _currentLevelNumber.ToString();
+        if (_previousLevelNumber >= 1)
+        { 
+            //GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Level time", _currentLevelNumber);
+        }
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, _currentLevelNumberString);
     }
 
     private void OnLevelFailedEvent()
     {
-        GameAnalytics.NewDesignEvent($"Level:Failed:{_currentLevelNumber}");
-        /*
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
-                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
-                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
-                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");*/
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentLevelNumberString);        
     }
 
     private void OnLevelCompleteEvent()
-    {
-        GameAnalytics.NewDesignEvent($"Level:Complete:{_currentLevelNumber}");
-        /*
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
-                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
-                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
-                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");*/
+    {        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentLevelNumberString);        
     }
 
     private void SubscribeGameAnalyticEvent()
@@ -125,7 +118,7 @@ public class SDKController : MonoBehaviour
     }
     #endregion
     #region InitializeIronSourseSDK
-    private void InitializeIronSource()//подписать этот метод чтобы узнать работает реклама или нет сейчас
+    private void InitializeIronSource()
     {
         if (!_isISInitialised)
         {
@@ -163,8 +156,7 @@ public class SDKController : MonoBehaviour
         {
             _lastInterstitialTime = Time.time;
             IronSource.Agent.showInterstitial();
-            GameAnalytics.NewDesignEvent($"Ad:interstitial:{_currentLevelNumber}");
-            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "EndLevel");
+            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _currentLevelNumberString);
         }
         else
         {
@@ -187,37 +179,37 @@ public class SDKController : MonoBehaviour
 
     private void InterstitialAdReadyEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdReadyEvent");
+        //Debug.Log("unity-script: I got InterstitialAdReadyEvent");
     }
 
     private void InterstitialAdLoadFailedEvent(IronSourceError error)
     {
-        Debug.Log("unity-script: I got InterstitialAdLoadFailedEvent, code: " + error.getCode() + ", description : " + error.getDescription());
+        //Debug.Log("unity-script: I got InterstitialAdLoadFailedEvent, code: " + error.getCode() + ", description : " + error.getDescription());
     }
 
     private void InterstitialAdShowSucceededEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdShowSucceededEvent");
+        //Debug.Log("unity-script: I got InterstitialAdShowSucceededEvent");
     }
 
     private void InterstitialAdShowFailedEvent(IronSourceError error)
     {
-        Debug.Log("unity-script: I got InterstitialAdShowFailedEvent, code :  " + error.getCode() + ", description : " + error.getDescription());
+        //Debug.Log("unity-script: I got InterstitialAdShowFailedEvent, code :  " + error.getCode() + ", description : " + error.getDescription());
     }
 
     private void InterstitialAdClickedEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdClickedEvent");
+        //Debug.Log("unity-script: I got InterstitialAdClickedEvent");
     }
 
     private void InterstitialAdOpenedEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdOpenedEvent");
+       // Debug.Log("unity-script: I got InterstitialAdOpenedEvent");
     }
 
     private void InterstitialAdClosedEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdClosedEvent");
+        //Debug.Log("unity-script: I got InterstitialAdClosedEvent");
     }
     #endregion
     #region Rewarded
@@ -240,8 +232,8 @@ public class SDKController : MonoBehaviour
         if (IronSource.Agent.isRewardedVideoAvailable())
         {
             IronSource.Agent.showRewardedVideo();
-            GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
-            
+            //GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
+            GameAnalytics.NewAdEvent(GAAdAction.Clicked,GAAdType.RewardedVideo,"IronSource",_currentLevelNumberString);
         }
     }
 
@@ -289,7 +281,7 @@ public class SDKController : MonoBehaviour
         if (RewardInstance != null)
         {
             RewardInstance.RewardPlayer();
-            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"InLevel {_currentLevelNumber}, Reward:{RewardInstance.EventName()}");
         }
         else
         {
@@ -323,7 +315,7 @@ public class SDKController : MonoBehaviour
 
     private void RewardedVideoAdClickedEvent(IronSourcePlacement placement)
     {
-        GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
+        GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance.EventName()}");
     }
     #endregion
 }
