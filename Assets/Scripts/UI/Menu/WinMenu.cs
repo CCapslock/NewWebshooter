@@ -59,7 +59,7 @@ public class WinMenu : BaseMenu
             _btnGetMoreCoins.gameObject.SetActive(false);
 
             _textCoins.text = "+0";
-            AddMoreCoinsInUI(coins * _controller.CoinsMultiplier);
+            AddMoreCoinsInUI(coins);
         }
         
     }
