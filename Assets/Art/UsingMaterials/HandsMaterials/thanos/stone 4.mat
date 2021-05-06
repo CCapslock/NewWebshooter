@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hands 2
+  m_Name: stone 4
   m_Shader: {fileID: 4800000, guid: d12428961551799408aa97256fd770c3, type: 3}
   m_ShaderKeywords: N_F_O_ON N_F_RELGI_ON N_F_SS_ON
   m_LightmapFlags: 4
@@ -127,7 +127,7 @@ Material:
     - _GIFlatShade: 0
     - _GIShadeThreshold: 0
     - _GlossColorPower: 10
-    - _GlossIntensity: 1
+    - _GlossIntensity: 0.951
     - _GlossMapScale: 1
     - _GlossSoftness: 0
     - _GlossTextureFollowLight: 0
@@ -204,11 +204,11 @@ Material:
     - _SelfLitIntensity: 0
     - _SelfLitPower: 2
     - _SelfShadowAffectedByLightShadowStrength: 0
-    - _SelfShadowHardness: 0.25
+    - _SelfShadowHardness: 0
     - _SelfShadowRealTimeShadowColorPower: 1
     - _SelfShadowRealtimeShadowIntensity: 0.609
     - _SelfShadowShadowTAtViewDirection: 0
-    - _SelfShadowThreshold: 0.991
+    - _SelfShadowThreshold: 1
     - _ShadowColorTexturePower: 0
     - _ShadowHardness: 0
     - _ShadowTColorPower: 1
@@ -238,8 +238,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlossColor: {r: 1, g: 1, b: 1, a: 1}
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 0, g: 0.73567724, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColor: {r: 0.07404764, g: 0.29980844, b: 0.735849, a: 1}
+    - _OutlineColor: {r: 0.96279144, g: 1, b: 0, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 1}
     - _OverallShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
@@ -247,3 +247,4 @@ Material:
     - _SelfShadowRealTimeShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowTColor: {r: 1, g: 1, b: 1, a: 1}
     - _XYZPosition: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
