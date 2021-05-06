@@ -6,6 +6,7 @@ using Facebook.Unity;
 
 public class SDKController : MonoBehaviour
 {
+    public static SDKController Current;
     // Start is called before the first frame update
     [SerializeField] private string _ISIOSAppKey = null;
     [SerializeField] private string _ISAndroidAppKey = null;
@@ -18,6 +19,9 @@ public class SDKController : MonoBehaviour
     private int _currentLevelNumber = 1;
     private int _previousLevelNumber = -1;
     private float _startLevelTime = 0f;
+
+
+
     private void Start()
     {
         GameAnalyticsInitialize();
@@ -26,6 +30,7 @@ public class SDKController : MonoBehaviour
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         SubscribeGameAnalyticEvent();
+        InitializeIronSource();
     }
 
 
