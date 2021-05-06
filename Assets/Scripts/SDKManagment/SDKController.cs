@@ -17,8 +17,10 @@ public class SDKController : MonoBehaviour
     public static IGetReward RewardInstance = null;
 
     private int _currentLevelNumber = 1;
+    private string _currentLevelNumberString = "1";
     private int _previousLevelNumber = -1;
     private float _startLevelTime = 0f;
+    private string _tempText;
 
 
 
@@ -43,13 +45,16 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelStartEvent(int levelNumber)
     {
-        if (_previousLevelNumber != -1)
-        { 
-            GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
-        }
         _previousLevelNumber = _currentLevelNumber;
         _currentLevelNumber = levelNumber;
-        GameAnalytics.NewDesignEvent($"Level:Start:{_currentLevelNumber}");
+        _currentLevelNumberString = _currentLevelNumber.ToString();
+        if (_previousLevelNumber != -1)
+        { 
+            //GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Level time", _currentLevelNumber);
+        }        
+        //GameAnalytics.NewDesignEvent($"Level:Start:{_currentLevelNumber}");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, _currentLevelNumberString);
 
         /*
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start,
@@ -60,7 +65,8 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelFailedEvent()
     {
-        GameAnalytics.NewDesignEvent($"Level:Failed:{_currentLevelNumber}");
+        //GameAnalytics.NewDesignEvent($"Level:Failed:{_currentLevelNumber}");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentLevelNumberString);
         /*
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
                 $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
@@ -70,7 +76,8 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelCompleteEvent()
     {
-        GameAnalytics.NewDesignEvent($"Level:Complete:{_currentLevelNumber}");
+        //GameAnalytics.NewDesignEvent($"Level:Complete:{_currentLevelNumber}");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentLevelNumberString);
         /*
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
                 $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
@@ -130,7 +137,7 @@ public class SDKController : MonoBehaviour
     }
     #endregion
     #region InitializeIronSourseSDK
-    private void InitializeIronSource()//подписать этот метод чтобы узнать работает реклама или нет сейчас
+    private void InitializeIronSource()
     {
         if (!_isISInitialised)
         {
@@ -168,8 +175,9 @@ public class SDKController : MonoBehaviour
         {
             _lastInterstitialTime = Time.time;
             IronSource.Agent.showInterstitial();
-            GameAnalytics.NewDesignEvent($"Ad:interstitial:{_currentLevelNumber}");
-            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", "EndLevel");
+            //GameAnalytics.NewDesignEvent($"Ad:interstitial:{_currentLevelNumber}");
+            _tempText = "Level +" + _currentLevelNumberString;
+            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _tempText);
         }
         else
         {
@@ -245,8 +253,8 @@ public class SDKController : MonoBehaviour
         if (IronSource.Agent.isRewardedVideoAvailable())
         {
             IronSource.Agent.showRewardedVideo();
-            GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
-            
+            //GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
+            GameAnalytics.NewAdEvent(GAAdAction.Clicked,GAAdType.RewardedVideo,"IronSource",$"InLevel {_currentLevelNumber}");
         }
     }
 
@@ -294,7 +302,7 @@ public class SDKController : MonoBehaviour
         if (RewardInstance != null)
         {
             RewardInstance.RewardPlayer();
-            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance}");
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"InLevel {_currentLevelNumber}, Reward:{RewardInstance.EventName()}");
         }
         else
         {

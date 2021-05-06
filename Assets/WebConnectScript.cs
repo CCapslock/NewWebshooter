@@ -19,6 +19,7 @@ public class WebConnectScript : MonoBehaviour
         ThrowingJoint.rotation = Quaternion.LookRotation(ThrowingJoint.position - SavedJoint.position);
         SavedJoint.rotation = ThrowingJoint.rotation;
         _render.enabled = true;
+        Destroy(this.gameObject, 1.3f);
     }
 
     // Update is called once per frame
