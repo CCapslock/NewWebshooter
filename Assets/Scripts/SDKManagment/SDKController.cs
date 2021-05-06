@@ -65,24 +65,12 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelFailedEvent()
     {
-        //GameAnalytics.NewDesignEvent($"Level:Failed:{_currentLevelNumber}");
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentLevelNumberString);
-        /*
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail,
-                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
-                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
-                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");*/
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentLevelNumberString);        
     }
 
     private void OnLevelCompleteEvent()
-    {
-        //GameAnalytics.NewDesignEvent($"Level:Complete:{_currentLevelNumber}");
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentLevelNumberString);
-        /*
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,
-                $"Lvl:{_saveData.LoadInt(SaveKeyManager.LevelNumber)}",
-                $"Diff: {_saveData.LoadInt(SaveKeyManager.Difficulty)}",
-                $"Overall: {_saveData.LoadInt(SaveKeyManager.ComplitedLevelValue)}");*/
+    {        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentLevelNumberString);        
     }
 
     private void SubscribeGameAnalyticEvent()
@@ -200,37 +188,37 @@ public class SDKController : MonoBehaviour
 
     private void InterstitialAdReadyEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdReadyEvent");
+        //Debug.Log("unity-script: I got InterstitialAdReadyEvent");
     }
 
     private void InterstitialAdLoadFailedEvent(IronSourceError error)
     {
-        Debug.Log("unity-script: I got InterstitialAdLoadFailedEvent, code: " + error.getCode() + ", description : " + error.getDescription());
+        //Debug.Log("unity-script: I got InterstitialAdLoadFailedEvent, code: " + error.getCode() + ", description : " + error.getDescription());
     }
 
     private void InterstitialAdShowSucceededEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdShowSucceededEvent");
+        //Debug.Log("unity-script: I got InterstitialAdShowSucceededEvent");
     }
 
     private void InterstitialAdShowFailedEvent(IronSourceError error)
     {
-        Debug.Log("unity-script: I got InterstitialAdShowFailedEvent, code :  " + error.getCode() + ", description : " + error.getDescription());
+        //Debug.Log("unity-script: I got InterstitialAdShowFailedEvent, code :  " + error.getCode() + ", description : " + error.getDescription());
     }
 
     private void InterstitialAdClickedEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdClickedEvent");
+        //Debug.Log("unity-script: I got InterstitialAdClickedEvent");
     }
 
     private void InterstitialAdOpenedEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdOpenedEvent");
+       // Debug.Log("unity-script: I got InterstitialAdOpenedEvent");
     }
 
     private void InterstitialAdClosedEvent()
     {
-        Debug.Log("unity-script: I got InterstitialAdClosedEvent");
+        //Debug.Log("unity-script: I got InterstitialAdClosedEvent");
     }
     #endregion
     #region Rewarded
