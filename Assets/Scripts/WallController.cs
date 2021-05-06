@@ -4,7 +4,7 @@ public class WallController : MonoBehaviour
 {
 	private GameObject[] _wallObjects;
 	public GameObject Web;
-	private void Start()
+	public void PrepearWalls()
 	{
 		_wallObjects = GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Wall));
 		for (int i = 0; i < _wallObjects.Length; i++)
