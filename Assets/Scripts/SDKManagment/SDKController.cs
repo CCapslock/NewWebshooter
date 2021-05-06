@@ -11,7 +11,7 @@ public class SDKController : MonoBehaviour
     [SerializeField] private string _ISIOSAppKey = null;
     [SerializeField] private string _ISAndroidAppKey = null;
     [SerializeField] private string _currentAppKey = null;
-    [SerializeField] private float _interstitialDelay = 40f;
+    [SerializeField] private float _interstitialDelay = 25f;
     private bool _isISInitialised = false;
     private float _lastInterstitialTime;
     public static IGetReward RewardInstance = null;
