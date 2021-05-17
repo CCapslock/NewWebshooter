@@ -13,35 +13,32 @@ MonoBehaviour:
   m_Name: Lel_boss_goblin_3
   m_EditorClassIdentifier: 
   Buildings1Transforms:
-  - Position: {x: 11.4, y: -81.6, z: 52.3}
+  - Position: {x: 11.591661, y: -81.6, z: 52.6}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   Buildings2Transforms:
-  - Position: {x: 31.1, y: -52.1, z: 72.6}
+  - Position: {x: 3.2965202, y: -80.700005, z: 23.100002}
+    Rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+    Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: 40.5, y: -48.2, z: 55.4}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: -28.4, y: -39.2, z: 48.8}
+  - Position: {x: 11.5, y: -32.3, z: 74.2}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 0.3, y: -33.4, z: 71.5}
+  - Position: {x: -14.4, y: -48.2, z: 65.5}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-    Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 4, y: -80.700005, z: 23.100002}
-    Rotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   - Position: {x: 2.9, y: -84.3, z: -0.59999657}
     Rotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 42.8, y: -39.2, z: 48.8}
+  - Position: {x: -3.3, y: -11.3, z: 101.1}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: -27.8, y: -52.1, z: 131.4}
+  - Position: {x: 42.6, y: -11.3, z: 85.3}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 30.7, y: -19.5, z: 131.4}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-    Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 30.7, y: -97.3, z: 131.4}
+  - Position: {x: -29.7, y: -48.2, z: 46.4}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   BuildingCubeTransforms: []
@@ -52,31 +49,31 @@ MonoBehaviour:
   - Position: {x: 0.5100064, y: -1.5799978, z: -0.031836987}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
+  - Position: {x: -0.37325096, y: 2.019988, z: 22.305622}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
   ThrowingEnemyTransforms:
-  - Position: {x: 3.1514997, y: 2.019999, z: 30.08}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
+  - Position: {x: -2.6564875, y: -1.5799952, z: 4.874917}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -2.22, y: 2.019999, z: 28.45}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -3.58, y: -1.5799985, z: 5.68}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
+  - Position: {x: -2.3374834, y: 2.0199862, z: 27.662846}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   BossSetParametrs:
     Transform:
       Position: {x: 1.2026364, y: 7.4330053, z: 51.224365}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 1, y: 1, z: 1}
-    SetNum: 0
+      Rotation: {x: 0, y: 0, z: 0, w: 0}
+      Scale: {x: 0, y: 0, z: 0}
+    SetNum: 2
     IsActive: 1
   MovementPoints:
   - Transform:
-      Position: {x: -2.32, y: -0.68, z: -7.474269}
+      Position: {x: -2.678, y: -0.68, z: -7.474269}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
-    - Position: {x: -3.58, y: -1.5799985, z: 5.68}
-      Rotation: {x: -0, y: 1, z: -0, w: 0}
+    - Position: {x: -2.6564875, y: -1.5799952, z: 4.874917}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     - Position: {x: -4.72, y: -1.5800009, z: -0.43}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
@@ -108,19 +105,19 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -0.98, y: 2.94, z: 22.94}
+      Position: {x: -0.98, y: 2.95, z: 15.16}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
-    - Position: {x: 3.1514997, y: 2.019999, z: 30.08}
-      Rotation: {x: -0, y: 1, z: -0, w: 0}
+    - Position: {x: -0.37325096, y: 2.019988, z: 22.305622}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -2.22, y: 2.019999, z: 28.45}
-      Rotation: {x: -0, y: 1, z: -0, w: 0}
+    - Position: {x: -2.3374834, y: 2.0199862, z: 27.662846}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0
-    PointNum: 4
+    PointNum: 2
     NeedToRotate: 0
     NeedToFly: 0
     NeedToCountEnemy: 1
@@ -134,7 +131,7 @@ MonoBehaviour:
     EnemyTransforms: []
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0
-    PointNum: 5
+    PointNum: 3
     NeedToRotate: 0
     NeedToFly: 1
     NeedToCountEnemy: 0
@@ -142,44 +139,16 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 1
   - Transform:
-      Position: {x: 8.583, y: 3.62, z: 45.4}
+      Position: {x: 8.583, y: 3.62, z: 45.23}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0
-    PointNum: 6
+    PointNum: 4
     NeedToRotate: 0
     NeedToFly: 0
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 1
     IsBossBattle: 1
-  - Transform:
-      Position: {x: -0.98, y: 7.52, z: 21.66}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 1, y: 1, z: 1}
-    EnemyTransforms: []
-    RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0
-    PointNum: 3
-    NeedToRotate: 0
-    NeedToFly: 0
-    NeedToCountEnemy: 0
-    NeedToChangeSpeed: 0
-    IsFinalPoint: 0
-    IsBossBattle: 0
-  - Transform:
-      Position: {x: -0.98, y: 7.52, z: 18.34}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 1, y: 1, z: 1}
-    EnemyTransforms: []
-    RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0
-    PointNum: 2
-    NeedToRotate: 0
-    NeedToFly: 0
-    NeedToCountEnemy: 0
-    NeedToChangeSpeed: 0
-    IsFinalPoint: 0
-    IsBossBattle: 0

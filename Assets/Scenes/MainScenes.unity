@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
+  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3291,7 +3291,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableLevels:
+  - {fileID: 11400000, guid: ace3dd495d076e545843faed94b1fc22, type: 2}
+  - {fileID: 11400000, guid: 85df48cd945ecdb4eac4551f6307e78f, type: 2}
   - {fileID: 11400000, guid: ab757c973add2cb499e69305054796fa, type: 2}
+  - {fileID: 11400000, guid: ef34952e785098c4d942104f73bf38c5, type: 2}
+  - {fileID: 11400000, guid: f83c425dcb3616c429c85c1150159e21, type: 2}
+  - {fileID: 11400000, guid: 280e085c14ee3194da19daca910281fb, type: 2}
+  - {fileID: 11400000, guid: 45c0b596eafdcd042b0c64172bf80631, type: 2}
+  - {fileID: 11400000, guid: 786e191ffb0cc5f4f91758ae5b676356, type: 2}
+  - {fileID: 11400000, guid: 84ba337cfa9932648a565d26a7315af1, type: 2}
+  - {fileID: 11400000, guid: 8ce17428cc2e16d42aea0dc48f58534f, type: 2}
+  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
+  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
 --- !u!114 &3040295923444952733
@@ -3368,8 +3379,8 @@ MonoBehaviour:
   Wall: {fileID: 7040273916254283883}
   Web: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   StartThrownigPosition: {x: 0, y: -10, z: -4}
-  MaxCoins: 20
-  TimeBeforeThrownig: 0.4
+  MaxCoins: 50
+  TimeBeforeThrownig: 0.2
   FallingEnemy: {fileID: 1533259991958189498, guid: 381bda9ae85c1b242a14ba7346600c06, type: 3}
   BuildingsPositions:
   - {x: 0, y: 0, z: 14}
@@ -3723,6 +3734,10 @@ PrefabInstance:
     - target: {fileID: 3697736926989637806, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697736927164484414, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+      propertyPath: field of view
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3697736927164484414, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: near clip plane

@@ -16,21 +16,39 @@ MonoBehaviour:
   - Position: {x: 11.591661, y: -81.6, z: 52.6}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: -15.3, y: -59.6, z: 43.1}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+    Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: 38.7, y: -59.6, z: 43.1}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+    Scale: {x: 20, y: 20, z: 20}
   Buildings2Transforms:
   - Position: {x: 3.2965202, y: -80.700005, z: 23.100002}
     Rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 30.9, y: -48.2, z: 67.4}
+  - Position: {x: 37.8, y: -48.2, z: 72.5}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 11.5, y: -48.2, z: 74.2}
+  - Position: {x: 11.5, y: -29.3, z: 74.2}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: -8, y: -48.2, z: 65.5}
+  - Position: {x: -16.1, y: -37.9, z: 75.7}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   - Position: {x: 2.9, y: -84.3, z: -0.59999657}
     Rotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
+    Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: 30.9, y: -48.2, z: 34.4}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+    Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: -35.6, y: -48.2, z: 34.4}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+    Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: -26.4, y: -48.2, z: 13.8}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+    Scale: {x: 20, y: 20, z: 20}
+  - Position: {x: -3.8, y: -48.2, z: 113.4}
+    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   BuildingCubeTransforms: []
   SimpleEnemyTransforms:
@@ -40,21 +58,21 @@ MonoBehaviour:
   - Position: {x: 0.5100064, y: -1.5799978, z: -0.031836987}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
+  - Position: {x: -2.9, y: -1.5800009, z: 3.57}
+    Rotation: {x: -0, y: 1, z: -0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
   ThrowingEnemyTransforms:
-  - Position: {x: 3.1514997, y: 2.019999, z: 30.08}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
+  - Position: {x: -2.363778, y: 2.019989, z: 28.094276}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -2.22, y: 2.019999, z: 28.45}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -3.58, y: -1.5799985, z: 5.68}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
+  - Position: {x: 3.5596561, y: 2.019988, z: 23.776035}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   BossSetParametrs:
     Transform:
       Position: {x: 1.2026364, y: 7.4330053, z: 51.224365}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 1, y: 1, z: 1}
+      Rotation: {x: 0, y: 0, z: 0, w: 0}
+      Scale: {x: 0, y: 0, z: 0}
     SetNum: 1
     IsActive: 1
   MovementPoints:
@@ -63,7 +81,7 @@ MonoBehaviour:
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
-    - Position: {x: -3.58, y: -1.5799985, z: 5.68}
+    - Position: {x: -2.9, y: -1.5800009, z: 3.57}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     - Position: {x: -4.72, y: -1.5800009, z: -0.43}
@@ -100,11 +118,11 @@ MonoBehaviour:
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
-    - Position: {x: 3.1514997, y: 2.019999, z: 30.08}
-      Rotation: {x: -0, y: 1, z: -0, w: 0}
+    - Position: {x: -2.363778, y: 2.019989, z: 28.094276}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -2.22, y: 2.019999, z: 28.45}
-      Rotation: {x: -0, y: 1, z: -0, w: 0}
+    - Position: {x: 3.5596561, y: 2.019988, z: 23.776035}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0
