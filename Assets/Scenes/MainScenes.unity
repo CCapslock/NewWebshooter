@@ -3318,6 +3318,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArtPresets:
+  - EnemyMaterial: {fileID: 2100000, guid: cb24787d718c21a4991aaff50116c14b, type: 2}
+    BuildingMaterial: {fileID: 2100000, guid: af1f5d5470c2a724caf26117714f8d09, type: 2}
+    WindowsMaterial: {fileID: 2100000, guid: c69f5ce13c32c3e43a3324720aac54d2, type: 2}
+    WebMaterial: {fileID: 2100000, guid: 8cb09d6da589f184695a7b7bad65929b, type: 2}
   - EnemyMaterial: {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
     BuildingMaterial: {fileID: 2100000, guid: e90a559254c4c3847a28ec416246745f, type: 2}
     WindowsMaterial: {fileID: 2100000, guid: fc7abf0589182474396879ff270d6395, type: 2}
@@ -3326,10 +3330,6 @@ MonoBehaviour:
     BuildingMaterial: {fileID: 2100000, guid: 50781542562d93a4ca4eb5ab6026df16, type: 2}
     WindowsMaterial: {fileID: 2100000, guid: bb25d3c81f182e04ab7287003546b9d5, type: 2}
     WebMaterial: {fileID: 2100000, guid: 30f35cbb2206d8648bbe7c1673ef4ba6, type: 2}
-  - EnemyMaterial: {fileID: 2100000, guid: cb24787d718c21a4991aaff50116c14b, type: 2}
-    BuildingMaterial: {fileID: 2100000, guid: af1f5d5470c2a724caf26117714f8d09, type: 2}
-    WindowsMaterial: {fileID: 2100000, guid: c69f5ce13c32c3e43a3324720aac54d2, type: 2}
-    WebMaterial: {fileID: 2100000, guid: 8cb09d6da589f184695a7b7bad65929b, type: 2}
   - EnemyMaterial: {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
     BuildingMaterial: {fileID: 2100000, guid: f1da4691b1624914bafd5692d3c3e2cb, type: 2}
     WindowsMaterial: {fileID: 2100000, guid: b769f71453c3af44d9625f7162ea267b, type: 2}
