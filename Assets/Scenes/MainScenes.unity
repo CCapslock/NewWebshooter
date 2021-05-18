@@ -1959,9 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableLevels:
-  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
-  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
-  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
+  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
 --- !u!114 &3040295923444952733

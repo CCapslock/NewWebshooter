@@ -496,8 +496,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5499797084924759055}
   - component: {fileID: 4507697053090426829}
+  - component: {fileID: 1631563338621113343}
   m_Layer: 0
-  m_Name: T-pose_Misterio
+  m_Name: Misterio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,6 +532,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d37c23124a299459a4d96d56f868bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReal: 0
+  _state: 0
+  _currentPhase: 0
+  _maxPhase: 2
+  _misterioClone: {fileID: 5123096242512664245}
+  _circleCenter: {fileID: 0}
+  CircleRadiusPosition: 0
+  Player: {fileID: 0}
+--- !u!95 &1631563338621113343
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123096242512664245}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84d0ee79c02fc0041998136f9e98aeda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5316129142009194914
 GameObject:
   m_ObjectHideFlags: 0

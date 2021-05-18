@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class GoblinView : MonoBehaviour
+public class GoblinView : MonoBehaviour, IBoss
 {
     private BaseGoblinModel _currentModel;
     private Dictionary<GoblinState, BaseGoblinModel> _models;
@@ -213,7 +213,7 @@ public class GoblinView : MonoBehaviour
         }
     }
 
-    public void AwakeGoblin()                           //вызывать для активации поведения
+    public void AwakeBoss()                           //вызывать для активации поведения
     {
         ChangeState(GoblinState.Awakening);
         foreach (BullEyeView eyes in _firstPhazeEyes)
@@ -228,4 +228,5 @@ public class GoblinView : MonoBehaviour
 
     }
 
+    
 }
