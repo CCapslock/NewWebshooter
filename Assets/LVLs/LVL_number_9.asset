@@ -147,7 +147,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -15.46, y: 0, z: 6.27}
+      Position: {x: -14.68, y: 0, z: 6.27}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
@@ -164,12 +164,12 @@ MonoBehaviour:
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0
+    NewSpeed: 0.12
     PointNum: 2
     NeedToRotate: 0
     NeedToFly: 0
     NeedToCountEnemy: 0
-    NeedToChangeSpeed: 0
+    NeedToChangeSpeed: 1
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
@@ -216,12 +216,12 @@ MonoBehaviour:
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0
+    NewSpeed: 0.15
     PointNum: 4
     NeedToRotate: 0
     NeedToFly: 0
     NeedToCountEnemy: 0
-    NeedToChangeSpeed: 0
+    NeedToChangeSpeed: 1
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:

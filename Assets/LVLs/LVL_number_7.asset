@@ -310,12 +310,12 @@ MonoBehaviour:
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0
+    NewSpeed: 0.15
     PointNum: 4
     NeedToRotate: 0
     NeedToFly: 0
     NeedToCountEnemy: 1
-    NeedToChangeSpeed: 0
+    NeedToChangeSpeed: 1
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
@@ -338,12 +338,12 @@ MonoBehaviour:
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
     RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0
+    NewSpeed: 0.2
     PointNum: 2
     NeedToRotate: 0
     NeedToFly: 1
     NeedToCountEnemy: 1
-    NeedToChangeSpeed: 0
+    NeedToChangeSpeed: 1
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
@@ -403,7 +403,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 18
     NeedToRotate: 0
-    NeedToFly: 0
+    NeedToFly: 1
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
