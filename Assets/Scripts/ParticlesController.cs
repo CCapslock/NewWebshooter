@@ -13,12 +13,10 @@ public class ParticlesController : MonoBehaviour
 	private ParticleSystem[] _magicExplosion;
 	private ParticleSystem _speedyWindObject;
 
-	private List<ExplosionPosition> _magicExplosionPositions;
 
 	private void Awake()
 	{
 		Current = this;
-		_magicExplosionPositions = new List<ExplosionPosition>();
 		_smallExplosinObject = new ParticleSystem[6];
 		for (int i = 0; i < _smallExplosinObject.Length; i++)
 		{
@@ -66,9 +64,4 @@ public class ParticlesController : MonoBehaviour
 		_speedyWindObject = Instantiate(SpeedyWindParticles, position, Quaternion.Euler(rotation));
 		_speedyWindObject.Play();
 	}
-}
-public class ExplosionPosition
-{
-	public Vector3 position;
-	public bool IsExploded;
 }
