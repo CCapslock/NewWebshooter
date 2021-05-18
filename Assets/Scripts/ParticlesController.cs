@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticlesController : MonoBehaviour
@@ -7,30 +8,55 @@ public class ParticlesController : MonoBehaviour
 	public ParticleSystem MagicExplosinParticles;
 	public ParticleSystem SpeedyWindParticles;
 	public ParticleSystem StarsExplosionParticles;
-	private ParticleSystem _smallExplosinObject;
 	private ParticleSystem _starsExplosion;
-	private ParticleSystem _magicExplosion;
+	private ParticleSystem[] _smallExplosinObject;
+	private ParticleSystem[] _magicExplosion;
 	private ParticleSystem _speedyWindObject;
+
+	private List<ExplosionPosition> _magicExplosionPositions;
 
 	private void Awake()
 	{
 		Current = this;
-		_smallExplosinObject = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+		_magicExplosionPositions = new List<ExplosionPosition>();
+		_smallExplosinObject = new ParticleSystem[6];
+		for (int i = 0; i < _smallExplosinObject.Length; i++)
+		{
+			_smallExplosinObject[i] = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+		}
 		_starsExplosion = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
-		_magicExplosion = Instantiate(MagicExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+		_magicExplosion = new ParticleSystem[6];
+		for (int i = 0; i < _magicExplosion.Length; i++)
+		{
+			_magicExplosion[i] = Instantiate(MagicExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+		}
 	}
 
-	public void MakeSmallExplosion(Vector3 position) 
+	public void MakeSmallExplosion(Vector3 position)
 	{
-		_smallExplosinObject.transform.position = position;
-		_smallExplosinObject.Play();
+		for (int i = 0; i < _smallExplosinObject.Length; i++)
+		{
+			if (!_smallExplosinObject[i].isPlaying || i == _smallExplosinObject.Length - 1)
+			{
+				_smallExplosinObject[i].transform.position = position;
+				_smallExplosinObject[i].Play();
+				break;
+			}
+		}
 	}
-	public void MakeMagicExplosion(Vector3 position) 
+	public void MakeMagicExplosion(Vector3 position)
 	{
-		_magicExplosion.transform.position = position;
-		_magicExplosion.Play();
+		for (int i = 0; i < _magicExplosion.Length; i++)
+		{
+			if (!_magicExplosion[i].isPlaying || i == _magicExplosion.Length - 1)
+			{
+				_magicExplosion[i].transform.position = position;
+				_magicExplosion[i].Play();
+				break;
+			}
+		}
 	}
-	public void MakeStarsExplosionExplosion(Vector3 position) 
+	public void MakeStarsExplosion(Vector3 position)
 	{
 		_starsExplosion.transform.position = position;
 		_starsExplosion.Play();
@@ -40,4 +66,9 @@ public class ParticlesController : MonoBehaviour
 		_speedyWindObject = Instantiate(SpeedyWindParticles, position, Quaternion.Euler(rotation));
 		_speedyWindObject.Play();
 	}
+}
+public class ExplosionPosition
+{
+	public Vector3 position;
+	public bool IsExploded;
 }
