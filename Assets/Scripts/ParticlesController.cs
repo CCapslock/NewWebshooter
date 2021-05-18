@@ -8,6 +8,8 @@ public class ParticlesController : MonoBehaviour
 	public ParticleSystem MagicExplosinParticles;
 	public ParticleSystem SpeedyWindParticles;
 	public ParticleSystem StarsExplosionParticles;
+	public ParticleSystem Glow;
+	private ParticleSystem _glowObject;
 	private ParticleSystem _starsExplosion;
 	private ParticleSystem[] _smallExplosinObject;
 	private ParticleSystem[] _magicExplosion;
@@ -17,12 +19,13 @@ public class ParticlesController : MonoBehaviour
 	private void Awake()
 	{
 		Current = this;
+		_glowObject = Instantiate(Glow, new Vector3(0, 0, -20f), Quaternion.identity);
+		_starsExplosion = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
 		_smallExplosinObject = new ParticleSystem[6];
 		for (int i = 0; i < _smallExplosinObject.Length; i++)
 		{
 			_smallExplosinObject[i] = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
 		}
-		_starsExplosion = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
 		_magicExplosion = new ParticleSystem[6];
 		for (int i = 0; i < _magicExplosion.Length; i++)
 		{
@@ -63,5 +66,10 @@ public class ParticlesController : MonoBehaviour
 	{
 		_speedyWindObject = Instantiate(SpeedyWindParticles, position, Quaternion.Euler(rotation));
 		_speedyWindObject.Play();
+	}
+	public void MakeGlow(Vector3 position)
+	{
+		_glowObject.transform.position = position;
+		_glowObject.Play();
 	}
 }
