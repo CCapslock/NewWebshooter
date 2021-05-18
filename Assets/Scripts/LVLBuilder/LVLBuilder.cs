@@ -70,6 +70,7 @@ public class LVLBuilder : MonoBehaviour
 		//spawn boss set
 		if (lvl.BossSetParametrs.IsActive)
 		{
+			/*
 			switch (lvl.BossSetParametrs.SetNum)
 			{
 				case 0:
@@ -81,7 +82,8 @@ public class LVLBuilder : MonoBehaviour
 				case 2:
 					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
 					break;
-			}
+			}*/
+			Instantiate(Resources.Load<GameObject>($"Prefabs/Bosses/{lvl.BossSetParametrs.SetName}"), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
 		}
 
 		PlayerMovementPoints = new MovementPoints[TempMovementPoints.Length];
