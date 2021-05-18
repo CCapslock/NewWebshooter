@@ -105,6 +105,14 @@ public class BonusLvlController : MonoBehaviour
 			}
 			else
 			{
+				if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 0)
+				{
+					PlayerPrefs.SetInt(ForTempPlayerPrefs, 1);
+				}
+				else if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 1)
+				{
+					PlayerPrefs.SetInt(ForTempPlayerPrefs, 0);
+				}
 				_mainGameController.EndBonusLvl(Random.Range(40, 81));
 			}
 		}
@@ -146,14 +154,11 @@ public class BonusLvlController : MonoBehaviour
 	{
 		if(PlayerPrefs.GetInt(ForTempPlayerPrefs) == 0)
 		{
-			PlayerPrefs.SetInt(ForTempPlayerPrefs, 1);
-
 			Wall.SetActive(true);
 			StartSpawner();
 		}
 		else if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 1)
 		{
-			PlayerPrefs.SetInt(ForTempPlayerPrefs, 0);
 			StartFallingBonusLvl();
 		}
 	}
@@ -181,6 +186,14 @@ public class BonusLvlController : MonoBehaviour
 	}
 	private void EndLvl()
 	{
+		if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 0)
+		{
+			PlayerPrefs.SetInt(ForTempPlayerPrefs, 1);
+		}
+		else if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 1)
+		{
+			PlayerPrefs.SetInt(ForTempPlayerPrefs, 0);
+		}
 		_mainGameController.EndBonusLvl(_numberOfCoinsCaught);
 	}
 	public void StickObject(Transform transform)

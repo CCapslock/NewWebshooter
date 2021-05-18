@@ -28,7 +28,7 @@ public class Wall : MonoBehaviour
 	{
 		SphereCollider webBulletCollider = collision.gameObject.GetComponent<SphereCollider>();
 		webBulletCollider.isTrigger = true;
-		GameObject WebObject = Instantiate(Web, collision.gameObject.transform.position + new Vector3(0, 0, -0.4f), Quaternion.Euler(0, 180f, Random.Range(0, 360)));
+		GameObject WebObject = Instantiate(Web, collision.gameObject.transform.position + new Vector3(0, 0, -0.32f), Quaternion.Euler(0, 180f, Random.Range(0, 360)));
 		WebObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 		if (collision.transform.position.y - collision.GetContact(0).point.y <= _magicNumber)
 		{
