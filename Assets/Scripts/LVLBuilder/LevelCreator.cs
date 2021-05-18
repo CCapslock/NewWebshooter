@@ -199,6 +199,7 @@ public class LevelCreator : ScriptableObject
 		//spawn boss set
 		if (BossSetParametrs.IsActive)
 		{
+			/*
 			switch (BossSetParametrs.SetNum)
 			{
 				case 0:
@@ -210,7 +211,8 @@ public class LevelCreator : ScriptableObject
 				case 2:
 					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
 					break;
-			}
+			}*/
+			Instantiate(Resources.Load<GameObject>($"Prefabs/Bosses/{BossSetParametrs.SetName}"), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
 		}
 	}
 }
@@ -227,7 +229,7 @@ public class CustomTransform
 public class CustomBossSetParametrs
 {
 	public CustomTransform Transform;
-	public int SetNum;
+	public string SetName;
 	public bool IsActive;
 }
 [Serializable]
