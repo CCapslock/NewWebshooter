@@ -21,8 +21,8 @@ public class GlovesSkinManager : MonoBehaviour
 
     public void SelectSkin(GlovesSkinModel skin)
     {
-        Debug.LogWarning($"Selecting skin {skin.gameObject.name}");
-        Debug.LogWarning($"Skin lenght = {_skins.Length}");
+        //Debug.LogWarning($"Selecting skin {skin.gameObject.name}");
+        //Debug.LogWarning($"Skin lenght = {_skins.Length}");
 
         for (int i = 0; i < _skins.Length; i++)
         {
