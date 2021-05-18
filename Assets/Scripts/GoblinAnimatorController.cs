@@ -12,7 +12,7 @@ public class GoblinAnimatorController : MonoBehaviour
 
     public void CreateBomb()
     {
-        Debug.LogWarning("CreatingBomb");
+        //Debug.LogWarning("CreatingBomb");
         _tempBombObject = Instantiate(_bombPrefab, _bombParentTransform.position, Quaternion.identity,_bombParentTransform);
         _tempBombObject.GetComponent<Rigidbody>().isKinematic = true;
         //GameEvents.Current.CreatingBomb();
@@ -20,7 +20,7 @@ public class GoblinAnimatorController : MonoBehaviour
 
     public void ThrowBomb()
     {
-        Debug.LogWarning("Bomb");
+        //Debug.LogWarning("Bomb");
         if (_tempBombObject == null)
         {
             return;

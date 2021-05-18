@@ -1407,7 +1407,7 @@ MonoBehaviour:
   _startAwakeningTransform: {fileID: 0}
   _smothAwakChangeDistance: 0
   _strifePoints: []
-  _attackCooldown: 2
+  _attackCooldown: 4
   _animator: {fileID: 4665067138150540198}
   _maxHp: 0
   _currentHP: 0

@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: _maxPhase
-      value: 1
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: _circleCenter
@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 7409430082353575172}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: _currentPhase
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: CircleRadiusPosition

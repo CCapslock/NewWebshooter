@@ -54,6 +54,7 @@ public class GoblinView : MonoBehaviour, IBoss
     public PlayerMovement Player => _player;
     private void Awake()
     {
+        MainGameController.BossContainter = this;
         _newState = GoblinState.Awaiting;
         transform.position = _startAwakeningTransform.position;
 
@@ -198,7 +199,10 @@ public class GoblinView : MonoBehaviour, IBoss
     private void ExplodeGlider()
     {
         //Вызвать explode в _glider.position
-        ParticlesController.Current.MakeSmallExplosion(_glider.transform.position);
+        if (_glider != null)
+        { 
+            ParticlesController.Current.MakeSmallExplosion(_glider.transform.position);
+        }
         //добавить проверку на нул у глайдера
 
         _mainGameController.EnemyBeenDefeated();
@@ -225,6 +229,7 @@ public class GoblinView : MonoBehaviour, IBoss
     public void OnDestroy()
     {
         GameEvents.Current.OnThrowingBomb -= ThrowBomb;
+        MainGameController.BossContainter = null;
 
     }
 
