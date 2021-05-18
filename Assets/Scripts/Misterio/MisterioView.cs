@@ -89,7 +89,7 @@ public class MisterioView : MonoBehaviour, IBoss
             }
             else
             { 
-                //ParticleController.MakeGlove();
+                ParticlesController.Current.MakeGlow(transform.position);
             }
         }
     }
@@ -125,7 +125,8 @@ public class MisterioView : MonoBehaviour, IBoss
     }
 
     public void SpawnClones()
-    {
+    {        
+        ParticlesController.Current.MakeMagicExplosion(transform.position);
         SetCircleRadiusPosition(Random.Range(0, 360));
         _interval = 360 / (_currentPhase + 2);
         GameObject obj;
@@ -146,8 +147,8 @@ public class MisterioView : MonoBehaviour, IBoss
 
     public void DestroyMisterio()
     {
-        //Проиграть партикл взрыва
-        Destroy(this.gameObject, 0.1f);
+        ParticlesController.Current.MakeMagicExplosion(transform.position);
+        Destroy(this.gameObject);
         MisterioController.Current.RemoveMisterioFromList(this);
     }
 
