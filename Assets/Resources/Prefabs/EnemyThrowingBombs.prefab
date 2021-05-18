@@ -127,7 +127,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!114 &8560128113520846157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,10 +469,10 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -4612162990109294230, guid: 5d768e3b5bf406e4aab05d9c09f11e49, type: 3}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
+  - {fileID: 2100000, guid: e39086f8b3c463142ad36f2c18916b85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
