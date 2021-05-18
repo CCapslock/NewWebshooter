@@ -67,7 +67,7 @@ MonoBehaviour:
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   BossSetParametrs:
     Transform:
-      Position: {x: 10, y: 0, z: 57}
+      Position: {x: 8, y: 1.75, z: 50}
       Rotation: {x: 0, y: 0, z: 0, w: 0}
       Scale: {x: 0, y: 0, z: 0}
     SetName: MisterioSet0
