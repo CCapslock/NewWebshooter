@@ -73,31 +73,38 @@ public class EnemyController : MonoBehaviour
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)) && IsEnemyActive)
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
 		{
-			IsEnemyActive = false;
-			_isEnemyWebbed = true;
-			SphereCollider collider = collision.gameObject.GetComponent<SphereCollider>();
-			collider.isTrigger = true;
-			_mainGameController.EnemyBeenDefeated();
-			_throwingVector = transform.position;
-			if ((transform.position.z - collision.transform.position.z) * 10000f > 5500f)
+			if (IsEnemyActive)
 			{
-				_throwingVector.z = (transform.position.z - collision.transform.position.z) * 10000;
+				IsEnemyActive = false;
+				_isEnemyWebbed = true;
+				SphereCollider collider = collision.gameObject.GetComponent<SphereCollider>();
+				collider.isTrigger = true;
+				_mainGameController.EnemyBeenDefeated();
+				_throwingVector = transform.position;
+				if ((transform.position.z - collision.transform.position.z) * 10000f > 5500f)
+				{
+					_throwingVector.z = (transform.position.z - collision.transform.position.z) * 10000;
+				}
+				else
+				{
+					_throwingVector.z = 5500f;
+				}
+				_throwingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 4000;
+				_throwingVector.y = (transform.position.y - HipsRigidBody.transform.position.y) * 1f + 1000f;
+				TurnOnRagdoll();
+				for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
+				{
+					_ragdollRigidBodyes[i].AddForce(_throwingVector * 1f);
+				}
+				HipsRigidBody.AddForce(_throwingVector * 4f);
+				//много чисел так как подгонял наиболее подходящие значения
 			}
 			else
 			{
-				_throwingVector.z = 5500f;
+				ParticlesController.Current.MakeGlow(collision.transform.position);
 			}
-			_throwingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 4000;
-			_throwingVector.y = (transform.position.y - HipsRigidBody.transform.position.y) * 1f + 1000f;
-			TurnOnRagdoll();
-			for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
-			{
-				_ragdollRigidBodyes[i].AddForce(_throwingVector * 1f);
-			}
-			HipsRigidBody.AddForce(_throwingVector * 4f);
-			//много чисел так как подгонял наиболее подходящие значения
 		}
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Bottom)) && IsEnemyActive)
 		{
