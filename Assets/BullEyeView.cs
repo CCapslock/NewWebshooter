@@ -46,7 +46,7 @@ public class BullEyeView : MonoBehaviour
         if (other.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
         {
             _goblin.TakeDamage();
-            ParticlesController.Current.MakeStarsExplosionExplosion(transform.position);
+            ParticlesController.Current.MakeStarsExplosion(transform.position);
             this.gameObject.SetActive(false);
 
         }

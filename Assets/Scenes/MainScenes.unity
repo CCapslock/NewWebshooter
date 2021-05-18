@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1959,7 +1959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableLevels:
-  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
+  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
+  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
+  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
 --- !u!114 &3040295923444952733
@@ -2344,6 +2346,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 3de940e2550a17a4194e59f8ffb99afd, type: 2}
+    - target: {fileID: 3697736926319268515, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3697736926989637801, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: MaxSpeed
       value: 0.15
@@ -2403,6 +2409,10 @@ PrefabInstance:
     - target: {fileID: 3697736927164484414, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: near clip plane
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697736927420442688, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3767278715580660758, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_IsActive

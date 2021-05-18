@@ -31,7 +31,6 @@ public class ShopItem : MonoBehaviour
                 break;
         }
     }
-
     public void SetItem(WebSkinModel skin)
     {
         _btnSelect.onClick.RemoveAllListeners();
@@ -54,5 +53,20 @@ public class ShopItem : MonoBehaviour
                 _btnSelect.interactable = false;
                 break;
         }
+    }
+
+    public void SetPopUp(GlovesSkinModel skin)
+    {
+        _btnSelect.gameObject.SetActive(false);
+        _frameSelected.gameObject.SetActive(false);
+
+        _image.sprite = skin.UnlockedImage;
+    }
+    public void SetPopUp(WebSkinModel skin)
+    {
+        _btnSelect.gameObject.SetActive(false);
+        _frameSelected.gameObject.SetActive(false);
+
+        _image.sprite = skin.UnlockedImage;
     }
 }
