@@ -45,7 +45,7 @@ public class BonusLvlController : MonoBehaviour
 	private float _widthOfScreen;
 	private int _numberOfCoinsCaught = 0;
 	private int _amountofEnemyesActive = 0;
-	[SerializeField]private int _amountofEnemyesLeft = 0;
+	[SerializeField] private int _amountofEnemyesLeft = 0;
 	private bool _needToMoveHouses;
 
 
@@ -152,7 +152,7 @@ public class BonusLvlController : MonoBehaviour
 	}
 	public void StartBonusPart()
 	{
-		if(PlayerPrefs.GetInt(ForTempPlayerPrefs) == 0)
+		if (PlayerPrefs.GetInt(ForTempPlayerPrefs) == 0)
 		{
 			Wall.SetActive(true);
 			StartSpawner();
@@ -194,7 +194,7 @@ public class BonusLvlController : MonoBehaviour
 		{
 			PlayerPrefs.SetInt(ForTempPlayerPrefs, 0);
 		}
-		_mainGameController.EndBonusLvl(_numberOfCoinsCaught);
+		_mainGameController.EndBonusLvl(_numberOfCoinsCaught * 2);
 	}
 	public void StickObject(Transform transform)
 	{
