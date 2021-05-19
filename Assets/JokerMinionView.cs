@@ -58,12 +58,12 @@ public class JokerMinionView : MonoBehaviour
 
     public void FixedUpdate()
     {
+        _temporalVector3.x = _player.transform.position.x;// - transform.position.x;
+        _temporalVector3.y = transform.position.y;
+        _temporalVector3.z = _player.transform.position.z; //- transform.position.z;
+        transform.LookAt(_temporalVector3);
         if (_runToPlayer)
         {
-            _temporalVector3.x = _player.transform.position.x;// - transform.position.x;
-            _temporalVector3.y = transform.position.y;
-            _temporalVector3.z = _player.transform.position.z; //- transform.position.z;
-            transform.LookAt(_temporalVector3);
             if ((transform.position - _player.transform.position).magnitude > 1.2f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _movementSpeed * Time.deltaTime);
