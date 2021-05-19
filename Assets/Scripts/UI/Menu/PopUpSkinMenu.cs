@@ -6,14 +6,17 @@ public class PopUpSkinMenu : BaseMenu
     [Header("Panel")]
     [SerializeField] private GameObject _panel;
 
-    [Header("Particles")]
-    [SerializeField] private ParticleSystem _particles;
+    [Header("Rolling image")]
+    [SerializeField] private Image _image;
 
     [Header("Shop Item")]
     [SerializeField] private ShopItem _shopItem;
 
     [Header("Button hide")]
     [SerializeField] private Button _btnHide;
+
+    private float _speed;
+    private bool _isActive;
     
 
     private void Start()
@@ -27,13 +30,13 @@ public class PopUpSkinMenu : BaseMenu
     public override void Hide()
     {
         _panel.SetActive(false);
-        _particles.Stop();
+        _isActive = false;
     }
 
     public override void Show()
     {
         _panel.SetActive(true);
-        _particles.Play();
+        _isActive = true;
     }
 
     private void ShowPopUp(GlovesSkinModel skin)
