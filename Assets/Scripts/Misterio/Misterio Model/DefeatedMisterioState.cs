@@ -1,18 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-    public class DefeatedMisterioStateModel : BaseMisterioModel
+public class DefeatedMisterioStateModel : BaseMisterioModel
+{
+    public override void Execute(MisterioView view)
     {
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        base.Execute(view);
     }
+}

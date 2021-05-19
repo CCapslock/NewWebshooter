@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class GoblinView : MonoBehaviour
+public class GoblinView : MonoBehaviour, IBoss
 {
     private BaseGoblinModel _currentModel;
     private Dictionary<GoblinState, BaseGoblinModel> _models;
@@ -54,6 +54,7 @@ public class GoblinView : MonoBehaviour
     public PlayerMovement Player => _player;
     private void Awake()
     {
+        MainGameController.BossContainter = this;
         _newState = GoblinState.Awaiting;
         transform.position = _startAwakeningTransform.position;
 
@@ -198,7 +199,10 @@ public class GoblinView : MonoBehaviour
     private void ExplodeGlider()
     {
         //Вызвать explode в _glider.position
-        ParticlesController.Current.MakeSmallExplosion(_glider.transform.position);
+        if (_glider != null)
+        { 
+            ParticlesController.Current.MakeSmallExplosion(_glider.transform.position);
+        }
         //добавить проверку на нул у глайдера
 
         _mainGameController.EnemyBeenDefeated();
@@ -213,7 +217,7 @@ public class GoblinView : MonoBehaviour
         }
     }
 
-    public void AwakeGoblin()                           //вызывать для активации поведения
+    public void AwakeBoss()                           //вызывать для активации поведения
     {
         ChangeState(GoblinState.Awakening);
         foreach (BullEyeView eyes in _firstPhazeEyes)
@@ -225,7 +229,9 @@ public class GoblinView : MonoBehaviour
     public void OnDestroy()
     {
         GameEvents.Current.OnThrowingBomb -= ThrowBomb;
+        MainGameController.BossContainter = null;
 
     }
 
+    
 }

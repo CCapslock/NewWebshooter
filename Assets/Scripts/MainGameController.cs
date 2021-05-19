@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MainGameController : MonoBehaviour
 {
+	[HideInInspector] public static IBoss BossContainter;
 	public LevelCreator[] AvailableLevels;
-
 	private PlayerMovement _playerMovement;
 	private ArtController _artController;
 	private UIController _uiController;
@@ -71,20 +71,27 @@ public class MainGameController : MonoBehaviour
 		Debug.Log("MainGameController come here ");
 		if (IsBossBattle)
 		{
-			Debug.Log("MainGameController IsBossBattle");
+			/*Debug.Log("MainGameController IsBossBattle");
 			GoblinView goblinView = null;
 			try
 			{
 				goblinView = FindObjectOfType<GoblinView>();
+				
 			}
-			catch { }
-			if (goblinView != null)
+			catch { }*/
+			if (BossContainter != null)
 			{
-				Debug.Log("MainGameController activating Goblin");
-				goblinView.AwakeGoblin();
+				BossContainter.AwakeBoss();
 				AmountOfEnemyes++;
 				_isFinal = true;
 			}
+			/*if (goblinView != null)
+			{
+				Debug.Log("MainGameController activating Goblin");
+				goblinView.AwakeBoss();
+				AmountOfEnemyes++;
+				_isFinal = true;
+			}*/
 			else
 			{
 				_isFinal = true;
