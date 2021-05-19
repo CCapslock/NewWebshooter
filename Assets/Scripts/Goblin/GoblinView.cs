@@ -221,7 +221,7 @@ public class GoblinView : MonoBehaviour, IBoss
         }
     }
 
-    public void AwakeBoss()                           //вызывать для активации поведения
+    public void AwakeBoss()
     {
         ChangeState(GoblinState.Awakening);
         foreach (BullEyeView eyes in _firstPhazeEyes)

@@ -31,7 +31,9 @@ public class MisterioView : MonoBehaviour, IBoss
 	{
 		Player = FindObjectOfType<PlayerMovement>();
 		if (MainGameController.BossContainter == null)
+        {
 			MainGameController.BossContainter = this;
+        }
 		if (MisterioController.Current == null)
 		{
 			MisterioController.Current = new MisterioController();
@@ -44,7 +46,7 @@ public class MisterioView : MonoBehaviour, IBoss
 		MisterioController.Current.AddMisterioToList(this);
 	}
 
-	public void Update()
+	public void FixedUpdate()
 	{
 		if (isReal)
 		{
