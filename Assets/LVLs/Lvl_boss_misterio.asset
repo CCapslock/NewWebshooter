@@ -20,7 +20,7 @@ MonoBehaviour:
   - Position: {x: 40.5, y: -48.2, z: 55.4}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: 11.5, y: -46.3, z: 88.1}
+  - Position: {x: 8.9, y: -45.34, z: 62.47}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   - Position: {x: -14.4, y: -48.2, z: 65.5}
@@ -35,7 +35,7 @@ MonoBehaviour:
   - Position: {x: 42.6, y: -11.3, z: 85.3}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: -13.7, y: -48.2, z: 46.4}
+  - Position: {x: -9.82, y: -45.34, z: 43.23}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   - Position: {x: 32.4, y: -25.4, z: 124}
@@ -45,9 +45,9 @@ MonoBehaviour:
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   BuildingCubeTransforms:
-  - Position: {x: 9.09, y: -16.0187, z: 52.0942}
+  - Position: {x: 8.65, y: -16.0187, z: 52.0942}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    Scale: {x: 26.282572, y: 35.398872, z: 25.2116}
+    Scale: {x: 18.237534, y: 35.398872, z: 25.2116}
   SimpleEnemyTransforms:
   - Position: {x: -4.72, y: -1.5800009, z: -0.43}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
