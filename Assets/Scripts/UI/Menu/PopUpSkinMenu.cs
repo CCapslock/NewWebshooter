@@ -27,13 +27,13 @@ public class PopUpSkinMenu : BaseMenu
     public override void Hide()
     {
         _panel.SetActive(false);
-        //_particles.Stop();
+        _particles.Stop();
     }
 
     public override void Show()
     {
         _panel.SetActive(true);
-        //_particles.Play();
+        _particles.Play();
     }
 
     private void ShowPopUp(GlovesSkinModel skin)
