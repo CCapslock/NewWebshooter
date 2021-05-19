@@ -17,6 +17,8 @@ public class SDKController : MonoBehaviour
     public static IGetReward RewardInstance = null;
 
     private int _currentLevelNumber = 1;
+    private int _currentOverallLevelNumber = 0;
+    private string _currentOverallLevelNumberString = "0";
     private string _currentLevelNumberString = "1";
     private int _previousLevelNumber = -1;
     private float _startLevelTime = 0f;
@@ -47,23 +49,25 @@ public class SDKController : MonoBehaviour
     {
         _previousLevelNumber = _currentLevelNumber;
         _currentLevelNumber = levelNumber;
+        _currentOverallLevelNumber = PlayerPrefs.GetInt("OverallLevels");
+        _currentOverallLevelNumberString = _currentOverallLevelNumber.ToString();
         _currentLevelNumberString = _currentLevelNumber.ToString();
-        if (_previousLevelNumber >= 1)
+        if (_previousLevelNumber >= 0)
         { 
             //GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Level time", _currentLevelNumber);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Level time", _currentOverallLevelNumberString, (int)(Time.time - _startLevelTime));
         }
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, _currentLevelNumberString);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, _currentOverallLevelNumberString);
     }
 
     private void OnLevelFailedEvent()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentLevelNumberString);        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentOverallLevelNumberString);        
     }
 
     private void OnLevelCompleteEvent()
     {        
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentLevelNumberString);        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentOverallLevelNumberString);        
     }
 
     private void SubscribeGameAnalyticEvent()
@@ -156,7 +160,8 @@ public class SDKController : MonoBehaviour
         {
             _lastInterstitialTime = Time.time;
             IronSource.Agent.showInterstitial();
-            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _currentLevelNumberString);
+            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _currentOverallLevelNumberString);
+            GameAnalytics.NewDesignEvent($"ShowInterstitial:{_currentOverallLevelNumberString}");
         }
         else
         {
@@ -233,7 +238,8 @@ public class SDKController : MonoBehaviour
         {
             IronSource.Agent.showRewardedVideo();
             //GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
-            GameAnalytics.NewAdEvent(GAAdAction.Clicked,GAAdType.RewardedVideo,"IronSource",_currentLevelNumberString);
+            GameAnalytics.NewAdEvent(GAAdAction.Show,GAAdType.RewardedVideo,"IronSource",_currentLevelNumberString);
+            GameAnalytics.NewDesignEvent($"RewardedVideo:{_currentOverallLevelNumberString}:ClickShow");
         }
     }
 
@@ -282,6 +288,7 @@ public class SDKController : MonoBehaviour
         {
             RewardInstance.RewardPlayer();
             GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "IronSource", $"InLevel {_currentLevelNumber}, Reward:{RewardInstance.EventName()}");
+            GameAnalytics.NewDesignEvent($"RewardedVideo:{_currentOverallLevelNumberString}:RewardReceive:{RewardInstance.EventName()}");
         }
         else
         {
@@ -316,6 +323,7 @@ public class SDKController : MonoBehaviour
     private void RewardedVideoAdClickedEvent(IronSourcePlacement placement)
     {
         GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance.EventName()}");
+        GameAnalytics.NewDesignEvent($"RewardedVideo:{_currentOverallLevelNumberString}:VideoClicked");
     }
     #endregion
 }

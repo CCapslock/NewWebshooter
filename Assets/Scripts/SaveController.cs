@@ -11,6 +11,7 @@ public class SaveController : MonoBehaviour
 	private string _allRoundsForPlaying = "LvlBase";
 	private string _notBonusLvlsCounter = "BasicLvls";
 	private string _bonusLvlsCounter = "BonusLvls";
+	private string _overallCompletedLevels = "OverallLevels";
 	private char[] _currentLvlBase;
 	private int _currentLvlNum;
 
@@ -28,6 +29,7 @@ public class SaveController : MonoBehaviour
 			PlayerPrefs.SetString(_allRoundsForPlaying, LVLBase);
 			PlayerPrefs.SetInt(_roundForPlaying, 0);
 			PlayerPrefs.SetInt(_notBonusLvlsCounter, 0);
+			
 		}
 		if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
 		{
@@ -99,6 +101,7 @@ public class SaveController : MonoBehaviour
 	}
 	public void SaveCurrentLvl(bool isBonusLvl)
 	{
+
 		if (isBonusLvl)
 		{
 			PlayerPrefs.SetInt(_notBonusLvlsCounter, 0);
@@ -117,6 +120,7 @@ public class SaveController : MonoBehaviour
 				PlayerPrefs.SetInt(_roundForPlaying, PlayerPrefs.GetInt(_roundForPlaying) + 1);
 			}
 		}
+		PlayerPrefs.SetInt(_overallCompletedLevels, PlayerPrefs.GetInt(_overallCompletedLevels) + 1);
 	}
 	public bool IsItTimeForBonusLvl()
 	{
