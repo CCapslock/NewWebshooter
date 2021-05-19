@@ -2061,8 +2061,8 @@ MonoBehaviour:
   Wall: {fileID: 7040273916254283883}
   Web: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   StartThrownigPosition: {x: 0, y: -10, z: -4}
-  MaxCoins: 50
-  TimeBeforeThrownig: 0.2
+  MaxCoins: 75
+  TimeBeforeThrownig: 0.15
   FallingEnemy: {fileID: 1533259991958189498, guid: 381bda9ae85c1b242a14ba7346600c06, type: 3}
   BuildingsPositions:
   - {x: 0, y: 0, z: 14}
