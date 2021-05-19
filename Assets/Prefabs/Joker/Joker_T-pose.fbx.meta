@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 774736a8d9094e840b0ef779c23f0fcf
+guid: 09cd573e31befd648ae0873197f2c984
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -8855952457048485251
+    second: Joker T-pose
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -65,11 +68,11 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 169
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []

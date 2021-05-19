@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4535193175774254301}
   m_Layer: 0
-  m_Name: MisterioSet0
+  m_Name: MisterioSet1
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4535193175774254301}
     m_Modifications:
+    - target: {fileID: 63624306996026955, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6974381ea4f8fe243a6a1eeb0038dab4, type: 2}
+    - target: {fileID: 63624306996026955, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d287ef85005d9ce4480f981405dd54b2, type: 2}
+    - target: {fileID: 63624306996026955, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6974381ea4f8fe243a6a1eeb0038dab4, type: 2}
+    - target: {fileID: 63624306996026955, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb3ef40b0045a514f8e9022aefef7a0d, type: 2}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: isReal
       value: 1

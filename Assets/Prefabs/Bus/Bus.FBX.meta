@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: 09cd573e31befd648ae0873197f2c984
+guid: 774736a8d9094e840b0ef779c23f0fcf
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      74: -8855952457048485251
-    second: Joker T-pose
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -37,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 3
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.0762
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

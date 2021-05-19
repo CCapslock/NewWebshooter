@@ -8,7 +8,9 @@ public class ParticlesController : MonoBehaviour
 	public ParticleSystem MagicExplosinParticles;
 	public ParticleSystem SpeedyWindParticles;
 	public ParticleSystem StarsExplosionParticles;
+	public ParticleSystem EvilLaugh;
 	public ParticleSystem Glow;
+	private ParticleSystem _evilLaughObject;
 	private ParticleSystem _glowObject;
 	private ParticleSystem _starsExplosion;
 	private ParticleSystem[] _smallExplosinObject;
@@ -20,6 +22,8 @@ public class ParticlesController : MonoBehaviour
 	{
 		Current = this;
 		_glowObject = Instantiate(Glow, new Vector3(0, 0, -20f), Quaternion.identity);
+		_evilLaughObject = Instantiate(EvilLaugh, new Vector3(0, 0, -20f), Quaternion.identity);
+		_evilLaughObject.Stop();
 		_starsExplosion = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
 		_smallExplosinObject = new ParticleSystem[6];
 		for (int i = 0; i < _smallExplosinObject.Length; i++)
@@ -71,5 +75,10 @@ public class ParticlesController : MonoBehaviour
 	{
 		_glowObject.transform.position = position;
 		_glowObject.Play();
+	}
+	public void MakeEvilLaughParticles(Vector3 position)
+	{
+		_evilLaughObject.transform.position = position;
+		_evilLaughObject.Play();
 	}
 }
