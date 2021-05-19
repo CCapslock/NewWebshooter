@@ -136,7 +136,7 @@ MonoBehaviour:
     IsFinalPoint: 1
     IsBossBattle: 0
   - Transform:
-      Position: {x: 1.72, y: 16.03, z: 74.6}
+      Position: {x: 1.72, y: 16.882, z: 74.6}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
@@ -150,7 +150,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: 1.72, y: 16.4, z: 73.71}
+      Position: {x: 1.72, y: 17.251999, z: 73.71}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
@@ -164,7 +164,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: 1.72, y: 16.648, z: 70.459}
+      Position: {x: 1.72, y: 17.5, z: 70.459}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
@@ -181,7 +181,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -7.85, y: 10.19, z: 67.98}
+      Position: {x: -7.85, y: 10.95, z: 67.98}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
@@ -195,7 +195,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -7.85, y: 10.59, z: 66.9}
+      Position: {x: -7.85, y: 11.57, z: 66.9}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
@@ -209,7 +209,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -7.85, y: 10.59, z: 64.09}
+      Position: {x: -7.85, y: 11.91, z: 64.09}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
@@ -226,7 +226,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -1.5899999, y: 6.7, z: 57.57}
+      Position: {x: -1.5899999, y: 6.99, z: 57.57}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
@@ -240,7 +240,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -1.55, y: 7.047, z: 56.55}
+      Position: {x: -1.55, y: 7.81, z: 56.55}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
@@ -254,7 +254,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: -1.55, y: 7.267, z: 53.509}
+      Position: {x: -1.55, y: 8.030001, z: 53.509}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:

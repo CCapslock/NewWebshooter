@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: _maxPhase
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: _circleCenter
@@ -113,15 +113,35 @@ PrefabInstance:
       objectReference: {fileID: 7409430082353575172}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: _currentPhase
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4507697053090426829, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: CircleRadiusPosition
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4709427317213456868, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0000018128194
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709427317213456868, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000067055225
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106300359032253539, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0000009010546
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106300359032253539, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000011175871
+      objectReference: {fileID: 0}
     - target: {fileID: 5123096242512664245, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: m_Name
       value: Misterio
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185306994332192629, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.04511423
       objectReference: {fileID: 0}
     - target: {fileID: 5499797084924759055, guid: bfcd3f979826e9d4d98ff65637a7925e, type: 3}
       propertyPath: m_RootOrder
