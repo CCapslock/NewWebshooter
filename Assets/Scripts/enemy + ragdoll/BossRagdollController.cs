@@ -70,8 +70,8 @@ public class BossRagdollController : MonoBehaviour
 			//много чисел так как подгонял наиболее подходящие значения
 		}
 	}
-	
-	
+
+
 	#region Enemy Methods
 	public void GetStickmanStucked(Collision collision, Vector3 positionOfBone, string name)
 	{
@@ -104,6 +104,26 @@ public class BossRagdollController : MonoBehaviour
 			//Destroy(this);//можно и без этого, хз зачем добавил 
 		}
 	}
+
+	public void ThrowEnemy()
+	{
+		if (IsEnemyActive)
+		{
+			_isEnemyWebbed = true;
+			IsEnemyActive = false;
+			_throwingVector = transform.position;
+			_throwingVector.z = 3000f;
+			_throwingVector.x = 0f;
+			_throwingVector.y = 1000f;
+			TurnOnRagdoll();
+			for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
+			{
+				_ragdollRigidBodyes[i].AddForce(_throwingVector * 1.5f);
+			}
+			HipsRigidBody.AddForce(_throwingVector * 4f);
+		}
+	}
+
 	#endregion
 
 	#region Ragdoll Methods
