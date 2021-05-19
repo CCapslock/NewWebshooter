@@ -82,7 +82,7 @@ public class ThrowingEnemyController : MonoBehaviour
 				num++;
 			}
 		}
-
+		_capsuleRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 		_mainGameController = FindObjectOfType<MainGameController>();
 		HipsRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
 		HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
@@ -113,36 +113,43 @@ public class ThrowingEnemyController : MonoBehaviour
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)) && IsEnemyActive)
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
 		{
-			if (!_bombThrown)
+			if (IsEnemyActive)
 			{
-				_bombDetonated = true;
-				Bomb.GetComponent<Bomb>().DetonateBomb();
-			}
+				if (!_bombThrown)
+				{
+					_bombDetonated = true;
+					Bomb.GetComponent<Bomb>().DetonateBomb();
+				}
 
-			IsEnemyActive = false; _isEnemyWebbed = true;
-			_mainGameController.EnemyBeenDefeated();
-			SphereCollider collider = collision.gameObject.GetComponent<SphereCollider>();
-			collider.isTrigger = true;
-			_throwingVector = transform.position; if ((transform.position.z - collision.transform.position.z) * 10000f > 5500f)
-			{
-				_throwingVector.z = (transform.position.z - collision.transform.position.z) * 10000;
+				IsEnemyActive = false; _isEnemyWebbed = true;
+				_mainGameController.EnemyBeenDefeated();
+				SphereCollider collider = collision.gameObject.GetComponent<SphereCollider>();
+				collider.isTrigger = true;
+				_throwingVector = transform.position; if ((transform.position.z - collision.transform.position.z) * 10000f > 5500f)
+				{
+					_throwingVector.z = (transform.position.z - collision.transform.position.z) * 10000;
+				}
+				else
+				{
+					_throwingVector.z = 5500f;
+				}
+				_throwingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 4000;
+				_throwingVector.y = (transform.position.y - HipsRigidBody.transform.position.y) * 1f + 1000f;
+				TurnOnRagdoll();
+				for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
+				{
+					_ragdollRigidBodyes[i].AddForce(_throwingVector * 2f);
+				}
+				HipsRigidBody.AddForce(_throwingVector * 4f);
+				//много чисел так как подгонял наиболее подходящие значения
+
 			}
 			else
 			{
-				_throwingVector.z = 5500f;
+				ParticlesController.Current.MakeGlow(collision.transform.position);
 			}
-			_throwingVector.x = (transform.position.x - HipsRigidBody.transform.position.x) * 4000;
-			_throwingVector.y = (transform.position.y - HipsRigidBody.transform.position.y) * 1f + 1000f;
-			TurnOnRagdoll();
-			for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
-			{
-				_ragdollRigidBodyes[i].AddForce(_throwingVector * 2f);
-			}
-			HipsRigidBody.AddForce(_throwingVector * 4f);
-			//много чисел так как подгонял наиболее подходящие значения
-
 		}
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Bottom)) && IsEnemyActive)
 		{
@@ -235,6 +242,8 @@ public class ThrowingEnemyController : MonoBehaviour
 	}
 	public void ActivateEnemy()
 	{
+		_capsuleRigidBody.constraints = RigidbodyConstraints.None;
+		_capsuleRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
 		if (!_isStucked)
 		{
 			PrepareForThrowingBomb();

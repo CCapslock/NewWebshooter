@@ -308,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814795035468460762, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4814795035468460762, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_AnchorMax.x
@@ -682,7 +682,7 @@ Transform:
   - {fileID: 62135254}
   - {fileID: 1694686527}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &430254324
 PrefabInstance:
@@ -939,7 +939,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 49.003, y: 380.653, z: 430.311}
 --- !u!1001 &805943606
 PrefabInstance:
@@ -1133,7 +1133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &917474829 stripped
 Animator:
@@ -1946,6 +1946,7 @@ MonoBehaviour:
   MagicExplosinParticles: {fileID: 19848604, guid: a61ff50999a9d564a81dc3449f628c31, type: 3}
   SpeedyWindParticles: {fileID: 198893393215934218, guid: a38fa5f17da69504ea31359388f165f2, type: 3}
   StarsExplosionParticles: {fileID: 19864940, guid: 696cc7dc6a1de5e499d28f1b21112451, type: 3}
+  Glow: {fileID: 8822213546102293419, guid: b2bb9e23af899c54893bf99212a688bb, type: 3}
 --- !u!114 &3040295923444952732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,9 +1960,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableLevels:
+  - {fileID: 11400000, guid: 3fd42d08b0a47794bb3b683f95b8506c, type: 2}
+  - {fileID: 11400000, guid: ace3dd495d076e545843faed94b1fc22, type: 2}
+  - {fileID: 11400000, guid: ef34952e785098c4d942104f73bf38c5, type: 2}
   - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
-  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
-  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
+  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
+  - {fileID: 11400000, guid: 84ba337cfa9932648a565d26a7315af1, type: 2}
+  - {fileID: 11400000, guid: 786e191ffb0cc5f4f91758ae5b676356, type: 2}
+  - {fileID: 11400000, guid: 45c0b596eafdcd042b0c64172bf80631, type: 2}
+  - {fileID: 11400000, guid: ab757c973add2cb499e69305054796fa, type: 2}
+  - {fileID: 11400000, guid: be9bb0c3a8ca0294e986f6f443614864, type: 2}
+  - {fileID: 11400000, guid: 6f27deb55c4f70e48928caf670cb1245, type: 2}
+  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
+  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
+  - {fileID: 11400000, guid: a471536f3fa1ace4882218f82824061d, type: 2}
+  - {fileID: 11400000, guid: c723aa4c97e6f214c816c08272a54e38, type: 2}
+  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
+  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
+  - {fileID: 11400000, guid: fcbba168dddd16c49a0482013c777d74, type: 2}
+  - {fileID: 11400000, guid: 85df48cd945ecdb4eac4551f6307e78f, type: 2}
+  - {fileID: 11400000, guid: f83c425dcb3616c429c85c1150159e21, type: 2}
+  - {fileID: 11400000, guid: 280e085c14ee3194da19daca910281fb, type: 2}
+  - {fileID: 11400000, guid: 1bedb2c76fa7e374cb3fa16c76f8001a, type: 2}
+  - {fileID: 11400000, guid: 78832163d7bc05e48be05af37005f482, type: 2}
+  - {fileID: 11400000, guid: a5a9ad6280a76ac44ba3833e00b4abdc, type: 2}
+  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
 --- !u!114 &3040295923444952733
@@ -2005,7 +2028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581717fe5bd4205419f2a9a4cf36dfa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmountOfLvlsBeforeBonus: 20
+  AmountOfLvlsBeforeBonus: 4
   IsRandom: 0
 --- !u!114 &3040295923444952735
 MonoBehaviour:
@@ -2067,7 +2090,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3543118150061861373, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3543118150061861373, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}
       propertyPath: m_LocalPosition.x

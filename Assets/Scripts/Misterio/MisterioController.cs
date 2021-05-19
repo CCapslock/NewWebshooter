@@ -24,15 +24,24 @@ public class MisterioController
     {
         foreach (MisterioView misterio in _misterios)
         {
+            misterio.CheckState();
             _model[misterio.State].Execute(misterio);
         }
     }
 
-    public void ChangeState(MisterioView View, MisterioState State)
+    public void ChangeNextState(MisterioView View, MisterioState State)
     {
-        View.SetState(State);
-        switch (View.State)
-        {
+        View.SetNextState(State);
+        switch (View.NextState)
+        {            
+            case MisterioState.Transporting:
+                {
+                    if (View.IsReal)
+                    {
+                        View.SpawnClones();
+                    }
+                }
+                break;
             default: break;            
         }
     }
@@ -56,5 +65,30 @@ public class MisterioController
             _misterios.Remove(misterio);
         }
 
+    }
+
+    public void RemoveAllFakeMisterio()
+    {/*
+        foreach (MisterioView misterio in _misterios)
+        {
+            if (!misterio.IsReal)
+            {
+                misterio.DestroyMisterio();
+            }
+        }*/
+
+        for (int i = 0; i < _misterios.Count; i++)
+        {
+            if (!_misterios[i].IsReal)
+            {
+                _misterios[i].DestroyMisterio();
+                i = 0;
+            }
+        }
+    }
+
+    public void RemoveAllMisterio()
+    {
+        _misterios.Clear();
     }
 }
