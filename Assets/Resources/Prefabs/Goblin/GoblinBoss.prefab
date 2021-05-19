@@ -222,13 +222,13 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9712f0c4febf6bc478a27cfd14f7d8a5, type: 2}
-  - {fileID: 2100000, guid: b16b090bbc25eb941acbac0f8f39c4f4, type: 2}
+  - {fileID: 2100000, guid: 828454d9cc5a1d540a94be2cab72c2b5, type: 2}
+  - {fileID: 2100000, guid: 11687e7e11426414ab3870406d9def97, type: 2}
   - {fileID: 1172778454722157170, guid: 69f66c8093a9fe54296b0c0d5f811f04, type: 3}
-  - {fileID: -5030517819848507352, guid: 69f66c8093a9fe54296b0c0d5f811f04, type: 3}
-  - {fileID: 778752001210399398, guid: 69f66c8093a9fe54296b0c0d5f811f04, type: 3}
+  - {fileID: 2100000, guid: b47f26d0e9df45b4eaf38795ff33ac97, type: 2}
+  - {fileID: 2100000, guid: cf220723a51d0d0409456db13d521292, type: 2}
   - {fileID: -5262558563066889018, guid: 69f66c8093a9fe54296b0c0d5f811f04, type: 3}
-  - {fileID: -3236004724401057045, guid: 69f66c8093a9fe54296b0c0d5f811f04, type: 3}
+  - {fileID: 2100000, guid: 93e86f6e02114e84a8690cb53ba3e3d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1462,6 +1462,7 @@ MonoBehaviour:
   SpiderWeb: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   EnemySpeed: 0
   MaxDistanceToPlayer: 0
+  IsGoblin: 1
   IsStucked: 0
   IsEnemyActive: 0
   IsEnemyAttacking: 0
@@ -2000,9 +2001,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c49f700bcd443b9429aba53abff55e68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4099cd9d28da7bd40b9ec53c3906814c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c49f700bcd443b9429aba53abff55e68, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: b16b090bbc25eb941acbac0f8f39c4f4, type: 2}
+      objectReference: {fileID: 2100000, guid: 11687e7e11426414ab3870406d9def97, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c49f700bcd443b9429aba53abff55e68, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 685a703547fe2c64fa561a2c2c531124, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c49f700bcd443b9429aba53abff55e68, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 93e86f6e02114e84a8690cb53ba3e3d6, type: 2}
     - target: {fileID: 919132149155446097, guid: c49f700bcd443b9429aba53abff55e68, type: 3}
       propertyPath: m_Name
       value: Goblin_glider

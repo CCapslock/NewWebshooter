@@ -150,7 +150,10 @@ public class MisterioView : MonoBehaviour, IBoss
 	{
 		ParticlesController.Current.MakeMagicExplosion(transform.position);
 		Destroy(this.gameObject);
-		MisterioController.Current.RemoveMisterioFromList(this);
+		if (MisterioController.Current != null)
+		{
+			MisterioController.Current.RemoveMisterioFromList(this);
+		}
 	}
 
 	public void SetCircleRadiusPosition(float position)

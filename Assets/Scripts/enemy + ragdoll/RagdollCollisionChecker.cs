@@ -5,10 +5,10 @@ public class RagdollCollisionChecker : MonoBehaviour
 	private EnemyController _stickmanscript;
 	private ThrowingEnemyController _throwingStickmanScript;
 	private FallingEnemy _fallingStickmanScript;
-	private BossRagdollController _bossRagdollController;
+	[SerializeField] private BossRagdollController _bossRagdollController;
 	private bool _isThrowingStickman;
 	private bool _isFallingStickman;
-	private bool _isBossStickman;
+	[SerializeField] private bool _isBossStickman;
 	public void SetParametrs(EnemyController stickmanscript)
 	{
 		_isThrowingStickman = false;

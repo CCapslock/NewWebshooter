@@ -16,10 +16,10 @@ public class BossRagdollController : MonoBehaviour
 	[Foldout("Settings")]
 	public float MaxDistanceToPlayer;
 	[Foldout("Settings")]
+	public bool IsGoblin;
 
 	private Animator _animator;
 	private Rigidbody _capsuleRigidBody;
-	private Rigidbody _capsuleRigidbody;
 	private Rigidbody[] _ragdollRigidBodyes;
 	private CapsuleCollider _capsuleCollider;
 	private Collider[] _ragdollColliders;
@@ -37,15 +37,20 @@ public class BossRagdollController : MonoBehaviour
 		IsStucked = false;
 		_customWebPosition = new Vector3(0, 0, -0.3f); // прибавляется к кординатам предмета и в этих кординатах спавнится паутина
 		_animator = GetComponentInChildren<Animator>();
-		_capsuleRigidBody = GetComponent<Rigidbody>();
-		_capsuleCollider = GetComponent<CapsuleCollider>();
-		_capsuleRigidbody = GetComponent<Rigidbody>();
+		if (IsGoblin)
+		{
+			_capsuleRigidBody = GetComponent<Rigidbody>();
+			_capsuleCollider = GetComponent<CapsuleCollider>();
+			_capsuleRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+		}
 		_ragdollRigidBodyes = GetComponentsInChildren<Rigidbody>();
 		_ragdollColliders = GetComponentsInChildren<Collider>();
-		HipsRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
-		HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
-		SpineRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
-		_capsuleRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+		if (IsGoblin)
+		{
+			HipsRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
+			HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
+			SpineRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
+		}
 
 		TurnOffRagdoll();
 	}
@@ -107,21 +112,23 @@ public class BossRagdollController : MonoBehaviour
 
 	public void ThrowEnemy()
 	{
-		if (IsEnemyActive)
+		_capsuleRigidBody = GetComponent<Rigidbody>();
+		_capsuleCollider = GetComponent<CapsuleCollider>();
+		HipsRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
+		HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
+		SpineRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
+		_isEnemyWebbed = true;
+		IsEnemyActive = false;
+		_throwingVector = transform.position;
+		_throwingVector.z = 3000f;
+		_throwingVector.x = 0f;
+		_throwingVector.y = 1000f;
+		TurnOnRagdoll();
+		for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
 		{
-			_isEnemyWebbed = true;
-			IsEnemyActive = false;
-			_throwingVector = transform.position;
-			_throwingVector.z = 3000f;
-			_throwingVector.x = 0f;
-			_throwingVector.y = 1000f;
-			TurnOnRagdoll();
-			for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
-			{
-				_ragdollRigidBodyes[i].AddForce(_throwingVector * 1.5f);
-			}
-			HipsRigidBody.AddForce(_throwingVector * 4f);
+			_ragdollRigidBodyes[i].AddForce(_throwingVector * 1.5f);
 		}
+		HipsRigidBody.AddForce(_throwingVector * 4f);
 	}
 
 	#endregion
@@ -129,32 +136,69 @@ public class BossRagdollController : MonoBehaviour
 	#region Ragdoll Methods
 	private void TurnOffRagdoll()
 	{
-		_capsuleCollider.isTrigger = false;
-		for (int i = 0; i < _ragdollColliders.Length; i++)
+
+		if (IsGoblin)
 		{
-			if (_ragdollColliders[i] != _capsuleCollider)
+			_capsuleCollider.isTrigger = false;
+			for (int i = 0; i < _ragdollColliders.Length; i++)
 			{
-				_ragdollColliders[i].isTrigger = true;
+				if (_ragdollColliders[i] != _capsuleCollider)
+				{
+					_ragdollColliders[i].isTrigger = true;
+				}
+				if (_ragdollRigidBodyes[i] != _capsuleRigidBody)
+				{
+					_ragdollRigidBodyes[i].isKinematic = true;
+				}
 			}
-			if (_ragdollRigidBodyes[i] != _capsuleRigidBody)
+			_capsuleRigidBody.isKinematic = false;
+		}
+		else
+		{
+			for (int i = 0; i < _ragdollColliders.Length; i++)
 			{
-				_ragdollRigidBodyes[i].isKinematic = true;
+				if (_ragdollColliders[i])
+				{
+					_ragdollColliders[i].isTrigger = true;
+				}
+				if (_ragdollRigidBodyes[i])
+				{
+					_ragdollRigidBodyes[i].isKinematic = true;
+				}
 			}
 		}
-		_capsuleRigidBody.isKinematic = false;
 	}
 	private void TurnOnRagdoll()
 	{
-		_animator.enabled = false;
-		for (int i = 0; i < _ragdollColliders.Length; i++)
+
+		if (IsGoblin)
 		{
-			if (_ragdollColliders[i] != _capsuleCollider)
+			_animator.enabled = false;
+			for (int i = 0; i < _ragdollColliders.Length; i++)
 			{
-				_ragdollColliders[i].isTrigger = false;
+				if (_ragdollColliders[i] != _capsuleCollider)
+				{
+					_ragdollColliders[i].isTrigger = false;
+				}
+				if (_ragdollRigidBodyes[i] != _capsuleRigidBody)
+				{
+					_ragdollRigidBodyes[i].isKinematic = false;
+				}
 			}
-			if (_ragdollRigidBodyes[i] != _capsuleRigidBody)
+		}
+		else
+		{
+			_animator.enabled = false;
+			for (int i = 0; i < _ragdollColliders.Length; i++)
 			{
-				_ragdollRigidBodyes[i].isKinematic = false;
+				if (_ragdollColliders[i])
+				{
+					_ragdollColliders[i].isTrigger = false;
+				}
+				if (_ragdollRigidBodyes[i])
+				{
+					_ragdollRigidBodyes[i].isKinematic = false;
+				}
 			}
 		}
 	}

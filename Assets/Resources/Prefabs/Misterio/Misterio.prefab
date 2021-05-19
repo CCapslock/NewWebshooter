@@ -83,11 +83,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5580712796859800775, guid: 161a5e9899ad46a4daff13ed581ff731, type: 3}
-  - {fileID: -8353118413363773068, guid: 161a5e9899ad46a4daff13ed581ff731, type: 3}
-  - {fileID: -8205910975886304251, guid: 161a5e9899ad46a4daff13ed581ff731, type: 3}
-  - {fileID: 3321742362513487934, guid: 161a5e9899ad46a4daff13ed581ff731, type: 3}
-  - {fileID: -8743935974287920683, guid: 161a5e9899ad46a4daff13ed581ff731, type: 3}
+  - {fileID: 2100000, guid: 7e54456acb446b64ea9dcc554832818b, type: 2}
+  - {fileID: 2100000, guid: 4760ed5765b436a4c9d999bcb47b1b45, type: 2}
+  - {fileID: 2100000, guid: 14bffe0a73558ac40930e30fe4fbbec5, type: 2}
+  - {fileID: 2100000, guid: fc575a4a8216e3b4e8c71443fe825af0, type: 2}
+  - {fileID: 2100000, guid: d4d3f60cc401f0d48a5e2edda3d0de6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1081,6 +1081,7 @@ MonoBehaviour:
   SpiderWeb: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   EnemySpeed: 0
   MaxDistanceToPlayer: 0
+  IsGoblin: 0
   IsStucked: 0
   IsEnemyActive: 0
   IsEnemyAttacking: 0
@@ -1306,7 +1307,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8205910975886304251, guid: 161a5e9899ad46a4daff13ed581ff731, type: 3}
+  - {fileID: 2100000, guid: 14bffe0a73558ac40930e30fe4fbbec5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
