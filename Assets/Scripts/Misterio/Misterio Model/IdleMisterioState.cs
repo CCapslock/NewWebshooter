@@ -10,7 +10,7 @@ public class IdleMisterioStateModel : BaseMisterioModel
     {
         
         base.Execute(view);
-        view.CircleRadiusPosition += 0.5f;
+        view.CircleRadiusPosition += 1f;
         radian = view.CircleRadiusPosition * Mathf.PI / 180;
         temporalVector.x = Mathf.Cos(radian) * 2f + view.CircleCenter.position.x;
         temporalVector.y = Mathf.Sin(radian) * 2f + view.CircleCenter.position.y;
