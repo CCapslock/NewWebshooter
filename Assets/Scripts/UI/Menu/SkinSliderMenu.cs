@@ -22,7 +22,7 @@ public class SkinSliderMenu : MonoBehaviour
 
     private float _sliderDelta = 0.01f;
     private float _sliderTime = 0.5f;
-    private float _noThanksTime = 3f;
+    private float _noThanksTime = 2f;
 
 
     private void Start()
