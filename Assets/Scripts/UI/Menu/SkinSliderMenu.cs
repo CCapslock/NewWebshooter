@@ -97,7 +97,11 @@ public class SkinSliderMenu : MonoBehaviour
         _btnNo.interactable = false;
         _btnGet.onClick.RemoveAllListeners();
         _btnNo.onClick.RemoveAllListeners();
-
+        UIEvents.Current.OnRewardedVideoAvailabilityChanged += SetInteractable;
+        if (!IronSource.Agent.isRewardedVideoAvailable())
+        {
+            SetInteractable(false);
+        }
         GlovesSkinModel skin = null;
 
         for (int i = 0; i < _glovesManager.Skins.Length; i++)
@@ -115,6 +119,11 @@ public class SkinSliderMenu : MonoBehaviour
         Invoke("ActivateNoButton", _noThanksTime);
     }
 
+    private void SetInteractable(bool value)
+    {
+        _btnGet.interactable = value;
+    }
+
     private void ActivateNoButton()
     {
         _btnNo.interactable = true;
@@ -122,6 +131,7 @@ public class SkinSliderMenu : MonoBehaviour
 
     private void DeactivateMenu()
     {
+        UIEvents.Current.OnRewardedVideoAvailabilityChanged -= SetInteractable;
         _panel.SetActive(false);
         _slider.gameObject.SetActive(false);
     }

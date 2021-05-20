@@ -65,6 +65,7 @@ public class ShopMenu : BaseMenu
     {
         if (!IsShow) return;
         _panel.gameObject.SetActive(false);
+        UIEvents.Current.OnRewardedVideoAvailabilityChanged -= SetInteractable;
         IsShow = false;
     }
 
@@ -72,9 +73,14 @@ public class ShopMenu : BaseMenu
     {
         if (IsShow) return;
         _panel.gameObject.SetActive(true);
+        UIEvents.Current.OnRewardedVideoAvailabilityChanged += SetInteractable;
         IsShow = true;
     }
 
+    public void SetInteractable(bool value)
+    {       
+        SetShop();
+    }
     private void SetShop()
     {
         bool isLockedGloves = false;
@@ -150,6 +156,12 @@ public class ShopMenu : BaseMenu
         }
         else
         {
+            _btnGetNet.interactable = false;
+        }
+
+        if (!IronSource.Agent.isRewardedVideoAvailable())
+        {
+            _btnGetGloves.interactable = false;
             _btnGetNet.interactable = false;
         }
     }

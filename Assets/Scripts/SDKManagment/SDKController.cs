@@ -240,6 +240,7 @@ public class SDKController : MonoBehaviour
             //GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
             GameAnalytics.NewAdEvent(GAAdAction.Show,GAAdType.RewardedVideo,"IronSource",_currentLevelNumberString);
             GameAnalytics.NewDesignEvent($"RewardedVideo:{_currentOverallLevelNumberString}:ClickShow");
+            
         }
     }
 
@@ -276,6 +277,7 @@ public class SDKController : MonoBehaviour
     private void RewardedVideoAvailabilityChangedEvent(bool available)
     {
         //Change the in-app 'Traffic Driver' state according to availability.
+        UIEvents.Current.RewardedVideoAvailabilityChanged(available);
     }
 
     //Invoked when the user completed the video and should be rewarded. 

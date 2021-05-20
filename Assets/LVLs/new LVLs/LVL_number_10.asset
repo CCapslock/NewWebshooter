@@ -73,7 +73,7 @@ MonoBehaviour:
   - Position: {x: 1.42, y: 25.719992, z: 88.15482}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: 9.761345, y: 25.719997, z: 86.49869}
+  - Position: {x: 7.59, y: 25.719997, z: 86.49869}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: 5.4564304, y: 25.719994, z: 81.99963}
@@ -120,7 +120,7 @@ MonoBehaviour:
     - Position: {x: 1.42, y: 25.719992, z: 88.15482}
       Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: 9.761345, y: 25.719997, z: 86.49869}
+    - Position: {x: 7.59, y: 25.719997, z: 86.49869}
       Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     - Position: {x: 5.4564304, y: 25.719994, z: 81.99963}
