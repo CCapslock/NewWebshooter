@@ -16,5 +16,6 @@ public class WebRewardModel : IGetReward
     public void RewardPlayer()
     {
         GameEvents.Current.UnlockWeb(_skin);
+        GameEvents.Current.SelectWeb(_skin);
     }
 }

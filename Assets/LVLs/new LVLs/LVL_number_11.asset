@@ -85,7 +85,7 @@ MonoBehaviour:
   - Position: {x: -7.8693876, y: 10.14, z: 68.13778}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -11.26, y: 27.680033, z: 99.73}
+  - Position: {x: -6.08, y: 27.680033, z: 97.83}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: 0.74536514, y: 27.680033, z: 95.77519}
@@ -123,7 +123,7 @@ MonoBehaviour:
     - Position: {x: -2.4331017, y: 27.680021, z: 99.18835}
       Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -11.26, y: 27.680033, z: 99.73}
+    - Position: {x: -6.08, y: 27.680033, z: 97.83}
       Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}

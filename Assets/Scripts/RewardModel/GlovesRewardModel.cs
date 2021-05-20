@@ -11,6 +11,7 @@ public class GlovesRewardModel : IGetReward
     public void RewardPlayer()
     {
         GameEvents.Current.UnlockGloves(_skin);
+        GameEvents.Current.SelectGloves(_skin);
     }
 
     public string EventName()
