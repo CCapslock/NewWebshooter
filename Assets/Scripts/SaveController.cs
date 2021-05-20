@@ -29,7 +29,7 @@ public class SaveController : MonoBehaviour
 			PlayerPrefs.SetString(_allRoundsForPlaying, LVLBase);
 			PlayerPrefs.SetInt(_roundForPlaying, 0);
 			PlayerPrefs.SetInt(_notBonusLvlsCounter, 0);
-			
+
 		}
 		if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
 		{
@@ -43,22 +43,24 @@ public class SaveController : MonoBehaviour
 	public int GetNextLvlNum()
 	{
 		_gameController = FindObjectOfType<MainGameController>();
-		if (!IsRandom)
+		if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
 		{
-			if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
-			{
-				_currentLvlNum = PlayerPrefs.GetInt(_roundForPlaying);
-				return PlayerPrefs.GetInt(_roundForPlaying);
-			}
-			else
-			{
-				IsRandom = true;
-				return GetRandomLvlNum();
-			}
+			_currentLvlNum = PlayerPrefs.GetInt(_roundForPlaying);
+			return PlayerPrefs.GetInt(_roundForPlaying);
 		}
 		else
 		{
-			return GetRandomLvlNum();
+			char[] lvlBaseNumbers = new char[_gameController.AvailableLevels.Length];
+			for (int i = 0; i < lvlBaseNumbers.Length; i++)
+			{
+				lvlBaseNumbers[i] = Convert.ToChar("0");
+			}
+			string LVLBase = new string(lvlBaseNumbers);
+			PlayerPrefs.SetString(_allRoundsForPlaying, LVLBase);
+			PlayerPrefs.SetInt(_roundForPlaying, 0);
+			PlayerPrefs.SetInt(_notBonusLvlsCounter, 0);
+			_currentLvlNum = PlayerPrefs.GetInt(_roundForPlaying);
+			return PlayerPrefs.GetInt(_roundForPlaying);
 		}
 	}
 	private int GetRandomLvlNum()
