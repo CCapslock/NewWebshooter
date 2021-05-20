@@ -4,7 +4,6 @@ using UnityEngine;
 public class SaveController : MonoBehaviour
 {
 	public int AmountOfLvlsBeforeBonus;
-	public bool IsRandom;
 
 	private MainGameController _gameController;
 	private string _roundForPlaying = "LvlNum";
@@ -29,50 +28,18 @@ public class SaveController : MonoBehaviour
 			PlayerPrefs.SetString(_allRoundsForPlaying, LVLBase);
 			PlayerPrefs.SetInt(_roundForPlaying, 0);
 			PlayerPrefs.SetInt(_notBonusLvlsCounter, 0);
-			
-		}
-		if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
-		{
-			IsRandom = false;
-		}
-		else
-		{
-			IsRandom = true;
+
 		}
 	}
 	public int GetNextLvlNum()
 	{
 		_gameController = FindObjectOfType<MainGameController>();
-		if (!IsRandom)
+		if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
 		{
-			if (PlayerPrefs.GetInt(_roundForPlaying) != _gameController.AvailableLevels.Length)
-			{
-				_currentLvlNum = PlayerPrefs.GetInt(_roundForPlaying);
-				return PlayerPrefs.GetInt(_roundForPlaying);
-			}
-			else
-			{
-				IsRandom = true;
-				return GetRandomLvlNum();
-			}
+			_currentLvlNum = PlayerPrefs.GetInt(_roundForPlaying);
+			return PlayerPrefs.GetInt(_roundForPlaying);
 		}
 		else
-		{
-			return GetRandomLvlNum();
-		}
-	}
-	private int GetRandomLvlNum()
-	{
-		_currentLvlBase = PlayerPrefs.GetString(_allRoundsForPlaying).ToCharArray();
-		bool AllLvlsPlayed = true;
-		for (int i = 0; i < _currentLvlBase.Length; i++)
-		{
-			if (_currentLvlBase[i] == Convert.ToChar("0"))
-			{
-				AllLvlsPlayed = false;
-			}
-		}
-		if (AllLvlsPlayed)
 		{
 			char[] lvlBaseNumbers = new char[_gameController.AvailableLevels.Length];
 			for (int i = 0; i < lvlBaseNumbers.Length; i++)
@@ -81,20 +48,13 @@ public class SaveController : MonoBehaviour
 			}
 			string LVLBase = new string(lvlBaseNumbers);
 			PlayerPrefs.SetString(_allRoundsForPlaying, LVLBase);
+			PlayerPrefs.SetInt(_roundForPlaying, 0);
+			PlayerPrefs.SetInt(_notBonusLvlsCounter, 0);
+			_currentLvlNum = PlayerPrefs.GetInt(_roundForPlaying);
+			return PlayerPrefs.GetInt(_roundForPlaying);
 		}
-		_currentLvlBase = PlayerPrefs.GetString(_allRoundsForPlaying).ToCharArray();
-		for (int i = 0; i < 10000; i++)
-		{
-			int num = UnityEngine.Random.Range(0, _currentLvlBase.Length);
-			if (_currentLvlBase[num] == Convert.ToChar("0"))
-			{
-				_currentLvlNum = num;
-				return num;
-			}
-		}
-		_currentLvlNum = 0;
-		return 0;
 	}
+
 	public int GetCurrentLvlNum()
 	{
 		return _currentLvlNum;
@@ -109,16 +69,7 @@ public class SaveController : MonoBehaviour
 		else
 		{
 			PlayerPrefs.SetInt(_notBonusLvlsCounter, PlayerPrefs.GetInt(_notBonusLvlsCounter) + 1);
-			if (IsRandom)
-			{
-				_currentLvlBase[_currentLvlNum] = Convert.ToChar("1");
-				string LVLBase = new string(_currentLvlBase);
-				PlayerPrefs.SetString(_allRoundsForPlaying, LVLBase);
-			}
-			else
-			{
-				PlayerPrefs.SetInt(_roundForPlaying, PlayerPrefs.GetInt(_roundForPlaying) + 1);
-			}
+			PlayerPrefs.SetInt(_roundForPlaying, PlayerPrefs.GetInt(_roundForPlaying) + 1);
 		}
 		PlayerPrefs.SetInt(_overallCompletedLevels, PlayerPrefs.GetInt(_overallCompletedLevels) + 1);
 	}
