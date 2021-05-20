@@ -109,6 +109,7 @@ public class SkinSliderMenu : MonoBehaviour
         }
 
         _btnGet.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinGloves(skin));
+        _btnGet.onClick.AddListener(DeactivateMenu);
         _btnNo.onClick.AddListener(DeactivateMenu);
 
         Invoke("ActivateNoButton", _noThanksTime);
