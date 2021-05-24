@@ -2029,7 +2029,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmountOfLvlsBeforeBonus: 4
-  IsRandom: 0
 --- !u!114 &3040295923444952735
 MonoBehaviour:
   m_ObjectHideFlags: 0
