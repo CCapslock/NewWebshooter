@@ -34,10 +34,12 @@ public class Bomb : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
+		/*
 		if (NeedToRotate)
 			RotateObject();
 		if (_needToMoveBomb)
 			MoveBomb();
+		 */		
 	}
 	private void RotateObject()
 	{
@@ -82,6 +84,8 @@ public class Bomb : MonoBehaviour
 	public void ThrowBomb(AnimationCurve curve, Transform destinationTransform, float speed, float maxHeight)
 	{
 		transform.parent = null;
+		_rigidbody.useGravity = true;
+		/*
 		_curve = curve;
 		_destinationTransform = destinationTransform;
 		_destinationVector = _destinationTransform.position;
@@ -91,6 +95,21 @@ public class Bomb : MonoBehaviour
 		_maxHeight = maxHeight;
 		_needToMoveBomb = true;
 		NeedToRotate = true;
+		 */
+
+
+		float _AngleInRadians = 45 * Mathf.PI / 180;
+		Vector3 _fromTo = destinationTransform.position - transform.position;
+		Vector3 _fromToXZ = new Vector3(_fromTo.x, 0f, _fromTo.z);
+
+		float _xMagnitude = _fromToXZ.magnitude;
+		float _y = _fromTo.y;
+
+		float _TempVelocity = (Physics.gravity.y * _xMagnitude * _xMagnitude) / (2 * (_y - Mathf.Tan(_AngleInRadians) * _xMagnitude) * Mathf.Pow(Mathf.Cos(_AngleInRadians), 2));
+		_TempVelocity = Mathf.Sqrt(Mathf.Abs(_TempVelocity));
+		//bomb.GetComponent<Rigidbody>().AddForce((_fromToXZ + new Vector3(0, 1, 0)) * _TempVelocity, ForceMode.Impulse);
+		_rigidbody.velocity = (_fromToXZ.normalized + Vector3.up).normalized * _TempVelocity;
+
 	}
 	public void MoveBomb()
 	{
