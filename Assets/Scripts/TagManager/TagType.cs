@@ -15,4 +15,7 @@ public enum TagType : byte
 	BuildingCube = 11,
 	Bottom = 12,
 	BossSet = 13,
+	JokerMask = 14,
+	MisterioMask = 15,
+	GoblinMask = 16,
 }

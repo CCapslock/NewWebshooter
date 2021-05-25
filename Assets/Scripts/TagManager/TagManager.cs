@@ -20,7 +20,10 @@ public static class TagManager
 				{TagType.ThrowingEnemy, "ThrowingEnemy"},
 				{TagType.BuildingCube, "BuildingCube"},
 				{TagType.Bottom, "Bottom"},
-				{TagType.BossSet, "BossSet"}
+				{TagType.BossSet, "BossSet"},
+				{TagType.JokerMask, "JokerMask"},
+				{TagType.MisterioMask, "MisterioMask"},
+				{TagType.GoblinMask, "GoblinMask"}
 			};
 	}
 

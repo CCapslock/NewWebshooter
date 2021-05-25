@@ -17,6 +17,9 @@ TagManager:
   - BuildingCube
   - Bottom
   - BossSet
+  - JokerMask
+  - MisterioMask
+  - GoblinMask
   layers:
   - Default
   - TransparentFX

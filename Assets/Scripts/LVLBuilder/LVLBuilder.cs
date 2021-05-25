@@ -1,8 +1,8 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LVLBuilder : MonoBehaviour
 {
-	//TODO
 	private MovementPoints[] PlayerMovementPoints;
 	public MovementPoints[] BuildLvlAndReturnMovementPoints(LevelCreator lvl)
 	{
@@ -47,6 +47,39 @@ public class LVLBuilder : MonoBehaviour
 					{
 						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithRagdoll"]), lvl.SimpleEnemyTransforms[i].Position, lvl.SimpleEnemyTransforms[i].Rotation);
 						TempMovementPoints[j].Enemyes[k].transform.localScale = lvl.SimpleEnemyTransforms[i].Scale;
+
+						if (lvl.IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (lvl.IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (lvl.IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (lvl.IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch { }
+						}
 					}
 				}
 			}
@@ -62,6 +95,39 @@ public class LVLBuilder : MonoBehaviour
 					{
 						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyThrowingBombs"]), lvl.ThrowingEnemyTransforms[i].Position, lvl.ThrowingEnemyTransforms[i].Rotation);
 						TempMovementPoints[j].Enemyes[k].transform.localScale = lvl.ThrowingEnemyTransforms[i].Scale;
+
+						if (lvl.IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (lvl.IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (lvl.IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (lvl.IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch{}
+						}
 					}
 				}
 			}
@@ -91,7 +157,7 @@ public class LVLBuilder : MonoBehaviour
 		{
 			for (int j = 0; j < TempMovementPoints.Length; j++)
 			{
-				if(TempMovementPoints[j].PointNum == i)
+				if (TempMovementPoints[j].PointNum == i)
 				{
 					PlayerMovementPoints[i] = TempMovementPoints[j];
 				}
