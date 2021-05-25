@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LVL_number_1", menuName = "Create LVL", order = 0)]
@@ -13,7 +14,13 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] ThrowingEnemyTransforms;
 	public CustomBossSetParametrs BossSetParametrs;
 	public MovementPointForBuilder[] MovementPoints;
-
+	public bool IsMinion;
+	[ShowIf("IsMinion")]
+	public bool IsJoker;
+	[ShowIf("IsMinion")]
+	public bool IsMisterio;
+	[ShowIf("IsMinion")]
+	public bool IsGoblin;
 
 	[Button]
 	public void PrepareArrays()
@@ -172,7 +179,18 @@ public class LevelCreator : ScriptableObject
 					if (MovementPoints[j].EnemyTransforms[k].Position == SimpleEnemyTransforms[i].Position)
 					{
 						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithRagdoll"]), SimpleEnemyTransforms[i].Position, SimpleEnemyTransforms[i].Rotation);
-						TempMovementPoints[j].Enemyes[k].transform.localScale = SimpleEnemyTransforms[i].Scale;
+						TempMovementPoints[j].Enemyes[k].transform.localScale = SimpleEnemyTransforms[i].Scale; 
+						List<GameObject> maskGameObjects = new List<GameObject>();
+						Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+						for (int l = 0; l < tempGameObjects.Length; l++)
+						{
+							if (tempGameObjects[l].CompareTag(TagManager.GetTag(TagType.JokerMask)))
+							{
+								maskGameObjects.Add(tempGameObjects[l].gameObject);
+							}
+						}
+						int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
+						maskGameObjects[randomNum].SetActive(true);
 					}
 				}
 			}
@@ -194,7 +212,7 @@ public class LevelCreator : ScriptableObject
 		}
 
 		//spawn boss set
-		
+
 
 		//spawn boss set
 		if (BossSetParametrs.IsActive)

@@ -211,3 +211,7 @@ MonoBehaviour:
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
     IsBossBattle: 0
+  IsMinion: 0
+  IsJoker: 0
+  IsMisterio: 0
+  IsGoblin: 0
