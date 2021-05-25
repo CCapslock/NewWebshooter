@@ -7,10 +7,12 @@ using Facebook.Unity;
 public class SDKController : MonoBehaviour
 {
     public static SDKController Current;
-    // Start is called before the first frame update
+    public static BaseTenjin InstanceTenjin;
+    public static int ConversationValue = 0;    
     [SerializeField] private string _ISIOSAppKey = null;
     [SerializeField] private string _ISAndroidAppKey = null;
     [SerializeField] private string _currentAppKey = null;
+    [SerializeField] private string _tenjinApiKey = "3F1TZPVMAKATNQFEJHB3NSD995ZA41QG";
     [SerializeField] private float _interstitialDelay = 25f;
     private bool _isISInitialised = false;
     private float _lastInterstitialTime;
@@ -28,15 +30,19 @@ public class SDKController : MonoBehaviour
 
     private void Start()
     {
+        ConversationValue = 0;
         GameAnalyticsInitialize();
         FacebookInitialize();
-
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         SubscribeGameAnalyticEvent();
         InitializeIronSource();
+        
+        TenjinConnect();
+
     }
 
+    
 
 
     #region GameAnalytics
@@ -326,6 +332,62 @@ public class SDKController : MonoBehaviour
     {
         GameAnalytics.NewAdEvent(GAAdAction.Clicked, GAAdType.RewardedVideo, "IronSource", $"{RewardInstance.EventName()}");
         GameAnalytics.NewDesignEvent($"RewardedVideo:{_currentOverallLevelNumberString}:VideoClicked");
+    }
+    #endregion
+    #region Tenjin
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (!pause)
+        {
+            TenjinConnect();
+        }
+    }
+
+    private void TenjinConnect()
+    {
+        InstanceTenjin = Tenjin.getInstance(_tenjinApiKey);
+#if UNITY_IOS
+
+      // Tenjin wrapper for requestTrackingAuthorization
+      InstanceTenjin.RequestTrackingAuthorizationWithCompletionHandler((status) => {
+        Debug.Log("===> App Tracking Transparency Authorization Status: " + status);
+
+
+
+        // Sends install/open event to Tenjin
+        InstanceTenjin.Connect();
+
+        //UpdateConversationValue(0);
+
+      });
+
+#elif UNITY_ANDROID
+
+        // Sends install/open event to Tenjin
+        InstanceTenjin.Connect();
+        
+#endif
+        
+    }
+
+    private void UpdateConversationValue(int value)
+    {
+        if (value <= 63 && value >= 0 && value > ConversationValue)
+        {
+            ConversationValue = value;
+            InstanceTenjin.UpdateConversionValue(ConversationValue);
+        }
+
+    }
+
+    public void IncreaseConversationValue()
+    {
+        if (ConversationValue >= 0 && ConversationValue <= 62)
+        {
+            ConversationValue++;
+            InstanceTenjin.UpdateConversionValue(ConversationValue);
+        }
     }
     #endregion
 }
