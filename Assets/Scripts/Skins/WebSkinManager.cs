@@ -53,6 +53,7 @@ public class WebSkinManager : MonoBehaviour
         skin.SaveState();
         LoadSkins();
         UIEvents.Current.UpdateShop();
+        GameEvents.Current.SelectWeb(skin);
     }
 
     public void SelectSkin(WebSkinModel skin)

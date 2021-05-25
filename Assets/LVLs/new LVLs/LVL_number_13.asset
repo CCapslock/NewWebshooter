@@ -116,7 +116,7 @@ MonoBehaviour:
     IsActive: 0
   MovementPoints:
   - Transform:
-      Position: {x: -1.18, y: 37.47, z: 99.26}
+      Position: {x: -1.84, y: 37.47, z: 99.26}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:

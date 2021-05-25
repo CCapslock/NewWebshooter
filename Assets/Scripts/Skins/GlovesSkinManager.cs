@@ -45,6 +45,7 @@ public class GlovesSkinManager : MonoBehaviour
         skin.ChangeState(SkinState.Unlocked);
         skin.SaveState();
         UIEvents.Current.UpdateShop();
+        GameEvents.Current.SelectGloves(skin);
     }
 
     public void LoadSkins()

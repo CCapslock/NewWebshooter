@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
+  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,6 +294,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1823579764254398238, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028874122855654325, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814795035154407219, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4814795035468460742, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_Name
       value: UI
@@ -383,6 +395,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4814795036531029311, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6570510677325252506, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2147,6 +2163,10 @@ PrefabInstance:
     - target: {fileID: 7655210727794338246, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}
       propertyPath: _ISAndroidAppKey
       value: f6782999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655210727794338246, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}
+      propertyPath: _interstitialDelay
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed217da53ff97b541a963ef9dbc16ee6, type: 3}

@@ -112,5 +112,12 @@ public class UIEvents : MonoBehaviour
     {
         OnButtonGetMoreCoins?.Invoke(coins);
     }
+
+    public Action<bool> OnRewardedVideoAvailabilityChanged;
+    public void RewardedVideoAvailabilityChanged(bool availability)
+    {
+        OnRewardedVideoAvailabilityChanged?.Invoke(availability);
+    }
+
     #endregion
 }

@@ -342,7 +342,7 @@ MonoBehaviour:
     PointNum: 2
     NeedToRotate: 0
     NeedToFly: 0
-    NeedToCountEnemy: 0
+    NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
     IsBossBattle: 0

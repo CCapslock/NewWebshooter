@@ -31,6 +31,7 @@ public class WinMenu : BaseMenu
     {
         if (!IsShow) return;
         _panel.gameObject.SetActive(false);
+        UIEvents.Current.OnRewardedVideoAvailabilityChanged -= SetInteractable;
         IsShow = false;
     }
 
@@ -38,6 +39,7 @@ public class WinMenu : BaseMenu
     {
         if (IsShow) return;
         _panel.gameObject.SetActive(true);
+        UIEvents.Current.OnRewardedVideoAvailabilityChanged += SetInteractable;
         IsShow = true;
     }
 
@@ -46,6 +48,10 @@ public class WinMenu : BaseMenu
         if (isMultiplier == false)
         {
             _btnGetMoreCoins.gameObject.SetActive(true);
+            if (!IronSource.Agent.isRewardedVideoAvailable())
+            {
+                SetInteractable(false);
+            }
             _btnGetMoreCoins.onClick.RemoveAllListeners();
             _btnGetMoreCoins.onClick.AddListener(() => UIEvents.Current.ButtonGetMoreCoins(coins));
             _btnGetMoreCoins.GetComponentInChildren<TextMeshProUGUI>().text = $"GET {coins * _controller.CoinsMultiplier}";
@@ -63,6 +69,15 @@ public class WinMenu : BaseMenu
         }
         
     }
+
+    private void SetInteractable(bool value)
+    {
+        _btnGetMoreCoins.interactable = value;
+    }
+
+    
+
+
     private void AddMoreCoinsInUI(int amount)
     {
         _addingCoinsAmount = 0;
