@@ -87,6 +87,27 @@ public class ArtController : MonoBehaviour
 		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
 		_buildingRenderer.materials = _newMaterials;
 
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding3"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding4"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedRoofBuilding"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]);
 		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
 		_newMaterials = _buildingRenderer.sharedMaterials;

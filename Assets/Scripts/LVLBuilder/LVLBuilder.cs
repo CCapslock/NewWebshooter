@@ -14,6 +14,22 @@ public class LVLBuilder : MonoBehaviour
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), lvl.Buildings2Transforms[i].Position, lvl.Buildings2Transforms[i].Rotation).transform.localScale = lvl.Buildings2Transforms[i].Scale;
 		}
+		for (int i = 0; i < lvl.Buildings3Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding3"]), lvl.Buildings3Transforms[i].Position, lvl.Buildings3Transforms[i].Rotation).transform.localScale = lvl.Buildings3Transforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.Buildings4Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding4"]), lvl.Buildings4Transforms[i].Position, lvl.Buildings4Transforms[i].Rotation).transform.localScale = lvl.Buildings4Transforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.RoofBuildingTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedRoofBuilding"]), lvl.RoofBuildingTransforms[i].Position, lvl.RoofBuildingTransforms[i].Rotation).transform.localScale = lvl.RoofBuildingTransforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.BankBuildingsTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BankBuilding"]), lvl.BankBuildingsTransforms[i].Position, lvl.BankBuildingsTransforms[i].Rotation).transform.localScale = lvl.BankBuildingsTransforms[i].Scale;
+		}
 		for (int i = 0; i < lvl.BuildingCubeTransforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]), lvl.BuildingCubeTransforms[i].Position, lvl.BuildingCubeTransforms[i].Rotation).transform.localScale = lvl.BuildingCubeTransforms[i].Scale;

@@ -16,6 +16,8 @@ public static class TagManager
 				{TagType.Object, "Object"},
 				{TagType.Buildings1, "Buildings1"},
 				{TagType.Buildings2, "Buildings2"},
+				{TagType.Buildings3, "Buildings3"},
+				{TagType.Buildings4, "Buildings4"},
 				{TagType.SimpleEnemy, "SimpleEnemy"},
 				{TagType.ThrowingEnemy, "ThrowingEnemy"},
 				{TagType.BuildingCube, "BuildingCube"},
@@ -24,7 +26,10 @@ public static class TagManager
 				{TagType.JokerMask, "JokerMask"},
 				{TagType.MisterioMask, "MisterioMask"},
 				{TagType.GoblinMask, "GoblinMask"},
-				{TagType.ShieldEnemy, "ShieldEnemy"}
+				{TagType.ShieldEnemy, "ShieldEnemy"},
+				{TagType.DodgeEnemy, "DodgeEnemy"},
+				{TagType.BankBuilding, "BankBuilding"},
+				{TagType.RoofBuilding, "RoofBuilding"}
 			};
 	}
 
