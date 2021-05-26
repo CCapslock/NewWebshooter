@@ -19,4 +19,11 @@ public enum TagType : byte
 	MisterioMask = 15,
 	GoblinMask = 16,
 	ShieldEnemy = 17,
+	BankBuilding = 18,
+	Buildings3 = 19,
+	Buildings4 = 20,
+	RoofBuilding = 21,
+	BuildingConstr1 = 22,
+	BuildingConstr2 = 23,
+	DodgeEnemy = 24
 }

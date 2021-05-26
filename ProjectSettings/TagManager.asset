@@ -21,6 +21,13 @@ TagManager:
   - MisterioMask
   - GoblinMask
   - ShieldEnemy
+  - BankBuilding
+  - Buildings3
+  - Buildings4
+  - RoofBuilding
+  - BuildingConstr1
+  - BuildingConstr2
+  - DodgeEnemy
   layers:
   - Default
   - TransparentFX
