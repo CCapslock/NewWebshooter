@@ -17,7 +17,8 @@ public class EnemyController : MonoBehaviour
 	[Foldout("Settings")]
 	public float MaxDistanceToPlayer;
 	[Foldout("Settings")]
-	public bool IsWithShield;
+	[SerializeField] private EnemyType _enemyType;
+	//public bool IsWithShield;
 
 	private MainGameController _mainGameController;
 	private Transform _playerTransform;
@@ -39,9 +40,17 @@ public class EnemyController : MonoBehaviour
 	[HideInInspector] public bool IsEnemyAttacking = false;
 	private void Start()
 	{
-		if (IsWithShield)
-		{
-			Shield.SetActive(false);
+		switch (_enemyType)
+        {
+			case EnemyType.Normal:
+				//TODO
+				break;
+			case EnemyType.Shield:
+				Shield.SetActive(false);
+				break;
+			case EnemyType.Dodge:
+				//TODO
+				break;
 		}
 		IsStucked = false;
 		_customWebPosition = new Vector3(0, 0, -0.3f); // прибавляется к кординатам предмета и в этих кординатах спавнится паутина
@@ -85,7 +94,8 @@ public class EnemyController : MonoBehaviour
 		{
 			if (IsEnemyActive)
 			{
-				if (IsWithShield && _isShieldBroken || !IsWithShield)
+				//if (IsWithShield && _isShieldBroken || !IsWithShield)
+				if (_enemyType == EnemyType.Shield && _isShieldBroken || _enemyType != EnemyType.Shield)
 				{
 					IsEnemyActive = false;
 					_isEnemyWebbed = true;
@@ -196,7 +206,8 @@ public class EnemyController : MonoBehaviour
 		{
 			_mainGameController.EnemyBeenDefeated();
 		}
-		if (IsWithShield)
+		//if (IsWithShield)
+		if (_enemyType == EnemyType.Shield)
 		{
 			Shield.SetActive(true);
 		}

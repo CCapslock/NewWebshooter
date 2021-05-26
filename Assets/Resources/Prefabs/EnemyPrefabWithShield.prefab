@@ -147,7 +147,7 @@ MonoBehaviour:
   Shield: {fileID: 1906089455734699344}
   EnemySpeed: 0.04
   MaxDistanceToPlayer: 2.5
-  IsWithShield: 1
+  _enemyType: 1
   IsStucked: 0
   IsEnemyActive: 0
   IsEnemyAttacking: 0
