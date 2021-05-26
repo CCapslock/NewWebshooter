@@ -35,15 +35,19 @@ public class EnemyController : MonoBehaviour
 	private bool _isHitByEnemy = false;
 	private bool _isEnemyWebbed = false;
 	private bool _isShieldBroken = false;
+	private bool _isDodged = false;
+	private float _dodgeDistance = 5f;
+
 	[HideInInspector] public bool IsStucked;
 	[HideInInspector] public bool IsEnemyActive = false;
 	[HideInInspector] public bool IsEnemyAttacking = false;
+
+
 	private void Start()
 	{
 		switch (_enemyType)
         {
 			case EnemyType.Normal:
-				//TODO
 				break;
 			case EnemyType.Shield:
 				Shield.SetActive(false);
@@ -95,7 +99,7 @@ public class EnemyController : MonoBehaviour
 			if (IsEnemyActive)
 			{
 				//if (IsWithShield && _isShieldBroken || !IsWithShield)
-				if (_enemyType == EnemyType.Shield && _isShieldBroken || _enemyType != EnemyType.Shield)
+				if (_enemyType == EnemyType.Normal || _isShieldBroken || _isDodged)
 				{
 					IsEnemyActive = false;
 					_isEnemyWebbed = true;
@@ -121,11 +125,19 @@ public class EnemyController : MonoBehaviour
 					HipsRigidBody.AddForce(_throwingVector * 4f);
 					//много чисел так как подгонял наиболее подходящие значения
 				}
-				else
+				else if (_enemyType == EnemyType.Shield && !_isShieldBroken)
 				{
 					_isShieldBroken = true;
 					Shield.SetActive(false);
 					ParticlesController.Current.MakeShieldBrokenParticles(collision.contacts[0].point);
+				}
+				else if (_enemyType == EnemyType.Dodge && !_isDodged)
+                {
+					_isDodged = true;
+					ParticlesController.Current.MakeMagicExplosion(collision.contacts[0].point);
+
+					transform.position = _playerTransform.position + Vector3.forward * _dodgeDistance;
+					ParticlesController.Current.MakeMagicExplosion(transform.position);
 				}
 			}
 			else
