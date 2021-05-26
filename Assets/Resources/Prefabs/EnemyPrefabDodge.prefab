@@ -76,8 +76,8 @@ GameObject:
   - component: {fileID: 2690846266606357681}
   - component: {fileID: 7666613614077320476}
   m_Layer: 7
-  m_Name: EnemyPrefabWithShield
-  m_TagString: ShieldEnemy
+  m_Name: EnemyPrefabDodge
+  m_TagString: DodgeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   Shield: {fileID: 1906089455734699344}
   EnemySpeed: 0.04
   MaxDistanceToPlayer: 2.5
-  _enemyType: 1
+  _enemyType: 2
   IsStucked: 0
   IsEnemyActive: 0
   IsEnemyAttacking: 0
@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1240771308147404778
 Transform:
   m_ObjectHideFlags: 0
