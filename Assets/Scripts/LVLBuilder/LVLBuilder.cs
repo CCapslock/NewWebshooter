@@ -34,6 +34,14 @@ public class LVLBuilder : MonoBehaviour
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]), lvl.BuildingCubeTransforms[i].Position, lvl.BuildingCubeTransforms[i].Rotation).transform.localScale = lvl.BuildingCubeTransforms[i].Scale;
 		}
+		for (int i = 0; i < lvl.PrepearedBuildingConstr1Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), lvl.PrepearedBuildingConstr1Transforms[i].Position, lvl.PrepearedBuildingConstr1Transforms[i].Rotation).transform.localScale = lvl.PrepearedBuildingConstr1Transforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.PrepearedBuildingConstr2Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), lvl.PrepearedBuildingConstr2Transforms[i].Position, lvl.PrepearedBuildingConstr2Transforms[i].Rotation).transform.localScale = lvl.PrepearedBuildingConstr2Transforms[i].Scale;
+		}
 		MovementPoints[] TempMovementPoints = new MovementPoints[lvl.MovementPoints.Length];
 		for (int i = 0; i < lvl.MovementPoints.Length; i++)
 		{

@@ -29,6 +29,8 @@ public static class TagManager
 				{TagType.ShieldEnemy, "ShieldEnemy"},
 				{TagType.DodgeEnemy, "DodgeEnemy"},
 				{TagType.BankBuilding, "BankBuilding"},
+				{TagType.BuildingConstr1, "BuildingConstr1"},
+				{TagType.BuildingConstr2, "BuildingConstr2"},
 				{TagType.RoofBuilding, "RoofBuilding"}
 			};
 	}

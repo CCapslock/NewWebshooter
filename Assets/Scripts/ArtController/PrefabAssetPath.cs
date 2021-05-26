@@ -12,6 +12,8 @@ public class PrefabAssetPath
 		{"PrepearedBuilding2", "Prefabs/PrepearedBuilding2"},
 		{"PrepearedBuilding3", "Prefabs/PrepearedBuilding3"},
 		{"PrepearedBuilding4", "Prefabs/PrepearedBuilding4"},
+		{"PrepearedBuildingConstr1", "Prefabs/PrepearedBuildingConstr1"},
+		{"PrepearedBuildingConstr2", "Prefabs/PrepearedBuildingConstr2"},
 		{"PrepearedRoofBuilding", "Prefabs/PrepearedRoofBuilding"},
 		{"BankBuilding", "Prefabs/BankBuilding"},
 		{"WebSphere", "Prefabs/WebSphere"},

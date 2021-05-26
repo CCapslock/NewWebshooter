@@ -59,11 +59,22 @@ MonoBehaviour:
   - Position: {x: -40.3, y: -71.7, z: 50.5}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
-  Buildings3Transforms: []
+  Buildings3Transforms:
+  - Position: {x: -29.7, y: -24, z: 97.3}
+    Rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+    Scale: {x: 10, y: 10, z: 10}
   Buildings4Transforms:
   - Position: {x: 9.3, y: -17.9, z: 103.4}
     Rotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
     Scale: {x: 10, y: 10, z: 10}
+  PrepearedBuildingConstr1Transforms:
+  - Position: {x: 39.106632, y: 14.319994, z: 77.14901}
+    Rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    Scale: {x: 1, y: 1, z: 1}
+  PrepearedBuildingConstr2Transforms:
+  - Position: {x: 69.94618, y: 29.220013, z: 52.3002}
+    Rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    Scale: {x: 1, y: 1, z: 1}
   RoofBuildingTransforms:
   - Position: {x: -41.48, y: 11.52, z: 46.41}
     Rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}

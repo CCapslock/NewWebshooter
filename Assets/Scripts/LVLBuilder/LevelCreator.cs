@@ -11,6 +11,8 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] Buildings2Transforms;
 	public CustomTransform[] Buildings3Transforms;
 	public CustomTransform[] Buildings4Transforms;
+	public CustomTransform[] PrepearedBuildingConstr1Transforms;
+	public CustomTransform[] PrepearedBuildingConstr2Transforms;
 	public CustomTransform[] RoofBuildingTransforms;
 	public CustomTransform[] BankBuildingsTransforms;
 	public CustomTransform[] BuildingCubeTransforms;
@@ -36,6 +38,8 @@ public class LevelCreator : ScriptableObject
 		Buildings4Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings4)).Length];
 		RoofBuildingTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)).Length];
 		BankBuildingsTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)).Length];
+		PrepearedBuildingConstr1Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)).Length];
+		PrepearedBuildingConstr2Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)).Length];
 		BuildingCubeTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)).Length];
 		SimpleEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)).Length];
 		ThrowingEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)).Length];
@@ -50,6 +54,8 @@ public class LevelCreator : ScriptableObject
 		FindBuildings2(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings2)));
 		FindBuildings3(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings3)));
 		FindBuildings4(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings4)));
+		FindBuildingConstr1(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)));
+		FindBuildingConstr2(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)));
 		FindRoofBuildings(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)));
 		FindBankBuildings(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)));
 		FindBuildingCubes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)));
@@ -112,6 +118,24 @@ public class LevelCreator : ScriptableObject
 			RoofBuildingTransforms[i].Position = gameObjects[i].transform.position;
 			RoofBuildingTransforms[i].Rotation = gameObjects[i].transform.rotation;
 			RoofBuildingTransforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindBuildingConstr1(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			PrepearedBuildingConstr1Transforms[i].Position = gameObjects[i].transform.position;
+			PrepearedBuildingConstr1Transforms[i].Rotation = gameObjects[i].transform.rotation;
+			PrepearedBuildingConstr1Transforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindBuildingConstr2(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			PrepearedBuildingConstr2Transforms[i].Position = gameObjects[i].transform.position;
+			PrepearedBuildingConstr2Transforms[i].Rotation = gameObjects[i].transform.rotation;
+			PrepearedBuildingConstr2Transforms[i].Scale = gameObjects[i].transform.localScale;
 		}
 	}
 	private void FindBankBuildings(GameObject[] gameObjects)
@@ -411,6 +435,14 @@ public class LevelCreator : ScriptableObject
 		for (int i = 0; i < RoofBuildingTransforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedRoofBuilding"]), RoofBuildingTransforms[i].Position, RoofBuildingTransforms[i].Rotation).transform.localScale = RoofBuildingTransforms[i].Scale;
+		}
+		for (int i = 0; i < PrepearedBuildingConstr1Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), PrepearedBuildingConstr1Transforms[i].Position, PrepearedBuildingConstr1Transforms[i].Rotation).transform.localScale = PrepearedBuildingConstr1Transforms[i].Scale;
+		}
+		for (int i = 0; i < PrepearedBuildingConstr2Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), PrepearedBuildingConstr2Transforms[i].Position, PrepearedBuildingConstr2Transforms[i].Rotation).transform.localScale = PrepearedBuildingConstr2Transforms[i].Scale;
 		}
 	}
 }
