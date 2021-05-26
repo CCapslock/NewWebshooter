@@ -34,6 +34,34 @@ public class LVLBuilder : MonoBehaviour
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]), lvl.BuildingCubeTransforms[i].Position, lvl.BuildingCubeTransforms[i].Rotation).transform.localScale = lvl.BuildingCubeTransforms[i].Scale;
 		}
+		for (int i = 0; i < lvl.PrepearedBuildingConstr1Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), lvl.PrepearedBuildingConstr1Transforms[i].Position, lvl.PrepearedBuildingConstr1Transforms[i].Rotation).transform.localScale = lvl.PrepearedBuildingConstr1Transforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.PrepearedBuildingConstr2Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), lvl.PrepearedBuildingConstr2Transforms[i].Position, lvl.PrepearedBuildingConstr2Transforms[i].Rotation).transform.localScale = lvl.PrepearedBuildingConstr2Transforms[i].Scale;
+		}
+
+
+		//Decorative
+		for (int i = 0; i < lvl.DecorativeBenchTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeBench"]), lvl.DecorativeBenchTransforms[i].Position, lvl.DecorativeBenchTransforms[i].Rotation).transform.localScale = lvl.DecorativeBenchTransforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.DecorativeCraneTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeCrane"]), lvl.DecorativeCraneTransforms[i].Position, lvl.DecorativeCraneTransforms[i].Rotation).transform.localScale = lvl.DecorativeCraneTransforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.DecorativeVoltageWiresTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeVoltageWires"]), lvl.DecorativeVoltageWiresTransforms[i].Position, lvl.DecorativeVoltageWiresTransforms[i].Rotation).transform.localScale = lvl.DecorativeVoltageWiresTransforms[i].Scale;
+		}
+		for (int i = 0; i < lvl.DecorativeWoodShieldTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeWoodShield"]), lvl.DecorativeWoodShieldTransforms[i].Position, lvl.DecorativeWoodShieldTransforms[i].Rotation).transform.localScale = lvl.DecorativeWoodShieldTransforms[i].Scale;
+		}
+
 		MovementPoints[] TempMovementPoints = new MovementPoints[lvl.MovementPoints.Length];
 		for (int i = 0; i < lvl.MovementPoints.Length; i++)
 		{

@@ -4,6 +4,7 @@ using UnityEngine;
 public class ArtController : MonoBehaviour
 {
 	public ArtPreset[] ArtPresets;
+	public bool NeedTochangeDecorativeObjects;
 
 	private GameObject _changingObject;
 	private SkinnedMeshRenderer _enemyRenderer;
@@ -19,6 +20,10 @@ public class ArtController : MonoBehaviour
 		_presetNum = PlayerPrefs.GetInt(_presetNumPlayerPref);
 		ChangeEnemyesMaterial();
 		ChangeBuildingsMaterial();
+		if (NeedTochangeDecorativeObjects)
+		{
+			ChangeDecorativesMaterial();
+		}
 	}
 	public void ChangeMaterials()
 	{
@@ -59,7 +64,7 @@ public class ArtController : MonoBehaviour
 			_newMaterials[i] = ArtPresets[_presetNum].EnemyMaterial;
 		}
 		_enemyRenderer.materials = _newMaterials;
-		
+
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyFalling"]);
 		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
 		_newMaterials = _enemyRenderer.sharedMaterials;
@@ -77,8 +82,6 @@ public class ArtController : MonoBehaviour
 		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
 		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
 		_buildingRenderer.materials = _newMaterials;
-
-
 
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]);
 		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
@@ -108,10 +111,51 @@ public class ArtController : MonoBehaviour
 		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
 		_buildingRenderer.materials = _newMaterials;
 
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]);
 		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
 		_newMaterials = _buildingRenderer.sharedMaterials;
 		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_buildingRenderer.materials = _newMaterials;
+	}
+	private void ChangeDecorativesMaterial()
+	{
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeBench"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeCrane"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeVoltageWires"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
+		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeWoodShield"]);
+		_buildingRenderer = _changingObject.GetComponentInChildren<MeshRenderer>();
+		_newMaterials = _buildingRenderer.sharedMaterials;
+		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		_newMaterials[1] = ArtPresets[_presetNum].WindowsMaterial;
 		_buildingRenderer.materials = _newMaterials;
 	}
 	private void ChangeWebMaterial()

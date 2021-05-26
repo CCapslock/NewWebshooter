@@ -11,14 +11,23 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] Buildings2Transforms;
 	public CustomTransform[] Buildings3Transforms;
 	public CustomTransform[] Buildings4Transforms;
+	public CustomTransform[] PrepearedBuildingConstr1Transforms;
+	public CustomTransform[] PrepearedBuildingConstr2Transforms;
 	public CustomTransform[] RoofBuildingTransforms;
 	public CustomTransform[] BankBuildingsTransforms;
 	public CustomTransform[] BuildingCubeTransforms;
+
 	public CustomTransform[] SimpleEnemyTransforms;
 	public CustomTransform[] ThrowingEnemyTransforms;
 	public CustomTransform[] EnemyWithShieldTransforms;
-	public CustomBossSetParametrs BossSetParametrs;
 	public MovementPointForBuilder[] MovementPoints;
+	public CustomBossSetParametrs BossSetParametrs;
+
+	public CustomTransform[] DecorativeBenchTransforms;
+	public CustomTransform[] DecorativeCraneTransforms;
+	public CustomTransform[] DecorativeVoltageWiresTransforms;
+	public CustomTransform[] DecorativeWoodShieldTransforms;
+
 	public bool IsMinion;
 	[ShowIf("IsMinion")]
 	public bool IsJoker;
@@ -34,8 +43,16 @@ public class LevelCreator : ScriptableObject
 		Buildings2Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings2)).Length];
 		Buildings3Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings3)).Length];
 		Buildings4Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings4)).Length];
+
+		DecorativeBenchTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeBench)).Length];
+		DecorativeCraneTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeCrane)).Length];
+		DecorativeVoltageWiresTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeVoltageWires)).Length];
+		DecorativeWoodShieldTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeWoodShield)).Length];
+
 		RoofBuildingTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)).Length];
 		BankBuildingsTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)).Length];
+		PrepearedBuildingConstr1Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)).Length];
+		PrepearedBuildingConstr2Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)).Length];
 		BuildingCubeTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)).Length];
 		SimpleEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)).Length];
 		ThrowingEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)).Length];
@@ -50,6 +67,14 @@ public class LevelCreator : ScriptableObject
 		FindBuildings2(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings2)));
 		FindBuildings3(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings3)));
 		FindBuildings4(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings4)));
+
+		FindDecorativeBench(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeBench)));
+		FindDecorativeCrane(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeCrane)));
+		FindDecorativeVoltageWires(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeVoltageWires)));
+		FindDecorativeWoodShield(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeWoodShield)));
+
+		FindBuildingConstr1(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)));
+		FindBuildingConstr2(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)));
 		FindRoofBuildings(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)));
 		FindBankBuildings(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)));
 		FindBuildingCubes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)));
@@ -69,6 +94,7 @@ public class LevelCreator : ScriptableObject
 			BossSetParametrs.Transform.Scale = gameObject.transform.localScale;
 		}
 	}
+	#region FindBuildings
 	private void FindBuildings1(GameObject[] gameObjects)
 	{
 		for (int i = 0; i < gameObjects.Length; i++)
@@ -114,6 +140,24 @@ public class LevelCreator : ScriptableObject
 			RoofBuildingTransforms[i].Scale = gameObjects[i].transform.localScale;
 		}
 	}
+	private void FindBuildingConstr1(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			PrepearedBuildingConstr1Transforms[i].Position = gameObjects[i].transform.position;
+			PrepearedBuildingConstr1Transforms[i].Rotation = gameObjects[i].transform.rotation;
+			PrepearedBuildingConstr1Transforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindBuildingConstr2(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			PrepearedBuildingConstr2Transforms[i].Position = gameObjects[i].transform.position;
+			PrepearedBuildingConstr2Transforms[i].Rotation = gameObjects[i].transform.rotation;
+			PrepearedBuildingConstr2Transforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
 	private void FindBankBuildings(GameObject[] gameObjects)
 	{
 		for (int i = 0; i < gameObjects.Length; i++)
@@ -132,6 +176,46 @@ public class LevelCreator : ScriptableObject
 			BuildingCubeTransforms[i].Scale = gameObjects[i].transform.localScale;
 		}
 	}
+	#endregion
+	#region FindDecorativeObjects
+	private void FindDecorativeBench(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			DecorativeBenchTransforms[i].Position = gameObjects[i].transform.position;
+			DecorativeBenchTransforms[i].Rotation = gameObjects[i].transform.rotation;
+			DecorativeBenchTransforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindDecorativeCrane(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			DecorativeCraneTransforms[i].Position = gameObjects[i].transform.position;
+			DecorativeCraneTransforms[i].Rotation = gameObjects[i].transform.rotation;
+			DecorativeCraneTransforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindDecorativeVoltageWires(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			DecorativeVoltageWiresTransforms[i].Position = gameObjects[i].transform.position;
+			DecorativeVoltageWiresTransforms[i].Rotation = gameObjects[i].transform.rotation;
+			DecorativeVoltageWiresTransforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindDecorativeWoodShield(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			DecorativeWoodShieldTransforms[i].Position = gameObjects[i].transform.position;
+			DecorativeWoodShieldTransforms[i].Rotation = gameObjects[i].transform.rotation;
+			DecorativeWoodShieldTransforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	#endregion
+	#region FindEnemyes
 	private void FindSimpleEnemyes(GameObject[] gameObjects)
 	{
 		for (int i = 0; i < gameObjects.Length; i++)
@@ -159,6 +243,7 @@ public class LevelCreator : ScriptableObject
 			EnemyWithShieldTransforms[i].Scale = gameObjects[i].transform.localScale;
 		}
 	}
+	#endregion
 	private void ScanMovingPoints(GameObject[] gameObjects)
 	{
 		for (int i = 0; i < gameObjects.Length; i++)
@@ -207,7 +292,7 @@ public class LevelCreator : ScriptableObject
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), Buildings2Transforms[i].Position, Buildings2Transforms[i].Rotation).transform.localScale = Buildings2Transforms[i].Scale;
 		}
-		
+
 		for (int i = 0; i < BankBuildingsTransforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BankBuilding"]), BankBuildingsTransforms[i].Position, BankBuildingsTransforms[i].Rotation).transform.localScale = BankBuildingsTransforms[i].Scale;
@@ -399,7 +484,6 @@ public class LevelCreator : ScriptableObject
 		}
 
 
-
 		for (int i = 0; i < Buildings3Transforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding3"]), Buildings3Transforms[i].Position, Buildings3Transforms[i].Rotation).transform.localScale = Buildings3Transforms[i].Scale;
@@ -411,6 +495,32 @@ public class LevelCreator : ScriptableObject
 		for (int i = 0; i < RoofBuildingTransforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedRoofBuilding"]), RoofBuildingTransforms[i].Position, RoofBuildingTransforms[i].Rotation).transform.localScale = RoofBuildingTransforms[i].Scale;
+		}
+		for (int i = 0; i < PrepearedBuildingConstr1Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), PrepearedBuildingConstr1Transforms[i].Position, PrepearedBuildingConstr1Transforms[i].Rotation).transform.localScale = PrepearedBuildingConstr1Transforms[i].Scale;
+		}
+		for (int i = 0; i < PrepearedBuildingConstr2Transforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), PrepearedBuildingConstr2Transforms[i].Position, PrepearedBuildingConstr2Transforms[i].Rotation).transform.localScale = PrepearedBuildingConstr2Transforms[i].Scale;
+		}
+
+
+		for (int i = 0; i < DecorativeBenchTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeBench"]), DecorativeBenchTransforms[i].Position, DecorativeBenchTransforms[i].Rotation).transform.localScale = DecorativeBenchTransforms[i].Scale;
+		}
+		for (int i = 0; i < DecorativeCraneTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeCrane"]), DecorativeCraneTransforms[i].Position, DecorativeCraneTransforms[i].Rotation).transform.localScale = DecorativeCraneTransforms[i].Scale;
+		}
+		for (int i = 0; i < DecorativeVoltageWiresTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeVoltageWires"]), DecorativeVoltageWiresTransforms[i].Position, DecorativeVoltageWiresTransforms[i].Rotation).transform.localScale = DecorativeVoltageWiresTransforms[i].Scale;
+		}
+		for (int i = 0; i < DecorativeWoodShieldTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeWoodShield"]), DecorativeWoodShieldTransforms[i].Position, DecorativeWoodShieldTransforms[i].Rotation).transform.localScale = DecorativeWoodShieldTransforms[i].Scale;
 		}
 	}
 }
