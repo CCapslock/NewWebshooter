@@ -25,5 +25,9 @@ public enum TagType : byte
 	RoofBuilding = 21,
 	BuildingConstr1 = 22,
 	BuildingConstr2 = 23,
-	DodgeEnemy = 24
+	DodgeEnemy = 24,
+	DecorativeBench = 25,
+	DecorativeCrane = 26,
+	DecorativeVoltageWires = 27,
+	DecorativeWoodShield = 28
 }

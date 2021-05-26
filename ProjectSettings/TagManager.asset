@@ -28,6 +28,10 @@ TagManager:
   - BuildingConstr1
   - BuildingConstr2
   - DodgeEnemy
+  - DecorativeBench
+  - DecorativeCrane
+  - DecorativeVoltageWires
+  - DecorativeWoodShield
   layers:
   - Default
   - TransparentFX

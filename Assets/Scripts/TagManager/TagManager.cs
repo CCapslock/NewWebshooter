@@ -31,7 +31,11 @@ public static class TagManager
 				{TagType.BankBuilding, "BankBuilding"},
 				{TagType.BuildingConstr1, "BuildingConstr1"},
 				{TagType.BuildingConstr2, "BuildingConstr2"},
-				{TagType.RoofBuilding, "RoofBuilding"}
+				{TagType.RoofBuilding, "RoofBuilding"},
+				{TagType.DecorativeBench, "DecorativeBench"},
+				{TagType.DecorativeCrane, "DecorativeCrane"},
+				{TagType.DecorativeVoltageWires, "DecorativeVoltageWires"},
+				{TagType.DecorativeWoodShield, "DecorativeWoodShield"}
 			};
 	}
 

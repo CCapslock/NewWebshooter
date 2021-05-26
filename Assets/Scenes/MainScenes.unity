@@ -1978,7 +1978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableLevels:
-  - {fileID: 11400000, guid: af8289af34a59e2449b75a09ea15f606, type: 2}
   - {fileID: 11400000, guid: ace3dd495d076e545843faed94b1fc22, type: 2}
   - {fileID: 11400000, guid: ef34952e785098c4d942104f73bf38c5, type: 2}
   - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
@@ -2002,7 +2001,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1bedb2c76fa7e374cb3fa16c76f8001a, type: 2}
   - {fileID: 11400000, guid: 78832163d7bc05e48be05af37005f482, type: 2}
   - {fileID: 11400000, guid: a5a9ad6280a76ac44ba3833e00b4abdc, type: 2}
-  - {fileID: 11400000, guid: 14b6b579fd8b08441b3069863eff4845, type: 2}
   - {fileID: 11400000, guid: 14b6b579fd8b08441b3069863eff4845, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
@@ -2035,6 +2033,7 @@ MonoBehaviour:
     BuildingMaterial: {fileID: 2100000, guid: f1da4691b1624914bafd5692d3c3e2cb, type: 2}
     WindowsMaterial: {fileID: 2100000, guid: b769f71453c3af44d9625f7162ea267b, type: 2}
     WebMaterial: {fileID: 2100000, guid: 8cb09d6da589f184695a7b7bad65929b, type: 2}
+  NeedTochangeDecorativeObjects: 1
 --- !u!114 &3040295923444952734
 MonoBehaviour:
   m_ObjectHideFlags: 0

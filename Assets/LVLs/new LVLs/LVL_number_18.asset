@@ -53,6 +53,12 @@ MonoBehaviour:
   - Position: {x: -20.5, y: -16.1, z: 148.2}
     Rotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
     Scale: {x: 20, y: 20, z: 20}
+  Buildings3Transforms: []
+  Buildings4Transforms: []
+  PrepearedBuildingConstr1Transforms: []
+  PrepearedBuildingConstr2Transforms: []
+  RoofBuildingTransforms: []
+  BankBuildingsTransforms: []
   BuildingCubeTransforms:
   - Position: {x: 0, y: 12.269999, z: 45.2217}
     Rotation: {x: -0, y: -0, z: -0, w: 1}
@@ -93,13 +99,6 @@ MonoBehaviour:
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   EnemyWithShieldTransforms: []
-  BossSetParametrs:
-    Transform:
-      Position: {x: 0, y: 0, z: 0}
-      Rotation: {x: 0, y: 0, z: 0, w: 0}
-      Scale: {x: 0, y: 0, z: 0}
-    SetName: 
-    IsActive: 0
   MovementPoints:
   - Transform:
       Position: {x: 0, y: 22.15, z: 12.68}
@@ -254,6 +253,17 @@ MonoBehaviour:
     NeedToChangeSpeed: 0
     IsFinalPoint: 1
     IsBossBattle: 0
+  BossSetParametrs:
+    Transform:
+      Position: {x: 0, y: 0, z: 0}
+      Rotation: {x: 0, y: 0, z: 0, w: 0}
+      Scale: {x: 0, y: 0, z: 0}
+    SetName: 
+    IsActive: 0
+  DecorativeBenchTransforms: []
+  DecorativeCraneTransforms: []
+  DecorativeVoltageWiresTransforms: []
+  DecorativeWoodShieldTransforms: []
   IsMinion: 1
   IsJoker: 1
   IsMisterio: 0
