@@ -86,7 +86,6 @@ public class LVLBuilder : MonoBehaviour
 		}
 		for (int i = 0; i < lvl.ThrowingEnemyTransforms.Length; i++)
 		{
-			//Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyThrowingBombs"]), ThrowingEnemyTransforms[i].Position, ThrowingEnemyTransforms[i].Rotation).transform.localScale = ThrowingEnemyTransforms[i].Scale;
 			for (int j = 0; j < lvl.MovementPoints.Length; j++)
 			{
 				for (int k = 0; k < lvl.MovementPoints[j].EnemyTransforms.Length; k++)
@@ -132,7 +131,53 @@ public class LVLBuilder : MonoBehaviour
 				}
 			}
 		}
+		for (int i = 0; i < lvl.EnemyWithShieldTransforms.Length; i++)
+		{
+			for (int j = 0; j < lvl.MovementPoints.Length; j++)
+			{
+				for (int k = 0; k < lvl.MovementPoints[j].EnemyTransforms.Length; k++)
+				{
+					if (lvl.MovementPoints[j].EnemyTransforms[k].Position == lvl.EnemyWithShieldTransforms[i].Position)
+					{
+						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithShield"]), lvl.EnemyWithShieldTransforms[i].Position, lvl.EnemyWithShieldTransforms[i].Rotation);
+						TempMovementPoints[j].Enemyes[k].transform.localScale = lvl.EnemyWithShieldTransforms[i].Scale;
 
+						if (lvl.IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (lvl.IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (lvl.IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (lvl.IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch { }
+						}
+					}
+				}
+			}
+		}
 		//spawn boss set
 		if (lvl.BossSetParametrs.IsActive)
 		{

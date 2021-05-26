@@ -12,6 +12,7 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] BuildingCubeTransforms;
 	public CustomTransform[] SimpleEnemyTransforms;
 	public CustomTransform[] ThrowingEnemyTransforms;
+	public CustomTransform[] EnemyWithShieldTransforms;
 	public CustomBossSetParametrs BossSetParametrs;
 	public MovementPointForBuilder[] MovementPoints;
 	public bool IsMinion;
@@ -30,6 +31,7 @@ public class LevelCreator : ScriptableObject
 		BuildingCubeTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)).Length];
 		SimpleEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)).Length];
 		ThrowingEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)).Length];
+		EnemyWithShieldTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ShieldEnemy)).Length];
 		MovementPoints = new MovementPointForBuilder[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.MovingPoint)).Length];
 		BossSetParametrs = new CustomBossSetParametrs();
 	}
@@ -41,6 +43,7 @@ public class LevelCreator : ScriptableObject
 		FindBuildingCubes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)));
 		FindSimpleEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)));
 		FindThrowingEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)));
+		FindShieldEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ShieldEnemy)));
 		FindBossSet(GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.BossSet)));
 		ScanMovingPoints(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.MovingPoint)));
 	}
@@ -97,6 +100,15 @@ public class LevelCreator : ScriptableObject
 			ThrowingEnemyTransforms[i].Position = gameObjects[i].transform.position;
 			ThrowingEnemyTransforms[i].Rotation = gameObjects[i].transform.rotation;
 			ThrowingEnemyTransforms[i].Scale = gameObjects[i].transform.localScale;
+		}
+	}
+	private void FindShieldEnemyes(GameObject[] gameObjects)
+	{
+		for (int i = 0; i < gameObjects.Length; i++)
+		{
+			EnemyWithShieldTransforms[i].Position = gameObjects[i].transform.position;
+			EnemyWithShieldTransforms[i].Rotation = gameObjects[i].transform.rotation;
+			EnemyWithShieldTransforms[i].Scale = gameObjects[i].transform.localScale;
 		}
 	}
 	private void ScanMovingPoints(GameObject[] gameObjects)
@@ -179,25 +191,45 @@ public class LevelCreator : ScriptableObject
 					if (MovementPoints[j].EnemyTransforms[k].Position == SimpleEnemyTransforms[i].Position)
 					{
 						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithRagdoll"]), SimpleEnemyTransforms[i].Position, SimpleEnemyTransforms[i].Rotation);
-						TempMovementPoints[j].Enemyes[k].transform.localScale = SimpleEnemyTransforms[i].Scale; 
-						List<GameObject> maskGameObjects = new List<GameObject>();
-						Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
-						for (int l = 0; l < tempGameObjects.Length; l++)
+						TempMovementPoints[j].Enemyes[k].transform.localScale = SimpleEnemyTransforms[i].Scale;
+						if (IsMinion)
 						{
-							if (tempGameObjects[l].CompareTag(TagManager.GetTag(TagType.JokerMask)))
+							try
 							{
-								maskGameObjects.Add(tempGameObjects[l].gameObject);
+								TagType maskTag = new TagType();
+								if (IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
 							}
+							catch { }
 						}
-						int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
-						maskGameObjects[randomNum].SetActive(true);
 					}
 				}
 			}
 		}
 		for (int i = 0; i < ThrowingEnemyTransforms.Length; i++)
 		{
-			//Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyThrowingBombs"]), ThrowingEnemyTransforms[i].Position, ThrowingEnemyTransforms[i].Rotation).transform.localScale = ThrowingEnemyTransforms[i].Scale;
 			for (int j = 0; j < MovementPoints.Length; j++)
 			{
 				for (int k = 0; k < MovementPoints[j].EnemyTransforms.Length; k++)
@@ -206,6 +238,86 @@ public class LevelCreator : ScriptableObject
 					{
 						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyThrowingBombs"]), ThrowingEnemyTransforms[i].Position, ThrowingEnemyTransforms[i].Rotation);
 						TempMovementPoints[j].Enemyes[k].transform.localScale = ThrowingEnemyTransforms[i].Scale;
+						if (IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch { }
+						}
+					}
+				}
+			}
+		}
+
+		for (int i = 0; i < EnemyWithShieldTransforms.Length; i++)
+		{
+			for (int j = 0; j < MovementPoints.Length; j++)
+			{
+				for (int k = 0; k < MovementPoints[j].EnemyTransforms.Length; k++)
+				{
+					if (MovementPoints[j].EnemyTransforms[k].Position == EnemyWithShieldTransforms[i].Position)
+					{
+						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithShield"]), EnemyWithShieldTransforms[i].Position, EnemyWithShieldTransforms[i].Rotation);
+						TempMovementPoints[j].Enemyes[k].transform.localScale = EnemyWithShieldTransforms[i].Scale;
+
+						if (IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch { }
+						}
 					}
 				}
 			}

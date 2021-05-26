@@ -18,4 +18,5 @@ public enum TagType : byte
 	JokerMask = 14,
 	MisterioMask = 15,
 	GoblinMask = 16,
+	ShieldEnemy = 17,
 }

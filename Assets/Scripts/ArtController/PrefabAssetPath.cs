@@ -7,6 +7,7 @@ public class PrefabAssetPath
 		{"EnemyPrefabWithRagdoll", "Prefabs/EnemyPrefabWithRagdoll"},
 		{"EnemyThrowingBombs", "Prefabs/EnemyThrowingBombs"},
 		{"EnemyFalling", "Prefabs/EnemyFalling"},
+		{"EnemyPrefabWithShield", "Prefabs/EnemyPrefabWithShield"},
 		{"PrepearedBuilding1", "Prefabs/PrepearedBuilding1"},
 		{"PrepearedBuilding2", "Prefabs/PrepearedBuilding2"},
 		{"WebSphere", "Prefabs/WebSphere"},
