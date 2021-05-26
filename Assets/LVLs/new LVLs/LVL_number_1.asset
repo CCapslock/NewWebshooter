@@ -61,12 +61,6 @@ MonoBehaviour:
     Scale: {x: 20, y: 20, z: 20}
   BuildingCubeTransforms: []
   SimpleEnemyTransforms:
-  - Position: {x: -4.5484915, y: 26.119993, z: 81.11557}
-    Rotation: {x: 0, y: 1, z: 0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: 0.94593143, y: 26.119995, z: 80.99}
-    Rotation: {x: 0, y: 1, z: 0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: 0.08416128, y: -1.0500002, z: 8.188896}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
@@ -76,9 +70,6 @@ MonoBehaviour:
   - Position: {x: 3.7460551, y: 6.3200054, z: 27.690256}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -5.5821085, y: -1.05, z: 7.56}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: -0.59, y: 16.820015, z: 53.47}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
@@ -86,10 +77,11 @@ MonoBehaviour:
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   ThrowingEnemyTransforms:
-  - Position: {x: -1.73, y: 26.119995, z: 86.44}
-    Rotation: {x: 0, y: 1, z: 0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: -4.641525, y: 16.86, z: 56.3}
+    Rotation: {x: -0, y: 1, z: -0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
+  EnemyWithShieldTransforms:
+  - Position: {x: -5.5821085, y: -1.05, z: 7.56}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   BossSetParametrs:

@@ -23,7 +23,8 @@ public static class TagManager
 				{TagType.BossSet, "BossSet"},
 				{TagType.JokerMask, "JokerMask"},
 				{TagType.MisterioMask, "MisterioMask"},
-				{TagType.GoblinMask, "GoblinMask"}
+				{TagType.GoblinMask, "GoblinMask"},
+				{TagType.ShieldEnemy, "ShieldEnemy"}
 			};
 	}
 

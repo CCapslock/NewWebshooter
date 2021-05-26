@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1964,6 +1964,7 @@ MonoBehaviour:
   StarsExplosionParticles: {fileID: 19864940, guid: 696cc7dc6a1de5e499d28f1b21112451, type: 3}
   EvilLaugh: {fileID: 198511680906886492, guid: f4989a15a7006aa42859a73811d6af27, type: 3}
   Glow: {fileID: 8822213546102293419, guid: b2bb9e23af899c54893bf99212a688bb, type: 3}
+  ShieldBroke: {fileID: 19831454, guid: c95f1c4fb76250f4b9209e54c72c1258, type: 3}
 --- !u!114 &3040295923444952732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1987,7 +1988,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab757c973add2cb499e69305054796fa, type: 2}
   - {fileID: 11400000, guid: be9bb0c3a8ca0294e986f6f443614864, type: 2}
   - {fileID: 11400000, guid: 6f27deb55c4f70e48928caf670cb1245, type: 2}
-  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
+  - {fileID: 11400000, guid: e1fb00df8d7b27b4390d077e79124276, type: 2}
   - {fileID: 11400000, guid: 472dd21680ddd794a869bddc2da63f45, type: 2}
   - {fileID: 11400000, guid: a471536f3fa1ace4882218f82824061d, type: 2}
   - {fileID: 11400000, guid: c723aa4c97e6f214c816c08272a54e38, type: 2}
@@ -2000,7 +2001,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1bedb2c76fa7e374cb3fa16c76f8001a, type: 2}
   - {fileID: 11400000, guid: 78832163d7bc05e48be05af37005f482, type: 2}
   - {fileID: 11400000, guid: a5a9ad6280a76ac44ba3833e00b4abdc, type: 2}
-  - {fileID: 11400000, guid: 14b6b579fd8b08441b3069863eff4845, type: 2}
   - {fileID: 11400000, guid: 14b6b579fd8b08441b3069863eff4845, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0

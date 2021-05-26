@@ -20,6 +20,7 @@ TagManager:
   - JokerMask
   - MisterioMask
   - GoblinMask
+  - ShieldEnemy
   layers:
   - Default
   - TransparentFX

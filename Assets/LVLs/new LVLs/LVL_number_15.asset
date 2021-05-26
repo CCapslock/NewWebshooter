@@ -119,6 +119,7 @@ MonoBehaviour:
   - Position: {x: 78.90003, y: -12.7, z: 53.337593}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
+  EnemyWithShieldTransforms: []
   BossSetParametrs:
     Transform:
       Position: {x: 0, y: 0, z: 0}
@@ -362,7 +363,7 @@ MonoBehaviour:
     NeedToChangeSpeed: 0
     IsFinalPoint: 1
     IsBossBattle: 0
-  IsMinion: 0
+  IsMinion: 1
   IsJoker: 0
   IsMisterio: 0
-  IsGoblin: 0
+  IsGoblin: 1
