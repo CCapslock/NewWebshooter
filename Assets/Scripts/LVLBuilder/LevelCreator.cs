@@ -158,11 +158,6 @@ public class LevelCreator : ScriptableObject
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), Buildings2Transforms[i].Position, Buildings2Transforms[i].Rotation).transform.localScale = Buildings2Transforms[i].Scale;
 		}
-
-		for (int i = 0; i < BankBuildingsTransforms.Length; i++)
-		{
-			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BankBuilding"]), BankBuildingsTransforms[i].Position, BankBuildingsTransforms[i].Rotation).transform.localScale = BankBuildingsTransforms[i].Scale;
-		}
 		for (int i = 0; i < BuildingCubeTransforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]), BuildingCubeTransforms[i].Position, BuildingCubeTransforms[i].Rotation).transform.localScale = BuildingCubeTransforms[i].Scale;
@@ -432,6 +427,11 @@ public class LevelCreator : ScriptableObject
 					}
 				}
 			}
+		}
+
+		for (int i = 0; i < BankBuildingsTransforms.Length; i++)
+		{
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BankBuilding"]), BankBuildingsTransforms[i].Position, BankBuildingsTransforms[i].Rotation).transform.localScale = BankBuildingsTransforms[i].Scale;
 		}
 	}
 }
