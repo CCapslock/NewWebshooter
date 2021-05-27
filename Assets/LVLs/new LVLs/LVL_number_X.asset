@@ -102,7 +102,10 @@ MonoBehaviour:
   - Position: {x: -5.5821085, y: -1.05, z: 7.56}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  DodgeEnemyTransforms: []
+  DodgeEnemyTransforms:
+  - Position: {x: -2.805989, y: -1.0500045, z: 4.5186644}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
   MovementPoints:
   - Transform:
       Position: {x: 0, y: 18, z: 44.37}
@@ -213,6 +216,9 @@ MonoBehaviour:
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     - Position: {x: -5.5821085, y: -1.05, z: 7.56}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
+      Scale: {x: 1.5, y: 1.5, z: 1.5}
+    - Position: {x: -2.805989, y: -1.0500045, z: 4.5186644}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0
