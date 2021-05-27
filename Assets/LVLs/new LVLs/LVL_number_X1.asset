@@ -108,20 +108,6 @@ MonoBehaviour:
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   MovementPoints:
   - Transform:
-      Position: {x: -0.57, y: 0.317, z: 30.99}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 1, y: 1, z: 1}
-    EnemyTransforms: []
-    RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0.2
-    PointNum: 5
-    NeedToRotate: 0
-    NeedToFly: 0
-    NeedToCountEnemy: 1
-    NeedToChangeSpeed: 1
-    IsFinalPoint: 0
-    IsBossBattle: 0
-  - Transform:
       Position: {x: -1.2, y: 4.32, z: 16.63}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
@@ -170,7 +156,7 @@ MonoBehaviour:
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
     RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0.3
+    NewSpeed: 0.2
     PointNum: 2
     NeedToRotate: 0
     NeedToFly: 1
