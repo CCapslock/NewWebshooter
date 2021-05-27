@@ -144,6 +144,17 @@ public class ArtController : MonoBehaviour
 		_newMaterials = _buildingRenderer.sharedMaterials;
 		_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
 		_buildingRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BankBuilding"]);
+		MeshRenderer[] tempRenderers = _changingObject.GetComponentsInChildren<MeshRenderer>();
+		_newMaterials = new Material[tempRenderers.Length];
+		Debug.Log("tempRenderers " + tempRenderers.Length);
+		for (int i = 0; i < 5; i++)
+		{
+			tempRenderers[i].sharedMaterial = ArtPresets[_presetNum].BuildingMaterial;
+		}
+		//_newMaterials[0] = ArtPresets[_presetNum].BuildingMaterial;
+		//_buildingRenderer.materials = _newMaterials;
 	}
 	private void ChangeDecorativesMaterial()
 	{
