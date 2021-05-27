@@ -252,7 +252,14 @@ public class LevelCreator : ScriptableObject
 								}
 								if (IsMisterio)
 								{
-									maskTag = TagType.MisterioMask;
+									if (UnityEngine.Random.Range(0, 2) == 1)
+									{
+										maskTag = TagType.MisterioMask;
+									}
+									else
+									{
+										maskTag = TagType.MisterioMask;
+									}
 								}
 								if (IsGoblin)
 								{
@@ -298,7 +305,15 @@ public class LevelCreator : ScriptableObject
 								}
 								if (IsMisterio)
 								{
-									maskTag = TagType.MisterioMask;
+									if (UnityEngine.Random.Range(0, 2) == 1)
+									{
+										maskTag = TagType.MisterioMask;
+									}
+									else
+									{
+										maskTag = TagType.MisterioMask;
+									}
+									
 								}
 								if (IsGoblin)
 								{
