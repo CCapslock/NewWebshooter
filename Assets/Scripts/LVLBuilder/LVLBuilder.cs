@@ -34,13 +34,13 @@ public class LVLBuilder : MonoBehaviour
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BuildingCube"]), lvl.BuildingCubeTransforms[i].Position, lvl.BuildingCubeTransforms[i].Rotation).transform.localScale = lvl.BuildingCubeTransforms[i].Scale;
 		}
-		for (int i = 0; i < lvl.PrepearedBuildingConstr1Transforms.Length; i++)
+		for (int i = 0; i < lvl.BuildingConstr1Transforms.Length; i++)
 		{
-			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), lvl.PrepearedBuildingConstr1Transforms[i].Position, lvl.PrepearedBuildingConstr1Transforms[i].Rotation).transform.localScale = lvl.PrepearedBuildingConstr1Transforms[i].Scale;
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), lvl.BuildingConstr1Transforms[i].Position, lvl.BuildingConstr1Transforms[i].Rotation).transform.localScale = lvl.BuildingConstr1Transforms[i].Scale;
 		}
-		for (int i = 0; i < lvl.PrepearedBuildingConstr2Transforms.Length; i++)
+		for (int i = 0; i < lvl.BuildingConstr2Transforms.Length; i++)
 		{
-			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), lvl.PrepearedBuildingConstr2Transforms[i].Position, lvl.PrepearedBuildingConstr2Transforms[i].Rotation).transform.localScale = lvl.PrepearedBuildingConstr2Transforms[i].Scale;
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), lvl.BuildingConstr2Transforms[i].Position, lvl.BuildingConstr2Transforms[i].Rotation).transform.localScale = lvl.BuildingConstr2Transforms[i].Scale;
 		}
 
 
@@ -222,22 +222,57 @@ public class LVLBuilder : MonoBehaviour
 				}
 			}
 		}
+
+		for (int i = 0; i < lvl.DodgeEnemyTransforms.Length; i++)
+		{
+			for (int j = 0; j < lvl.MovementPoints.Length; j++)
+			{
+				for (int k = 0; k < lvl.MovementPoints[j].EnemyTransforms.Length; k++)
+				{
+					if (lvl.MovementPoints[j].EnemyTransforms[k].Position == lvl.DodgeEnemyTransforms[i].Position)
+					{
+						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabDodge"]), lvl.DodgeEnemyTransforms[i].Position, lvl.DodgeEnemyTransforms[i].Rotation);
+						TempMovementPoints[j].Enemyes[k].transform.localScale = lvl.DodgeEnemyTransforms[i].Scale;
+
+						if (lvl.IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (lvl.IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (lvl.IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (lvl.IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch { }
+						}
+					}
+				}
+			}
+		}
+
 		//spawn boss set
 		if (lvl.BossSetParametrs.IsActive)
 		{
-			/*
-			switch (lvl.BossSetParametrs.SetNum)
-			{
-				case 0:
-					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet0"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
-					break;
-				case 1:
-					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet1"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
-					break;
-				case 2:
-					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
-					break;
-			}*/
 			Instantiate(Resources.Load<GameObject>($"Prefabs/Bosses/{lvl.BossSetParametrs.SetName}"), lvl.BossSetParametrs.Transform.Position, lvl.BossSetParametrs.Transform.Rotation);
 		}
 

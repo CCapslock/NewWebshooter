@@ -11,8 +11,8 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] Buildings2Transforms;
 	public CustomTransform[] Buildings3Transforms;
 	public CustomTransform[] Buildings4Transforms;
-	public CustomTransform[] PrepearedBuildingConstr1Transforms;
-	public CustomTransform[] PrepearedBuildingConstr2Transforms;
+	public CustomTransform[] BuildingConstr1Transforms;
+	public CustomTransform[] BuildingConstr2Transforms;
 	public CustomTransform[] RoofBuildingTransforms;
 	public CustomTransform[] BankBuildingsTransforms;
 	public CustomTransform[] BuildingCubeTransforms;
@@ -20,6 +20,7 @@ public class LevelCreator : ScriptableObject
 	public CustomTransform[] SimpleEnemyTransforms;
 	public CustomTransform[] ThrowingEnemyTransforms;
 	public CustomTransform[] EnemyWithShieldTransforms;
+	public CustomTransform[] DodgeEnemyTransforms;
 	public MovementPointForBuilder[] MovementPoints;
 	public CustomBossSetParametrs BossSetParametrs;
 
@@ -51,36 +52,41 @@ public class LevelCreator : ScriptableObject
 
 		RoofBuildingTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)).Length];
 		BankBuildingsTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)).Length];
-		PrepearedBuildingConstr1Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)).Length];
-		PrepearedBuildingConstr2Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)).Length];
+		BuildingConstr1Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)).Length];
+		BuildingConstr2Transforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)).Length];
 		BuildingCubeTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)).Length];
+
 		SimpleEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)).Length];
 		ThrowingEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)).Length];
 		EnemyWithShieldTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ShieldEnemy)).Length];
+		DodgeEnemyTransforms = new CustomTransform[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DodgeEnemy)).Length];
+
 		MovementPoints = new MovementPointForBuilder[GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.MovingPoint)).Length];
 		BossSetParametrs = new CustomBossSetParametrs();
 	}
 	[Button]
 	public void ScanScene()
 	{
-		FindBuildings1(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings1)));
-		FindBuildings2(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings2)));
-		FindBuildings3(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings3)));
-		FindBuildings4(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings4)));
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings1)), Buildings1Transforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings2)), Buildings2Transforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings3)), Buildings3Transforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.Buildings4)), Buildings4Transforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)), BuildingConstr1Transforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)), BuildingConstr2Transforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)), RoofBuildingTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)), BankBuildingsTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)), BuildingCubeTransforms);
 
-		FindDecorativeBench(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeBench)));
-		FindDecorativeCrane(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeCrane)));
-		FindDecorativeVoltageWires(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeVoltageWires)));
-		FindDecorativeWoodShield(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeWoodShield)));
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeBench)), DecorativeBenchTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeCrane)), DecorativeCraneTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeVoltageWires)), DecorativeVoltageWiresTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DecorativeWoodShield)), DecorativeWoodShieldTransforms);
 
-		FindBuildingConstr1(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr1)));
-		FindBuildingConstr2(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingConstr2)));
-		FindRoofBuildings(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.RoofBuilding)));
-		FindBankBuildings(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BankBuilding)));
-		FindBuildingCubes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.BuildingCube)));
-		FindSimpleEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)));
-		FindThrowingEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)));
-		FindShieldEnemyes(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ShieldEnemy)));
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.SimpleEnemy)), SimpleEnemyTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ThrowingEnemy)),ThrowingEnemyTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.ShieldEnemy)), EnemyWithShieldTransforms);
+		FindObjects(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.DodgeEnemy)),DodgeEnemyTransforms);
+
 		FindBossSet(GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.BossSet)));
 		ScanMovingPoints(GameObject.FindGameObjectsWithTag(TagManager.GetTag(TagType.MovingPoint)));
 	}
@@ -94,156 +100,16 @@ public class LevelCreator : ScriptableObject
 			BossSetParametrs.Transform.Scale = gameObject.transform.localScale;
 		}
 	}
-	#region FindBuildings
-	private void FindBuildings1(GameObject[] gameObjects)
+	private void FindObjects(GameObject[] gameObjects, CustomTransform[] awdw)
 	{
-		for (int i = 0; i < gameObjects.Length; i++)
+		CustomTransform[] tempObjectsTransforms = new CustomTransform[awdw.Length];
+		for (int i = 0; i < tempObjectsTransforms.Length; i++)
 		{
-			Buildings1Transforms[i].Position = gameObjects[i].transform.position;
-			Buildings1Transforms[i].Rotation = gameObjects[i].transform.rotation;
-			Buildings1Transforms[i].Scale = gameObjects[i].transform.localScale;
+			awdw[i].Position = gameObjects[i].transform.position;
+			awdw[i].Rotation = gameObjects[i].transform.rotation;
+			awdw[i].Scale = gameObjects[i].transform.localScale;
 		}
 	}
-	private void FindBuildings2(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			Buildings2Transforms[i].Position = gameObjects[i].transform.position;
-			Buildings2Transforms[i].Rotation = gameObjects[i].transform.rotation;
-			Buildings2Transforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindBuildings3(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			Buildings3Transforms[i].Position = gameObjects[i].transform.position;
-			Buildings3Transforms[i].Rotation = gameObjects[i].transform.rotation;
-			Buildings3Transforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindBuildings4(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			Buildings4Transforms[i].Position = gameObjects[i].transform.position;
-			Buildings4Transforms[i].Rotation = gameObjects[i].transform.rotation;
-			Buildings4Transforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindRoofBuildings(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			RoofBuildingTransforms[i].Position = gameObjects[i].transform.position;
-			RoofBuildingTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			RoofBuildingTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindBuildingConstr1(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			PrepearedBuildingConstr1Transforms[i].Position = gameObjects[i].transform.position;
-			PrepearedBuildingConstr1Transforms[i].Rotation = gameObjects[i].transform.rotation;
-			PrepearedBuildingConstr1Transforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindBuildingConstr2(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			PrepearedBuildingConstr2Transforms[i].Position = gameObjects[i].transform.position;
-			PrepearedBuildingConstr2Transforms[i].Rotation = gameObjects[i].transform.rotation;
-			PrepearedBuildingConstr2Transforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindBankBuildings(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			BankBuildingsTransforms[i].Position = gameObjects[i].transform.position;
-			BankBuildingsTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			BankBuildingsTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindBuildingCubes(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			BuildingCubeTransforms[i].Position = gameObjects[i].transform.position;
-			BuildingCubeTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			BuildingCubeTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	#endregion
-	#region FindDecorativeObjects
-	private void FindDecorativeBench(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			DecorativeBenchTransforms[i].Position = gameObjects[i].transform.position;
-			DecorativeBenchTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			DecorativeBenchTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindDecorativeCrane(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			DecorativeCraneTransforms[i].Position = gameObjects[i].transform.position;
-			DecorativeCraneTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			DecorativeCraneTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindDecorativeVoltageWires(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			DecorativeVoltageWiresTransforms[i].Position = gameObjects[i].transform.position;
-			DecorativeVoltageWiresTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			DecorativeVoltageWiresTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindDecorativeWoodShield(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			DecorativeWoodShieldTransforms[i].Position = gameObjects[i].transform.position;
-			DecorativeWoodShieldTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			DecorativeWoodShieldTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	#endregion
-	#region FindEnemyes
-	private void FindSimpleEnemyes(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			SimpleEnemyTransforms[i].Position = gameObjects[i].transform.position;
-			SimpleEnemyTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			SimpleEnemyTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindThrowingEnemyes(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			ThrowingEnemyTransforms[i].Position = gameObjects[i].transform.position;
-			ThrowingEnemyTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			ThrowingEnemyTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	private void FindShieldEnemyes(GameObject[] gameObjects)
-	{
-		for (int i = 0; i < gameObjects.Length; i++)
-		{
-			EnemyWithShieldTransforms[i].Position = gameObjects[i].transform.position;
-			EnemyWithShieldTransforms[i].Rotation = gameObjects[i].transform.rotation;
-			EnemyWithShieldTransforms[i].Scale = gameObjects[i].transform.localScale;
-		}
-	}
-	#endregion
 	private void ScanMovingPoints(GameObject[] gameObjects)
 	{
 		for (int i = 0; i < gameObjects.Length; i++)
@@ -351,7 +217,6 @@ public class LevelCreator : ScriptableObject
 								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
 								for (int l = 0; l < tempGameObjects.Length; l++)
 								{
-									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
 									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
 									{
 										maskGameObjects.Add(tempGameObjects[l].gameObject);
@@ -397,7 +262,6 @@ public class LevelCreator : ScriptableObject
 								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
 								for (int l = 0; l < tempGameObjects.Length; l++)
 								{
-									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
 									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
 									{
 										maskGameObjects.Add(tempGameObjects[l].gameObject);
@@ -412,7 +276,6 @@ public class LevelCreator : ScriptableObject
 				}
 			}
 		}
-
 		for (int i = 0; i < EnemyWithShieldTransforms.Length; i++)
 		{
 			for (int j = 0; j < MovementPoints.Length; j++)
@@ -445,7 +308,6 @@ public class LevelCreator : ScriptableObject
 								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
 								for (int l = 0; l < tempGameObjects.Length; l++)
 								{
-									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
 									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
 									{
 										maskGameObjects.Add(tempGameObjects[l].gameObject);
@@ -460,29 +322,13 @@ public class LevelCreator : ScriptableObject
 				}
 			}
 		}
-
-		//spawn boss set
-
-
 		//spawn boss set
 		if (BossSetParametrs.IsActive)
 		{
-			/*
-			switch (BossSetParametrs.SetNum)
-			{
-				case 0:
-					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet0"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
-					break;
-				case 1:
-					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet1"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
-					break;
-				case 2:
-					Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["BossSet2"]), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
-					break;
-			}*/
 			Instantiate(Resources.Load<GameObject>($"Prefabs/Bosses/{BossSetParametrs.SetName}"), BossSetParametrs.Transform.Position, BossSetParametrs.Transform.Rotation);
 		}
 
+		//new Objects
 
 		for (int i = 0; i < Buildings3Transforms.Length; i++)
 		{
@@ -496,13 +342,13 @@ public class LevelCreator : ScriptableObject
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedRoofBuilding"]), RoofBuildingTransforms[i].Position, RoofBuildingTransforms[i].Rotation).transform.localScale = RoofBuildingTransforms[i].Scale;
 		}
-		for (int i = 0; i < PrepearedBuildingConstr1Transforms.Length; i++)
+		for (int i = 0; i < BuildingConstr1Transforms.Length; i++)
 		{
-			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), PrepearedBuildingConstr1Transforms[i].Position, PrepearedBuildingConstr1Transforms[i].Rotation).transform.localScale = PrepearedBuildingConstr1Transforms[i].Scale;
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr1"]), BuildingConstr1Transforms[i].Position, BuildingConstr1Transforms[i].Rotation).transform.localScale = BuildingConstr1Transforms[i].Scale;
 		}
-		for (int i = 0; i < PrepearedBuildingConstr2Transforms.Length; i++)
+		for (int i = 0; i < BuildingConstr2Transforms.Length; i++)
 		{
-			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), PrepearedBuildingConstr2Transforms[i].Position, PrepearedBuildingConstr2Transforms[i].Rotation).transform.localScale = PrepearedBuildingConstr2Transforms[i].Scale;
+			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuildingConstr2"]), BuildingConstr2Transforms[i].Position, BuildingConstr2Transforms[i].Rotation).transform.localScale = BuildingConstr2Transforms[i].Scale;
 		}
 
 
@@ -521,6 +367,56 @@ public class LevelCreator : ScriptableObject
 		for (int i = 0; i < DecorativeWoodShieldTransforms.Length; i++)
 		{
 			Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedDecorativeWoodShield"]), DecorativeWoodShieldTransforms[i].Position, DecorativeWoodShieldTransforms[i].Rotation).transform.localScale = DecorativeWoodShieldTransforms[i].Scale;
+		}
+
+
+
+
+		for (int i = 0; i < DodgeEnemyTransforms.Length; i++)
+		{
+			for (int j = 0; j < MovementPoints.Length; j++)
+			{
+				for (int k = 0; k < MovementPoints[j].EnemyTransforms.Length; k++)
+				{
+					if (MovementPoints[j].EnemyTransforms[k].Position == DodgeEnemyTransforms[i].Position)
+					{
+						TempMovementPoints[j].Enemyes[k] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabDodge"]), DodgeEnemyTransforms[i].Position, DodgeEnemyTransforms[i].Rotation);
+						TempMovementPoints[j].Enemyes[k].transform.localScale = DodgeEnemyTransforms[i].Scale;
+
+						if (IsMinion)
+						{
+							try
+							{
+								TagType maskTag = new TagType();
+								if (IsJoker)
+								{
+									maskTag = TagType.JokerMask;
+								}
+								if (IsMisterio)
+								{
+									maskTag = TagType.MisterioMask;
+								}
+								if (IsGoblin)
+								{
+									maskTag = TagType.GoblinMask;
+								}
+								List<GameObject> maskGameObjects = new List<GameObject>();
+								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
+								for (int l = 0; l < tempGameObjects.Length; l++)
+								{
+									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
+									{
+										maskGameObjects.Add(tempGameObjects[l].gameObject);
+									}
+								}
+								int randomNum = UnityEngine.Random.Range(0, maskGameObjects.Count);
+								maskGameObjects[randomNum].GetComponent<Renderer>().enabled = true;
+							}
+							catch { }
+						}
+					}
+				}
+			}
 		}
 	}
 }
