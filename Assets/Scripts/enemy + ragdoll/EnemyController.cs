@@ -18,7 +18,8 @@ public class EnemyController : MonoBehaviour
 	public float MaxDistanceToPlayer;
 	[Foldout("Settings")]
 	[SerializeField] private EnemyType _enemyType;
-	//public bool IsWithShield;
+	[Foldout("Settings")]
+	[SerializeField] private ParticleSystem DodgeEnemyGlowParticles;
 
 	private MainGameController _mainGameController;
 	private Transform _playerTransform;
@@ -46,7 +47,7 @@ public class EnemyController : MonoBehaviour
 	private void Start()
 	{
 		switch (_enemyType)
-        {
+		{
 			case EnemyType.Normal:
 				break;
 			case EnemyType.Shield:
@@ -132,9 +133,10 @@ public class EnemyController : MonoBehaviour
 					ParticlesController.Current.MakeShieldBrokenParticles(collision.contacts[0].point);
 				}
 				else if (_enemyType == EnemyType.Dodge && !_isDodged)
-                {
+				{
 					_isDodged = true;
 					ParticlesController.Current.MakeMagicExplosion(collision.contacts[0].point);
+					try { Destroy(DodgeEnemyGlowParticles.gameObject); } catch { }
 					float tempY = transform.position.y;
 					Vector3 tempVector = _playerTransform.position + Vector3.forward * _dodgeDistance;
 					tempVector.y = tempY;
