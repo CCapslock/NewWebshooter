@@ -143,6 +143,7 @@ public class SDKController : MonoBehaviour
             IronSource.Agent.validateIntegration();
             IronSource.Agent.init(_currentAppKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
             _isISInitialised = true;
+            Invoke("LoadInterstitial", 5f);
         }
     }
     #endregion
@@ -151,10 +152,14 @@ public class SDKController : MonoBehaviour
     {
         if (Time.time - _lastInterstitialTime > _interstitialDelay)
         {
-            ShowInterstitial();
+            Invoke("ShowInterstitialInvoke", 0.5f);
         }
     }
 
+    private void ShowInterstitialInvoke()
+    {
+        ShowInterstitial();
+    }
     private void LoadInterstitial()
     {
         IronSource.Agent.loadInterstitial();
