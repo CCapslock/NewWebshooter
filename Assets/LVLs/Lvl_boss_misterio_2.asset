@@ -44,6 +44,12 @@ MonoBehaviour:
   - Position: {x: 18.1, y: 19.5, z: 150.6}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
+  Buildings3Transforms: []
+  Buildings4Transforms: []
+  BuildingConstr1Transforms: []
+  BuildingConstr2Transforms: []
+  RoofBuildingTransforms: []
+  BankBuildingsTransforms: []
   BuildingCubeTransforms:
   - Position: {x: 8.65, y: -16.0187, z: 52.0942}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -65,13 +71,8 @@ MonoBehaviour:
   - Position: {x: -2.3374834, y: 2.0199862, z: 29.92}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  BossSetParametrs:
-    Transform:
-      Position: {x: 8, y: 1.75, z: 50}
-      Rotation: {x: 0, y: 0, z: 0, w: 0}
-      Scale: {x: 0, y: 0, z: 0}
-    SetName: MisterioSet1
-    IsActive: 1
+  EnemyWithShieldTransforms: []
+  DodgeEnemyTransforms: []
   MovementPoints:
   - Transform:
       Position: {x: -2.678, y: -0.68, z: -7.474269}
@@ -172,3 +173,18 @@ MonoBehaviour:
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
     IsBossBattle: 0
+  BossSetParametrs:
+    Transform:
+      Position: {x: 8, y: 1.75, z: 50}
+      Rotation: {x: 0, y: 0, z: 0, w: 0}
+      Scale: {x: 0, y: 0, z: 0}
+    SetName: MisterioSet1
+    IsActive: 1
+  DecorativeBenchTransforms: []
+  DecorativeCraneTransforms: []
+  DecorativeVoltageWiresTransforms: []
+  DecorativeWoodShieldTransforms: []
+  IsMinion: 1
+  IsJoker: 0
+  IsMisterio: 1
+  IsGoblin: 0
