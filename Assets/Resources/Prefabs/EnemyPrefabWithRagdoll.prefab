@@ -148,6 +148,7 @@ MonoBehaviour:
   EnemySpeed: 0.04
   MaxDistanceToPlayer: 2.5
   _enemyType: 0
+  DodgeEnemyGlowParticles: {fileID: 0}
   IsStucked: 0
   IsEnemyActive: 0
   IsEnemyAttacking: 0

@@ -236,10 +236,7 @@ MonoBehaviour:
       Scale: {x: 0, y: 0, z: 0}
     SetName: 
     IsActive: 0
-  DecorativeBenchTransforms:
-  - Position: {x: -3.17, y: 0.11, z: 0.85}
-    Rotation: {x: -0.019884365, y: 0.12618336, z: -0.9917743, w: -0.008135225}
-    Scale: {x: 0.25, y: 0.25, z: 0.25}
+  DecorativeBenchTransforms: []
   DecorativeCraneTransforms: []
   DecorativeVoltageWiresTransforms: []
   DecorativeWoodShieldTransforms: []
