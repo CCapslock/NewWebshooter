@@ -2002,6 +2002,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78832163d7bc05e48be05af37005f482, type: 2}
   - {fileID: 11400000, guid: a5a9ad6280a76ac44ba3833e00b4abdc, type: 2}
   - {fileID: 11400000, guid: 14b6b579fd8b08441b3069863eff4845, type: 2}
+  - {fileID: 11400000, guid: af8289af34a59e2449b75a09ea15f606, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
 --- !u!114 &3040295923444952733

@@ -135,8 +135,10 @@ public class EnemyController : MonoBehaviour
                 {
 					_isDodged = true;
 					ParticlesController.Current.MakeMagicExplosion(collision.contacts[0].point);
-
-					transform.position = _playerTransform.position + Vector3.forward * _dodgeDistance;
+					float tempY = transform.position.y;
+					Vector3 tempVector = _playerTransform.position + Vector3.forward * _dodgeDistance;
+					tempVector.y = tempY;
+					transform.position = tempVector;
 					ParticlesController.Current.MakeMagicExplosion(transform.position);
 				}
 			}
