@@ -1896,6 +1896,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5215302016490356099}
     m_Modifications:
+    - target: {fileID: 4668754452919224262, guid: bec73619138cb694dac2af0c2c821d9f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8222131849072824755, guid: bec73619138cb694dac2af0c2c821d9f, type: 3}
       propertyPath: m_Name
       value: AllMasks

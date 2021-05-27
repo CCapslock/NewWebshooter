@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44692445, g: 0.4968105, b: 0.5750195, a: 1}
+  m_IndirectSpecularColor: {r: 0.4469208, g: 0.4968046, b: 0.57501686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1978,30 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableLevels:
-  - {fileID: 11400000, guid: af8289af34a59e2449b75a09ea15f606, type: 2}
-  - {fileID: 11400000, guid: ace3dd495d076e545843faed94b1fc22, type: 2}
-  - {fileID: 11400000, guid: ef34952e785098c4d942104f73bf38c5, type: 2}
-  - {fileID: 11400000, guid: 242c0575ca628884d83e07d6e4e0424d, type: 2}
-  - {fileID: 11400000, guid: f9d6c2d66bef3104a9401bacb26d128f, type: 2}
-  - {fileID: 11400000, guid: 84ba337cfa9932648a565d26a7315af1, type: 2}
-  - {fileID: 11400000, guid: 786e191ffb0cc5f4f91758ae5b676356, type: 2}
-  - {fileID: 11400000, guid: 45c0b596eafdcd042b0c64172bf80631, type: 2}
-  - {fileID: 11400000, guid: ab757c973add2cb499e69305054796fa, type: 2}
-  - {fileID: 11400000, guid: be9bb0c3a8ca0294e986f6f443614864, type: 2}
-  - {fileID: 11400000, guid: 6f27deb55c4f70e48928caf670cb1245, type: 2}
-  - {fileID: 11400000, guid: e1fb00df8d7b27b4390d077e79124276, type: 2}
-  - {fileID: 11400000, guid: 472dd21680ddd794a869bddc2da63f45, type: 2}
-  - {fileID: 11400000, guid: a471536f3fa1ace4882218f82824061d, type: 2}
-  - {fileID: 11400000, guid: c723aa4c97e6f214c816c08272a54e38, type: 2}
-  - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
-  - {fileID: 11400000, guid: bb04c9ca4e7f3f64a8594b386ad999d0, type: 2}
-  - {fileID: 11400000, guid: fcbba168dddd16c49a0482013c777d74, type: 2}
-  - {fileID: 11400000, guid: 85df48cd945ecdb4eac4551f6307e78f, type: 2}
-  - {fileID: 11400000, guid: f83c425dcb3616c429c85c1150159e21, type: 2}
-  - {fileID: 11400000, guid: 280e085c14ee3194da19daca910281fb, type: 2}
-  - {fileID: 11400000, guid: 1bedb2c76fa7e374cb3fa16c76f8001a, type: 2}
-  - {fileID: 11400000, guid: 78832163d7bc05e48be05af37005f482, type: 2}
-  - {fileID: 11400000, guid: a5a9ad6280a76ac44ba3833e00b4abdc, type: 2}
+  - {fileID: 11400000, guid: b19398c1148315c4a9b3ec76c4537cc2, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
 --- !u!114 &3040295923444952733
@@ -2033,7 +2010,7 @@ MonoBehaviour:
     BuildingMaterial: {fileID: 2100000, guid: f1da4691b1624914bafd5692d3c3e2cb, type: 2}
     WindowsMaterial: {fileID: 2100000, guid: b769f71453c3af44d9625f7162ea267b, type: 2}
     WebMaterial: {fileID: 2100000, guid: 8cb09d6da589f184695a7b7bad65929b, type: 2}
-  NeedTochangeDecorativeObjects: 1
+  NeedTochangeDecorativeObjects: 0
 --- !u!114 &3040295923444952734
 MonoBehaviour:
   m_ObjectHideFlags: 0
