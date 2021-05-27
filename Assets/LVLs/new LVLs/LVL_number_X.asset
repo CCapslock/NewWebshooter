@@ -207,7 +207,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
-      Position: {x: 0, y: 0, z: -6}
+      Position: {x: -2.8, y: 0, z: -3.75}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
@@ -237,8 +237,8 @@ MonoBehaviour:
     SetName: 
     IsActive: 0
   DecorativeBenchTransforms:
-  - Position: {x: -3.17, y: 0.11, z: 0.85}
-    Rotation: {x: -0.019884365, y: 0.12618336, z: -0.9917743, w: -0.008135225}
+  - Position: {x: -5.23, y: -0.653, z: 9.47}
+    Rotation: {x: -0.6519416, y: 0.18659623, z: -0.24172749, w: -0.6940618}
     Scale: {x: 0.25, y: 0.25, z: 0.25}
   DecorativeCraneTransforms: []
   DecorativeVoltageWiresTransforms: []

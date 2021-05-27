@@ -136,7 +136,8 @@ public class EnemyController : MonoBehaviour
 					_isDodged = true;
 					ParticlesController.Current.MakeMagicExplosion(collision.contacts[0].point);
 					float tempY = transform.position.y;
-					Vector3 tempVector = _playerTransform.position + Vector3.forward * _dodgeDistance;
+					Vector3 tempVector = _playerTransform.position + Vector3.forward * _dodgeDistance 
+						+ Vector3.right * UnityEngine.Random.Range(-1.5f, 2.51f);
 					tempVector.y = tempY;
 					transform.position = tempVector;
 					ParticlesController.Current.MakeMagicExplosion(transform.position);
