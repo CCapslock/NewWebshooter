@@ -57,6 +57,10 @@ public class Bomb : MonoBehaviour
 			DetonateBomb();
 			HealthController.Current.GetHitFromBomb();
 		}
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Wall)))
+		{
+			DetonateBomb();
+		}
 	}
 	public void DetonateBomb()
 	{
