@@ -54,8 +54,6 @@ public class ArtController : MonoBehaviour
 		}
 		_enemyRenderer.materials = _newMaterials;
 
-
-
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyThrowingBombs"]);
 		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
 		_newMaterials = _enemyRenderer.sharedMaterials;
@@ -66,6 +64,24 @@ public class ArtController : MonoBehaviour
 		_enemyRenderer.materials = _newMaterials;
 
 		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyFalling"]);
+		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
+		_newMaterials = _enemyRenderer.sharedMaterials;
+		for (int i = 1; i < _newMaterials.Length; i++)
+		{
+			_newMaterials[i] = ArtPresets[_presetNum].EnemyMaterial;
+		}
+		_enemyRenderer.materials = _newMaterials;
+		
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabWithShield"]);
+		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
+		_newMaterials = _enemyRenderer.sharedMaterials;
+		for (int i = 1; i < _newMaterials.Length; i++)
+		{
+			_newMaterials[i] = ArtPresets[_presetNum].EnemyMaterial;
+		}
+		_enemyRenderer.materials = _newMaterials;
+
+		_changingObject = Resources.Load<GameObject>(PrefabAssetPath.LevelParts["EnemyPrefabDodge"]);
 		_enemyRenderer = _changingObject.GetComponentInChildren<SkinnedMeshRenderer>();
 		_newMaterials = _enemyRenderer.sharedMaterials;
 		for (int i = 1; i < _newMaterials.Length; i++)

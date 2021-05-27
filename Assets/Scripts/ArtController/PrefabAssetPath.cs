@@ -8,6 +8,7 @@ public class PrefabAssetPath
 		{"EnemyThrowingBombs", "Prefabs/EnemyThrowingBombs"},
 		{"EnemyFalling", "Prefabs/EnemyFalling"},
 		{"EnemyPrefabWithShield", "Prefabs/EnemyPrefabWithShield"},
+		{"EnemyPrefabDodge", "Prefabs/EnemyPrefabDodge"},
 		{"PrepearedBuilding1", "Prefabs/PrepearedBuilding1"},
 		{"PrepearedBuilding2", "Prefabs/PrepearedBuilding2"},
 		{"PrepearedBuilding3", "Prefabs/PrepearedBuilding3"},
