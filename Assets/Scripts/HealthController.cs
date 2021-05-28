@@ -72,7 +72,7 @@ public class HealthController : MonoBehaviour
 	public void GetHitFromBomb()
 	{
 		//HealingPower *= 0.25f;
-		CurrentHealth -= MaxHealth * 0.2f;
+		CurrentHealth -= MaxHealth * 0.6f;
 		
 		UIController.Current.SetGradientsAlpha(MaxHealth,CurrentHealth);
 		if (CurrentHealth <= 0)

@@ -150,7 +150,7 @@ public class SDKController : MonoBehaviour
     #region Interstitial
     private void StartInterstitialOnLevelEnding()
     {
-        if (Time.time - _lastInterstitialTime > _interstitialDelay)
+        if (Time.unscaledTime - _lastInterstitialTime > _interstitialDelay)
         {
             Invoke("ShowInterstitialInvoke", 0.5f);
         }
@@ -169,7 +169,7 @@ public class SDKController : MonoBehaviour
     {
         if (IronSource.Agent.isInterstitialReady())
         {
-            _lastInterstitialTime = Time.time;
+            _lastInterstitialTime = Time.unscaledTime;
             IronSource.Agent.showInterstitial();
             GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "IronSource", _currentOverallLevelNumberString);
             GameAnalytics.NewDesignEvent($"ShowInterstitial:{_currentOverallLevelNumberString}");
@@ -190,7 +190,7 @@ public class SDKController : MonoBehaviour
         IronSourceEvents.onInterstitialAdOpenedEvent += InterstitialAdOpenedEvent;
         IronSourceEvents.onInterstitialAdClosedEvent += InterstitialAdClosedEvent;
 
-        GameEvents.Current.OnLevelComplete += StartInterstitialOnLevelEnding;
+        GameEvents.Current.OnInterstitialAsked += StartInterstitialOnLevelEnding;
     }
 
     private void InterstitialAdReadyEvent()
@@ -206,6 +206,7 @@ public class SDKController : MonoBehaviour
     private void InterstitialAdShowSucceededEvent()
     {
         //Debug.Log("unity-script: I got InterstitialAdShowSucceededEvent");
+        LoadInterstitial();
     }
 
     private void InterstitialAdShowFailedEvent(IronSourceError error)
@@ -216,6 +217,7 @@ public class SDKController : MonoBehaviour
     private void InterstitialAdClickedEvent()
     {
         //Debug.Log("unity-script: I got InterstitialAdClickedEvent");
+        
     }
 
     private void InterstitialAdOpenedEvent()
@@ -226,6 +228,7 @@ public class SDKController : MonoBehaviour
     private void InterstitialAdClosedEvent()
     {
         //Debug.Log("unity-script: I got InterstitialAdClosedEvent");
+        LoadInterstitial();
     }
     #endregion
     #region Rewarded

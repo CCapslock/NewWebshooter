@@ -67,8 +67,8 @@ MonoBehaviour:
     Scale: {x: 20, y: 20, z: 20}
   Buildings3Transforms: []
   Buildings4Transforms: []
-  PrepearedBuildingConstr1Transforms: []
-  PrepearedBuildingConstr2Transforms: []
+  BuildingConstr1Transforms: []
+  BuildingConstr2Transforms: []
   RoofBuildingTransforms: []
   BankBuildingsTransforms: []
   BuildingCubeTransforms:
@@ -141,6 +141,7 @@ MonoBehaviour:
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   EnemyWithShieldTransforms: []
+  DodgeEnemyTransforms: []
   MovementPoints:
   - Transform:
       Position: {x: 0.12, y: 20.31, z: 120.04}
@@ -474,5 +475,5 @@ MonoBehaviour:
   DecorativeWoodShieldTransforms: []
   IsMinion: 1
   IsJoker: 0
-  IsMisterio: 1
-  IsGoblin: 0
+  IsMisterio: 0
+  IsGoblin: 1

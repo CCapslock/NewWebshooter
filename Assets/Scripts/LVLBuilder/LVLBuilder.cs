@@ -113,7 +113,7 @@ public class LVLBuilder : MonoBehaviour
 								Transform[] tempGameObjects = TempMovementPoints[j].Enemyes[k].GetComponentsInChildren<Transform>();
 								for (int l = 0; l < tempGameObjects.Length; l++)
 								{
-									Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
+									//Debug.Log("tempGameObjects tag = " + tempGameObjects[l].gameObject.tag);
 									if (tempGameObjects[l].CompareTag(TagManager.GetTag(maskTag)))
 									{
 										maskGameObjects.Add(tempGameObjects[l].gameObject);
