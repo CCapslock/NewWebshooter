@@ -111,5 +111,10 @@ public class GameEvents : MonoBehaviour
     {
         OnIncreaseCoins?.Invoke(coins);
     }
+    public Action OnInterstitialAsked;
+    public void InterstitialAsked()
+    {        
+        OnInterstitialAsked?.Invoke();
+    }
     #endregion
 }

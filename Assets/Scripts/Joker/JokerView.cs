@@ -5,7 +5,7 @@ public class JokerView : MonoBehaviour, IBoss
 {
 	private JokerStates _state = JokerStates.Awaiting;
 	private Dictionary<JokerStates, BaseJokerModel> _models = new Dictionary<JokerStates, BaseJokerModel>();
-	[SerializeField] private float _spawnCooldown = 2f;
+	[SerializeField] private float _spawnCooldown = 1.3f;
 	[SerializeField] private int _spawnAmount = 5;
 	[SerializeField] private Animator _animator;
 	[SerializeField] private GameObject _rightHand;

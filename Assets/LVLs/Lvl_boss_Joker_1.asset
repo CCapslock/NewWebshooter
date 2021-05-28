@@ -134,7 +134,7 @@ MonoBehaviour:
     IsFinalPoint: 0
     IsBossBattle: 1
   - Transform:
-      Position: {x: -14.81, y: 2.64, z: 34.67}
+      Position: {x: -14.81, y: 3.73, z: 33.18}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
