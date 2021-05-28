@@ -73,8 +73,8 @@ MonoBehaviour:
     Scale: {x: 20, y: 20, z: 20}
   Buildings3Transforms: []
   Buildings4Transforms: []
-  PrepearedBuildingConstr1Transforms: []
-  PrepearedBuildingConstr2Transforms: []
+  BuildingConstr1Transforms: []
+  BuildingConstr2Transforms: []
   RoofBuildingTransforms: []
   BankBuildingsTransforms: []
   BuildingCubeTransforms:
@@ -123,6 +123,13 @@ MonoBehaviour:
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   EnemyWithShieldTransforms: []
+  DodgeEnemyTransforms:
+  - Position: {x: 19.778229, y: -13.080009, z: 24.283037}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
+  - Position: {x: 22.434635, y: -13.08001, z: 23.39387}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
   MovementPoints:
   - Transform:
       Position: {x: -4.82, y: 11.73, z: 103.46}
@@ -274,6 +281,12 @@ MonoBehaviour:
     - Position: {x: 23.619997, y: -13.080008, z: 25.9}
       Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
+    - Position: {x: 22.434635, y: -13.08001, z: 23.39387}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
+      Scale: {x: 1.5, y: 1.5, z: 1.5}
+    - Position: {x: 19.778229, y: -13.080009, z: 24.283037}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
+      Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0.15
     PointNum: 5
@@ -367,9 +380,21 @@ MonoBehaviour:
     SetName: 
     IsActive: 0
   DecorativeBenchTransforms: []
-  DecorativeCraneTransforms: []
+  DecorativeCraneTransforms:
+  - Position: {x: 10.6, y: -57.5, z: 14.342082}
+    Rotation: {x: 0.55148625, y: 0.442564, z: -0.44256383, w: 0.5514864}
+    Scale: {x: 2, y: 2, z: 2}
   DecorativeVoltageWiresTransforms: []
-  DecorativeWoodShieldTransforms: []
+  DecorativeWoodShieldTransforms:
+  - Position: {x: 19.796, y: -11.844, z: 48.714}
+    Rotation: {x: -0.6135468, y: -0.5658311, z: 0.3515115, w: 0.4240698}
+    Scale: {x: 5, y: 5, z: 5}
+  - Position: {x: 17.042458, y: -13.080011, z: 29.216532}
+    Rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    Scale: {x: 5, y: 5, z: 5}
+  - Position: {x: 20.124, y: -12.531, z: 29.35}
+    Rotation: {x: -0.9726684, y: 0.026660016, z: -0.18039286, w: -0.14374933}
+    Scale: {x: 5, y: 5, z: 5}
   IsMinion: 1
   IsJoker: 1
   IsMisterio: 0

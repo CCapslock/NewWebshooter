@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: LVL_number_10
   m_EditorClassIdentifier: 
   Buildings1Transforms:
-  - Position: {x: 0.5, y: -83.26, z: 28.4}
-    Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-    Scale: {x: 20, y: 20, z: 20}
   - Position: {x: 4.8, y: -83.3, z: 66.9}
     Rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
     Scale: {x: 20, y: 20, z: 20}
@@ -58,8 +55,11 @@ MonoBehaviour:
     Scale: {x: 20, y: 20, z: 20}
   Buildings3Transforms: []
   Buildings4Transforms: []
-  PrepearedBuildingConstr1Transforms: []
-  PrepearedBuildingConstr2Transforms: []
+  BuildingConstr1Transforms:
+  - Position: {x: 2.62, y: -29.4, z: 29}
+    Rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    Scale: {x: 4, y: 4, z: 4}
+  BuildingConstr2Transforms: []
   RoofBuildingTransforms: []
   BankBuildingsTransforms: []
   BuildingCubeTransforms:
@@ -72,9 +72,9 @@ MonoBehaviour:
   - Position: {x: 2.63, y: -0.42, z: 46.43}
     Rotation: {x: -0, y: -0, z: -0.21603915, w: 0.9763847}
     Scale: {x: 3, y: 0.2, z: 2}
-  - Position: {x: -1.3602, y: 5.2673, z: 34.69}
+  - Position: {x: -0.0324, y: 5.2673, z: 35.1228}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    Scale: {x: 10.779126, y: 11.574807, z: 2}
+    Scale: {x: 8.12315, y: 11.574807, z: 1.1344687}
   SimpleEnemyTransforms:
   - Position: {x: 1.42, y: 25.719992, z: 88.15482}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
@@ -110,7 +110,17 @@ MonoBehaviour:
   - Position: {x: -4.641525, y: -1.0499978, z: 9.033028}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  EnemyWithShieldTransforms: []
+  EnemyWithShieldTransforms:
+  - Position: {x: -3.6170707, y: -1.0500021, z: 4.3203692}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
+  - Position: {x: -0.899492, y: -1.0500021, z: 3.612338}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
+  - Position: {x: -2.0385554, y: -1.0500021, z: 1.5287127}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
+  DodgeEnemyTransforms: []
   MovementPoints:
   - Transform:
       Position: {x: 5.29, y: 26.667, z: 77.869995}
@@ -155,12 +165,12 @@ MonoBehaviour:
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms: []
     RotationVector: {x: -90, y: 0, z: 0}
-    NewSpeed: 0.2
+    NewSpeed: 0.3
     PointNum: 17
     NeedToRotate: 1
     NeedToFly: 0
     NeedToCountEnemy: 1
-    NeedToChangeSpeed: 0
+    NeedToChangeSpeed: 1
     IsFinalPoint: 0
     IsBossBattle: 0
   - Transform:
@@ -173,6 +183,15 @@ MonoBehaviour:
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     - Position: {x: -4.641525, y: -1.0499978, z: 9.033028}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
+      Scale: {x: 1.5, y: 1.5, z: 1.5}
+    - Position: {x: -3.6170707, y: -1.0500021, z: 4.3203692}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
+      Scale: {x: 1.5, y: 1.5, z: 1.5}
+    - Position: {x: -0.899492, y: -1.0500021, z: 3.612338}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
+      Scale: {x: 1.5, y: 1.5, z: 1.5}
+    - Position: {x: -2.0385554, y: -1.0500021, z: 1.5287127}
+      Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
     NewSpeed: 0
@@ -447,7 +466,13 @@ MonoBehaviour:
     SetName: 
     IsActive: 0
   DecorativeBenchTransforms: []
-  DecorativeCraneTransforms: []
+  DecorativeCraneTransforms:
+  - Position: {x: -13.2, y: -49.1, z: 16.2}
+    Rotation: {x: 0.62185687, y: 0.3365921, z: -0.33659196, w: 0.6218567}
+    Scale: {x: 2, y: 2, z: 2}
+  - Position: {x: 13.13, y: -40.29, z: 29.21}
+    Rotation: {x: 0.6798767, y: -0.1943396, z: 0.19433953, w: 0.67987645}
+    Scale: {x: 2, y: 2, z: 2}
   DecorativeVoltageWiresTransforms: []
   DecorativeWoodShieldTransforms: []
   IsMinion: 1

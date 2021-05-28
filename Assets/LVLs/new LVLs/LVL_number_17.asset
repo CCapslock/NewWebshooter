@@ -38,7 +38,7 @@ MonoBehaviour:
   - Position: {x: 11, y: -36.1, z: 57.7}
     Rotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
     Scale: {x: 20, y: 20, z: 20}
-  - Position: {x: -24.9, y: -57.8, z: 84.9}
+  - Position: {x: -21, y: -57.8, z: 84.9}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
   - Position: {x: -22.1, y: -95.8, z: 21.3}
@@ -73,8 +73,8 @@ MonoBehaviour:
     Scale: {x: 20, y: 20, z: 20}
   Buildings3Transforms: []
   Buildings4Transforms: []
-  PrepearedBuildingConstr1Transforms: []
-  PrepearedBuildingConstr2Transforms: []
+  BuildingConstr1Transforms: []
+  BuildingConstr2Transforms: []
   RoofBuildingTransforms: []
   BankBuildingsTransforms: []
   BuildingCubeTransforms:
@@ -123,6 +123,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   EnemyWithShieldTransforms: []
+  DodgeEnemyTransforms: []
   MovementPoints:
   - Transform:
       Position: {x: -4.82, y: 11.73, z: 103.46}
@@ -367,9 +368,21 @@ MonoBehaviour:
     SetName: 
     IsActive: 0
   DecorativeBenchTransforms: []
-  DecorativeCraneTransforms: []
+  DecorativeCraneTransforms:
+  - Position: {x: -0.2, y: -49.8, z: 17.7}
+    Rotation: {x: 0.4176838, y: -0.5705615, z: 0.5705613, w: 0.41768363}
+    Scale: {x: 2, y: 2, z: 2}
+  - Position: {x: -33.696194, y: -53.6, z: 19.6}
+    Rotation: {x: 0.6709878, y: 0.22310448, z: -0.2231044, w: 0.67098755}
+    Scale: {x: 2, y: 2, z: 2}
+  - Position: {x: -10.102736, y: -55.3, z: 58.4}
+    Rotation: {x: 0.6146879, y: -0.3495125, z: 0.34951234, w: 0.6146877}
+    Scale: {x: 2, y: 2, z: 2}
   DecorativeVoltageWiresTransforms: []
-  DecorativeWoodShieldTransforms: []
+  DecorativeWoodShieldTransforms:
+  - Position: {x: -5.15, y: 2.68, z: 82.77}
+    Rotation: {x: -0.96563804, y: 0.024455473, z: 0.23915403, w: -0.09874448}
+    Scale: {x: 5, y: 5, z: 5}
   IsMinion: 1
   IsJoker: 1
   IsMisterio: 0
