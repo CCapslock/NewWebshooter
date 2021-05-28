@@ -13,7 +13,7 @@ public class ParticlesController : MonoBehaviour
 	public ParticleSystem ShieldBroke;
 	private ParticleSystem _evilLaughObject;
 	private ParticleSystem _glowObject;
-	private ParticleSystem _starsExplosion;
+	[SerializeField] private ParticleSystem _starsExplosion;
 	private ParticleSystem _shieldBroke;
 	private ParticleSystem[] _smallExplosinObject;
 	private ParticleSystem[] _magicExplosion;
