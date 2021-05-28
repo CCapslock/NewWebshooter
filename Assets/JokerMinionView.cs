@@ -92,9 +92,9 @@ public class JokerMinionView : MonoBehaviour
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
 
-        _temporalVector3.x = _joker.transform.position.x + Random.Range(-1.5f, 1.5f);
+        _temporalVector3.x = _joker.transform.position.x + Random.Range(-2.5f, 2.5f);
         _temporalVector3.y = _joker.transform.position.y;
-        _temporalVector3.z = _joker.transform.position.z - 3f;
+        _temporalVector3.z = _joker.transform.position.z - 4f;
 
         var _AngleInRadians = 45 * Mathf.PI / 180;
         var _fromTo = _temporalVector3 - transform.position;

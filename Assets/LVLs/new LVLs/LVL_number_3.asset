@@ -52,8 +52,8 @@ MonoBehaviour:
     Scale: {x: 20, y: 20, z: 20}
   Buildings3Transforms: []
   Buildings4Transforms: []
-  PrepearedBuildingConstr1Transforms: []
-  PrepearedBuildingConstr2Transforms: []
+  BuildingConstr1Transforms: []
+  BuildingConstr2Transforms: []
   RoofBuildingTransforms: []
   BankBuildingsTransforms: []
   BuildingCubeTransforms:
@@ -76,13 +76,13 @@ MonoBehaviour:
   - Position: {x: -50.1, y: -0.89100075, z: 15.379999}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -76.15, y: -0.89099884, z: 43.66}
+  - Position: {x: -74.28, y: -0.89099884, z: 35.96}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: -21.853146, y: -0.89100075, z: 13.163727}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -71.58432, y: -0.89099884, z: 30.488846}
+  - Position: {x: -73.62, y: -0.89099884, z: 27.26}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: -57.2, y: -0.89100075, z: 18.779999}
@@ -97,10 +97,10 @@ MonoBehaviour:
   - Position: {x: -46.8, y: -0.89100075, z: 18.38}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -62.06, y: -0.89100075, z: 18.779999}
+  - Position: {x: -60.88, y: -0.89100075, z: 18.779999}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -80.893074, y: -0.89100075, z: 36.26932}
+  - Position: {x: -77.99, y: -0.89100075, z: 30.66}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   - Position: {x: -54.4, y: -0.89100075, z: 15.379999}
@@ -120,19 +120,20 @@ MonoBehaviour:
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   ThrowingEnemyTransforms: []
   EnemyWithShieldTransforms: []
+  DodgeEnemyTransforms: []
   MovementPoints:
   - Transform:
-      Position: {x: -75.27, y: 0, z: 19.51}
+      Position: {x: -75.27, y: 0, z: 20.61}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
-    - Position: {x: -71.58432, y: -0.89099884, z: 30.488846}
+    - Position: {x: -73.62, y: -0.89099884, z: 27.26}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -80.893074, y: -0.89100075, z: 36.26932}
+    - Position: {x: -77.99, y: -0.89100075, z: 30.66}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -76.15, y: -0.89099884, z: 43.66}
+    - Position: {x: -74.28, y: -0.89099884, z: 35.96}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
@@ -255,7 +256,7 @@ MonoBehaviour:
     - Position: {x: -57.2, y: -0.89100075, z: 18.779999}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -62.06, y: -0.89100075, z: 18.779999}
+    - Position: {x: -60.88, y: -0.89100075, z: 18.779999}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
@@ -274,10 +275,40 @@ MonoBehaviour:
       Scale: {x: 0, y: 0, z: 0}
     SetName: 
     IsActive: 0
-  DecorativeBenchTransforms: []
+  DecorativeBenchTransforms:
+  - Position: {x: 1.82, y: 0.03, z: 2.5570512}
+    Rotation: {x: 0.70368093, y: -0.09194927, z: 0.698424, w: 0.092641324}
+    Scale: {x: 0.2, y: 0.2, z: 0.2}
+  - Position: {x: 1.82, y: 0.03, z: -1.98}
+    Rotation: {x: 0.70368093, y: -0.09194927, z: 0.698424, w: 0.092641324}
+    Scale: {x: 0.2, y: 0.2, z: 0.2}
   DecorativeCraneTransforms: []
-  DecorativeVoltageWiresTransforms: []
-  DecorativeWoodShieldTransforms: []
+  DecorativeVoltageWiresTransforms:
+  - Position: {x: -18.16, y: -0.89100003, z: 18.08}
+    Rotation: {x: -0.42916763, y: -0.56197435, z: -0.56197435, w: 0.42916763}
+    Scale: {x: 10, y: 10, z: 10}
+  - Position: {x: -35.88, y: -0.8909998, z: 17.21}
+    Rotation: {x: -0.4637192, y: 0.5338207, z: 0.5338207, w: 0.4637192}
+    Scale: {x: 10, y: 10, z: 10}
+  - Position: {x: -53.91, y: -0.8909998, z: 17.94}
+    Rotation: {x: -0.4825889, y: -0.51682496, z: -0.51682496, w: 0.4825889}
+    Scale: {x: 10, y: 10, z: 10}
+  - Position: {x: -66.11, y: -0.8899994, z: 25.84}
+    Rotation: {x: -0.6944631, y: -0.13312039, z: -0.13312039, w: 0.6944631}
+    Scale: {x: 10, y: 10, z: 10}
+  - Position: {x: -74.23, y: -0.8909998, z: 26.63}
+    Rotation: {x: -0.19206962, y: -0.68052137, z: -0.68052137, w: 0.19206962}
+    Scale: {x: 10, y: 10, z: 10}
+  DecorativeWoodShieldTransforms:
+  - Position: {x: -11.881607, y: -0.8909998, z: 18.566786}
+    Rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+    Scale: {x: 5, y: 5, z: 5}
+  - Position: {x: -78.83374, y: -0.89000034, z: 26.222591}
+    Rotation: {x: -0.68338263, y: -0.18162672, z: -0.18162672, w: 0.68338263}
+    Scale: {x: 5, y: 5, z: 5}
+  - Position: {x: -43.46, y: -0.8909998, z: 12.64}
+    Rotation: {x: -0.69176507, y: -0.14649619, z: -0.14649619, w: 0.69176507}
+    Scale: {x: 5, y: 5, z: 5}
   IsMinion: 1
   IsJoker: 0
   IsMisterio: 1

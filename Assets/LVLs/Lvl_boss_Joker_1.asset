@@ -178,7 +178,7 @@ MonoBehaviour:
   DecorativeCraneTransforms: []
   DecorativeVoltageWiresTransforms: []
   DecorativeWoodShieldTransforms: []
-  IsMinion: 0
-  IsJoker: 0
+  IsMinion: 1
+  IsJoker: 1
   IsMisterio: 0
   IsGoblin: 0

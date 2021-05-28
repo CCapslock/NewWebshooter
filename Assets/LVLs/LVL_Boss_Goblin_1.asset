@@ -41,6 +41,12 @@ MonoBehaviour:
   - Position: {x: -29.7, y: -48.2, z: 46.4}
     Rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
     Scale: {x: 20, y: 20, z: 20}
+  Buildings3Transforms: []
+  Buildings4Transforms: []
+  BuildingConstr1Transforms: []
+  BuildingConstr2Transforms: []
+  RoofBuildingTransforms: []
+  BankBuildingsTransforms: []
   BuildingCubeTransforms: []
   SimpleEnemyTransforms:
   - Position: {x: -4.72, y: -1.5800009, z: -0.43}
@@ -62,13 +68,8 @@ MonoBehaviour:
   - Position: {x: -2.4910946, y: -1.5799928, z: 4.747875}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
-  BossSetParametrs:
-    Transform:
-      Position: {x: 1.2026364, y: 7.4330053, z: 51.224365}
-      Rotation: {x: 0, y: 0, z: 0, w: 0}
-      Scale: {x: 0, y: 0, z: 0}
-    SetName: GoblinSet0
-    IsActive: 1
+  EnemyWithShieldTransforms: []
+  DodgeEnemyTransforms: []
   MovementPoints:
   - Transform:
       Position: {x: -2.678, y: -0.68, z: -7.474269}
@@ -158,3 +159,18 @@ MonoBehaviour:
     NeedToChangeSpeed: 0
     IsFinalPoint: 1
     IsBossBattle: 1
+  BossSetParametrs:
+    Transform:
+      Position: {x: 1.2026364, y: 7.4330053, z: 51.224365}
+      Rotation: {x: 0, y: 0, z: 0, w: 0}
+      Scale: {x: 0, y: 0, z: 0}
+    SetName: GoblinSet0
+    IsActive: 1
+  DecorativeBenchTransforms: []
+  DecorativeCraneTransforms: []
+  DecorativeVoltageWiresTransforms: []
+  DecorativeWoodShieldTransforms: []
+  IsMinion: 1
+  IsJoker: 0
+  IsMisterio: 0
+  IsGoblin: 1
