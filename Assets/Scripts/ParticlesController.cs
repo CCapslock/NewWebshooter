@@ -13,7 +13,7 @@ public class ParticlesController : MonoBehaviour
 	public ParticleSystem ShieldBroke;
 	private ParticleSystem _evilLaughObject;
 	private ParticleSystem _glowObject;
-	[SerializeField] private ParticleSystem _starsExplosion;
+	private ParticleSystem[] _starsExplosion;
 	private ParticleSystem _shieldBroke;
 	private ParticleSystem[] _smallExplosinObject;
 	private ParticleSystem[] _magicExplosion;
@@ -27,12 +27,19 @@ public class ParticlesController : MonoBehaviour
 		_shieldBroke = Instantiate(ShieldBroke, new Vector3(0, 0, -20f), Quaternion.identity);
 		_evilLaughObject = Instantiate(EvilLaugh, new Vector3(0, 0, -20f), Quaternion.identity);
 		_evilLaughObject.Stop();
-		_starsExplosion = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+
+		_starsExplosion = new ParticleSystem[10];
+		for (int i = 0; i < _starsExplosion.Length; i++)
+        {
+			_starsExplosion[i] = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+		}
+		
 		_smallExplosinObject = new ParticleSystem[6];
 		for (int i = 0; i < _smallExplosinObject.Length; i++)
 		{
 			_smallExplosinObject[i] = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
 		}
+		
 		_magicExplosion = new ParticleSystem[6];
 		for (int i = 0; i < _magicExplosion.Length; i++)
 		{
@@ -66,8 +73,15 @@ public class ParticlesController : MonoBehaviour
 	}
 	public void MakeStarsExplosion(Vector3 position)
 	{
-		_starsExplosion.transform.position = position;
-		_starsExplosion.Play();
+		for (int i = 0; i < _starsExplosion.Length; i++)
+        {
+			if (!_starsExplosion[i].isPlaying || i == _starsExplosion.Length - 1)
+			{
+				_starsExplosion[i].transform.position = position;
+				_starsExplosion[i].Play();
+				break;
+			}
+        }
 	}
 	public void StartWindParticle(Vector3 position, Vector3 rotation)
 	{
