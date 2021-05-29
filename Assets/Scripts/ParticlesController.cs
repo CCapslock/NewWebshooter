@@ -19,9 +19,11 @@ public class ParticlesController : MonoBehaviour
 	private ParticleSystem[] _magicExplosion;
 	private ParticleSystem _speedyWindObject;
 
+	private GameObject main;
 
 	private void Awake()
 	{
+		main = FindObjectOfType<MainGameController>().gameObject;
 		Current = this;
 		_glowObject = Instantiate(Glow, new Vector3(0, 0, -20f), Quaternion.identity);
 		_shieldBroke = Instantiate(ShieldBroke, new Vector3(0, 0, -20f), Quaternion.identity);
@@ -31,19 +33,19 @@ public class ParticlesController : MonoBehaviour
 		_starsExplosion = new ParticleSystem[10];
 		for (int i = 0; i < _starsExplosion.Length; i++)
         {
-			_starsExplosion[i] = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+			_starsExplosion[i] = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity, main.transform);
 		}
 		
 		_smallExplosinObject = new ParticleSystem[6];
 		for (int i = 0; i < _smallExplosinObject.Length; i++)
 		{
-			_smallExplosinObject[i] = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+			_smallExplosinObject[i] = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity, main.transform);
 		}
 		
 		_magicExplosion = new ParticleSystem[6];
 		for (int i = 0; i < _magicExplosion.Length; i++)
 		{
-			_magicExplosion[i] = Instantiate(MagicExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity);
+			_magicExplosion[i] = Instantiate(MagicExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity, main.transform);
 		}
 	}
 

@@ -162,6 +162,25 @@ public class EnemyController : MonoBehaviour
 			_mainGameController.EnemyBeenDefeated();
 			TurnOnRagdoll();
 		}
+		if (collision.gameObject.CompareTag("Enemy") && IsEnemyActive)
+		{
+			IsEnemyActive = false;
+			_isHitByEnemy = true;
+			_mainGameController.EnemyBeenDefeated();
+			TurnOnRagdoll();
+		}
+		if (collision.gameObject.CompareTag("ThrowingEnemy") && IsEnemyActive)
+		{
+			IsEnemyActive = false;
+			_mainGameController.EnemyBeenDefeated();
+			TurnOnRagdoll();
+		}
+		if (collision.gameObject.CompareTag("DodgeEnemy") && IsEnemyActive)
+		{
+			IsEnemyActive = false;
+			_mainGameController.EnemyBeenDefeated();
+			TurnOnRagdoll();
+		}
 	}
 	private void OnTriggerExit(Collider other)
 	{

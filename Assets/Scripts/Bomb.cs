@@ -61,6 +61,7 @@ public class Bomb : MonoBehaviour
 		{
 			DetonateBomb();
 		}
+		
 	}
 	public void DetonateBomb()
 	{
