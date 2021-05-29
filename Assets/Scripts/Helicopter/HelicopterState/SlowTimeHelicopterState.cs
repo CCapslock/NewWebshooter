@@ -9,6 +9,8 @@ public class SlowTimeHelicopterState : BaseHelicopterState
     {
         base.Execute(view);
         view.AskingPlayerLookAtMe();
+        view.transform.Translate(0, -view.SlowTime, 0);
+        
     }
 
 }

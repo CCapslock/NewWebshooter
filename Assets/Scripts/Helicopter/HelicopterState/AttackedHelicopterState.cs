@@ -17,8 +17,9 @@ public class AttackedHelicopterState : BaseHelicopterState
     {
         base.Execute(view);
         view.AskingPlayerLookAtMe();
-        _goblin.position = Vector3.MoveTowards(_goblin.position, view.GoblinEnd.position, 2f);
-        if ((_goblin.position - view.transform.position).magnitude < 10f)
+        _goblin.position = Vector3.MoveTowards(_goblin.position, view.GoblinEnd.position, 0.6f);
+        _goblin.LookAt(view.GoblinEnd.position);
+        if ((_goblin.position - view.transform.position).magnitude < 9f)
         {
             if (_goblinAttackHelicopter)
             {
@@ -26,9 +27,11 @@ public class AttackedHelicopterState : BaseHelicopterState
                 for (int i = 0; i < 3; i++)
                 {
 
-                    GameObject tempBomb = GameObject.Instantiate(_bomb, _goblin.position+Vector3.down*2f + Vector3.right*(1-i), Quaternion.identity);
+                    GameObject tempBomb = GameObject.Instantiate(_bomb, _goblin.position+Vector3.down * 2f + Vector3.right*(1-i), Quaternion.identity);
                     Rigidbody rig = _bomb.GetComponent<Rigidbody>();
-                    float _AngleInRadians = 45 * Mathf.PI / 180;
+                    rig.isKinematic = false;
+                    rig.useGravity = true;
+                    float _AngleInRadians = 30 * Mathf.PI / 180;
                     Vector3 _fromTo = view.transform.position - tempBomb.transform.position;
                     Vector3 _fromToXZ = new Vector3(_fromTo.x, 0f, _fromTo.z);
 
