@@ -149,16 +149,16 @@ public class SDKController : MonoBehaviour
     #endregion
     #region Interstitial
     private void StartInterstitialOnLevelEnding()
-    {
+    {       
         if (Time.unscaledTime - _lastInterstitialTime > _interstitialDelay)
         {
-            Invoke("ShowInterstitialInvoke", 0.5f);
+            ShowInterstitial();
         }
     }
 
     private void ShowInterstitialInvoke()
     {
-        ShowInterstitial();
+        
     }
     private void LoadInterstitial()
     {

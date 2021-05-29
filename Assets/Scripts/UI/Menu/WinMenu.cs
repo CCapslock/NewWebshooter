@@ -54,10 +54,11 @@ public class WinMenu : BaseMenu
         if (isMultiplier == false)
         {
             _btnGetMoreCoins.gameObject.SetActive(true);
-            if (!IronSource.Agent.isRewardedVideoAvailable())
+            /*if (!IronSource.Agent.isRewardedVideoAvailable())
             {
                 SetInteractable(false);
-            }
+            }*/
+            SetInteractable(IronSource.Agent.isRewardedVideoAvailable());
             _btnGetMoreCoins.onClick.RemoveAllListeners();
             _btnGetMoreCoins.onClick.AddListener(() => UIEvents.Current.ButtonGetMoreCoins(coins));
             _btnGetMoreCoins.GetComponentInChildren<TextMeshProUGUI>().text = $"GET {coins * _controller.CoinsMultiplier}";

@@ -118,7 +118,7 @@ SkinnedMeshRenderer:
   m_GameObject: {fileID: 5308036323010785783}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -128,7 +128,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 18040ccf247f85f4fb005fdb451b91c0, type: 3}
+  - {fileID: 2100000, guid: 30f35cbb2206d8648bbe7c1673ef4ba6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: -5146081361669606916, guid: 18040ccf247f85f4fb005fdb451b91c0, type: 3}
   m_Bones:

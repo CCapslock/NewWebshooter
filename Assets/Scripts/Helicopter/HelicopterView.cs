@@ -12,14 +12,15 @@ public class HelicopterView : MonoBehaviour, IBoss
     [SerializeField] private GameObject _bomb;
     [SerializeField] private GameObject _lopasti;
     [SerializeField] private GameObject _backLopasti;
+    [SerializeField] private Transform _playerMovementPoint;
 
     #region Goblin
     [SerializeField] private Transform _goblinStartPosition;
     [SerializeField] private Transform _goblinEndPosition;
     #endregion
     #region SlowTime
-    [SerializeField]private float _slowTimeFallingSpeed = 0.3f;
-    [SerializeField]private float _slowValuePerWeb = 0.03f;
+    [SerializeField]private float _slowTimeFallingSpeed = 0.05f;
+    [SerializeField]private float _slowValuePerWeb = 0.002f;
     [SerializeField]private GameObject _web;
     private int _websCount = 0;//???
     #endregion
@@ -30,6 +31,8 @@ public class HelicopterView : MonoBehaviour, IBoss
     public Transform CentralFlyingPoint => _centralFlyingPoint;
     public GameObject Lopasti => _lopasti;
     public GameObject BackLopasti => _backLopasti;
+    public PlayerMovement Player => _player;
+    public Transform PlayerMovementPoint => _playerMovementPoint;
     public void Awake()
     {
         MainGameController.BossContainter = this;
@@ -48,7 +51,7 @@ public class HelicopterView : MonoBehaviour, IBoss
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("HelicopterBomb"))
+        if (collision.gameObject.CompareTag("Object"))
         {
             collision.gameObject.GetComponent<Bomb>().DetonateBomb();
             if (_state != HelicopterStates.Falling)
@@ -57,24 +60,27 @@ public class HelicopterView : MonoBehaviour, IBoss
             }
 
         }
-        else if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
+        if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
         {
             if (_state == HelicopterStates.SlowTime)
             {
                 ReleaseNewWeb();
                 _slowTimeFallingSpeed -= _slowValuePerWeb;
-                _websCount++;//??
-                if (_slowTimeFallingSpeed == 0)
+                _websCount++;
+                if (_slowTimeFallingSpeed < 0)
                 {
+                    _slowTimeFallingSpeed = 0;
                     PlayerVictory();
                 }
             }
         }
-        else if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Wall)))
+        if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Bottom)))
         {
-            FindObjectOfType<MainGameController>().PlayerLose();
+            PlayerLose();
         }
     }
+
+    
 
     public void ReleaseNewWeb()
     {
@@ -90,9 +96,9 @@ public class HelicopterView : MonoBehaviour, IBoss
             {
                 obj = Instantiate(_web, hit.point, Quaternion.identity);
                 _webView = obj.GetComponent<HelicopterWebView>();
-                _webView.SetHelicopter(this);
+                _webView.SetHelicopter(this, hit.point);
             }
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 3f);
             //Debug.Log("Did Hit");            
         }
 
@@ -102,9 +108,9 @@ public class HelicopterView : MonoBehaviour, IBoss
             {
                 obj = Instantiate(_web, hit.point, Quaternion.identity);
                 _webView = obj.GetComponent<HelicopterWebView>();
-                _webView.SetHelicopter(this);
+                _webView.SetHelicopter(this, hit.point);
             }
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow,3f);
             //Debug.Log("Did Hit");
         }
     }
@@ -116,9 +122,22 @@ public class HelicopterView : MonoBehaviour, IBoss
         //Ενδγειμ
     }
 
+    public void PlayerLose()
+    {
+        FindObjectOfType<MainGameController>().PlayerLose();
+    }
+
     public void FixedUpdate()
     {
         _model[_state].Execute(this);
+        if (transform.localPosition.y < -35)
+        {
+            Invoke("PlayerLose", 0.4f);
+            ParticlesController.Current.MakeSmallExplosion(transform.position);
+            ParticlesController.Current.MakeSmallExplosion(transform.position + Vector3.forward + Vector3.down);
+            ParticlesController.Current.MakeSmallExplosion(transform.position + Vector3.forward*-1 + Vector3.down);
+
+        }
     }
 
     public void ChangeState(HelicopterStates state)

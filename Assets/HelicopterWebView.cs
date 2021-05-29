@@ -8,6 +8,7 @@ public class HelicopterWebView : MonoBehaviour
     [SerializeField] private GameObject _webStart;
     [SerializeField] private GameObject _webEnd;
     private HelicopterView _helicopter;
+    private Vector3 _hitPoint;
     private bool _helicopterSetted = false;
     private bool _webFixed = false;
 
@@ -37,9 +38,10 @@ public class HelicopterWebView : MonoBehaviour
 
     }
 
-    public void SetHelicopter(HelicopterView view)
+    public void SetHelicopter(HelicopterView view, Vector3 hitpoint)
     {
         _helicopter = view;
+        _hitPoint = hitpoint;
         _helicopterSetted = true;
         _webStart.transform.LookAt(_helicopter.transform.position);
     }

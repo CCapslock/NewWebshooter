@@ -18,13 +18,13 @@ MonoBehaviour:
   - Position: {x: -2.77, y: -1.41, z: 1.64}
     Rotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
     Scale: {x: 10, y: 10, z: 10}
-  - Position: {x: -3.2, y: -1.41, z: 59.5}
+  - Position: {x: -3.2, y: -1.41, z: 56.810005}
     Rotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
     Scale: {x: 10, y: 10, z: 10}
   - Position: {x: 25.2, y: -1.41, z: 31.5034}
     Rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     Scale: {x: 10, y: 10.363999, z: 10}
-  - Position: {x: -31.52, y: -1.41, z: 9.1}
+  - Position: {x: -31.52, y: -1.41, z: 14.16}
     Rotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
     Scale: {x: 10, y: 10, z: 10}
   - Position: {x: -2.9578, y: -43.3214, z: 38.6889}
@@ -33,13 +33,13 @@ MonoBehaviour:
   - Position: {x: -31.52, y: -1.41, z: 67.3}
     Rotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
     Scale: {x: 10, y: 10, z: 10}
-  - Position: {x: -3.8, y: 56.31, z: 59.1}
+  - Position: {x: -3.8, y: 56.31, z: 59.9}
     Rotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
     Scale: {x: 10, y: 10, z: 10}
   - Position: {x: 25.2, y: 56.3, z: 31.5034}
     Rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     Scale: {x: 10, y: 10.363999, z: 10}
-  - Position: {x: -61.2, y: -1.41, z: 59.5}
+  - Position: {x: -61.1, y: -1.41, z: 44.04}
     Rotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
     Scale: {x: 10, y: 10, z: 10}
   - Position: {x: -60.5, y: -1.41, z: 17.4}
@@ -55,14 +55,11 @@ MonoBehaviour:
   BankBuildingsTransforms: []
   BuildingCubeTransforms: []
   SimpleEnemyTransforms:
-  - Position: {x: -4.72, y: -1.5800009, z: -0.43}
+  - Position: {x: -4.72, y: -1.5800009, z: 1.98}
     Rotation: {x: -0, y: 1, z: -0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   ThrowingEnemyTransforms:
-  - Position: {x: -2.6564875, y: -1.5799952, z: 4.874917}
-    Rotation: {x: 0, y: 1, z: 0, w: 0}
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Position: {x: -2.3374834, y: 2.0199862, z: 29.92}
+  - Position: {x: -1.22, y: -1.5799952, z: 2.16}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
     Scale: {x: 1.5, y: 1.5, z: 1.5}
   EnemyWithShieldTransforms: []
@@ -73,10 +70,10 @@ MonoBehaviour:
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 1, y: 1, z: 1}
     EnemyTransforms:
-    - Position: {x: -2.6564875, y: -1.5799952, z: 4.874917}
+    - Position: {x: -1.22, y: -1.5799952, z: 2.16}
       Rotation: {x: 0, y: 1, z: 0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
-    - Position: {x: -4.72, y: -1.5800009, z: -0.43}
+    - Position: {x: -4.72, y: -1.5800009, z: 1.98}
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
@@ -97,7 +94,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 1
     NeedToRotate: 0
-    NeedToFly: 1
+    NeedToFly: 0
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
     IsFinalPoint: 1
