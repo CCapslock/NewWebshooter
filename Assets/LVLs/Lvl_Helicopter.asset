@@ -100,7 +100,7 @@ MonoBehaviour:
     NeedToFly: 1
     NeedToCountEnemy: 1
     NeedToChangeSpeed: 0
-    IsFinalPoint: 0
+    IsFinalPoint: 1
     IsBossBattle: 1
   BossSetParametrs:
     Transform:
@@ -108,7 +108,7 @@ MonoBehaviour:
       Rotation: {x: 0, y: 0, z: 0, w: 0}
       Scale: {x: 0, y: 0, z: 0}
     SetName: SetHelicopter0
-    IsActive: 0
+    IsActive: 1
   DecorativeBenchTransforms: []
   DecorativeCraneTransforms: []
   DecorativeVoltageWiresTransforms: []
