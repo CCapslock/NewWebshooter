@@ -124,6 +124,7 @@ public class HelicopterView : MonoBehaviour, IBoss
 
     public void PlayerLose()
     {
+        MainGameController.BossContainter = null;
         FindObjectOfType<MainGameController>().PlayerLose();
     }
 
