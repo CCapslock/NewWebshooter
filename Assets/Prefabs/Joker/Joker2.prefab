@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnCooldown: 2
-  _spawnAmount: 5
+  _spawnAmount: 2
   _animator: {fileID: -7470919500455111707}
   _rightHand: {fileID: 5923272242612828721}
   _jokerMinion: {fileID: 2492323873838557941, guid: 382c89ec30244aa4aa2a3abd5c2783ff, type: 3}
