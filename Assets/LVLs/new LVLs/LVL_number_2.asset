@@ -254,6 +254,6 @@ MonoBehaviour:
     Rotation: {x: -0.60930413, y: -0.35881537, z: -0.35881528, w: 0.6093042}
     Scale: {x: 5, y: 5, z: 5}
   IsMinion: 1
-  IsJoker: 1
+  IsJoker: 0
   IsMisterio: 0
-  IsGoblin: 0
+  IsGoblin: 1
