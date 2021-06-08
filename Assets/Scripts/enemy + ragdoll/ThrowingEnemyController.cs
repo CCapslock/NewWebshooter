@@ -117,11 +117,7 @@ public class ThrowingEnemyController : MonoBehaviour
 		{
 			if (IsEnemyActive)
 			{
-				if (!_bombThrown)
-				{
-					_bombDetonated = true;
-					Bomb.GetComponent<Bomb>().DetonateBomb();
-				}
+				ClearBomb();
 
 				IsEnemyActive = false; _isEnemyWebbed = true;
 				_mainGameController.EnemyBeenDefeated();
@@ -153,34 +149,49 @@ public class ThrowingEnemyController : MonoBehaviour
 		}
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Bottom)) && IsEnemyActive)
 		{
+			ClearBomb();
 			IsEnemyActive = false;
 			_mainGameController.EnemyBeenDefeated();
 		}
 		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.EnemyPart)) && IsEnemyActive)
 		{
+			ClearBomb();
 			_mainGameController.EnemyBeenDefeated();
 			TurnOnRagdoll();
 			IsEnemyActive = false;
 		}
 		if (collision.gameObject.CompareTag("Enemy") && IsEnemyActive)
 		{
+			ClearBomb();
 			IsEnemyActive = false;
 			_mainGameController.EnemyBeenDefeated();
 			TurnOnRagdoll();
 		}
 		if (collision.gameObject.CompareTag("ThrowingEnemy") && IsEnemyActive)
 		{
+			ClearBomb();
 			IsEnemyActive = false;
 			_mainGameController.EnemyBeenDefeated();
 			TurnOnRagdoll();
 		}
 		if (collision.gameObject.CompareTag("DodgeEnemy") && IsEnemyActive)
 		{
+			ClearBomb();
 			IsEnemyActive = false;
 			_mainGameController.EnemyBeenDefeated();
 			TurnOnRagdoll();
 		}
 	}
+
+	private void ClearBomb()
+	{
+		if (!_bombThrown)
+		{
+			_bombDetonated = true;
+			Bomb.GetComponent<Bomb>().DetonateBomb();
+		}
+	}
+
 	#region Enemy Methods
 	private void PrepareForThrowingBomb()
 	{

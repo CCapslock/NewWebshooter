@@ -64,7 +64,7 @@ public class JokerMinionView : MonoBehaviour
         transform.LookAt(_temporalVector3);
         if (_runToPlayer)
         {
-            if ((transform.position - _player.transform.position).magnitude > 1.2f)
+            if ((transform.position - _player.transform.position).magnitude > 2f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _movementSpeed * Time.deltaTime);
             }

@@ -53,16 +53,16 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelStartEvent(int levelNumber)
     {
-        _previousLevelNumber = _currentLevelNumber;
         _currentLevelNumber = levelNumber;
         _currentOverallLevelNumber = PlayerPrefs.GetInt("OverallLevels");
         _currentOverallLevelNumberString = _currentOverallLevelNumber.ToString();
         _currentLevelNumberString = _currentLevelNumber.ToString();
-        if (_previousLevelNumber >= 0)
+        if (_previousLevelNumber > 0)
         { 
-            //GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Level time", _currentOverallLevelNumberString, (int)(Time.time - _startLevelTime));
+            GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "LevelTime", _currentOverallLevelNumberString, (int)(Time.time - _startLevelTime));
         }
+        _previousLevelNumber = _currentLevelNumber - 1;
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, _currentOverallLevelNumberString);
     }
 

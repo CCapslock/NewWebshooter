@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.004088467
       objectReference: {fileID: 0}
+    - target: {fileID: 4469632556310401353, guid: 0ca0f4ad08f61494dbe88e5f66b10033, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5673960716809981706, guid: 0ca0f4ad08f61494dbe88e5f66b10033, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.000000031664968

@@ -60,7 +60,8 @@ MonoBehaviour:
   _ISIOSAppKey: 
   _ISAndroidAppKey: 
   _currentAppKey: 
-  _interstitialDelay: 40
+  _tenjinApiKey: 3F1TZPVMAKATNQFEJHB3NSD995ZA41QG
+  _interstitialDelay: 25
 --- !u!114 &2579121041614493637
 MonoBehaviour:
   m_ObjectHideFlags: 0
