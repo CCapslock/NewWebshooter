@@ -679,7 +679,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: 0
     4: gameanalytics_ironsource_enabled
-    7: gameanalytics_ironsource_enabled
+    7: gameanalytics_ironsource_enabled;MOREMOUNTAINS_FEEDBACKS;MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_TOOLS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

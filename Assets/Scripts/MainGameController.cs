@@ -168,6 +168,6 @@ public class MainGameController : MonoBehaviour
 		int CoinsNum = amountOfCoinsCaught;
 		_saveController.SaveCurrentLvl(true);
 		_uiController.ActivateWinPanel(CoinsNum);
-		_coinsController.AddCoins(CoinsNum);
+		_coinsController.AddCoins(CoinsNum);		
 	}
 }
