@@ -43,11 +43,7 @@ public class HelicopterView : MonoBehaviour, IBoss
         _model.Add(HelicopterStates.SlowTime, new SlowTimeHelicopterState());
         _model.Add(HelicopterStates.Attacked, new AttackedHelicopterState(_goblin, GoblinStart, _bomb));
     }
-
-    public void Start()
-    {
         
-    }
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -80,7 +76,36 @@ public class HelicopterView : MonoBehaviour, IBoss
         }
     }
 
-    
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        if (collision.gameObject.CompareTag("Object"))
+        {
+            collision.gameObject.GetComponent<Bomb>().DetonateBomb();
+            if (_state != HelicopterStates.Falling)
+            {
+                ChangeState(HelicopterStates.Falling);
+            }
+
+        }
+        if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
+        {
+            if (_state == HelicopterStates.SlowTime)
+            {
+                ReleaseNewWeb();
+                _slowTimeFallingSpeed -= _slowValuePerWeb;
+                _websCount++;
+                if (_slowTimeFallingSpeed < 0)
+                {
+                    _slowTimeFallingSpeed = 0;
+                    PlayerVictory();
+                }
+            }
+        }        
+    }
+
+
+
 
     public void ReleaseNewWeb()
     {
@@ -138,6 +163,10 @@ public class HelicopterView : MonoBehaviour, IBoss
             ParticlesController.Current.MakeSmallExplosion(transform.position + Vector3.forward + Vector3.down);
             ParticlesController.Current.MakeSmallExplosion(transform.position + Vector3.forward*-1 + Vector3.down);
 
+        }
+        if (transform.localPosition.y < -30f)
+        {
+            PlayerLose();
         }
     }
 
