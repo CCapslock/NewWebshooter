@@ -85,6 +85,13 @@ public class WebShooter : MonoBehaviour
 		{
 			if (_objectHit.rigidbody != null)
 			{
+				if (_objectHit.transform.CompareTag("FinalLevelTrigger"))
+				{
+					if (MainGameController.BossContainter is FinalZoneView)
+					{
+						(MainGameController.BossContainter as FinalZoneView).TriggerCounted();
+					}
+				}
 				return _objectHit.point;
 			}
 		}

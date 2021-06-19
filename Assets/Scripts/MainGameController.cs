@@ -157,7 +157,7 @@ public class MainGameController : MonoBehaviour
 	private void PlayerWin()
 	{
 		_lvlComplete = true;
-		int CoinsNum = Random.Range(40, 71);
+		int CoinsNum = Mathf.RoundToInt(Random.Range(20, 30) * FinalZoneView.Multiplier);
 		_saveController.SaveCurrentLvl(false);
 		_uiController.ActivateWinPanel(CoinsNum);
 		_coinsController.AddCoins(CoinsNum);
