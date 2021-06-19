@@ -96,6 +96,8 @@ public class GameEvents : MonoBehaviour
     public void ThrowingBomb(GameObject bomb)
     {
         OnThrowingBomb?.Invoke(bomb);
+        
+
     }
 
     public Action OnGoblinTakeDamage;

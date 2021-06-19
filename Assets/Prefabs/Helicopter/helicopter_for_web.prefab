@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 3423551286433019443}
   - component: {fileID: 3733633691366878733}
   - component: {fileID: 70717616407937621}
-  - component: {fileID: 9052490735216604607}
   - component: {fileID: 6862664190151264440}
+  - component: {fileID: 5434173637122451418}
   m_Layer: 8
   m_Name: helicopter
   m_TagString: Untagged
@@ -144,20 +144,6 @@ MonoBehaviour:
   _slowTimeFallingSpeed: 0.05
   _slowValuePerWeb: 0.005
   _web: {fileID: 0}
---- !u!64 &9052490735216604607
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3194760252113128670}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7907320677919238409, guid: 839ea4fbee0bcfa438b37e5589d3f803, type: 3}
 --- !u!54 &6862664190151264440
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,6 +160,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &5434173637122451418
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194760252113128670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 4.1261888
+  m_Height: 15.811586
+  m_Direction: 2
+  m_Center: {x: 0.31053114, y: -0.17359209, z: 0.052290916}
 --- !u!1 &8214583028419025496
 GameObject:
   m_ObjectHideFlags: 0
