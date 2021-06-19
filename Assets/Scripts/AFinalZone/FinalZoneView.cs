@@ -123,6 +123,7 @@ public class FinalZoneView : MonoBehaviour, IBoss
         _aimCenter.SetActive(true);
         _aimCenter.transform.LookAt(Camera.main.transform);
         _aimCenter.transform.position = _manHead.position + Vector3.back + Vector3.down*0.3f;
+        FindObjectOfType<BottomObjectView>().gameObject.SetActive(false);
         //_leftSlinger.ConnectToHand(_leftArm);
         //_rightSlinger.ConnectToHand(_rightArm);
 

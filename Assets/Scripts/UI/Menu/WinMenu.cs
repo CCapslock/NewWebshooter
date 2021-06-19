@@ -24,8 +24,8 @@ public class WinMenu : BaseMenu
     private void Awake()
     {
         _controller = transform.parent.GetComponent<UIController>();
-        
-        
+
+
     }
 
     public override void Hide()
@@ -39,17 +39,18 @@ public class WinMenu : BaseMenu
     public override void Show()
     {
         if (IsShow) return;
-        
-        _panel.gameObject.SetActive(true);        
+
+        _panel.gameObject.SetActive(true);
         _btnNextLevel.gameObject.SetActive(true);
         UIEvents.Current.OnRewardedVideoAvailabilityChanged += SetInteractable;
 
         IsShow = true;
-
-        var value = FinalZoneView.Multiplier;
-        if (value > 2)
+        if (MainGameController.BossContainter != null)
         {
-            _textScale.text = $"BONUS  X{FinalZoneView.Multiplier}";
+            if (MainGameController.BossContainter is FinalZoneView)
+            {              
+                _textScale.text = $"BONUS  X{FinalZoneView.Multiplier}";                
+            }
         }
         else
         {
@@ -59,7 +60,7 @@ public class WinMenu : BaseMenu
         _btnNextLevel.onClick.AddListener(UIEvents.Current.ButtonNextLevel);
     }
 
-    
+
 
     public void ActivatePanel(int coins, bool isMultiplier)
     {
@@ -73,7 +74,7 @@ public class WinMenu : BaseMenu
             SetInteractable(IronSource.Agent.isRewardedVideoAvailable());
             _btnGetMoreCoins.onClick.RemoveAllListeners();
             _btnGetMoreCoins.onClick.AddListener(() => UIEvents.Current.ButtonGetMoreCoins(coins));
-            
+
             _btnGetMoreCoins.GetComponentInChildren<TextMeshProUGUI>().text = $"GET {coins * _controller.CoinsMultiplier}";
             _btnNextLevel.onClick.AddListener(GameEvents.Current.InterstitialAsked);
             _textCoins.text = "+0";
@@ -88,7 +89,7 @@ public class WinMenu : BaseMenu
             _textCoins.text = "+0";
             AddMoreCoinsInUI(coins);
         }
-        
+
     }
 
     private void SetInteractable(bool value)
@@ -96,7 +97,7 @@ public class WinMenu : BaseMenu
         _btnGetMoreCoins.interactable = value;
     }
 
-    
+
 
 
     private void AddMoreCoinsInUI(int amount)
