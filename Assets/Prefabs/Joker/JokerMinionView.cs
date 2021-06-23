@@ -92,7 +92,7 @@ public class JokerMinionView : MonoBehaviour
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
 
-        _temporalVector3.x = _joker.transform.position.x + Random.Range(-2.5f, 2.5f);
+        _temporalVector3.x = _joker.transform.position.x + Random.Range(-2f, 2f);
         _temporalVector3.y = _joker.transform.position.y;
         _temporalVector3.z = _joker.transform.position.z - 4f;
 
