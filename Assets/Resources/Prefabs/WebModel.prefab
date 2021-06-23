@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: 2e9d1be4d00b79f4d8bcc34ce4ff62e0, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 647b265a80e6b5c44bdec6d321c59614, type: 3}
-  _state: 1
+  _state: 2
 --- !u!114 &7353939226168725675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &478010068264428254
 Transform:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockedImage: {fileID: 21300000, guid: 2b2318ba05a4a4b43912ec5003bc8e86, type: 3}
   _unlockedImage: {fileID: 21300000, guid: ef36dc62614aaf34b8333d564ce03c42, type: 3}
-  _state: 2
+  _state: 1
 --- !u!1001 &935500873470626287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f93930c2aba52b3478a9bf75cdedfcdb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93930c2aba52b3478a9bf75cdedfcdb, type: 3}
