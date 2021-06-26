@@ -296,7 +296,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 534888469, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1823579764254398238, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_IsActive
@@ -2521,7 +2521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3697736927164484414, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: field of view
-      value: 85
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 3697736927164484414, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: far clip plane
@@ -2653,7 +2653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055722846860123086, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 85
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 7103746447170629133, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_IsActive
