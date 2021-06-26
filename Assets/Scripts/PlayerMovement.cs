@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -169,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
         {
             maxnum = TimesOfRotateZ;
         }
+        /*
         for (int i = 0; i < maxnum; i++)
         {
             if (i <= TimesOfRotateX)
@@ -185,6 +187,10 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+        */
+        StartCoroutine(RotatePlayer(new Vector3(_rotationSpeed * RotationSideX, 0, 0), TimesOfRotateX));
+        StartCoroutine(RotatePlayer(new Vector3(0, _rotationSpeed * RotationSideY, 0), TimesOfRotateY));
+        StartCoroutine(RotatePlayer(new Vector3(0, 0, _rotationSpeed * RotationSideZ), TimesOfRotateZ));
         //transform.Rotate(RotatingVector);
     }
     private void RotateALittleX()
@@ -208,4 +214,16 @@ public class PlayerMovement : MonoBehaviour
         return 0;
     }
     #endregion
+
+    private IEnumerator RotatePlayer(Vector3 rotationVector, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            transform.Rotate(rotationVector);
+            yield return null;
+        }
+        yield break;        
+    }
+
 }
+
