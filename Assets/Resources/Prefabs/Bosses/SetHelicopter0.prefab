@@ -251,6 +251,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 11.669
       objectReference: {fileID: 0}
+    - target: {fileID: 5434173637122451418, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
+      propertyPath: m_Height
+      value: 25.374653
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434173637122451418, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
+      propertyPath: m_Radius
+      value: 7.917536
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434173637122451418, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
+      propertyPath: m_Center.x
+      value: 0.40558532
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434173637122451418, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
+      propertyPath: m_Center.y
+      value: 1.8614558
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434173637122451418, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
+      propertyPath: m_Center.z
+      value: 0.86485773
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434173637122451418, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6862664190151264440, guid: 2588979ad38088b4cbc9f1d45498feeb, type: 3}
       propertyPath: m_Constraints
       value: 126
