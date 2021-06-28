@@ -22,7 +22,7 @@ public class HelicopterView : MonoBehaviour, IBoss
     [SerializeField]private float _slowTimeFallingSpeed = 0.05f;
     [SerializeField]private float _slowValuePerWeb = 0.002f;
     [SerializeField]private GameObject _web;
-    private int _websCount = 0;//???
+    //private int _websCount = 0;//???
     #endregion
 
     public Transform GoblinStart => _goblinStartPosition;
@@ -36,7 +36,7 @@ public class HelicopterView : MonoBehaviour, IBoss
     public void Awake()
     {
         MainGameController.BossContainter = this;
-        _websCount = 0;
+        //_websCount = 0;
         _player = FindObjectOfType<PlayerMovement>();
         _model.Add(HelicopterStates.Await, new AwaitHelicopterState());
         _model.Add(HelicopterStates.Falling, new FallingHelicopterState());
@@ -62,7 +62,7 @@ public class HelicopterView : MonoBehaviour, IBoss
             {
                 ReleaseNewWeb();
                 _slowTimeFallingSpeed -= _slowValuePerWeb;
-                _websCount++;
+                //_websCount++;
                 if (_slowTimeFallingSpeed < 0)
                 {
                     _slowTimeFallingSpeed = 0;
@@ -94,7 +94,7 @@ public class HelicopterView : MonoBehaviour, IBoss
             {
                 ReleaseNewWeb();
                 _slowTimeFallingSpeed -= _slowValuePerWeb;
-                _websCount++;
+                //_websCount++;
                 if (_slowTimeFallingSpeed < 0)
                 {
                     _slowTimeFallingSpeed = 0;

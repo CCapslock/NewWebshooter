@@ -677,7 +677,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: 0
+    1: 0;MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_FEEDBACKS;MOREMOUNTAINS_TOOLS
     4: gameanalytics_ironsource_enabled
     7: gameanalytics_ironsource_enabled;MOREMOUNTAINS_FEEDBACKS;MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_TOOLS
   additionalCompilerArguments: {}

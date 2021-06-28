@@ -53,7 +53,7 @@ public class ShopMenu : BaseMenu
         _btnNets.onClick.AddListener(() => OpenNetsPanel());
 
         _btnBuyGloves.onClick.AddListener(() => UIEvents.Current.ButtonBuySkinGloves(GetRandomGloves()));
-        _btnGetGloves.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinGloves(GetRandomGloves()));
+        _btnGetGloves.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinGloves(GetFreeRandomGloves()));
         _btnBuyNet.onClick.AddListener(() => UIEvents.Current.ButtonBuySkinNet(GetRandomWeb()));
         _btnGetNet.onClick.AddListener(() => UIEvents.Current.ButtonGetSkinNet(GetRandomWeb()));
 
@@ -170,6 +170,7 @@ public class ShopMenu : BaseMenu
     {
         _panelGloves.SetActive(true);
         _panelNets.SetActive(false);
+        SetShop();
         _btnGloves.image.color = _panelGloves.GetComponent<Image>().color;
         _btnNets.image.color = _colorBack;
     }
@@ -177,6 +178,7 @@ public class ShopMenu : BaseMenu
     {
         _panelGloves.SetActive(false);
         _panelNets.SetActive(true);
+        SetShop();
         _btnGloves.image.color = _colorBack;
         _btnNets.image.color = _panelNets.GetComponent<Image>().color;
     }
@@ -204,6 +206,31 @@ public class ShopMenu : BaseMenu
 
         return lockedGloves[rnd];
     }
+
+    private GlovesSkinModel GetFreeRandomGloves()
+    {
+        int count = 0;
+        List<GlovesSkinModel> lockedGloves = new List<GlovesSkinModel>();
+
+        for (int i = 0; i < _glovesManager.Skins.Length; i++)
+        {
+            if (_glovesManager.Skins[i].State == SkinState.Locked)
+            {
+                lockedGloves.Add(_glovesManager.Skins[i]);
+                count++;
+            }
+        }
+
+        if (count == 1)
+        {
+            return lockedGloves[0];
+        }
+
+        int rnd = Random.Range(0, lockedGloves.Count);
+
+        return lockedGloves[rnd];
+    }
+
     private WebSkinModel GetRandomWeb()
     {
         int count = 0;

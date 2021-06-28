@@ -57,27 +57,40 @@ public class WebShooter : MonoBehaviour
 			if (mousePosition.x > _halfOfScreenWidth)
 			{
 				_rightHandPosition = RightHandTransform.position;
-				_webObject = Instantiate(ShootingWeb, new Vector3(_rightHandPosition.x, _rightHandPosition.y, _rightHandPosition.z), Quaternion.identity);
+				InstantiateWeb(RightHandTransform.position, _goalPosition);
+				/*_webObject = Instantiate(ShootingWeb, new Vector3(_rightHandPosition.x, _rightHandPosition.y, _rightHandPosition.z), Quaternion.identity);
 				_webObjects.Add(new WebObject()
 				{
 					WebGameObject = _webObject,
 					GoalPosition = _goalPosition
-				});
+				});*/
 				RightHandAnimator.SetTrigger("Shoot");
 			}
 			else
 			{
 				_leftHandPosition = LeftHandTransform.position;
-				_webObject = Instantiate(ShootingWeb, new Vector3(_leftHandPosition.x, _leftHandPosition.y, _leftHandPosition.z), Quaternion.identity);
+				InstantiateWeb(LeftHandTransform.position, _goalPosition);
+				/*_webObject = Instantiate(ShootingWeb, new Vector3(_leftHandPosition.x, _leftHandPosition.y, _leftHandPosition.z), Quaternion.identity);
 				_webObjects.Add(new WebObject()
 				{
 					WebGameObject = _webObject,
 					GoalPosition = _goalPosition
-				});
+				});*/
 				LeftHandAnimator.SetTrigger("Shoot");
 			}
 		}
 	}
+
+	private void InstantiateWeb(Vector3 Pos, Vector3 _position)
+	{
+		_webObject = Instantiate(ShootingWeb, Pos, Quaternion.identity);
+		_webObjects.Add(new WebObject()
+		{
+			WebGameObject = _webObject,
+			GoalPosition = _position
+		});
+	}
+
 	private Vector3 CheckTheGoal(Vector3 mousePosition)
 	{
 		_ray = Camera.main.ScreenPointToRay(mousePosition);
