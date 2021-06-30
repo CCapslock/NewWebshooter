@@ -3,18 +3,18 @@ using UnityEngine;
 public class WebSkinManager : MonoBehaviour
 {
     private WebSkinModel[] _skins;
-
     public WebSkinModel[] Skins => _skins;
 
 
     private void Awake()
     {
+        
         _skins = FindObjectOfType<WebShooter>().StuckedWeb.GetComponentsInChildren<WebSkinModel>(true);
-        LoadSkins();
     }
 
     private void Start()
     {
+        LoadSkins();
         GameEvents.Current.OnUnlockWeb += UnlockSkin;
         GameEvents.Current.OnSelectWeb += SelectSkin;
     }
@@ -28,6 +28,7 @@ public class WebSkinManager : MonoBehaviour
             _skins[i].gameObject.SetActive(false);
             if (_skins[i].State == SkinState.Selected)
             {
+                WebShooter.Current.SetMaterial(_skins[i].WebMaterial);
                 if (isSelected == false)
                 {
                     _skins[i].gameObject.SetActive(true);
@@ -68,8 +69,11 @@ public class WebSkinManager : MonoBehaviour
             }
         }
         skin.gameObject.SetActive(true);
+        
         skin.ChangeState(SkinState.Selected);
         skin.SaveState();
+
+        
         LoadSkins();
         UIEvents.Current.UpdateShop();
     }

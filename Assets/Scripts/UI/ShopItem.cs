@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.Feedbacks;
+using System.Collections;
 
 public class ShopItem : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ShopItem : MonoBehaviour
         {
             case SkinState.Locked:
                 _image.sprite = skin.LockedImage;
+                _image.gameObject.SetActive(false);
                 _frameSelected.gameObject.SetActive(false);
                 _btnSelect.interactable = false;
                 _locker.gameObject.SetActive(true);
@@ -29,6 +31,7 @@ public class ShopItem : MonoBehaviour
                 break;
             case SkinState.Unlocked:
                 _btnSelect.onClick.AddListener(() => UIEvents.Current.ButtonSelectSkinGloves(skin));
+                _image.gameObject.SetActive(true);
                 _image.sprite = skin.UnlockedImage;
                 _btnSelect.interactable = true;
                 _locker.gameObject.SetActive(false);
@@ -41,6 +44,7 @@ public class ShopItem : MonoBehaviour
 
                 break;
             case SkinState.Selected:
+                _image.gameObject.SetActive(true);
                 _image.sprite = skin.UnlockedImage;
                 _frameSelected.gameObject.SetActive(true);
                 _btnSelect.interactable = false;
@@ -76,6 +80,7 @@ public class ShopItem : MonoBehaviour
         {
             case SkinState.Locked:
                 _image.sprite = skin.LockedImage;
+                _image.gameObject.SetActive(false);
                 _frameSelected.gameObject.SetActive(false);
                 _btnSelect.interactable = false;
                 _locker.gameObject.SetActive(true);
@@ -86,7 +91,8 @@ public class ShopItem : MonoBehaviour
                 break;
             case SkinState.Unlocked:
                 _btnSelect.onClick.AddListener(() => UIEvents.Current.ButtonSelectSkinWeb(skin));
-                _image.sprite = skin.UnlockedImage; ;
+                _image.sprite = skin.UnlockedImage;
+                _image.gameObject.SetActive(true);
                 _frameSelected.gameObject.SetActive(false);
                 _btnSelect.interactable = true;
                 _locker.gameObject.SetActive(false);
@@ -97,6 +103,7 @@ public class ShopItem : MonoBehaviour
                 break;
             case SkinState.Selected:
                 _image.sprite = skin.UnlockedImage;
+                _image.gameObject.SetActive(true);
                 _frameSelected.gameObject.SetActive(true);
                 _btnSelect.interactable = false;
                 _locker.gameObject.SetActive(false);
@@ -118,14 +125,24 @@ public class ShopItem : MonoBehaviour
     {
         _btnSelect.gameObject.SetActive(false);
         _frameSelected.gameObject.SetActive(false);
-
+        _locker.gameObject.SetActive(false);
         _image.sprite = skin.UnlockedImage;
     }
     public void SetPopUp(WebSkinModel skin)
     {
         _btnSelect.gameObject.SetActive(false);
         _frameSelected.gameObject.SetActive(false);
-
+        _locker.gameObject.SetActive(false);
         _image.sprite = skin.UnlockedImage;
+    }
+
+    public IEnumerator ShowLockedAnimation()
+    {
+        yield break;
+    }
+
+    public IEnumerator ShowUnlockedAnimation()
+    {
+        yield break;
     }
 }

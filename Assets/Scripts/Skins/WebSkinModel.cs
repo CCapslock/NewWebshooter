@@ -6,11 +6,12 @@ public class WebSkinModel : MonoBehaviour
 {
     [SerializeField] private Sprite _lockedImage;
     [SerializeField] private Sprite _unlockedImage;
-
+    [SerializeField] private Material _webMaterial;
     [SerializeField] private SkinState _state;
 
     public Sprite LockedImage => _lockedImage;
     public Sprite UnlockedImage => _unlockedImage;
+    public Material WebMaterial => _webMaterial;
     public SkinState State => _state;
 
 
