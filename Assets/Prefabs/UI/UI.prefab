@@ -3962,6 +3962,7 @@ MonoBehaviour:
   _panel: {fileID: 4814795036553154651}
   _btnStartGame: {fileID: 4814795034836222305}
   _btnShop: {fileID: 4814795036492996596}
+  _buttonShaker: {fileID: 5615288228129750533}
 --- !u!1 &4814795035805574633
 GameObject:
   m_ObjectHideFlags: 0
@@ -5912,20 +5913,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks:
-  - {fileID: 5615288228129750533}
-  InitializationMode: 2
+  - {fileID: 0}
+  - {fileID: 0}
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
-  AutoPlayOnStart: 0
-  AutoPlayOnEnable: 1
+  AutoPlayOnStart: 1
+  AutoPlayOnEnable: 0
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
   CooldownDuration: 0
   InitialDelay: 0
   FeedbacksIntensity: 1
   Events:
-    TriggerMMFeedbacksEvents: 0
+    TriggerMMFeedbacksEvents: 1
     TriggerUnityEvents: 1
     OnPlay:
       m_PersistentCalls:
@@ -5966,7 +5968,7 @@ MonoBehaviour:
     RepeatForever: 1
     DelayBetweenRepeats: 2
     MMFeedbacksDirectionCondition: 0
-    PlayDirection: 0
+    PlayDirection: 2
     ConstantIntensity: 0
     UseIntensityInterval: 0
     IntensityIntervalMin: 0
