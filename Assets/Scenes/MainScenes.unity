@@ -411,21 +411,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
-      propertyPath: AutoPlayOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
-      propertyPath: InitializationMode
-      value: 2
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: Feedbacks.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
-      propertyPath: Feedbacks.Array.data[1]
+      propertyPath: Feedbacks.Array.data[0]
       value: 
       objectReference: {fileID: 955446743}
+    - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+      propertyPath: Feedbacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 955446738}
     - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: Events.TriggerUnityEvents
       value: 1
@@ -633,14 +633,6 @@ PrefabInstance:
     - target: {fileID: 5077034912106242790, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615288228129750533, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
-      propertyPath: TargetRectTransform
-      value: 
-      objectReference: {fileID: 955446737}
-    - target: {fileID: 5615288228129750533, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
-      propertyPath: Timing.PlayDirection
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5937043414483480050, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1538,11 +1530,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4814795036492996594, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
   m_PrefabInstance: {fileID: 116212189}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &955446737 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4814795036492996597, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+--- !u!114 &955446738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5615288228129750533, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
   m_PrefabInstance: {fileID: 116212189}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955446736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5796eee3c7e7644e9d0c99e1174eeeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &955446743
 MonoBehaviour:
   m_ObjectHideFlags: 2
