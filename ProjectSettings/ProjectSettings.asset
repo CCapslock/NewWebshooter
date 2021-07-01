@@ -127,7 +127,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 2.361
+  bundleVersion: 2.362
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -150,7 +150,7 @@ PlayerSettings:
     iPhone: com.Keyboard.Webshooter
   buildNumber:
     Standalone: 0
-    iPhone: 2372
+    iPhone: 2373
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 2372
