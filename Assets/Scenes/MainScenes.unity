@@ -415,6 +415,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
+      propertyPath: AutoPlayOnEnable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496219665209435510, guid: 8c233bd23e670f744a45849f49d04cec, type: 3}
       propertyPath: Feedbacks.Array.size
       value: 2
       objectReference: {fileID: 0}
