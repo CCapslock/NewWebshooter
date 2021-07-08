@@ -81,17 +81,24 @@ public class EnemyController : MonoBehaviour
 		{
 			if (!IsNearPlayer())
 			{
+				if (IsEnemyAttacking)
+				{
+					IsEnemyAttacking = false;
+					_animator.SetTrigger("StartRunning");
+				}
 				MoveEnemy();
-			}
-			else if (!IsNearPlayer() && IsEnemyAttacking)
-			{
-				ActivateEnemy();
 			}
 			else if (IsNearPlayer() && !IsEnemyAttacking)
 			{
 				EnemyAttack();
 			}
+			if (_capsuleRigidbody.velocity.y < -5)
+			{				
+				IsEnemyActive = false;
+				_mainGameController.EnemyBeenDefeated();
+			}
 		}
+		
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
@@ -235,7 +242,11 @@ public class EnemyController : MonoBehaviour
 		_capsuleRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 		if (!IsStucked)
 		{
-			_animator.SetTrigger("StartMoving");
+			if(_enemyType == EnemyType.Shield)
+				_animator.SetTrigger("StartMoving");
+			else
+				_animator.SetTrigger("StartRunning");
+
 			IsEnemyActive = true;
 		}
 		else
@@ -301,6 +312,7 @@ public class EnemyController : MonoBehaviour
 	}
 	private void TurnOnRagdoll()
 	{
+		_capsuleCollider.isTrigger = false;
 		_animator.enabled = false;
 		for (int i = 0; i < _ragdollColliders.Length; i++)
 		{

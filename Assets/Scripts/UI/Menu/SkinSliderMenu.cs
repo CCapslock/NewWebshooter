@@ -112,8 +112,8 @@ public class SkinSliderMenu : MonoBehaviour
         for (int i = 0; i < sliderTicks; i++)
         {
             Invoke("AddSliderCount", i * (_sliderTime / sliderTicks));
-        }
-        StopCoroutine(RotateRotatingCircle());
+        }   
+        StopAllCoroutines();
         StartCoroutine(RotateRotatingCircle());
         PlayerPrefs.SetFloat(_saveKey, _sliderGoal);
     }
@@ -153,7 +153,7 @@ public class SkinSliderMenu : MonoBehaviour
         _rotatingCircle.SetActive(true);
         while (_rotatingCircle.activeSelf)
         {
-            _rotatingCircle.transform.Rotate(0, 0, 0.75f);
+            _rotatingCircle.transform.Rotate(0, 0, 0.35f);
             yield return new WaitForFixedUpdate();
         }
         yield break;

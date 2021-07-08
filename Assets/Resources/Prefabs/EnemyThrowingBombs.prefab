@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.26
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   SpiderWeb: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   ThrowingAnimationLenght: 1
   MaxDistanceToPlayer: 2.5
-  EnemySpeed: 0.04
+  EnemySpeed: 0.06
   Bomb: {fileID: 7898085234661981772}
   MovementCurve:
     serializedVersion: 2

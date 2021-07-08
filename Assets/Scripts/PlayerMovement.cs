@@ -46,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 _speed = _movementPoints[_currentPointNum].NewSpeed;
             }
+            else
+            {
+                _speed = MaxSpeed;
+            }
             if (_movementPoints[_currentPointNum].NeedToFly)
             {
                 RightHandAnimator.SetTrigger("Flying");
@@ -194,16 +198,16 @@ public class PlayerMovement : MonoBehaviour
         //transform.Rotate(RotatingVector);
     }
     private void RotateALittleX()
-    {
-        transform.Rotate(new Vector3(_rotationSpeed * RotationSideX, 0, 0));
+    {        
+        transform.Rotate(_rotationSpeed * RotationSideX, 0, 0);
     }
     private void RotateALittleY()
     {
-        transform.Rotate(new Vector3(0, _rotationSpeed * RotationSideY, 0));
+        transform.Rotate(0, _rotationSpeed * RotationSideY, 0);
     }
     private void RotateALittleZ()
     {
-        transform.Rotate(new Vector3(0, 0, _rotationSpeed * RotationSideZ));
+        transform.Rotate(0, 0, _rotationSpeed * RotationSideZ);
     }
     private float ConvertToPositive(float num)
     {

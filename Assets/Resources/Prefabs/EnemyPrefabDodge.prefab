@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.27
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
@@ -508,10 +508,10 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3573815c8d0bbf149b04f04bb9968fba, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
-  - {fileID: 2100000, guid: cbe983d7754136945961e725550d24a8, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
+  - {fileID: 2100000, guid: 2f13b74c5a664474f883f0ee52e92a68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

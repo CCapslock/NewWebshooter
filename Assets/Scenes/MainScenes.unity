@@ -2584,7 +2584,7 @@ MonoBehaviour:
   Web: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   StartThrownigPosition: {x: 0, y: -10, z: -4}
   MaxCoins: 75
-  TimeBeforeThrownig: 0.15
+  TimeBeforeThrownig: 0.12
   FallingEnemy: {fileID: 1533259991958189498, guid: 381bda9ae85c1b242a14ba7346600c06, type: 3}
   BuildingsPositions:
   - {x: 0, y: 0, z: 14}
@@ -2894,10 +2894,6 @@ PrefabInstance:
     - target: {fileID: 3697736926319268515, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_UpdateMode
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3697736926989637801, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
-      propertyPath: MaxSpeed
-      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3697736926989637804, guid: 372dacbf77c321b44b5077db21fd863b, type: 3}
       propertyPath: m_Name

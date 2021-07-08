@@ -30,19 +30,19 @@ public class ParticlesController : MonoBehaviour
 		_evilLaughObject = Instantiate(EvilLaugh, new Vector3(0, 0, -20f), Quaternion.identity);
 		_evilLaughObject.Stop();
 
-		_starsExplosion = new ParticleSystem[10];
+		_starsExplosion = new ParticleSystem[8];
 		for (int i = 0; i < _starsExplosion.Length; i++)
         {
 			_starsExplosion[i] = Instantiate(StarsExplosionParticles, new Vector3(0, 0, -20f), Quaternion.identity, main.transform);
 		}
 		
-		_smallExplosinObject = new ParticleSystem[6];
+		_smallExplosinObject = new ParticleSystem[5];
 		for (int i = 0; i < _smallExplosinObject.Length; i++)
 		{
 			_smallExplosinObject[i] = Instantiate(SmallExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity, main.transform);
 		}
 		
-		_magicExplosion = new ParticleSystem[6];
+		_magicExplosion = new ParticleSystem[5];
 		for (int i = 0; i < _magicExplosion.Length; i++)
 		{
 			_magicExplosion[i] = Instantiate(MagicExplosinParticles, new Vector3(0, 0, -20f), Quaternion.identity, main.transform);

@@ -47,7 +47,7 @@ MonoBehaviour:
   _lockedImage: {fileID: 21300000, guid: 35e1b11af155f05469bf6d22009acdd4, type: 3}
   _unlockedImage: {fileID: 21300000, guid: e7d12997949784b40957f300d308ce4a, type: 3}
   _webMaterial: {fileID: 2100000, guid: 4f9ef36112a917543a4f71b550b70e1a, type: 2}
-  _state: 2
+  _state: 1
 --- !u!114 &1881311277886963659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   _lockedImage: {fileID: 21300000, guid: 238c7081438a2dd42879249db14ea1a4, type: 3}
   _unlockedImage: {fileID: 21300000, guid: d66e07cd642528c4ab3152a5a8489d62, type: 3}
   _webMaterial: {fileID: 2100000, guid: 52fdb7b98617c5c4f81d6a02e8d4f7d5, type: 2}
-  _state: 0
+  _state: 1
 --- !u!114 &6248156739200598367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   _lockedImage: {fileID: 21300000, guid: d9f9794604838414f9c1bbd50de7e7ba, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 1cb2ed1563e4b0d47aedb6915c091422, type: 3}
   _webMaterial: {fileID: 2100000, guid: 2ce6347b09547af4f976ac9bd1405230, type: 2}
-  _state: 0
+  _state: 1
 --- !u!114 &2265370208051415761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   _lockedImage: {fileID: 21300000, guid: 83e9d47cb2faaff41a5734b428f3cd87, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 97ed3dd21aefa8d4fa2c6b113f931f76, type: 3}
   _webMaterial: {fileID: 2100000, guid: c615f59582912d640a828f60a10dd311, type: 2}
-  _state: 0
+  _state: 2
 --- !u!1 &8252941973427214888
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc5cb713b0cf35c4aa36fa3e2a8a2add, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc5cb713b0cf35c4aa36fa3e2a8a2add, type: 3}
@@ -932,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8b65aacb8b0f52545b4f3f8fa1f1bc39, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b65aacb8b0f52545b4f3f8fa1f1bc39, type: 3}

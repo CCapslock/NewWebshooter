@@ -90,6 +90,9 @@ public class SDKController : MonoBehaviour
     {
         if (!FB.IsInitialized)
         {
+#if UNITY_IPHONE
+            FB.Mobile.SetAdvertiserTrackingEnabled(UnityEngine.iOS.Device.advertisingTrackingEnabled);
+#endif
             // Initialize the Facebook SDK
             FB.Init(InitCallback, OnHideUnity);
         }
@@ -138,8 +141,7 @@ public class SDKController : MonoBehaviour
                 _currentAppKey = _ISIOSAppKey;
 #else
                 _currentAppKey = "unexpected_platform";
-#endif
-
+#endif            
             IronSource.Agent.validateIntegration();
             IronSource.Agent.init(_currentAppKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
             _isISInitialised = true;

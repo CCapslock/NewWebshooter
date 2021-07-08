@@ -26,6 +26,7 @@ public class ThrowingEnemyController : MonoBehaviour
     public float BombSpeed;
     [Foldout("Bomb Settings")]
     public float BombMaxHeight;
+    //[SerializeField]private Collider _mainCollider; 
 
     private MainGameController _mainGameController;
     private Transform _playerTransform;
@@ -97,16 +98,22 @@ public class ThrowingEnemyController : MonoBehaviour
             {
                 if (!IsNearPlayer())
                 {
+                    if (IsEnemyAttacking)
+                    {
+                        IsEnemyAttacking = false;
+                        _animator.SetTrigger("StartRunning");
+                    }
                     MoveEnemy();
-                }
-                else if (!IsNearPlayer() && IsEnemyAttacking)
-                {
-                    ActivateEnemy();
                 }
                 else if (IsNearPlayer() && !IsEnemyAttacking)
                 {
                     EnemyAttack();
                 }
+            }
+            if (_capsuleRigidBody.velocity.y < -5)
+            {
+                IsEnemyActive = false;
+                _mainGameController.EnemyBeenDefeated();
             }
             transform.LookAt(_playerTransform.position);
         }
@@ -219,7 +226,7 @@ public class ThrowingEnemyController : MonoBehaviour
         if (IsEnemyActive)
         {
             _needToWalk = true;
-            _animator.SetTrigger("StartMoving");
+            _animator.SetTrigger("StartRunning");
         }
     }
     public void ThrowEnemy(Vector3 impulsePosition)
@@ -331,6 +338,7 @@ public class ThrowingEnemyController : MonoBehaviour
     }
     private void TurnOnRagdoll()
     {
+        _capsuleCollider.enabled = false;
         _animator.enabled = false;
         for (int i = 0; i < _ragdollColliders.Length; i++)
         {
@@ -346,6 +354,10 @@ public class ThrowingEnemyController : MonoBehaviour
     }
     private void TurnRagdollStucked()
     {
+        SpineRigidBody.velocity = Vector3.zero;
+        HipsRigidBody.velocity = Vector3.zero;
+        SpineRigidBody.angularVelocity = Vector3.zero;
+        HipsRigidBody.angularVelocity = Vector3.zero;
         SpineRigidBody.isKinematic = true;
         HipsRigidBody.isKinematic = true;
         SpineRigidBody.GetComponent<Collider>().isTrigger = true;

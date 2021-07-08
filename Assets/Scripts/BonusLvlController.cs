@@ -15,7 +15,7 @@ public class BonusLvlController : MonoBehaviour
 	[Foldout("CoinsLVL")]
 	public int MaxCoins;
 	[Foldout("CoinsLVL")]
-	public float TimeBeforeThrownig = 0.4f;
+	public float TimeBeforeThrownig = 0.25f;
 
 	[Foldout("FallingLVL")]
 	public GameObject FallingEnemy;
@@ -88,7 +88,8 @@ public class BonusLvlController : MonoBehaviour
 	}
 	public void DefeatEnemy()
 	{
-		_amountofEnemyesActive--; _amountofEnemyesLeft--;
+		_amountofEnemyesActive--; 
+		_amountofEnemyesLeft--;
 		if (_amountofEnemyesActive <= 0)
 		{
 			if (_amountofEnemyesLeft > 0)
@@ -173,13 +174,14 @@ public class BonusLvlController : MonoBehaviour
 	private void PrepareBuildings()
 	{
 		_movingHouses = new Transform[BuildingsPositions.Length];
+		Wall WallObject;
 		for (int i = 0; i < BuildingsPositions.Length; i++)
 		{
 			_movingHouses[i] = Instantiate(Resources.Load<GameObject>(PrefabAssetPath.LevelParts["PrepearedBuilding2"]), BuildingsPositions[i], Quaternion.Euler(new Vector3(-90f, 0, 90f))).transform;
 			_movingHouses[i].gameObject.isStatic = false;
 			//_movingHouses[i].gameObject.GetComponent<Wall>().IsBonusLvlWall = true;
 			_movingHouses[i].gameObject.tag = TagManager.GetTag(TagType.Wall);
-			Wall WallObject = _movingHouses[i].gameObject.AddComponent<Wall>();
+			WallObject = _movingHouses[i].gameObject.AddComponent<Wall>();
 			WallObject.Web = Web;
 			WallObject.IsBonusLvlWall = true;
 		}
@@ -232,6 +234,4 @@ public class BonusLvlController : MonoBehaviour
 		{
 		}
 	}
-
-
 }

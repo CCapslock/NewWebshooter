@@ -2939,7 +2939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5af96f14b98f384c9cc3cefac67b897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 0.15
+  MaxSpeed: 0.23
   MaxRotationSpeed: 1
   LeftHandAnimator: {fileID: 3697736927420442688}
   RightHandAnimator: {fileID: 3697736926319268515}
