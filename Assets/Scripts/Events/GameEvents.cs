@@ -119,4 +119,25 @@ public class GameEvents : MonoBehaviour
         OnInterstitialAsked?.Invoke();
     }
     #endregion
+
+    public event Action<GameObject> OnGetClickFromWebTrigger;
+    public void GetClickFromWebTrigger(GameObject obj)
+    {
+        OnGetClickFromWebTrigger?.Invoke(obj);
+        OnGetClickFromWebTrigger = null;
+    }
+
+    public event Action OnCreateNewWebTrigger;
+    public void CreateNewWebTrigger()
+    {
+        OnCreateNewWebTrigger?.Invoke();
+    }
+
+    public event Func<GameObject> OnGetClickedGameObject;
+    public GameObject GetClickedGameobject()
+    {
+        var g = OnGetClickedGameObject.Invoke();
+        Debug.LogError($"{g.name}");
+        return g;
+    }
 }

@@ -35,6 +35,7 @@ TagManager:
   - HelicopterBomb
   - FinalLevelTrigger
   - FinalFallingMan
+  - FlyingWebTrigger
   layers:
   - Default
   - TransparentFX

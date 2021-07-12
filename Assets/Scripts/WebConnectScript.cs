@@ -47,11 +47,26 @@ public class WebConnectScript : MonoBehaviour
         
     }
 
-    public void ConnectToHand(Transform hand)
-    {        
+    public void ConnectToHand(Transform hand, GameObject throwedObject)
+    {
+        Debug.LogWarning($"{throwedObject.name}");
         _connectedHand = hand;
+        if (throwedObject != null)
+        {
+            _myStaticPosition = throwedObject.transform.position + Vector3.forward * 10f;
+            Destroy(throwedObject);
+        }
         if (_connectedHand != null)
+        { 
             _connected = true;        
+        }
+    }
+
+    public void ConnectToHand(Transform hand)
+    {
+        _connectedHand = hand;        
+        if (_connectedHand != null)
+            _connected = true;
     }
 
     public void DisconnectFromHand()

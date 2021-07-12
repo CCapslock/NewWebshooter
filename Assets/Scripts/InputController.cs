@@ -17,6 +17,7 @@ public class InputController : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
+			//GameEvents.Current.GetClickFromWebTrigger(new GameObject());
 			DragingStarted = true;
 			TouchPosition = Input.mousePosition;
 			_webShooter.ShootWeb(TouchPosition);

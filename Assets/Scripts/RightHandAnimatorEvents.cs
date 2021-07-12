@@ -12,7 +12,9 @@ public class RightHandAnimatorEvents : MonoBehaviour
     public void ThrowMovementWeb()
     {
         _tempWeb = Instantiate(_web, _hand.position, Quaternion.identity, _hand);
-        _tempWeb.GetComponent<WebConnectScript>().ConnectToHand(_hand);
+        _tempWeb.GetComponent<WebConnectScript>().ConnectToHand(_hand, PlayerMovement.CurrentFlyingTrigger);
+        //_tempWeb.GetComponent<WebConnectScript>().ConnectToHand(_hand);
+        
     }
 
     public void DisconnectMovementWeb()

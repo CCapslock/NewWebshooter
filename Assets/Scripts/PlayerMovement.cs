@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static GameObject CurrentFlyingTrigger = null;
     public float MaxSpeed;
     public float MaxRotationSpeed;
     [SerializeField] private Animator LeftHandAnimator;
     [SerializeField] private Animator RightHandAnimator;
-
+    [SerializeField] private GameObject FlyingWebTrigger;
     private MovementPoints[] _movementPoints;
     private MainGameController _mainGameController;
     private float RotationSideX;
@@ -20,13 +22,21 @@ public class PlayerMovement : MonoBehaviour
     private int TimesOfRotateY;
     private int TimesOfRotateZ;
     private bool _needToMove = false;
-
+    private GameObject resultOfClick;
     private void Start()
     {
         _speed = MaxSpeed;
         _mainGameController = FindObjectOfType<MainGameController>();
-        _rotationSpeed = FindObjectOfType<PlayerMovement>().MaxRotationSpeed;
+        _rotationSpeed = MaxRotationSpeed;
+        GameEvents.Current.OnCreateNewWebTrigger += CreateFlyingWebTrigger;
+       
     }
+
+    private void OnDestroy()
+    {
+        GameEvents.Current.OnCreateNewWebTrigger -= CreateFlyingWebTrigger;
+    }
+
     private void FixedUpdate()
     {
         if (_needToMove && _currentPointNum < _movementPoints.Length)
@@ -35,6 +45,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
+    {
+        AsyncTriggerChecker(other);
+    }
+
+    private void CreateFlyingWebTrigger()
+    {
+        Debug.Log("SpawnWebTrigger");
+        if (FlyingWebTrigger != null)
+        {
+            CurrentFlyingTrigger = Instantiate(FlyingWebTrigger, transform.position + Vector3.forward * 10f + Vector3.up * 4.5f + Vector3.right * UnityEngine.Random.Range(-2f, 2f)*0.5f, Quaternion.identity);
+        }
+    }
+
+    private async void AsyncTriggerChecker(Collider other)
     {
         if (other.gameObject.CompareTag(TagManager.GetTag(TagType.MovingPoint)))
         {
@@ -52,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (_movementPoints[_currentPointNum].NeedToFly)
             {
+                resultOfClick = await this.GetClickOnWebTrigger();
+                //запуск паутины к полученному resultofclick
                 RightHandAnimator.SetTrigger("Flying");
                 LeftHandAnimator.SetTrigger("FlyingOffhand");
             }
@@ -88,9 +114,22 @@ public class PlayerMovement : MonoBehaviour
             }
 
 
-            Destroy(other.gameObject);//что бы лишних колайдеров на сцене не было 
+            Destroy(other.gameObject);
         }
     }
+
+    private GameObject CallbackForFlyingAnimator() { return resultOfClick; }
+
+
+    public Task<GameObject> GetClickOnWebTrigger()
+    {
+        GameEvents.Current.CreateNewWebTrigger();
+        var task = new TaskCompletionSource<GameObject>();
+        GameEvents.Current.OnGetClickFromWebTrigger += (GameObject obj) => { task.SetResult(obj); };
+        //вызывать по попаданию в вебтриггер        
+        return task.Task;
+    }
+
     public void SetMovementPoints(MovementPoints[] movementPoints)
     {
         _movementPoints = movementPoints;
@@ -100,18 +139,7 @@ public class PlayerMovement : MonoBehaviour
         _needToMove = true;
     }
     public void ContinueMoving()
-    {
-        /*
-        if (_currentPointNum < _movementPoints.Length - 2)
-        {
-            if (_movementPoints[_currentPointNum+1].NeedToFly == true)
-            {
-                Debug.LogError("{EQ");
-                RightHandAnimator.SetTrigger("Flying");
-                
-            }
-        }
-        */
+    {        
         ChangePoint();
         _needToMove = true;
     }
@@ -174,28 +202,27 @@ public class PlayerMovement : MonoBehaviour
         {
             maxnum = TimesOfRotateZ;
         }
+
+        StartCoroutine(RotatePlayer(new Vector3(_rotationSpeed * RotationSideX, 0, 0), TimesOfRotateX));
+        StartCoroutine(RotatePlayer(new Vector3(0, _rotationSpeed * RotationSideY, 0), TimesOfRotateY));
+        StartCoroutine(RotatePlayer(new Vector3(0, 0, _rotationSpeed * RotationSideZ), TimesOfRotateZ));
+
         /*
         for (int i = 0; i < maxnum; i++)
         {
             if (i <= TimesOfRotateX)
             {
-                Invoke("RotateALittleX", 0.01f * i);
+                Invoke("RotateALittleX", 0.015f * i);
             }
             if (i <= TimesOfRotateY)
             {
-                Invoke("RotateALittleY", 0.01f * i);
+                Invoke("RotateALittleY", 0.015f * i);
             }
             if (i <= TimesOfRotateZ)
             {
-                Invoke("RotateALittleZ", 0.01f * i);
+                Invoke("RotateALittleZ", 0.015f * i);
             }
-
-        }
-        */
-        StartCoroutine(RotatePlayer(new Vector3(_rotationSpeed * RotationSideX, 0, 0), TimesOfRotateX));
-        StartCoroutine(RotatePlayer(new Vector3(0, _rotationSpeed * RotationSideY, 0), TimesOfRotateY));
-        StartCoroutine(RotatePlayer(new Vector3(0, 0, _rotationSpeed * RotationSideZ), TimesOfRotateZ));
-        //transform.Rotate(RotatingVector);
+        }*/
     }
     private void RotateALittleX()
     {        
@@ -217,14 +244,14 @@ public class PlayerMovement : MonoBehaviour
             return -num;
         return 0;
     }
-    #endregion
+#endregion
 
     private IEnumerator RotatePlayer(Vector3 rotationVector, int amount)
     {
         for (int i = 0; i < amount; i++)
         {
             transform.Rotate(rotationVector);
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         yield break;        
     }
