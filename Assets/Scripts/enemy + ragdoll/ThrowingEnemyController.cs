@@ -114,11 +114,13 @@ public class ThrowingEnemyController : MonoBehaviour
             {
                 IsEnemyActive = false;
                 _mainGameController.EnemyBeenDefeated();
+                TurnOnRagdoll();
             } 
             else if (_capsuleRigidBody.velocity.x > 3 || _capsuleRigidBody.velocity.x < -3)
             {
                 IsEnemyActive = false;
                 _mainGameController.EnemyBeenDefeated();
+                TurnOnRagdoll();
             }
             transform.LookAt(_playerTransform.position);
         }

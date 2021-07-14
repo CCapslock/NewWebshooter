@@ -47,6 +47,7 @@ public class MainGameController : MonoBehaviour
 		else
 		{
 			_playerMovement.SetMovementPoints(_lvlBuilder.BuildLvlAndReturnMovementPoints(AvailableLevels[_saveController.GetNextLvlNum()]));
+			Debug.Log($"Level {_saveController.GetNextLvlNum()}");
 			_playerMovement.StartMoving();
 		}
 		_wallController.PrepearWalls();

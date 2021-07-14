@@ -64,11 +64,36 @@ public class WebShooter : MonoBehaviour
         _webMaterial = material;
     }
 
+    private IChainable chainableObj;
+    public void ShootStreamWeb(Vector3 mousePosition, float power)
+    {        
+        if (_isActivated)
+        {
+            if (CheckTheStreamGoal(mousePosition, out chainableObj))
+            {
+                chainableObj.ChangeChainPower(power);
+            }
+        }
+    }
+
+    private bool CheckTheStreamGoal(Vector3 mousePosition, out IChainable obj)
+    {
+        _ray = Camera.main.ScreenPointToRay(mousePosition);
+        if (Physics.Raycast(_ray, out _objectHit))
+        {
+            if (_objectHit.collider.TryGetComponent<IChainable>(out obj))
+            {
+                return true;
+            }
+        }        
+        obj = null;
+        return false;
+    }
+
     public void ShootWeb(Vector3 mousePosition)
     {
         if (_isActivated)
         {
-
             if (!CheckTheGoal(mousePosition))
             {
                 return;
