@@ -127,7 +127,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 2.3.7.6
+  bundleVersion: 2.376
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -148,11 +148,12 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.KeyBoard.WebShooter
     Standalone: com.KeyBoard.WebShooter
+    iPhone: com.Keyboard.Webshooter
   buildNumber:
     Standalone: 0
-    iPhone: 0
+    iPhone: 23760004
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 0
+  overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 23760003
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 30
@@ -679,7 +680,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: 0;MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_FEEDBACKS;MOREMOUNTAINS_TOOLS
-    4: gameanalytics_ironsource_enabled
+    4: gameanalytics_ironsource_enabled;MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_FEEDBACKS;MOREMOUNTAINS_TOOLS
     7: gameanalytics_ironsource_enabled;MOREMOUNTAINS_FEEDBACKS;MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_TOOLS
   additionalCompilerArguments: {}
   platformArchitecture: {}
