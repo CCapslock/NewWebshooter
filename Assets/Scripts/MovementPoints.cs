@@ -16,6 +16,7 @@ public class MovementPoints : MonoBehaviour
 
 	[Foldout("Extras")]
 	public bool NeedToFly;
+	//public Vector3 WebTriggerPosition = Vector3.zero;
 
 	[Foldout("Extras")]
 	public bool NeedToRotate;

@@ -154,7 +154,7 @@ MonoBehaviour:
     NewSpeed: 0
     PointNum: 5
     NeedToRotate: 0
-    NeedToFly: 1
+    NeedToFly: 0
     NeedToCountEnemy: 0
     NeedToChangeSpeed: 0
     IsFinalPoint: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
       Rotation: {x: -0, y: 1, z: -0, w: 0}
       Scale: {x: 1.5, y: 1.5, z: 1.5}
     RotationVector: {x: 0, y: 0, z: 0}
-    NewSpeed: 0.11
+    NewSpeed: 0.2
     PointNum: 2
     NeedToRotate: 0
     NeedToFly: 0

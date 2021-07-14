@@ -110,7 +110,7 @@ public class JokerView : MonoBehaviour, IBoss
     public void SpawnEnemy()
     {
         GameObject obj;
-        Debug.Log($"О сработало (SpawnEnemy from {this.gameObject.name})");
+        //Debug.Log($"О сработало (SpawnEnemy from {this.gameObject.name})");
         for (int i = 0; i < _spawnPerCast; i++)
         {
             obj = Instantiate(_jokerMinion, _rightHand.transform.position, Quaternion.identity);

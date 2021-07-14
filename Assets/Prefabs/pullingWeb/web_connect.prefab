@@ -86,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 3359635177525986781}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 6141070924167321836}
   m_Father: {fileID: 6044421529710653013}
@@ -225,3 +225,4 @@ MonoBehaviour:
   ThrowingJoint: {fileID: 974997317327166709}
   SavedJoint: {fileID: 1094321687686488508}
   _render: {fileID: 1540633087732637348}
+  _isFlyingType: 1

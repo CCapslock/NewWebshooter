@@ -236,6 +236,10 @@ public class FallingEnemy : MonoBehaviour
 	}
 	private void TurnRagdollStucked()
 	{
+		SpineRigidBody.velocity = Vector3.zero;
+		HipsRigidBody.velocity = Vector3.zero;
+		SpineRigidBody.angularVelocity = Vector3.zero;
+		HipsRigidBody.angularVelocity = Vector3.zero;
 		SpineRigidBody.isKinematic = true;
 		HipsRigidBody.isKinematic = true;
 		SpineRigidBody.GetComponent<Collider>().isTrigger = true;
