@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using GameAnalyticsSDK;
 using UnityEngine;
 using Facebook.Unity;
+using System.Threading.Tasks;
 
 public class SDKController : MonoBehaviour
 {
     public static SDKController Current;
     public static BaseTenjin InstanceTenjin;
-    public static int ConversationValue = 0;    
-    [SerializeField] private string _ISIOSAppKey = null;
+    public static int ConversationValue = 0;
+    [SerializeField] private string _ISIOSAppKey = "fff1b061";
     [SerializeField] private string _ISAndroidAppKey = null;
     [SerializeField] private string _currentAppKey = null;
     [SerializeField] private string _tenjinApiKey = "3F1TZPVMAKATNQFEJHB3NSD995ZA41QG";
-    [SerializeField] private float _interstitialDelay = 25f;
+    [SerializeField] private float _interstitialDelay = 30f;
     private bool _isISInitialised = false;
     private float _lastInterstitialTime;
     public static IGetReward RewardInstance = null;
@@ -32,18 +33,37 @@ public class SDKController : MonoBehaviour
     {
         ConversationValue = 0;
         GameAnalyticsInitialize();
-        FacebookInitialize();
+
         SubscribeInterstitialEvents();
         SubscribeRewardedEvents();
         SubscribeGameAnalyticEvent();
+        FacebookInitialize();
+        CheckAttFacebook();
         InitializeIronSource();
-        
         TenjinConnect();
 
     }
 
-    
+    private async void CheckAttFacebook()
+    {
+        await FaseboockSuckTask();
+    }
 
+    private Task FaseboockSuckTask()
+    {
+        Task task = new Task(() =>
+        {
+#if UNITY_IPHONE
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                FB.Mobile.SetAdvertiserTrackingEnabled(UnityEngine.iOS.Device.advertisingTrackingEnabled);
+            }
+            //Debug.Log("TASKENDED");
+#endif
+        });
+        task.Start();
+        return task;
+    }
 
     #region GameAnalytics
     private void GameAnalyticsInitialize()
@@ -58,7 +78,7 @@ public class SDKController : MonoBehaviour
         _currentOverallLevelNumberString = _currentOverallLevelNumber.ToString();
         _currentLevelNumberString = _currentLevelNumber.ToString();
         if (_previousLevelNumber > 0)
-        { 
+        {
             GameAnalytics.NewDesignEvent($"LevelTime:{_previousLevelNumber}", Time.time - _startLevelTime);
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "LevelTime", _currentOverallLevelNumberString, (int)(Time.time - _startLevelTime));
         }
@@ -68,12 +88,12 @@ public class SDKController : MonoBehaviour
 
     private void OnLevelFailedEvent()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentOverallLevelNumberString);        
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, _currentOverallLevelNumberString);
     }
 
     private void OnLevelCompleteEvent()
-    {        
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentOverallLevelNumberString);        
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, _currentOverallLevelNumberString);
     }
 
     private void SubscribeGameAnalyticEvent()
@@ -90,9 +110,7 @@ public class SDKController : MonoBehaviour
     {
         if (!FB.IsInitialized)
         {
-#if UNITY_IPHONE
-            FB.Mobile.SetAdvertiserTrackingEnabled(UnityEngine.iOS.Device.advertisingTrackingEnabled);
-#endif
+
             // Initialize the Facebook SDK
             FB.Init(InitCallback, OnHideUnity);
         }
@@ -140,7 +158,8 @@ public class SDKController : MonoBehaviour
 #elif UNITY_IPHONE
                 _currentAppKey = _ISIOSAppKey;
 #else
-                _currentAppKey = "unexpected_platform";
+                _currentAppKey = _ISIOSAppKey;
+;
 #endif            
             IronSource.Agent.validateIntegration();
             IronSource.Agent.init(_currentAppKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
@@ -151,7 +170,7 @@ public class SDKController : MonoBehaviour
     #endregion
     #region Interstitial
     private void StartInterstitialOnLevelEnding()
-    {       
+    {
         if (Time.unscaledTime - _lastInterstitialTime > _interstitialDelay)
         {
             ShowInterstitial();
@@ -160,7 +179,7 @@ public class SDKController : MonoBehaviour
 
     private void ShowInterstitialInvoke()
     {
-        
+
     }
     private void LoadInterstitial()
     {
@@ -219,12 +238,12 @@ public class SDKController : MonoBehaviour
     private void InterstitialAdClickedEvent()
     {
         //Debug.Log("unity-script: I got InterstitialAdClickedEvent");
-        
+
     }
 
     private void InterstitialAdOpenedEvent()
     {
-       // Debug.Log("unity-script: I got InterstitialAdOpenedEvent");
+        // Debug.Log("unity-script: I got InterstitialAdOpenedEvent");
     }
 
     private void InterstitialAdClosedEvent()
@@ -244,7 +263,7 @@ public class SDKController : MonoBehaviour
         IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
         IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
         IronSourceEvents.onRewardedVideoAdClickedEvent += RewardedVideoAdClickedEvent;
-        
+
         GameEvents.Current.OnAskingRewardedVideo += AskingShowReward;
     }
 
@@ -254,9 +273,9 @@ public class SDKController : MonoBehaviour
         {
             IronSource.Agent.showRewardedVideo();
             //GameAnalytics.NewDesignEvent($"Ad:Rewarded:{RewardInstance.EventName()}:{_currentLevelNumber}");
-            GameAnalytics.NewAdEvent(GAAdAction.Show,GAAdType.RewardedVideo,"IronSource",_currentLevelNumberString);
+            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "IronSource", _currentLevelNumberString);
             GameAnalytics.NewDesignEvent($"RewardedVideo:{_currentOverallLevelNumberString}:ClickShow");
-            
+
         }
     }
 
@@ -376,9 +395,9 @@ public class SDKController : MonoBehaviour
 
         // Sends install/open event to Tenjin
         InstanceTenjin.Connect();
-        
+
 #endif
-        
+
     }
 
     private void UpdateConversationValue(int value)

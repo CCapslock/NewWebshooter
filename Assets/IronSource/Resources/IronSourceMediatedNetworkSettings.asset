@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee1ed36368ae547f1b2969c900bf0bb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dcd730eacb2043e8a6f1c61c16243da, type: 3}
   m_Name: IronSourceMediatedNetworkSettings
   m_EditorClassIdentifier: 
   EnableAdmob: 1
   AdmobAndroidAppId: ca-app-pub-6885487052718796~9993192241
-  AdmobIOSAppId: ca-app-pub-6885487052718796~9993192241
+  AdmobIOSAppId: ca-app-pub-6885487052718796~4608890628

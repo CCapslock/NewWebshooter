@@ -19,11 +19,11 @@ public class FlyingWebTriggerView : MonoBehaviour
     private Transform player = null;
     private void Awake()
     {
-        _gck[0].color = Color.red;
+        _gck[0].color = Color.green;
         _gck[0].time = 1.0f;
-        _gck[1].color = Color.red;
+        _gck[1].color = Color.green;
         _gck[1].time = 0.5f;
-        _gck[2].color = Color.red;
+        _gck[2].color = Color.green;
         _gck[2].time = 0.0f;
 
         _gak[0].alpha = 1.0f;
