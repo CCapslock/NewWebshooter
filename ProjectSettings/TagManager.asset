@@ -36,6 +36,7 @@ TagManager:
   - FinalLevelTrigger
   - FinalFallingMan
   - FlyingWebTrigger
+  - ChainingWeb
   layers:
   - Default
   - TransparentFX

@@ -137,7 +137,7 @@ Material:
     - _GlossTextureSoftness: 0
     - _Glossiness: 0.257
     - _GlossyReflections: 1
-    - _HighlightColorPower: 1.8
+    - _HighlightColorPower: 1.2
     - _LightAffectOutlineColor: 0
     - _LightAffectRimLightColor: 0
     - _LightAffectShadow: 0
@@ -239,7 +239,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlossColor: {r: 0.24528301, g: 0.14941767, b: 0.16056481, a: 1}
     - _HighlightColor: {r: 0.7264151, g: 0.70859736, b: 0.70859736, a: 1}
-    - _MainColor: {r: 0.14613974, g: 0.8679245, b: 0.1342826, a: 1}
+    - _MainColor: {r: 0.23428789, g: 0.6981132, b: 0.22655748, a: 1}
     - _OutlineColor: {r: 0.42760417, g: 0.26010782, b: 1, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 1}
     - _OverallShadowColor: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}

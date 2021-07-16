@@ -1,6 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
-public class EnemyController : MonoBehaviour
+public class EnemyController : BaseEnemyController
 {
     [Foldout("Settings")]
     public Rigidbody HipsRigidBody;
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
     private bool _isEnemyWebbed = false;
     private bool _isShieldBroken = false;
     private bool _isDodged = false;
-    private float _dodgeDistance = 5f;    
+    private float _dodgeDistance = 5f;
     [HideInInspector] public bool IsStucked;
     [HideInInspector] public bool IsEnemyActive = false;
     [HideInInspector] public bool IsEnemyAttacking = false;
@@ -45,7 +45,6 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        
         switch (_enemyType)
         {
             case EnemyType.Normal:
@@ -71,8 +70,6 @@ public class EnemyController : MonoBehaviour
         HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
         SpineRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
         _capsuleRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
-
         TurnOffRagdoll();
     }
     private void FixedUpdate()
@@ -238,7 +235,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     public void ActivateEnemy()
-    {        
+    {
         _capsuleRigidbody.constraints = RigidbodyConstraints.None;
         _capsuleRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         if (!IsStucked)
@@ -276,7 +273,6 @@ public class EnemyController : MonoBehaviour
             {
                 _web = Instantiate(SpiderWeb, positionOfBone + _customWebPosition, Quaternion.identity);
                 _web.transform.Rotate(new Vector3(0, 180f, Random.Range(0, 360f)));
-
                 if (collision.GetContact(0).point.z - transform.position.z <= _magicNumber)
                 {
                     if (collision.GetContact(0).point.x > transform.position.x)
@@ -295,8 +291,9 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region Ragdoll Methods
-    private void TurnOffRagdoll()
+    public override void TurnOffRagdoll()
     {
+        base.TurnOffRagdoll();
         _capsuleCollider.isTrigger = false;
         for (int i = 0; i < _ragdollColliders.Length; i++)
         {
@@ -311,8 +308,10 @@ public class EnemyController : MonoBehaviour
         }
         _capsuleRigidBody.isKinematic = false;
     }
-    private void TurnOnRagdoll()
+    public override void TurnOnRagdoll()
     {
+        base.TurnOnRagdoll();
+        IsEnemyActive = false;
         _capsuleCollider.isTrigger = false;
         _animator.enabled = false;
         for (int i = 0; i < _ragdollColliders.Length; i++)
@@ -326,13 +325,31 @@ public class EnemyController : MonoBehaviour
                 _ragdollRigidBodyes[i].isKinematic = false;
             }
         }
+        //_capsuleRigidBody.isKinematic = true;
     }
-    private void TurnRagdollStucked()
+    public override void TurnRagdollStucked()
     {
+        base.TurnRagdollStucked();
+        SpineRigidBody.velocity = Vector3.zero;
+        HipsRigidBody.velocity = Vector3.zero;
+        SpineRigidBody.angularVelocity = Vector3.zero;
+        HipsRigidBody.angularVelocity = Vector3.zero;
         SpineRigidBody.isKinematic = true;
         HipsRigidBody.isKinematic = true;
         SpineRigidBody.GetComponent<Collider>().isTrigger = true;
         HipsRigidBody.GetComponent<Collider>().isTrigger = true;
     }
     #endregion
+
+    public override void KillEnemy()
+    {
+        base.KillEnemy();
+        if (IsEnemyActive)
+        {
+            //_capsuleRigidbody.isKinematic
+            IsEnemyActive = false;
+            TurnOnRagdoll();
+            _mainGameController.EnemyBeenDefeated();
+        }
+    }
 }

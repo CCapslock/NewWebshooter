@@ -10,6 +10,8 @@ public class WebShooter : MonoBehaviour
     public GameObject StuckedWeb;
     [Foldout("Settings")]
     public GameObject ShootingWeb;
+
+    [SerializeField] [Foldout("Settings")] public GameObject ShootingChainingWeb;
     [Foldout("Settings")]
     public Animator RightHandAnimator;
     [Foldout("Settings")]
@@ -24,8 +26,8 @@ public class WebShooter : MonoBehaviour
     private List<WebObject> _webObjects;
     private RaycastHit _objectHit;
     private Ray _ray;
-    private Vector3 _rightHandPosition;
-    private Vector3 _leftHandPosition;
+    //private Vector3 _rightHandPosition;
+    //private Vector3 _leftHandPosition;
     private Vector3 _goalPosition;
     private float _halfOfScreenWidth;
     private int webIterator = 0;
@@ -41,8 +43,8 @@ public class WebShooter : MonoBehaviour
 
     private void Start()
     {
-        _rightHandPosition = RightHandTransform.position;
-        _leftHandPosition = LeftHandTransform.position;
+        //_rightHandPosition = RightHandTransform.position;
+        //_leftHandPosition = LeftHandTransform.position;
         _halfOfScreenWidth = Screen.width / 2f;
         _webObjects = new List<WebObject>();
     }
@@ -64,9 +66,9 @@ public class WebShooter : MonoBehaviour
         _webMaterial = material;
     }
 
-    private IChainable chainableObj;
-    public void ShootStreamWeb(Vector3 mousePosition, float power)
-    {        
+    private IChainable chainableObj;//легаси
+    public void ShootStreamWeb(Vector3 mousePosition, float power)///легаси
+    {
         if (_isActivated)
         {
             if (CheckTheStreamGoal(mousePosition, out chainableObj))
@@ -76,7 +78,7 @@ public class WebShooter : MonoBehaviour
         }
     }
 
-    private bool CheckTheStreamGoal(Vector3 mousePosition, out IChainable obj)
+    private bool CheckTheStreamGoal(Vector3 mousePosition, out IChainable obj)///легаси
     {
         _ray = Camera.main.ScreenPointToRay(mousePosition);
         if (Physics.Raycast(_ray, out _objectHit))
@@ -85,47 +87,137 @@ public class WebShooter : MonoBehaviour
             {
                 return true;
             }
-        }        
+        }
         obj = null;
         return false;
     }
 
+
+    private string _shootingTag = "";
     public void ShootWeb(Vector3 mousePosition)
     {
         if (_isActivated)
         {
-            if (!CheckTheGoal(mousePosition))
+            if (CheckTheGoal(mousePosition, out _shootingTag))
             {
-                return;
-            }
-            else
-            {
+                Debug.Log($"Tag >>{_shootingTag}<<");
                 _goalPosition.z += 0.1f;
-                if (mousePosition.x > _halfOfScreenWidth)
+
+                switch (_shootingTag)
                 {
-                    _rightHandPosition = RightHandTransform.position;
-                    InstantiateWeb(RightHandTransform.position, _goalPosition);
-                    /*_webObject = Instantiate(ShootingWeb, new Vector3(_rightHandPosition.x, _rightHandPosition.y, _rightHandPosition.z), Quaternion.identity);
-                    _webObjects.Add(new WebObject()
-                    {
-                        WebGameObject = _webObject,
-                        GoalPosition = _goalPosition
-                    });*/
-                    RightHandAnimator.SetTrigger("Shoot");
+                    case "SimpleEnemy":
+                        if (Random.Range(0, 5) > 3)
+                        {
+                            ShootLeftChainingWeb(_goalPosition);
+                        }
+                        else
+                        {
+                            ReleaseShootingWeb(mousePosition, _goalPosition);
+                        }
+                        break;
+                    case "ShieldEnemy":
+                        if (Random.Range(0, 5) > 3)
+                        {
+                            ShootLeftChainingWeb(_goalPosition);
+                        }
+                        else
+                        {
+                            ReleaseShootingWeb(mousePosition, _goalPosition);
+                        }
+                        break;
+                    case "ThrowingEnemy":
+                        if (Random.Range(0, 5) > 3)
+                        {
+                            ShootLeftChainingWeb(_goalPosition);
+                        }
+                        else
+                        {
+                            ReleaseShootingWeb(mousePosition, _goalPosition);
+                        }
+                        break;
+                    case "DodgeEnemy":
+                        if (Random.Range(0, 5) > 3)
+                        {
+                            ShootLeftChainingWeb(_goalPosition);
+                        }
+                        else
+                        {
+                            ReleaseShootingWeb(mousePosition, _goalPosition);
+                        }
+                        break;
+                    case "EnemyPart":
+                        if (Random.Range(0, 5) > 3)
+                        {
+                            ShootLeftChainingWeb(_goalPosition);
+                        }
+                        else
+                        {
+                            ReleaseShootingWeb(mousePosition, _goalPosition);
+                        }
+                        break;
+                    default:
+                        {
+                            ReleaseShootingWeb(mousePosition, _goalPosition);
+                            break;
+                        }
                 }
-                else
-                {
-                    _leftHandPosition = LeftHandTransform.position;
-                    InstantiateWeb(LeftHandTransform.position, _goalPosition);
-                    /*_webObject = Instantiate(ShootingWeb, new Vector3(_leftHandPosition.x, _leftHandPosition.y, _leftHandPosition.z), Quaternion.identity);
-                    _webObjects.Add(new WebObject()
-                    {
-                        WebGameObject = _webObject,
-                        GoalPosition = _goalPosition
-                    });*/
-                    LeftHandAnimator.SetTrigger("Shoot");
-                }
-            };
+
+            }
+        }
+    }
+    private void ReleaseShootingWeb(Vector3 mousePosition, Vector3 pos)
+    {
+        if (mousePosition.x > _halfOfScreenWidth)
+        {
+            ShootRightWeb(pos);
+        }
+        else
+        {
+            ShootLeftWeb(pos);
+        }
+    }
+    private void ShootLeftChainingWeb(Vector3 pos)
+    {
+        InstantiateChainingWeb(LeftHandTransform.position, pos);
+        LeftHandAnimator.SetTrigger("Shoot");
+    }
+
+    private void ShootRightWeb(Vector3 pos)
+    {
+        //_rightHandPosition = RightHandTransform.position;
+        InstantiateWeb(RightHandTransform.position, pos);
+        RightHandAnimator.SetTrigger("Shoot");
+    }
+    private void ShootLeftWeb(Vector3 pos)
+    {
+        //_leftHandPosition = LeftHandTransform.position;
+        InstantiateWeb(LeftHandTransform.position, pos);
+        LeftHandAnimator.SetTrigger("Shoot");
+    }
+
+
+    private void InstantiateChainingWeb(Vector3 Pos, Vector3 _position)
+    {
+        if (ShootingChainingWeb != null)
+        {
+            _webObject = Instantiate(ShootingChainingWeb, Pos, Quaternion.identity);
+            /*if (_webMaterial != null)
+            {
+                
+                _webObject.GetComponentInChildren<TrailRenderer>().material = _webMaterial;
+                _webObject.GetComponentInChildren<MeshRenderer>().material = _webMaterial;
+
+            }*/
+            _webObjects.Add(new WebObject()
+            {
+                WebGameObject = _webObject,
+                GoalPosition = _position,
+                slowed = true
+            });
+        }
+        else
+        {
+            Debug.LogWarning($" ShootingChainingWeb is not set");
         }
     }
 
@@ -141,11 +233,12 @@ public class WebShooter : MonoBehaviour
         _webObjects.Add(new WebObject()
         {
             WebGameObject = _webObject,
-            GoalPosition = _position
+            GoalPosition = _position,
+            slowed = false
         });
     }
 
-    private bool CheckTheGoal(Vector3 mousePosition)
+    private bool CheckTheGoal(Vector3 mousePosition, out string tag)
     {
         _ray = Camera.main.ScreenPointToRay(mousePosition);
         if (Physics.Raycast(_ray, out _objectHit))
@@ -161,14 +254,17 @@ public class WebShooter : MonoBehaviour
                 }
                 else if (_objectHit.transform.CompareTag("FlyingWebTrigger"))
                 {
-                    GameEvents.Current.GetClickFromWebTrigger(_objectHit.transform.gameObject);                    
+                    tag = "FlyingWebTrigger";
+                    GameEvents.Current.GetClickFromWebTrigger(_objectHit.transform.gameObject);
                     return false;
                 }
                 _goalPosition = _objectHit.point;
+                tag = _objectHit.collider.tag;
                 return true;
             }
         }
         _goalPosition = Camera.main.transform.position + new Vector3(0, 0, 100f);
+        tag = "";
         return true;
     }
     private void MoveWeb()
@@ -180,7 +276,14 @@ public class WebShooter : MonoBehaviour
             {
                 if (i.WebGameObject != null)
                 {
-                    i.WebGameObject.transform.position = Vector3.MoveTowards(i.WebGameObject.transform.position, i.GoalPosition, WebSpeed);
+                    if (i.slowed)
+                    {
+                        i.WebGameObject.transform.position = Vector3.MoveTowards(i.WebGameObject.transform.position, i.GoalPosition, WebSpeed * 0.15f);
+                    }
+                    else
+                    {
+                        i.WebGameObject.transform.position = Vector3.MoveTowards(i.WebGameObject.transform.position, i.GoalPosition, WebSpeed);
+                    }
                 }
                 else
                 {
@@ -203,4 +306,5 @@ public class WebObject
 {
     public GameObject WebGameObject;
     public Vector3 GoalPosition;
+    public bool slowed;
 }

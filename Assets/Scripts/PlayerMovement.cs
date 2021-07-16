@@ -158,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CreateFlyingWebTrigger()
     {
-        Debug.Log("SpawnWebTrigger");
+        //Debug.Log("SpawnWebTrigger");
         if (FlyingWebTrigger != null)
         {
             CurrentFlyingTrigger = Instantiate(FlyingWebTrigger, transform.position + Vector3.forward * 10f + Vector3.up * 4.5f + Vector3.right * UnityEngine.Random.Range(-2f, 2f) * 0.5f, Quaternion.identity);

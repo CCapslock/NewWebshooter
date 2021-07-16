@@ -1,7 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-public class ThrowingEnemyController : MonoBehaviour
+public class ThrowingEnemyController : BaseEnemyController
 {
     [Foldout("Enemy Settings")]
     public Rigidbody HipsRigidBody;
@@ -32,7 +32,7 @@ public class ThrowingEnemyController : MonoBehaviour
     private Transform _playerTransform;
     private Animator _animator;
     private Rigidbody[] _ragdollRigidBodyes;
-    private Rigidbody _capsuleRigidBody;
+    public Rigidbody CapsuleRigidBody;
     private Collider[] _ragdollColliders;
     private CapsuleCollider _capsuleCollider;
     private Collider _bombCollider;
@@ -54,7 +54,7 @@ public class ThrowingEnemyController : MonoBehaviour
         CustomWebPosition = new Vector3(0, 0, -0.3f); // прибавляется к кординатам предмета и в этих кординатах спавнится паутина
         _playerTransform = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Player)).transform;
         _animator = GetComponent<Animator>();
-        _capsuleRigidBody = GetComponent<Rigidbody>();
+        CapsuleRigidBody = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _bombCollider = Bomb.GetComponent<Collider>();
         _bombCollider.isTrigger = true;
@@ -83,7 +83,7 @@ public class ThrowingEnemyController : MonoBehaviour
                 num++;
             }
         }
-        _capsuleRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        CapsuleRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         _mainGameController = FindObjectOfType<MainGameController>();
         HipsRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
         HeadRigidBody.gameObject.AddComponent<RagdollCollisionChecker>().SetParametrs(this);
@@ -110,13 +110,13 @@ public class ThrowingEnemyController : MonoBehaviour
                     EnemyAttack();
                 }
             }
-            if (_capsuleRigidBody.velocity.y < -5)
+            if (CapsuleRigidBody.velocity.y < -5)
             {
                 IsEnemyActive = false;
                 _mainGameController.EnemyBeenDefeated();
                 TurnOnRagdoll();
             } 
-            else if (_capsuleRigidBody.velocity.x > 3 || _capsuleRigidBody.velocity.x < -3)
+            else if (CapsuleRigidBody.velocity.x > 3 || CapsuleRigidBody.velocity.x < -3)
             {
                 IsEnemyActive = false;
                 _mainGameController.EnemyBeenDefeated();
@@ -199,10 +199,10 @@ public class ThrowingEnemyController : MonoBehaviour
 
     private void ClearBomb()
     {
-        if (!_bombThrown)
+        if (!_bombThrown&&Bomb!=null)
         {
             _bombDetonated = true;
-            Bomb.GetComponent<Bomb>().DetonateBomb();
+            Bomb?.GetComponent<Bomb>().DetonateBomb();
         }
     }
 
@@ -259,6 +259,8 @@ public class ThrowingEnemyController : MonoBehaviour
             HipsRigidBody.AddForce(_throwingVector * 4f);
         }
     }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag(TagManager.GetTag(TagType.Player)))
@@ -288,8 +290,8 @@ public class ThrowingEnemyController : MonoBehaviour
     }
     public void ActivateEnemy()
     {
-        _capsuleRigidBody.constraints = RigidbodyConstraints.None;
-        _capsuleRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        CapsuleRigidBody.constraints = RigidbodyConstraints.None;
+        CapsuleRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         if (!_isStucked)
         {
             PrepareForThrowingBomb();
@@ -307,7 +309,7 @@ public class ThrowingEnemyController : MonoBehaviour
             _isStucked = true;
             TurnRagdollStucked();
             _capsuleCollider.enabled = false;
-            _capsuleRigidBody.isKinematic = true;
+            CapsuleRigidBody.isKinematic = true;
             Web = Instantiate(SpiderWeb, positionOfBone + CustomWebPosition, Quaternion.identity);
             Web.transform.Rotate(new Vector3(0, 180f, Random.Range(0, 360f)));
             if (collision.GetContact(0).point.z - positionOfBone.z <= _magicNumber)
@@ -327,8 +329,9 @@ public class ThrowingEnemyController : MonoBehaviour
     #endregion
 
     #region Ragdoll Methods
-    private void TurnOffRagdoll()
+    public override void TurnOffRagdoll()
     {
+        base.TurnOffRagdoll();
         _capsuleCollider.isTrigger = false;
         for (int i = 0; i < _ragdollRigidBodyes.Length; i++)
         {
@@ -336,31 +339,36 @@ public class ThrowingEnemyController : MonoBehaviour
             {
                 _ragdollColliders[i].isTrigger = true;
             }
-            if (_ragdollRigidBodyes[i] != _capsuleRigidBody)
+            if (_ragdollRigidBodyes[i] != CapsuleRigidBody)
             {
                 _ragdollRigidBodyes[i].isKinematic = true;
             }
         }
-        _capsuleRigidBody.isKinematic = false;
+        CapsuleRigidBody.isKinematic = false;
     }
-    private void TurnOnRagdoll()
+    public override void TurnOnRagdoll()
     {
+        base.TurnOnRagdoll();
         _capsuleCollider.enabled = false;
         _animator.enabled = false;
+        IsEnemyActive = false;
         for (int i = 0; i < _ragdollColliders.Length; i++)
         {
             if (_ragdollColliders[i] != _capsuleCollider)
             {
                 _ragdollColliders[i].isTrigger = false;
             }
-            if (_ragdollRigidBodyes[i] != _capsuleRigidBody)
+            if (_ragdollRigidBodyes[i] != CapsuleRigidBody)
             {
                 _ragdollRigidBodyes[i].isKinematic = false;
             }
         }
+        CapsuleRigidBody.isKinematic = true;
     }
-    private void TurnRagdollStucked()
+    public override void TurnRagdollStucked()
     {
+        base.TurnRagdollStucked();
+        IsEnemyActive = false;
         SpineRigidBody.velocity = Vector3.zero;
         HipsRigidBody.velocity = Vector3.zero;
         SpineRigidBody.angularVelocity = Vector3.zero;
@@ -371,4 +379,14 @@ public class ThrowingEnemyController : MonoBehaviour
         HipsRigidBody.GetComponent<Collider>().isTrigger = true;
     }
     #endregion
+    public override void KillEnemy()
+    {
+        base.KillEnemy();
+        if (IsEnemyActive)
+        {
+            IsEnemyActive = false;
+            TurnOnRagdoll();
+            _mainGameController.EnemyBeenDefeated();
+        }
+    }
 }

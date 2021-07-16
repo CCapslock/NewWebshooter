@@ -63,7 +63,26 @@ public class Bomb : MonoBehaviour
 		}
 		
 	}
-	public void DetonateBomb()
+
+    private void OnTriggerEnter(Collider collision)
+    {
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Web)))
+		{
+			Destroy(collision.gameObject);
+			DetonateBomb();
+		}
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Player)))
+		{
+			DetonateBomb();
+			HealthController.Current.GetHitFromBomb();
+		}
+		if (collision.gameObject.CompareTag(TagManager.GetTag(TagType.Wall)))
+		{
+			DetonateBomb();
+		}
+	}
+
+    public void DetonateBomb()
 	{
 		if (!_isDetonated)
 		{

@@ -2352,6 +2352,7 @@ MonoBehaviour:
   WebSpeed: 2
   StuckedWeb: {fileID: 5148378486662662931, guid: 94185bfaa30a10349bbbd2991f21c7d1, type: 3}
   ShootingWeb: {fileID: 6963963498335505446, guid: 9d686cc8b8b14084bbb47ee08843dcec, type: 3}
+  ShootingChainingWeb: {fileID: 6963963498335505446, guid: 29281a74e7d2372459b306e13c05e67b, type: 3}
   RightHandAnimator: {fileID: 1997026542}
   LeftHandAnimator: {fileID: 917474829}
   RightHandTransform: {fileID: 1399759964}
@@ -2484,7 +2485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AvailableLevels:
   - {fileID: 11400000, guid: ace3dd495d076e545843faed94b1fc22, type: 2}
-  - {fileID: 11400000, guid: ef34952e785098c4d942104f73bf38c5, type: 2}
+  - {fileID: 11400000, guid: 86c6e00a3a204a2409a0f508be5ba9bd, type: 2}
   - {fileID: 11400000, guid: bb04c9ca4e7f3f64a8594b386ad999d0, type: 2}
   - {fileID: 11400000, guid: ab757c973add2cb499e69305054796fa, type: 2}
   - {fileID: 11400000, guid: 939b7d334abd6d54a8a6555568aaf2d0, type: 2}
@@ -2511,6 +2512,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: becff28e263b89545bfaef320f6b4220, type: 2}
   - {fileID: 11400000, guid: b19398c1148315c4a9b3ec76c4537cc2, type: 2}
   - {fileID: 11400000, guid: 8ce17428cc2e16d42aea0dc48f58534f, type: 2}
+  - {fileID: 11400000, guid: ef34952e785098c4d942104f73bf38c5, type: 2}
   - {fileID: 11400000, guid: 78832163d7bc05e48be05af37005f482, type: 2}
   AmountOfEnemyes: 0
   _isFinal: 0
