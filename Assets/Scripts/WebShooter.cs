@@ -33,6 +33,10 @@ public class WebShooter : MonoBehaviour
     private int webIterator = 0;
     [SerializeField] private bool _isActivated;
 
+
+    [SerializeField] private bool _chargedProjectileEnabled = false;
+
+
     private void Awake()
     {
         if (Current == null)
@@ -106,7 +110,7 @@ public class WebShooter : MonoBehaviour
                 switch (_shootingTag)
                 {
                     case "SimpleEnemy":
-                        if (Random.Range(0, 5) > 3)
+                        if ((Random.Range(0, 5) > 3)&& _chargedProjectileEnabled)
                         {
                             ShootLeftChainingWeb(_goalPosition);
                         }
@@ -116,7 +120,7 @@ public class WebShooter : MonoBehaviour
                         }
                         break;
                     case "ShieldEnemy":
-                        if (Random.Range(0, 5) > 3)
+                        if ((Random.Range(0, 5) > 3) && _chargedProjectileEnabled)
                         {
                             ShootLeftChainingWeb(_goalPosition);
                         }
@@ -126,7 +130,7 @@ public class WebShooter : MonoBehaviour
                         }
                         break;
                     case "ThrowingEnemy":
-                        if (Random.Range(0, 5) > 3)
+                        if ((Random.Range(0, 5) > 3) && _chargedProjectileEnabled)
                         {
                             ShootLeftChainingWeb(_goalPosition);
                         }
@@ -136,7 +140,7 @@ public class WebShooter : MonoBehaviour
                         }
                         break;
                     case "DodgeEnemy":
-                        if (Random.Range(0, 5) > 3)
+                        if ((Random.Range(0, 5) > 3) && _chargedProjectileEnabled)
                         {
                             ShootLeftChainingWeb(_goalPosition);
                         }
@@ -146,7 +150,7 @@ public class WebShooter : MonoBehaviour
                         }
                         break;
                     case "EnemyPart":
-                        if (Random.Range(0, 5) > 3)
+                        if ((Random.Range(0, 5) > 3) && _chargedProjectileEnabled)
                         {
                             ShootLeftChainingWeb(_goalPosition);
                         }

@@ -78,12 +78,12 @@
     <file>Assets/Plugins/Android/com.android.installreferrer.installreferrer-1.0.aar</file>
     <file>Assets/Plugins/Android/com.applovin.applovin-sdk-10.3.1.aar</file>
     <file>Assets/Plugins/Android/com.facebook.android.audience-network-sdk-6.5.1.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-applinks-11.1.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-common-11.1.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-core-11.1.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-gamingservices-11.1.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-login-11.1.0.aar</file>
-    <file>Assets/Plugins/Android/com.facebook.android.facebook-share-11.1.0.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-applinks-11.1.1.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-common-11.1.1.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-core-11.1.1.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-gamingservices-11.1.1.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-login-11.1.1.aar</file>
+    <file>Assets/Plugins/Android/com.facebook.android.facebook-share-11.1.1.aar</file>
     <file>Assets/Plugins/Android/com.fyber.vamp.core-sdk-7.8.3.aar</file>
     <file>Assets/Plugins/Android/com.fyber.vamp.mraid-kit-7.8.3.aar</file>
     <file>Assets/Plugins/Android/com.fyber.vamp.video-kit-7.8.3.aar</file>
@@ -123,7 +123,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.KeyBoard.WebShooter" />
+    <setting name="bundleId" value="com.Keyboard.Webshooter" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="False" />

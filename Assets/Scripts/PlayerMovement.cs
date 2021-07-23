@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _needToMove = false;
     private GameObject resultOfClick;
     private Vector3 _currentStartPosition;
+
+    [SerializeField]private bool _isInteractableWebShootingEnable = false;
     private void Start()
     {
         _speed = MaxSpeed;
@@ -183,7 +185,10 @@ public class PlayerMovement : MonoBehaviour
             }
             if (_movementPoints[_currentPointNum].NeedToFly)
             {
-                resultOfClick = await this.GetClickOnWebTrigger();
+                if (_isInteractableWebShootingEnable)
+                { 
+                    resultOfClick = await this.GetClickOnWebTrigger();
+                }
                 //запуск паутины к полученному resultofclick
                 RightHandAnimator.SetTrigger("Flying");
                 LeftHandAnimator.SetTrigger("FlyingOffhand");
