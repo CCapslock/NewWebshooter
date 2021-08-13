@@ -20,6 +20,17 @@ public class UIController : MonoBehaviour
     private WebShooter _webShooter;
     private Color _tempColor;
     private int _coinsMultiplier = 3;
+    private int _currentCoins;
+    private int _lowMultiplier = 2;
+    private int _midMultiplier = 3;
+    private int _highMultiplier = 5;
+
+    private float _arrowSpeed = 100.0f;
+    private float _leftArrowAngle = 45.0f;
+    private float _firstArrowAngle = 0.0f;
+    private float _secondArrowAngle = 330.0f;
+    private float _rightArrowAngle = 314.0f;
+    private bool _isMovingRight = false;
 
     public int CoinsMultiplier => _coinsMultiplier;
 
@@ -35,8 +46,6 @@ public class UIController : MonoBehaviour
         Current = this;
 
         ResetUI();
-
-
 
         _mainMenu = GetComponentInChildren<MainMenu>();
         _shopMenu = GetComponentInChildren<ShopMenu>();
@@ -69,6 +78,12 @@ public class UIController : MonoBehaviour
         GameEvents.Current.OnLevelLoaded += ResetUI;
         GameEvents.Current.OnIncreaseCoins += MultiplyCoins;
     }
+
+    private void Update()
+    {
+        RotateMultiplier();
+    }
+
 
     private void ResetUI()
     {
@@ -122,6 +137,7 @@ public class UIController : MonoBehaviour
     }
     public void ActivateWinPanel(int coinsNum)
     {
+        _currentCoins = coinsNum;
         SwitchUI(UIState.Win);
         _winMenu.ActivatePanel(coinsNum, false);
         GameEvents.Current.LevelEnd();
@@ -132,6 +148,51 @@ public class UIController : MonoBehaviour
     {
         _coinsController.AddCoins(coins * (_coinsMultiplier - 1));
         _winMenu.ActivatePanel(coins * _coinsMultiplier, true);
+    }
+
+    private void RotateMultiplier()
+    {
+        if (_winMenu.IsMultiply == false)
+        {
+            return;
+        }
+
+        float rotationZ = _winMenu.Arrow.transform.rotation.eulerAngles.z;
+
+        //Multiply check
+        if (rotationZ > _firstArrowAngle && rotationZ <= _leftArrowAngle)
+        {
+            _coinsMultiplier = _lowMultiplier;
+        }
+        if (rotationZ > _secondArrowAngle)
+        {
+            _coinsMultiplier = _midMultiplier;
+        }
+        if (rotationZ >= _rightArrowAngle && rotationZ < _secondArrowAngle)
+        {
+            _coinsMultiplier = _highMultiplier;
+        }
+        _winMenu.UpdateButtonMultiplierText(_currentCoins, _coinsMultiplier);
+
+        //Direction check
+        if (_isMovingRight == false)
+        {
+            if (rotationZ >= _leftArrowAngle && rotationZ < _leftArrowAngle * 2.0f)
+            {
+                _isMovingRight = true;
+                _arrowSpeed *= -1.0f;
+            }
+        }
+        if (_isMovingRight == true)
+        {
+            if (rotationZ <= _rightArrowAngle && rotationZ > _rightArrowAngle / 2.0f)
+            {
+                _isMovingRight = false;
+                _arrowSpeed *= -1.0f;
+            }
+        }
+
+        _winMenu.Arrow.transform.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * _arrowSpeed));
     }
 
     public void SetGradientsAlpha(float maxHP, float currentHP)
