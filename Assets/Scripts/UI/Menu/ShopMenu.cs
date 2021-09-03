@@ -20,6 +20,7 @@ public class ShopMenu : BaseMenu
     [SerializeField] private Button _btnGloves;
     [SerializeField] private Button _btnBuyGloves;
     [SerializeField] private Button _btnGetGloves;
+    [SerializeField] private Image _selectedGloves;
 
     [Header("Nets")]
     [SerializeField] private GameObject _panelNets;
@@ -27,6 +28,7 @@ public class ShopMenu : BaseMenu
     [SerializeField] private Button _btnNets;
     [SerializeField] private Button _btnBuyNet;
     [SerializeField] private Button _btnGetNet;
+    [SerializeField] private Image _selectedNet;
 
     [Header("Colors")]
     [SerializeField] private Color _colorBack;
@@ -103,6 +105,11 @@ public class ShopMenu : BaseMenu
             {
                 isLockedGloves = true;
             }
+
+            if (_glovesManager.Skins[i].State == SkinState.Selected)
+            {
+                _selectedGloves.sprite = _glovesManager.Skins[i].UnlockedImage;
+            }
         }
 
         for (int i = 0; i < _netItems.Length; i++)
@@ -112,6 +119,11 @@ public class ShopMenu : BaseMenu
             if (_webManager.Skins[i].State == SkinState.Locked)
             {
                 isLockedWebs = true;
+            }
+
+            if (_webManager.Skins[i].State == SkinState.Selected)
+            {
+                _selectedNet.sprite = _webManager.Skins[i].UnlockedImage;
             }
         }
 
