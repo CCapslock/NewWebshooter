@@ -183,7 +183,7 @@ MonoBehaviour:
   _lockedImage: {fileID: 21300000, guid: 83e9d47cb2faaff41a5734b428f3cd87, type: 3}
   _unlockedImage: {fileID: 21300000, guid: 97ed3dd21aefa8d4fa2c6b113f931f76, type: 3}
   _webMaterial: {fileID: 2100000, guid: c615f59582912d640a828f60a10dd311, type: 2}
-  _state: 2
+  _state: 1
 --- !u!1 &8252941973427214888
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &478010068264428254
 Transform:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   _lockedImage: {fileID: 21300000, guid: 2b2318ba05a4a4b43912ec5003bc8e86, type: 3}
   _unlockedImage: {fileID: 21300000, guid: ef36dc62614aaf34b8333d564ce03c42, type: 3}
   _webMaterial: {fileID: 2100000, guid: 8cb09d6da589f184695a7b7bad65929b, type: 2}
-  _state: 1
+  _state: 2
 --- !u!1001 &935500873470626287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8b65aacb8b0f52545b4f3f8fa1f1bc39, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b65aacb8b0f52545b4f3f8fa1f1bc39, type: 3}
