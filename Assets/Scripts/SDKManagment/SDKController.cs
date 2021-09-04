@@ -4,6 +4,7 @@ using GameAnalyticsSDK;
 using UnityEngine;
 using Facebook.Unity;
 using System.Threading.Tasks;
+using Firebase;
 
 public class SDKController : MonoBehaviour
 {
@@ -27,10 +28,15 @@ public class SDKController : MonoBehaviour
     private float _startLevelTime = 0f;
     private string _tempText;
 
+    private FirebaseApp _app;
+    private IronSourceImpressionData _impressionData;
 
 
     private void Start()
     {
+        //Для создания IronSourceImpressionData требуется json файл, который можно получить по веб запросу (вроде бы)
+        //_impressionData = new IronSourceImpressionData(need json file here);
+
         ConversationValue = 0;
         GameAnalyticsInitialize();
 
@@ -41,6 +47,10 @@ public class SDKController : MonoBehaviour
         CheckAttFacebook();
         InitializeIronSource();
         TenjinConnect();
+
+        //Firebase
+        FirebaseCheckAndFixDependencies();
+        ImpressionSuccessEvent(_impressionData);
 
     }
 
@@ -158,8 +168,8 @@ public class SDKController : MonoBehaviour
 #elif UNITY_IPHONE
                 _currentAppKey = _ISIOSAppKey;
 #else
-                _currentAppKey = _ISIOSAppKey;
-;
+            _currentAppKey = _ISIOSAppKey;
+            ;
 #endif            
             IronSource.Agent.validateIntegration();
             IronSource.Agent.init(_currentAppKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
@@ -416,6 +426,50 @@ public class SDKController : MonoBehaviour
         {
             ConversationValue++;
             InstanceTenjin.UpdateConversionValue(ConversationValue);
+        }
+    }
+    #endregion
+    #region Firebase
+    //Step 5: Confirm Google Play services version requirements
+    private void FirebaseCheckAndFixDependencies()
+    {
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => 
+        {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                _app = Firebase.FirebaseApp.DefaultInstance;
+
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+                Debug.Log("Firebase is ready to use by app");
+            }
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format("Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
+
+    }
+
+    private void ImpressionSuccessEvent(IronSourceImpressionData impressionData)
+    {
+
+        if (impressionData != null)
+        {
+            Firebase.Analytics.Parameter[] AdParameters = 
+            {
+                new Firebase.Analytics.Parameter("ad_platform", "ironSource"),
+                new Firebase.Analytics.Parameter("ad_source", impressionData.adNetwork),
+                new Firebase.Analytics.Parameter("ad_unit_name", impressionData.adUnit),
+                new Firebase.Analytics.Parameter("ad_format", impressionData.instanceName),
+                new Firebase.Analytics.Parameter("currency","USD"),
+                new Firebase.Analytics.Parameter("value", impressionData.revenue.ToString())
+            };
+
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("custom_ad_impression", AdParameters);
         }
     }
     #endregion
