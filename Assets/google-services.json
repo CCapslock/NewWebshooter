@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "985382984097",
+    "project_id": "webshooter-3d",
+    "storage_bucket": "webshooter-3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985382984097:android:979dd7be327e15811713e0",
+        "android_client_info": {
+          "package_name": "com.KeyBoard.WebShooter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985382984097-4j5hremmgt8ar99pc92f7g1o84dkkat8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApj8zpHa1QewrzT4X-udTTGOGL2_0ipkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985382984097-4j5hremmgt8ar99pc92f7g1o84dkkat8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "985382984097-dot0ga5855q4p59tvd0br076l7puf2em.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Keyboard.Webshooter",
+                "app_store_id": "1555702302"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

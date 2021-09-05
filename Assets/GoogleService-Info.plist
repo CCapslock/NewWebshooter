@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>985382984097-dot0ga5855q4p59tvd0br076l7puf2em.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.985382984097-dot0ga5855q4p59tvd0br076l7puf2em</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAtpDIYYOPeR9BbL2jbN5ca9EwZuqohYE8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>985382984097</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Keyboard.Webshooter</string>
+	<key>PROJECT_ID</key>
+	<string>webshooter-3d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>webshooter-3d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:985382984097:ios:4d21624a993ce9da1713e0</string>
+</dict>
+</plist>
