@@ -34,9 +34,6 @@ public class SDKController : MonoBehaviour
 
     private void Start()
     {
-        //Для создания IronSourceImpressionData требуется json файл, который можно получить по веб запросу (вроде бы)
-        //_impressionData = new IronSourceImpressionData(need json file here);
-
         ConversationValue = 0;
         GameAnalyticsInitialize();
 
@@ -50,8 +47,13 @@ public class SDKController : MonoBehaviour
 
         //Firebase
         FirebaseCheckAndFixDependencies();
-        ImpressionSuccessEvent(_impressionData);
+        IronSourceEvents.onImpressionSuccessEvent += ImpressionSuccessEvent;
+        //The onImpressionSuccess is reported when the rewarded video and interstitial ad is opened.
+        //For banners, the impression is reported on load success.
 
+        //На этом основная настройка Firebase в unity всё
+        //По п.4 из дока от издателя:
+        //Трекинг иных ивентов можно осуществить через Firebase.Analytics.FirebaseAnalytics.LogEvent(string name, string parameterName, int parameterValue)
     }
 
     private async void CheckAttFacebook()
